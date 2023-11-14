@@ -22,4 +22,12 @@
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
 replay_pid*
+<<<<<<< Updated upstream
 /bin/
+=======
+<<<<<<< HEAD
+/.metadata/
+=======
+/bin/
+>>>>>>> bf4e156d593a89c57413a19c379ec63b8a406a30
+>>>>>>> Stashed changes
