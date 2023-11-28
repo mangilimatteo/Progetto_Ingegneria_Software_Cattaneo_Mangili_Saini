@@ -5,4 +5,6 @@ Responsabili del Progetto: Nicola Cattaneo, Matteo Mangili, Marco Saini
 
 2. INTERVISTA: il responsabile Nicola Cattaneo ha effettuato una intervista con un'infermiiera dell'Ospedale, al fine di raccogliere dati e informazioni utili per la stesura del progetto
 
-3. DIAGRAMMI UML: i tre responsabili hanno collaborato insieme per elaborare il progetto secondo vari diagrammi di UML: cCasi d'Uso, Diagramma di Stato, Diagramma delle Classi
+3. DIAGRAMMI UML: i tre responsabili hanno collaborato insieme per elaborare il progetto secondo vari diagrammi di UML: Diagramma dei Casi d'Uso, Diagramma di Stato, Diagramma delle Classi, Diagramma di Sequenza, Diagrammin delle Attività
+
+4. CODIFICA JAVA: Prendendo spunto dai avri diagrammi, i tre collaboratori hanno codificato il problema proposto in Java
