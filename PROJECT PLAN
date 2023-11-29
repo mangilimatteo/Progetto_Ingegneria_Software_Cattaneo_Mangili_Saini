@@ -1,10 +1,27 @@
 SCALETTA:
-1. INTRODUZIONE: con questo progetto si intende fornire uno strumento digitale per la gestione delle sale degli ospedali. 
-Come obiettivo ci si impone di raggiungere una forma stabile e funzionante del programma, anche se non ancora commercializzabilie, soprattutto dal punto di vita grafico.
-Responsabili del Progetto: Nicola Cattaneo, Matteo Mangili, Marco Saini
+1. INTRODUZIONE:
+Questo progetto intende fornire uno strumento digitale per la gestione delle sale di un ospedale. 
+Come obiettivo ci si impone di raggiungere una forma stabile e funzionante del programma, anche se non ancora commercializzabilie, 
+soprattutto dal punto di vita grafico.
+Responsabili del Progetto: Nicola Cattaneo, Matteo Mangili, Marco Saini.
 
-2. INTERVISTA: il responsabile Nicola Cattaneo ha effettuato una intervista con un'infermiiera dell'Ospedale, al fine di raccogliere dati e informazioni utili per la stesura del progetto
+2. INTERVISTA: 
+Il responsabile Nicola Cattaneo ha effettuato un'intervista con un'infermiera dell'Ospedale Papa Giovanni XXIII di Bergamo (BG), 
+al fine di raccogliere dati e informazioni utili per la stesura del progetto.
 
-3. DIAGRAMMI UML: i tre responsabili hanno collaborato insieme per elaborare il progetto secondo vari diagrammi di UML: Diagramma dei Casi d'Uso, Diagramma di Stato, Diagramma delle Classi, Diagramma di Sequenza, Diagrammin delle Attività
+3. DIAGRAMMI UML: 
+I tre responsabili hanno collaborato insieme per elaborare il progetto, attraverso la stesura di vari diagrammi di UML: 
+- Diagramma dei Casi d'Uso;
+- Diagramma di Stato;
+- Diagramma delle Classi;
+- Diagramma di Sequenza;
+- Diagrammin delle Attività
 
-4. CODIFICA JAVA: Prendendo spunto dai avri diagrammi, i tre collaboratori hanno codificato il problema proposto in Java
+4. CODIFICA JAVA: 
+Prendendo spunto dai vari diagrammi, i tre collaboratori hanno codificato il problema proposto in Java, sfruttando l'estensione Rebel di UML e 
+completando la codifica aggiungendo classi e attributi, necessari per la stesura del progetto.
+
+5. DATABASE:
+Il responsabile Nicola Cattaneo ha costruito un DataBase del problema proposto, attraverso linguaggio JAVA e SQLite
+
+
