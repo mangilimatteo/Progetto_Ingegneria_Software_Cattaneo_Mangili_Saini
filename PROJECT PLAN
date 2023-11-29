@@ -72,18 +72,44 @@ quali problemi dava il progetto. Spesso ci sono stati problemi legati alla manca
 il team ha dovuto richiedere aiuto al professore di corso per capire come risolvere i vari quesiti, oppure cercare da soli informazioni per risolverli.
 
 7. PERSONALE E TECNICHE
+Il team ha comiciato a lavorare al progetto a fine Ottobre / inizio Novembre, per poi seguire i vari punti della tabella di marcia, cercando di restare il più 
+possibile nei tempi concordati. 
 
 8. METODI E TECNICHE
+L'ambiente di sviluppo utillizzato è GitHUB (per la compilazione delle varie parti del progetto), StarUML (per la creazione dei vari Diagrammi relativi al progetto), 
+Eclipse (per la stesura del codice).
+//Rivedi capitolo 13 per test
 
 9. GARANZIA DI QUALITA'
+Per garantire la qualità del Sistema sono necessari vari fattori:
+- Correttezza, il programma soddisfa le sue specifiche e gli obiettivi proposti dall'utente;
+- Affidabilità, il programma deve essere in grado di eseguire la sua funzione con la precisa richiesta;
+- Efficienza, la quantità di risorse di calcolo e di codice richieste dal programma per eseguire una funzione;
+- Integrità, misura in cui è possibile controllare l'accesso al software o i ddati da parte di persone non autorizzzate;
+- Usabilità, sforzo richiesto per apprendere, utilizzare, preparere l'input e interpretare l'output del programma;
+- Manuntenibilità, sforzo richiesto per individuare e correggere errrori;
+- Testabilità, per testare che il programma svolga la funzione prevista;
+- Flessibilità, sforzo necessario per modificare il programma operativo;
+- Portabilità, sforzo richiesto per trasferire il programma da un ambiente hardware/software all'altro;
+- Riutilizzabilità, misura in cui il programma può essere 2riciclato" in altre applicazioni;
+- Interoperabilità, per "accoppiare" il programma con un'altro,
 
 10. PACCHETTI DI LAVORO (workpackages)
+Il Progetto è stato suddiviso in più parti distinte (ognuna eseguita da uno o più responsabili):
+- Project Plan, per definire i vari passaggi della stesura del progetto;
+- Diagrammi, per avere una rappresentazione schematica del progetto;
+- Codice, per elaborare il programma attraverso un linguaggio di alto livello;
 
 11. RISORSE
+//Cosa si intende per risorse nel nostro progetto?
 
 12. BUDGET
+Gestione del tempo per la compilazione del progetto
 
 13. CAMBIAMENTI
+Grazie all'uso di GitHub, era sempre possibile tenere traccia di eventuali modifiche e cambiamenti delle varie parti del progetto; qualora fosse stato necessario tornare ad
+una precedente modifica, è sempre stato possibile farlo, grazie allo storico di GitHub.
+Tutti i membri del gruppo si sono confrontati in seguito a varie modifiche, per concordeare se tali modifiche fossero corrette / necessarie.
 
 14. CONSEGNA
 
