@@ -1,4 +1,5 @@
-SCALETTA:
+STORIA DEL PROGETTO:
+
 1. INTRODUZIONE:
 Questo progetto intende fornire uno strumento digitale per la gestione delle sale di un ospedale. 
 Come obiettivo ci si impone di raggiungere una forma stabile e funzionante del programma, anche se non ancora commercializzabilie, 
@@ -23,5 +24,49 @@ completando la codifica aggiungendo classi e attributi, necessari per la stesura
 
 5. DATABASE:
 Il responsabile Nicola Cattaneo ha costruito un DataBase del problema proposto, attraverso linguaggio JAVA e SQLite
+
+
+PROJECT PLAN:
+
+1. INTRODUZIONE:
+Il progetto in questione è volto a creare uno strumento digitale per la gestione delle sale di un ospedale.
+L'obbiettivo principale è quello di analizzare le varie casistiche che si possono presentare nella gestione di un reparto di ospadale, e come
+il sistema le gestisce.
+Al progetto hanno lavorato i seguenti Collaboratori: Nicola Cattaneo, Matteo Mangili e Marco Saini.
+//Per storia del progetto vedi sopra
+
+2. MODELLO DEL PROCESSO
+Il Modello del progetto in questione è un modello A Cascata:
+ogni fase del progetto è definita e la successiva fase fa riferimento alla precedente;
+per ogni fase richiede V&V (Verifica e Validazione), rispettivamente per soddisfare i requisiti 
+del progetto stesso (è necessario valutare la correttezza del passaggio alla fase successiva) e per 
+capire se il sistema risponde alle esigenze dell'utente (dobbiamo capire se stiamo costruendo il progetto in modo corretttpo).
+Prima della stesura del progetto stesso, è necessaria un'attenta analisi del progetto per capire le varie problematiche legate ad esso.
+
+3. ORGANIZZAZIONE DEL PROGETTO
+
+4. STANDARD, LINEE GUIDA, PROCEDURE
+
+5. ATTIVITA' DI GESTIONE
+
+6. RISCHI
+
+7. PERSONALE E TECNICHE
+
+8. METODI E TECNICHE
+
+9. GARANZIA DI QUALITA'
+
+10. PACCHETTI DI LAVORO (workpackages)
+
+11. RISORSE
+
+12. BUDGET
+
+13. CAMBIAMENTI
+
+14. CONSEGNA
+
+
 
 
