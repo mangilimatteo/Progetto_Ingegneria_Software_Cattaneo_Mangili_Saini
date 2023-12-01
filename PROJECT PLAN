@@ -29,6 +29,32 @@ Il responsabile Nicola Cattaneo ha costruito un DataBase del problema proposto, 
 PROJECT PLAN:
 
 1. INTRODUZIONE:
+Lo scopo del progetto è creare un software per la gestione delle sale di un ospedale, tenendo conto degli interventi a cui i pazienti devono sottoporsi e
+anche ai singoli medici operanti.
+Il paziente va in visita al medico e si decide che deve essere operato; il medico inserisce il paziente nel sistema, il quale contiene una pagina anagrafica per 
+ogni paziente (dove sono conntenute le informazioni anagrafiche e mediche ed è importante che in ogni momento si possa accedere all’anagrafica del paziente).
+
+Il paziente entra in una lista di graduatoria dell’intervento specifico a cui si deve sottoporre.
+La cabina di regia contatta il paziente per dargli le date degli esami che dovrà eseguire prima dell’intervento.
+Il paziente svolge gli esami, e, una volta svolti tutti, viene chiamato per fare l’intervento; a questo punto,
+la cabina di regia lo inserisce nella lista delle persone pronte per fare l’intervento, in modo che il medico, una settimana prima, può fare la lista operatoria, 
+che schedula giorno per giorno chi verrà operato (le liste operatorie possono essere modificate in qualsiasi momento dal medico)
+
+Nel giorno dell’intervento si tiene traccia di tutti i movimenti, i rischi, l'anestesia adoperata del paziente in un verbale; nel verbale sono contenuti i nomi dell'equipe medica
+cha ha effettuato l'operazione:
+o	Primo operatore (medico)
+o	Secondo operatore (medico, con opzione “nessun operatore”)
+o	Terzo operatore (medico, opzionale)
+o	Anestesista (medico, opzionale in base a lista operatoria)
+o	Strumentista (infermiere)
+o	Infermiere di sala (infermiere)
+o	Aiutoanestesista (infermiere)
+o	Tecnico di radiologia (opzionale)
+•	Diagnosi e intervento (riprese dall’anagrafica)
+•	Procedura (testo lungo)
+Il primo operatore può scrivere tutto il verbale. L’infermiere può solo scrivere gli orari, l’equipe infermieristica e il tecnico di radiologia.
+L’anestesista può scrivere i suoi dati e i dati sull’anestesia.
+Il verbale a fine intervento deve essere stampato.
 
 
 2. MODELLO DEL PROCESSO
