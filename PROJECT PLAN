@@ -63,6 +63,7 @@ Il software implementato è un architettura Client-Server:
 
 
 5. ATTIVITA' DI GESTIONE
+
 Per gestire tutte le parti prodotte nello sviluppo del progetto è necessario fissare delle attività di gestione:
 - Ogni membro del team labvora alla sua parte e in caso di difficoltà, si rivolgeva agli altri membri, al fine di risolvere eventuali problematiche.
 - Ogni settimana i membri del team si incontrano per definire eventuali dubbi, sistemare gli errori e per fare un resoconto di quanto fatto nei precedenti giorni.
@@ -72,6 +73,7 @@ se tale modifica è necessaria e, in caso affermativo, ottenere la loro approvaz
 
 
 6. RISCHI
+
 I rischi maggiori sono:
 - mancare la consegna finale del progetto causa impegni universitari e non di ciascun membro del team.
 - trovare giorni della settimana in cui tutti i membri del team potevano incontrarsi e confrontarsi insieme sul progetto, causa impegni extra-scolastici
@@ -101,27 +103,49 @@ Per visualizzare/comprendere le azioni che specificano il comportamento definito
 
 9. GARANZIA DI QUALITA'
 
+Per la progettazione del software applicativo, si fa riferimento alla norma ISO 9001 e alle sue varie voci, per garantire il sucesso della creazione e utilizzo
+del progetto.
 
 
 10. PACCHETTI DI LAVORO (workpackages)
-Il Progetto è stato suddiviso in più parti distinte (ognuna eseguita da uno o più responsabili):
-- Project Plan, per definire i vari passaggi della stesura del progetto;
-- Diagrammi, per avere una rappresentazione schematica del progetto;
-- Codice, per elaborare il programma attraverso un linguaggio di alto livello;
+
+Il Progetto è stato suddiviso in diverse parti distinte:
+
+1. Project Plan, per definire i vari passaggi della stesura del progetto.
+2 .Diagrammi, per avere una rappresentazione schematica del progetto.
+3. Codice, per elaborare il programma attraverso un linguaggio di alto livello;
+
+Ogni membro del team collabora in maniera attiva ai vari componenti-
+
 
 11. RISORSE
-//Cosa si intende per risorse nel nostro progetto?
+
+Per la realizzazione finale del progetto il team ha usufruito di varie risorse:
+
+- Ogni membro ha sfruttato il proprio computer portatile (PC) o il proprio tablet per lavorare sulle singole componenti dell'intero progetto.
+- Utilizzo di varie applicazioni, quali Google Drive, Mycrosoft Teams, OneDrive per raccogliere le informazioni necessarie al fine di realizzare
+  un buon progetto.
+- Eclipse IDE per la stesura del codice.
+- StarUML per la creazione dei diagrammi.
+- GitHub per condividere il progetto e notificare/gestire eventuali modifiche. 
+
 
 12. BUDGET
-Gestione del tempo per la compilazione del progetto
+
+Il tempo è molto importante per la stesura dell'intero progetto: stimando che ogni membro del team lavorerà 60 h, per un totale di 18,
+la maggior parte di esse verrà impegnata  nella progettazione, mentre le restanti saranno di studio (al fine di raccogliere informazioni utili) e revisione 
+(per controllare eventuali errori).
+
 
 13. CAMBIAMENTI
-Ogni cambiamento apportato a qualsiasi parte del progetto è stato discusso tra i vari membri del team; qualora, un membro avesse avuto la necessità di modificare qualcosa, 
-si è premunito per avvisare i restanti membri dell'eventuale cambiamento, attraverso l'uso di app di messaggistica.
-L'uso di GitHub ha permesso ai membri del team di poter essere sempre aggiornati sullo sviluppo del progetto, qualora la comunicazione diretta non fosse stata 
-possibile.
+
+Ogni cambiamento apportato al progetto viene discusso tra i membri del team; qualora, un membro ha la necessità di modificare una parte del progetto, 
+è tenuto ad avvisare i restanti membri della modifica effettuata, attraverso l'uso di app di messaggistica.
+L'uso di GitHub permette ai membri del team di poter essere sempre aggiornati sullo sviluppo del progetto, qualora la comunicazione diretta non fosse possibile.
+
 
 14. CONSEGNA
+
 La consegna finale del Progetto avverrà entro il 05/02/2024, tenendo aperta la possibilità di eventuali manutenzioni e modifiche entro il 10/02/2024
 
 
