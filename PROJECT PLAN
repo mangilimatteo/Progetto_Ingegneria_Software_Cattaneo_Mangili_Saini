@@ -29,11 +29,7 @@ Il responsabile Nicola Cattaneo ha costruito un DataBase del problema proposto, 
 PROJECT PLAN:
 
 1. INTRODUZIONE:
-Il progetto in questione è volto a creare uno strumento digitale per la gestione delle sale di un ospedale.
-L'obbiettivo principale è quello di analizzare le varie casistiche che si possono presentare nella gestione di un reparto di ospadale, e come
-il sistema le gestisce.
-Al progetto hanno lavorato i seguenti Collaboratori: Nicola Cattaneo, Matteo Mangili e Marco Saini.
-//Per storia del progetto vedi sopra
+
 
 2. MODELLO DEL PROCESSO
 Il Modello del progetto in questione è un modello A Cascata:
@@ -44,32 +40,25 @@ capire se il sistema risponde alle esigenze dell'utente (dobbiamo capire se stia
 Prima della stesura del progetto stesso, è necessaria un'attenta analisi del progetto per capire le varie problematiche legate ad esso.
 
 3. ORGANIZZAZIONE DEL PROGETTO
-L'idea del progetto è partita da un'intervista, effettuata dal responsabile Cattaneo, ad un'infermiera dell'ospedale Papa Giovanni XXIII di Bergamo (BG);
-da questa intervista, il gruppo ha potuto elaborare i vari soggetti coinvolti nella stesura del progetto e le informazioni necessarie affinchè il sistema
-svolga le sue funzioni correttamente.
+Il team è composto da tre persone:
 
-Il team risponde risponde ad un'organizzazione di tipo Squadra Agile: la comunicazione tra i membri della squadra era relativamente debole e spesso ci si è trovati
-a lavorare in coppia sui singoli step del progetto, al fine di massimizzare l'efficenza delle operazioni eseguite; sebbene fosse presente una "tabella di marcia" 
-da seguire, il gruppo è riuscito comunque a riorganizzare il proprio lavoro qualore si verificavano imprevisti o ritardi.
-
-Ruoli del progetto:
-- Responsabile Cattaneo: Idea Progetto, Raccolta di Informazioni, stesura DataBase del Progetto, Programmatore;
-- Responsabile Mangili: stesura Project Plan, elaboratore dei Diagrammi, Correzione Errori;
-- Responsabile Saini: elaboratore Diagrammi, aiuto per DataBase, Analista;
+1. Nicola Cattaneo
+2. Matteo Mangili
+3. Marco Saini
 
 
 4. STANDARD, LINEE GUIDA, PROCEDURE
 Tutti i collaboratori al progetto hanno rispettato le linee guida e gli standard per portare a termine il progetto.
 
 5. ATTIVITA' DI GESTIONE
-Prima di elaborare il progetto stesso, i tre responsabili hanno definito una Tabella di Marcia per poter consegnare nei tempi il progetto; sulla tabella, 
-sono state definite delle scadenze da rispettare per completare i vari componenti del progetto.
+
 
 6. RISCHI
-A causa di difficoltà relative a gestione e organizzazione, non è sempre stato possibile per i tre collaboratori lavorare insieme al progetto: 
-spesso ogni collaboratore eseguiva i propri compiti a casa, e quando era possibile tutti e tre o solo due responsabili si incontravano per discutere
-quali problemi dava il progetto. Spesso ci sono stati problemi legati alla mancanza di informazioni utili per la stesura delle varie fasi del progetto, pertanto 
-il team ha dovuto richiedere aiuto al professore di corso per capire come risolvere i vari quesiti, oppure cercare da soli informazioni per risolverli.
+I rischi maggiori sono:
+- mancare la consegna finale del progetto causa impegni universitari e non di ciascun membro del team.
+- trovare giorni della settimana in cui tutti i membri del team potevano vedersi e confrontarsi insieme sul progetto, causa impegni extra-scolastici
+  di ognuno.
+- difficoltà ad ottenere un software che rispondesse a tutte le esigenze/requisiti del problema proposto.
 
 7. PERSONALE E TECNICHE
 Il team ha comiciato a lavorare al progetto a fine Ottobre / inizio Novembre, per poi seguire i vari punti della tabella di marcia, cercando di restare il più 
@@ -107,12 +96,13 @@ Il Progetto è stato suddiviso in più parti distinte (ognuna eseguita da uno o 
 Gestione del tempo per la compilazione del progetto
 
 13. CAMBIAMENTI
-Grazie all'uso di GitHub, era sempre possibile tenere traccia di eventuali modifiche e cambiamenti delle varie parti del progetto; qualora fosse stato necessario tornare ad
-una precedente modifica, è sempre stato possibile farlo, grazie allo storico di GitHub.
-Tutti i membri del gruppo si sono confrontati in seguito a varie modifiche, per concordeare se tali modifiche fossero corrette / necessarie.
+Ogni cambiamento apportato a qualsiasi parte del progetto è stato discusso tra i vari membri del team; qualora, un membro avesse avuto la necessità di modificare qualcosa, 
+si è premunito per avvisare i restanti membri dell'eventuale cambiamento, attraverso l'uso di app di messaggistica.
+L'uso di GitHub ha permesso ai membri del team di poter essere sempre aggiornati sullo sviluppo del progetto, qualora la comunicazione diretta non fosse stata 
+possibile.
 
 14. CONSEGNA
-La consegna finale del Progetto avverrà entro il mese di Dicembre 2023, con possibile manuntenzione ed eventuali correzioni entro il 08/01/2024
+La consegna finale del Progetto avverrà entro il 05/02/2024, tenendo aperta la possibilità di eventuali manutenzioni e modifiche entro il 10/02/2024
 
 
 
