@@ -4,11 +4,11 @@ PROJECT PLAN:
 
 Lo scopo del progetto è creare un software per la gestione delle sale di un ospedale, tenendo conto degli interventi a cui i pazienti devono sottoporsi e anche ai singoli medici operanti. L'obbiettivo principale è raggiungere una forma stabile e funzionante del programma, anche se non ancora commercializzabilie, soprattutto dal punto di vita grafico.
 
-Il paziente va in visita al medico e si decide che deve essere operato; il medico inserisce il paziente nel sistema, il quale contiene una pagina anagrafica per  ogni paziente (dove sono contenute le informazioni anagrafiche e mediche del paziente ed è importante che in ogni momento si possa accedere all’anagrafica del paziente).
+Il paziente va in visita dal medico e si decide che deve essere operato; il medico inserisce il paziente nel sistema, il quale contiene una pagina anagrafica per ogni paziente (al cui interno sono contenute le informazioni anagrafiche e mediche del paziente ed è importante che in ogni momento si possa accedere all’anagrafica del paziente).
 
-Il paziente entra in una lista di graduatoria dell’intervento specifico a cui si deve sottoporre. La cabina di regia contatta il paziente per dargli le date degli esami che dovrà eseguire prima dell’intervento. Il paziente svolge gli esami, e, una volta svolti tutti, viene chiamato per fare l’intervento; a questo punto, la cabina di regia lo inserisce nella lista delle persone pronte per fare l’intervento, in modo che il medico, una settimana prima, può fare la lista operatoria, che schedula giorno per giorno chi verrà operato (le liste operatorie possono essere modificate in qualsiasi momento dal medico).
+Il paziente entra in una lista di graduatoria dell’intervento specifico a cui si deve sottoporre. La cabina di regia contatta il paziente per dargli le date degli esami che dovrà eseguire prima dell’intervento. Il paziente svolge gli esami, e, una volta svolti tutti, viene chiamato per fare l’intervento; a questo punto, la cabina di regia lo inserisce nella lista delle persone pronte per fare l’intervento, in modo che il medico, una settimana prima, può preparare la lista operatoria, che schedula giorno per giorno chi verrà operato (le liste operatorie possono essere modificate in qualsiasi momento dal medico).
 
-Nel giorno dell’intervento si tiene traccia di tutti i movimenti, i rischi, l'anestesia adoperata, la diagnosi e la procedura dell'intervento del paziente in un verbale; nel verbale sono inoltre contenuti gli orari di inizio e fine dell'intervento, le tecniche effettuate durante l'operazione e i nomi dell'equipe medica cha ha effettuato l'operazione, composta principalmente da:
+Nel giorno dell’intervento si tiene traccia di tutti i movimenti, i rischi, l'anestesia adoperata, la diagnosi e la procedura relative all'operazione eseguita sul paziente in un verbale; nel verbale sono inoltre contenuti gli orari di inizio e fine dell'intervento, le tecniche effettuate durante l'operazione e i nomi dell'equipe medica cha ha effettuato l'operazione, composta principalmente da:
 o	Primo operatore (medico)
 o	Secondo operatore (medico, con opzione “nessun operatore”)
 o	Terzo operatore (medico, opzionale)
@@ -23,12 +23,14 @@ L’infermiere può solo scrivere gli orari, l’equipe infermieristica e il tec
 L’anestesista può scrivere i suoi dati e i dati sull’anestesia.
 Il verbale a fine intervento deve essere stampato.
 
+Il software, quindi, deve tenere traccia di tutte le liste a cui il paziente appartiene e monitorare le sale operatorie che vengono impiegate per tutti i pazienti.
+
 
 2. MODELLO DEL PROCESSO
 
 Il Modello del progetto in questione è un modello A Cascata:
-- ogni fase del progetto è definita e la successiva fase fa riferimento alla precedente;
-- per ogni fase richiede V&V (Verifica e Validazione), rispettivamente per soddisfare i requisiti del progetto stesso (è necessario valutare la correttezza del passaggio alla fase successiva) e per capire se il sistema risponde alle esigenze dell'utente (dobbiamo capire se stiamo costruendo il progetto in modo corretto).
+- ogni fase del progetto è definita e la successiva fase fa riferimento alla precedente.
+- per ogni fase richiede Verifica e Validazione (V&V), rispettivamente per soddisfare i requisiti del progetto stesso (è necessario valutare la correttezza del passaggio alla fase successiva) e per capire se il sistema risponde alle esigenze dell'utente (dobbiamo capire se stiamo costruendo il progetto in modo corretto).
 
 Prima della stesura del progetto stesso, è necessaria un'attenta analisi del progetto per capire le varie problematiche legate ad esso.
 
@@ -42,7 +44,7 @@ Il team è composto da tre persone:
 3. Marco Saini
 
 I tre collaboratori si dividono i vari compiti: la stesura del Project Plan / Presentazione Progetto (Mangili), creazione dei Diagrammi (Saini), stesura codice sorgente (Cattaneo); spesso è necessario lavorare in coppia, al fine di ottimizzare la collaborazione tra i singoli individui e minimizzare il margine di errore.
-I tre collaboratori lavorano principalmente da soli per le varie parti, tenendosi aggiornati quotidianamente, e in settimana si incontrano nell'Aula Studio dell'Edificio C dell'Università degli Studi di Bergamo.
+I tre collaboratori lavorano principalmente da soli per le varie parti, tenendosi aggiornati quotidianamente, e in settimana si incontrano nell'Aula Studio dell'Edificio C dell'Università degli Studi di Bergamo per discutere sull'andamento del progetto.
 
 GitHub è lo strumento prescelto per la gestione della documentazione relativa al progetto sia per la condivisione di codice, diagrammi e richieste di modifica.
 
@@ -67,9 +69,9 @@ Tali attività permettono un controllo continuo sullo sviluppo del progetto. Pri
 
 I rischi maggiori sono:
 - mancare la consegna finale del progetto causa impegni universitari e non di ciascun membro del team.
-- trovare giorni della settimana in cui tutti i membri del team potevano incontrarsi e confrontarsi insieme sul progetto, causa impegni extra-scolastici
+- trovare giorni della settimana in cui tutti i membri del team potevano incontrarsi, per potersi confrontare insieme sul progetto, causa impegni extra-scolastici
   di ognuno.
-- difficoltà ad ottenere un software che rispondesse a tutte le esigenze/requisiti del problema proposto.
+- difficoltà a sviluppare un software che rispondesse a tutte le esigenze/requisiti del problema proposto.
 
 
 7. PERSONALE E TECNICHE
@@ -87,14 +89,13 @@ Per modellare il programma con un'ampia visione dell'insieme di funzioni del pro
 Per prima cosa, vanno identificati i casi d'uso e gli attori del problema proposto, al fine di costruire lo USE CASE DIAGRAM.
 Vengono, in seguito, definite le varie classi, le relazioni tra di esse e tutti gli attributi e metodi di ciascuna classe, che verranno implementate nel CLASS DIAGRAM.
 I legami che uniscono le singole classi possono essere visti come messaggi, ciò permette di definire lo SEQUENCE DIAGRAM, con cui è possibile identificare l'ordine corretto di istruzioni da eseguire per raggiungere lo scopo del problema.
-Se si vuole vedere nel dettaglio lo stato di un oggetto del problema, si sfrutta lo STETE DIAGRAM.
+Se si vuole vedere nel dettaglio lo stato di un oggetto del problema, si sfrutta lo STATE DIAGRAM.
 Per visualizzare/comprendere le azioni che specificano il comportamento definito dall'utente, si sfrutta il ACTIVITY DIAGRAM.
 
 
 9. GARANZIA DI QUALITA'
 
-Per la progettazione del software applicativo, si fa riferimento alla norma ISO 9001 e alle sue varie voci, per garantire il sucesso della creazione e utilizzo
-del progetto.
+Per la progettazione del software applicativo, si fa riferimento alla norma ISO 9001 (specifica i requisiti per un sistema di qualità per l'organizzazione, che deve dimostrare la propria capacità di fornire prodotti che soddisfino i requisiti dei clienti) e alle sue varie voci, per garantire il sucesso della creazione e utilizzo del progetto.
 
 
 10. PACCHETTI DI LAVORO (workpackages)
@@ -102,8 +103,8 @@ del progetto.
 Il Progetto è stato suddiviso in diverse parti distinte:
 
 1. Project Plan, per definire i vari passaggi della stesura del progetto.
-2 .Diagrammi, per avere una rappresentazione schematica del progetto.
-3. Codice, per elaborare il programma attraverso un linguaggio di alto livello;
+2. Diagrammi, per avere una rappresentazione schematica del progetto.
+3. Codice, per elaborare il programma attraverso un linguaggio di alto livello.
 
 Ogni membro del team collabora in maniera attiva allo sviluppo dei vari componenti-
 
@@ -114,20 +115,19 @@ Per la realizzazione finale del progetto il team ha usufruito di varie risorse:
 
 - Ogni membro ha sfruttato il proprio computer portatile (PC) o il proprio tablet per lavorare sulle singole componenti dell'intero progetto.
 - Utilizzo di varie applicazioni, quali Google Drive, Mycrosoft Teams, OneDrive per raccogliere le informazioni necessarie al fine di realizzare un buon progetto.
-- Eclipse IDE per la stesura del codice.
-- StarUML per la creazione dei diagrammi.
-- GitHub per condividere il progetto e notificare/gestire eventuali modifiche. 
+- Eclipse IDE, per la stesura del codice.
+- StarUM,L per la creazione dei  varin diagrammi.
+- GitHub, per condividere il progetto e notificare/gestire eventuali modifiche. 
 
 
 12. BUDGET
 
-Il tempo è molto importante per la stesura dell'intero progetto: stimando che ogni membro del team lavorerà 60 h, per un totale di 18, la maggior parte di esse verrà impegnata  nella progettazione, mentre le restanti saranno di studio (al fine di raccogliere informazioni utili) e revisione (per controllare eventuali errori).
+Il tempo è molto importante per la stesura dell'intero progetto: stimando che ogni membro del team lavorerà 60 h, per un totale di 180 h, la maggior parte di esse verrà impegnata  nella progettazione, mentre le restanti saranno di studio (al fine di raccogliere nozioni utili) e revisione (per controllare/risolvere eventuali errori).
 
 
 13. CAMBIAMENTI
 
-Ogni cambiamento apportato al progetto viene discusso tra i membri del team; qualora, un membro ha la necessità di modificare una parte del progetto, 
-è tenuto ad avvisare i restanti membri della modifica effettuata, attraverso l'uso di app di messaggistica.
+Ogni cambiamento apportato al progetto viene discusso tra i membri del team: qualora un membro deve modificare una parte del progetto, è tenuto ad avvisare i restanti membri della modifica effettuata, attraverso l'uso di app di messaggistica.
 L'uso di GitHub permette ai membri del team di poter essere sempre aggiornati sullo sviluppo del progetto, qualora la comunicazione diretta non fosse possibile.
 
 
