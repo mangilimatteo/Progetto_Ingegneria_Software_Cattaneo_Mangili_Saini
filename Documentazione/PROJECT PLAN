@@ -24,7 +24,7 @@ Prima della stesura del progetto stesso, è necessaria un'attenta analisi del pr
 
 3. ORGANIZZAZIONE DEL PROGETTO
 
-Il team è composto da tre persone:
+Il team di lavoro è composto da tre persone:
 
 1. Nicola Cattaneo
 2. Matteo Mangili
@@ -45,13 +45,13 @@ GitHub è lo strumento prescelto per la gestione della documentazione relativa a
 
 Il software implementato è un architettura Client-Server:
 - Client (Paziente che deve essere operato)
-- Server (Sistema dell'ospedale)
+- Server (Sistema dell'Ospedale)
 
 
 5. ATTIVITA' DI GESTIONE
 
 Per gestire tutte le parti prodotte nello sviluppo del progetto è necessario fissare delle attività di gestione:
-- Ogni membro del team labvora alla sua parte e in caso di difficoltà, si rivolgeva agli altri membri, al fine di risolvere eventuali problematiche.
+- Ogni membro del team lavora sui suoi compiti e in caso di difficoltà, si rivolge agli altri membri, al fine di risolvere problematiche.
 - Ogni settimana i membri del team si incontrano per definire eventuali dubbi, sistemare gli errori e per fare un resoconto di quanto fatto nei precedenti giorni.
 
 Tali attività permettono un controllo continuo sullo sviluppo del progetto. Prima di apportare una modifica, ogni membro deve confrontarsi con gli altri collaboratori, al fine di capire se tale modifica è necessaria e, in caso affermativo, ottenere la loro approvazione a procedere.
@@ -82,12 +82,12 @@ Per prima cosa, vanno identificati i casi d'uso e gli attori del problema propos
 Vengono, in seguito, definite le varie classi, le relazioni tra di esse e tutti gli attributi e metodi di ciascuna classe, che verranno implementate nel CLASS DIAGRAM.
 I legami che uniscono le singole classi possono essere visti come messaggi, ciò permette di definire lo SEQUENCE DIAGRAM, con cui è possibile identificare l'ordine corretto di istruzioni da eseguire per raggiungere lo scopo del problema.
 Se si vuole vedere nel dettaglio lo stato di un oggetto del problema, si sfrutta lo STATE DIAGRAM.
-Per visualizzare/comprendere le azioni che specificano il comportamento definito dall'utente, si sfrutta il ACTIVITY DIAGRAM.
+Per visualizzare/comprendere le azioni che specificano il comportamento definito dall'utente rispetto al sistema generale, si sfrutta l'ACTIVITY DIAGRAM.
 
 
 9. GARANZIA DI QUALITA'
 
-Per la progettazione del software applicativo, si fa riferimento alla norma ISO 9001 (specifica i requisiti per un sistema di qualità per l'organizzazione, che deve dimostrare la propria capacità di fornire prodotti che soddisfino i requisiti dei clienti) e alle sue varie voci, per garantire il sucesso della creazione e utilizzo del progetto.
+Per la progettazione del software applicativo, si fa riferimento alla norma ISO 9001 (specifica i requisiti per un sistema di qualità per l'organizzazione, che deve dimostrare la propria capacità di fornire prodotti che soddisfino i requisiti dei clienti) e alle sue varie voci (in particolar modo alla sezione Pianificazione), per garantire il sucesso della creazione e utilizzo del progetto.
 
 
 10. PACCHETTI DI LAVORO (workpackages)
@@ -109,7 +109,7 @@ Per la realizzazione finale del progetto il team ha usufruito di varie risorse:
 - Ogni membro ha sfruttato il proprio computer portatile (PC) o il proprio tablet per lavorare sulle singole componenti dell'intero progetto.
 - Utilizzo di varie applicazioni, quali Google Drive, Mycrosoft Teams, OneDrive per raccogliere le informazioni necessarie al fine di realizzare un buon progetto.
 - Eclipse IDE, per la stesura del codice.
-- StarUML, per la creazione dei  varin diagrammi.
+- StarUML, per la creazione dei vari diagrammi.
 - GitHub, per condividere il progetto e notificare/gestire eventuali modifiche. 
 
 
