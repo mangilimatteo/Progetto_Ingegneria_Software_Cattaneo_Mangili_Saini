@@ -2,28 +2,15 @@ PROJECT PLAN:
 
 1. INTRODUZIONE:
 
-Lo scopo del progetto è creare un software per la gestione delle sale di un ospedale, tenendo conto degli interventi a cui i pazienti devono sottoporsi e anche ai singoli medici operanti. L'obbiettivo principale è raggiungere una forma stabile e funzionante del programma, anche se non ancora commercializzabilie, soprattutto dal punto di vita grafico.
+Lo scopo del progetto è creare un software per la gestione di un ospedale, in particolare tenere traccia dei pazienti e degli interventi cui devono sottoporsi. L'obbiettivo principale è raggiungere una forma stabile e funzionante del programma, anche se non ancora commercializzabilie, soprattutto dal punto di vita grafico.
 
-Il paziente va in visita dal medico e si decide che deve essere operato; il medico inserisce il paziente nel sistema, il quale contiene una pagina anagrafica per ogni paziente (al cui interno sono contenute le informazioni anagrafiche e mediche del paziente ed è importante che in ogni momento si possa accedere all’anagrafica del paziente).
+Il paziente va in visita dal medico e si decide che deve essere operato; il medico inserisce il paziente nel sistema, il quale contiene una pagina anagrafica per ogni paziente (al cui interno sono contenute le informazioni anagrafiche e mediche del paziente ed è importante che in ogni momento si possa accedere a queste informazioni).
 
-Il paziente entra in una lista di graduatoria dell’intervento specifico a cui si deve sottoporre. La cabina di regia contatta il paziente per dargli le date degli esami che dovrà eseguire prima dell’intervento. Il paziente svolge gli esami, e, una volta svolti tutti, viene chiamato per fare l’intervento; a questo punto, la cabina di regia lo inserisce nella lista delle persone pronte per fare l’intervento, in modo che il medico, una settimana prima, può preparare la lista operatoria, che schedula giorno per giorno chi verrà operato (le liste operatorie possono essere modificate in qualsiasi momento dal medico).
+Il paziente entra in una lista di graduatoria dell’intervento specifico a cui si deve sottoporre. La cabina di regia contatta il paziente per fornigli le date degli esami che dovrà eseguire prima dell’intervento. Il paziente svolge gli esami e, una volta svolti tutti, viene chiamato per fare l’intervento; a questo punto, la cabina di regia lo inserisce nella lista delle persone pronte per fare l’intervento, in modo che il medico, una settimana prima, può preparare la lista operatoria, che schedula giorno per giorno chi verrà operato (le liste operatorie possono essere modificate in qualsiasi momento dal medico).
 
-Nel giorno dell’intervento si tiene traccia di tutti i movimenti, i rischi, l'anestesia adoperata, la diagnosi e la procedura relative all'operazione eseguita sul paziente in un verbale; nel verbale sono inoltre contenuti gli orari di inizio e fine dell'intervento, le tecniche effettuate durante l'operazione e i nomi dell'equipe medica cha ha effettuato l'operazione, composta principalmente da:
-o	Primo operatore (medico)
-o	Secondo operatore (medico, con opzione “nessun operatore”)
-o	Terzo operatore (medico, opzionale)
-o	Anestesista (medico, opzionale in base a lista operatoria)
-o	Strumentista (infermiere)
-o	Infermiere di sala (infermiere)
-o	Aiutoanestesista (infermiere)
-o	Tecnico di radiologia (opzionale)
+Nel giorno dell’intervento si tiene traccia di tutti i movimenti, i rischi, l'anestesia adoperata, la diagnosi e la procedura relative all'operazione eseguita sul paziente in un verbale; nel verbale sono inoltre contenuti gli orari di inizio e fine dell'intervento, le tecniche effettuate durante l'operazione e i nomi dell'equipe medica cha ha effettuato l'operazione (i ruoli e le competenze rispetto al verbale possono variare per ogni componente).
 
-Il primo operatore può scrivere tutto il verbale. 
-L’infermiere può solo scrivere gli orari, l’equipe infermieristica e il tecnico di radiologia.
-L’anestesista può scrivere i suoi dati e i dati sull’anestesia.
-Il verbale a fine intervento deve essere stampato.
-
-Il software, quindi, deve tenere traccia di tutte le liste a cui il paziente appartiene e monitorare le sale operatorie che vengono impiegate per tutti i pazienti.
+Il software, quindi, deve tenere traccia di tutte le liste a cui il paziente appartiene, nonchè monitorare come vengono gestiti i vari pazienti e medici per ogni intervento effettuato.
 
 
 2. MODELLO DEL PROCESSO
@@ -43,7 +30,12 @@ Il team è composto da tre persone:
 2. Matteo Mangili
 3. Marco Saini
 
-I tre collaboratori si dividono i vari compiti: la stesura del Project Plan / Presentazione Progetto (Mangili), creazione dei Diagrammi (Saini), stesura codice sorgente (Cattaneo); spesso è necessario lavorare in coppia, al fine di ottimizzare la collaborazione tra i singoli individui e minimizzare il margine di errore.
+I tre collaboratori si dividono i vari compiti: 
+- Stesura del Project Plan / Presentazione Progetto (Mangili)
+- Creazione dei Diagrammi (Saini)
+- Stesura codice sorgente (Cattaneo). 
+
+Spesso è necessario lavorare in coppia, al fine di ottimizzare la collaborazione tra i singoli individui e minimizzare il margine di errore.
 I tre collaboratori lavorano principalmente da soli per le varie parti, tenendosi aggiornati quotidianamente, e in settimana si incontrano nell'Aula Studio dell'Edificio C dell'Università degli Studi di Bergamo per discutere sull'andamento del progetto.
 
 GitHub è lo strumento prescelto per la gestione della documentazione relativa al progetto sia per la condivisione di codice, diagrammi e richieste di modifica.
@@ -116,7 +108,7 @@ Per la realizzazione finale del progetto il team ha usufruito di varie risorse:
 - Ogni membro ha sfruttato il proprio computer portatile (PC) o il proprio tablet per lavorare sulle singole componenti dell'intero progetto.
 - Utilizzo di varie applicazioni, quali Google Drive, Mycrosoft Teams, OneDrive per raccogliere le informazioni necessarie al fine di realizzare un buon progetto.
 - Eclipse IDE, per la stesura del codice.
-- StarUM,L per la creazione dei  varin diagrammi.
+- StarUML, per la creazione dei  varin diagrammi.
 - GitHub, per condividere il progetto e notificare/gestire eventuali modifiche. 
 
 
