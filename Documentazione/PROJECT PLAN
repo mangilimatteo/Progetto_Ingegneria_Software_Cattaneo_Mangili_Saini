@@ -15,11 +15,12 @@ Il software, quindi, deve tenere traccia di tutte le liste a cui il paziente app
 
 2. MODELLO DEL PROCESSO
 
-Il Modello del progetto in questione è un modello A Cascata:
-- ogni fase del progetto è definita e la successiva fase fa riferimento alla precedente.
-- per ogni fase richiede Verifica e Validazione (V&V), rispettivamente per soddisfare i requisiti del progetto stesso (è necessario valutare la correttezza del passaggio alla fase successiva) e per capire se il sistema risponde alle esigenze dell'utente (dobbiamo capire se stiamo costruendo il progetto in modo corretto).
+Il Modello adottato per la costruzione del progetto è un modello agile, più precisamente si tratta di un framework SCRUM.
+Lo sprint dura una settimana e il ruolo di Scrum Master viene ricoperto da tutti i membri del team, a seconda della porzione di progetto da completare (Project Plan, Diagrammi, Codice…).
+I tre pilastri fondamentali nell’implementazione del modello SCRUM sono: Trasparenza, Ispezione e Adattamento.
 
-Prima della stesura del progetto stesso, è necessaria un'attenta analisi del progetto per capire le varie problematiche legate ad esso.
+Prima della stesura del progetto stesso, è necessaria un'attenta analisi per capire le varie problematiche legate ad esso.
+
 
 
 3. ORGANIZZAZIONE DEL PROGETTO
