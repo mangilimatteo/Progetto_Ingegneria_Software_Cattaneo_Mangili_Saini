@@ -1,5 +1,0 @@
-package anagrafiche.db_sqlite;
-
-public class createTable {
-
-}
