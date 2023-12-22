@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
+<<<<<<<< HEAD:GestioneSaleOspedale/GestioneSale_logic/.project
 	<name>GestioneSale_logic</name>
+========
+	<name>f</name>
+>>>>>>>> 8f71880e319bb73cf85722289c460ef13cc469a0:Esempi tutor/appcontatti/f/.project
 	<comment></comment>
 	<projects>
 	</projects>
@@ -10,14 +14,12 @@
 			<arguments>
 			</arguments>
 		</buildCommand>
-		<buildCommand>
-			<name>org.eclipse.m2e.core.maven2Builder</name>
-			<arguments>
-			</arguments>
-		</buildCommand>
 	</buildSpec>
 	<natures>
+<<<<<<<< HEAD:GestioneSaleOspedale/GestioneSale_logic/.project
 		<nature>org.eclipse.m2e.core.maven2Nature</nature>
+========
+>>>>>>>> 8f71880e319bb73cf85722289c460ef13cc469a0:Esempi tutor/appcontatti/f/.project
 		<nature>org.eclipse.jdt.core.javanature</nature>
 	</natures>
 </projectDescription>
