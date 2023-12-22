@@ -1,4 +1,0 @@
-INDEX VERSION 1.134+C:\Users\massimoc\Documents\GitHub\Trio_Magnifico\Codice\.metadata\.plugins\org.eclipse.jdt.core
-2792656315.index
-4077307082.index
-1865797976.index

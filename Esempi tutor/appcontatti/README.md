@@ -4,6 +4,7 @@
 
 Prova di applicazione per il corso di ing. del software per gestione dei contatti. 
 
+<<<<<<< Updated upstream
 Per far girare il codice devi aprire eclipse usando come workspace la cartella che contiene i tre progetti.
 Poi fare "import ->existing maven project" e selezionare i tre progetti.
 Bisognare poi fare "run as -> maven install" nel seguente ordine: db_sqlite, business_logic e poi webapp.
@@ -16,3 +17,6 @@ Template Vaading tratto da https://github.com/vaadin/skeleton-starter-flow/tree/
 Per ulteriori informazioni consulatre: https://github.com/garganti/applicazione_contatti/wiki
 
 
+=======
+Per ulteriori informazioni consulatre: https://github.com/garganti/applicazione_contatti/wiki
+>>>>>>> Stashed changes
