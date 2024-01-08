@@ -1,0 +1,387 @@
+2023-12-09 12:33:44,371 [Worker-1: Loading available Gradle versions] INFO  o.e.b.c.i.u.g.PublishedGradleVersions - Gradle version information cache is up-to-date. Trying to read.
+2023-12-09 12:34:49,847 [Worker-2: Enabling Maven Dependency Management] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: GestioneSale:GestioneSale_db_sqlite:0.0.1-SNAPSHOT @ C:\Users\massimoc\Documents\GitHub\Trio_Magnifico\GestioneSaleOspedale\GestioneSale_db_sqlite\pom.xml.
+2023-12-09 12:34:51,170 [Worker-9: Building] WARN  o.a.m.s.f.DefaultMavenResourcesFiltering - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2023-12-09 12:34:51,172 [Worker-9: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\massimoc\Documents\GitHub\Trio_Magnifico\GestioneSaleOspedale\GestioneSale_db_sqlite\src\main\resources
+2023-12-09 12:34:51,181 [Worker-9: Building] WARN  o.a.m.s.f.DefaultMavenResourcesFiltering - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2023-12-09 12:34:51,182 [Worker-9: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\massimoc\Documents\GitHub\Trio_Magnifico\GestioneSaleOspedale\GestioneSale_db_sqlite\src\test\resources
+2023-12-09 12:34:51,865 [Worker-2: Enabling Maven Dependency Management] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding source folder /GestioneSale_db_sqlite/src
+2023-12-09 12:34:51,866 [Worker-2: Enabling Maven Dependency Management] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Resources folder /GestioneSale_db_sqlite/src/main/resources overlaps with sources folder /GestioneSale_db_sqlite/src
+2023-12-09 12:34:51,869 [Worker-2: Enabling Maven Dependency Management] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Not adding source folder /GestioneSale_db_sqlite/src/test/java because it overlaps with /GestioneSale_db_sqlite/src
+2023-12-09 12:34:51,871 [Worker-2: Enabling Maven Dependency Management] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Resources folder /GestioneSale_db_sqlite/src/test/resources overlaps with sources folder /GestioneSale_db_sqlite/src
+2023-12-09 12:34:52,066 [Worker-2: Enabling Maven Dependency Management] INFO  o.e.m.c.i.p.ProjectConfigurationManager - Update started
+2023-12-09 12:34:53,200 [Worker-2: Enabling Maven Dependency Management] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: GestioneSale:GestioneSale_db_sqlite:0.0.1-SNAPSHOT @ C:\Users\massimoc\Documents\GitHub\Trio_Magnifico\GestioneSaleOspedale\GestioneSale_db_sqlite\pom.xml.
+2023-12-09 12:34:53,574 [Worker-7: Building] WARN  o.a.m.s.f.DefaultMavenResourcesFiltering - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2023-12-09 12:34:53,576 [Worker-7: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\massimoc\Documents\GitHub\Trio_Magnifico\GestioneSaleOspedale\GestioneSale_db_sqlite\src\main\resources
+2023-12-09 12:34:53,581 [Worker-7: Building] WARN  o.a.m.s.f.DefaultMavenResourcesFiltering - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2023-12-09 12:34:53,582 [Worker-7: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\massimoc\Documents\GitHub\Trio_Magnifico\GestioneSaleOspedale\GestioneSale_db_sqlite\src\test\resources
+2023-12-09 12:34:53,903 [Worker-2: Enabling Maven Dependency Management] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding source folder /GestioneSale_db_sqlite/src
+2023-12-09 12:34:53,903 [Worker-2: Enabling Maven Dependency Management] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Resources folder /GestioneSale_db_sqlite/src/main/resources overlaps with sources folder /GestioneSale_db_sqlite/src
+2023-12-09 12:34:53,905 [Worker-2: Enabling Maven Dependency Management] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Not adding source folder /GestioneSale_db_sqlite/src/test/java because it overlaps with /GestioneSale_db_sqlite/src
+2023-12-09 12:34:53,906 [Worker-2: Enabling Maven Dependency Management] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Resources folder /GestioneSale_db_sqlite/src/test/resources overlaps with sources folder /GestioneSale_db_sqlite/src
+2023-12-09 12:34:53,970 [Worker-2: Enabling Maven Dependency Management] INFO  o.e.m.c.i.p.ProjectConfigurationManager - Update completed for 1 poms: local refresh takes 0,00 sec, refresh facades takes 1,00 sec, update config takes 0,00 sec 
+2023-12-09 12:34:54,917 [Worker-16: Building] WARN  o.a.m.s.f.DefaultMavenResourcesFiltering - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2023-12-09 12:34:54,918 [Worker-16: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\massimoc\Documents\GitHub\Trio_Magnifico\GestioneSaleOspedale\GestioneSale_db_sqlite\src\main\resources
+2023-12-09 12:34:54,921 [Worker-16: Building] WARN  o.a.m.s.f.DefaultMavenResourcesFiltering - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2023-12-09 12:34:54,921 [Worker-16: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\massimoc\Documents\GitHub\Trio_Magnifico\GestioneSaleOspedale\GestioneSale_db_sqlite\src\test\resources
+2023-12-09 12:36:12,682 [Worker-1: Building] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: GestioneSale:GestioneSale_db_sqlite:0.0.1-SNAPSHOT @ C:\Users\massimoc\Documents\GitHub\Trio_Magnifico\GestioneSaleOspedale\GestioneSale_db_sqlite\pom.xml.
+2023-12-09 12:36:12,805 [Worker-1: Building] WARN  o.a.m.s.f.DefaultMavenResourcesFiltering - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2023-12-09 12:36:12,806 [Worker-1: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\massimoc\Documents\GitHub\Trio_Magnifico\GestioneSaleOspedale\GestioneSale_db_sqlite\src\main\resources
+2023-12-09 12:36:12,809 [Worker-1: Building] WARN  o.a.m.s.f.DefaultMavenResourcesFiltering - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2023-12-09 12:36:12,810 [Worker-1: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\massimoc\Documents\GitHub\Trio_Magnifico\GestioneSaleOspedale\GestioneSale_db_sqlite\src\test\resources
+2023-12-09 12:37:20,021 [Worker-0: Building] WARN  o.a.m.s.f.DefaultMavenResourcesFiltering - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2023-12-09 12:37:20,024 [Worker-0: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\massimoc\Documents\GitHub\Trio_Magnifico\GestioneSaleOspedale\GestioneSale_db_sqlite\src\main\resources
+2023-12-09 12:37:20,032 [Worker-0: Building] WARN  o.a.m.s.f.DefaultMavenResourcesFiltering - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2023-12-09 12:37:20,033 [Worker-0: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\massimoc\Documents\GitHub\Trio_Magnifico\GestioneSaleOspedale\GestioneSale_db_sqlite\src\test\resources
+2023-12-09 12:38:33,863 [Worker-5: Building] WARN  o.a.m.s.f.DefaultMavenResourcesFiltering - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2023-12-09 12:38:33,867 [Worker-5: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\massimoc\Documents\GitHub\Trio_Magnifico\GestioneSaleOspedale\GestioneSale_db_sqlite\src\main\resources
+2023-12-09 12:38:33,871 [Worker-5: Building] WARN  o.a.m.s.f.DefaultMavenResourcesFiltering - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2023-12-09 12:38:33,872 [Worker-5: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\massimoc\Documents\GitHub\Trio_Magnifico\GestioneSaleOspedale\GestioneSale_db_sqlite\src\test\resources
+2023-12-09 12:40:28,786 [Worker-1: Building] WARN  o.a.m.s.f.DefaultMavenResourcesFiltering - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2023-12-09 12:40:28,787 [Worker-1: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\massimoc\Documents\GitHub\Trio_Magnifico\GestioneSaleOspedale\GestioneSale_db_sqlite\src\main\resources
+2023-12-09 12:40:28,789 [Worker-1: Building] WARN  o.a.m.s.f.DefaultMavenResourcesFiltering - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2023-12-09 12:40:28,790 [Worker-1: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\massimoc\Documents\GitHub\Trio_Magnifico\GestioneSaleOspedale\GestioneSale_db_sqlite\src\test\resources
+2023-12-09 12:44:54,210 [Worker-5: Building] WARN  o.a.m.s.f.DefaultMavenResourcesFiltering - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2023-12-09 12:44:54,212 [Worker-5: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\massimoc\Documents\GitHub\Trio_Magnifico\GestioneSaleOspedale\GestioneSale_db_sqlite\src\main\resources
+2023-12-09 12:44:54,220 [Worker-5: Building] WARN  o.a.m.s.f.DefaultMavenResourcesFiltering - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2023-12-09 12:44:54,222 [Worker-5: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\massimoc\Documents\GitHub\Trio_Magnifico\GestioneSaleOspedale\GestioneSale_db_sqlite\src\test\resources
+2023-12-09 12:48:48,183 [Worker-4: Launching CreateTables] WARN  o.a.m.s.f.DefaultMavenResourcesFiltering - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2023-12-09 12:48:48,186 [Worker-4: Launching CreateTables] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\massimoc\Documents\GitHub\Trio_Magnifico\GestioneSaleOspedale\GestioneSale_db_sqlite\src\main\resources
+2023-12-09 12:48:48,192 [Worker-4: Launching CreateTables] WARN  o.a.m.s.f.DefaultMavenResourcesFiltering - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2023-12-09 12:48:48,194 [Worker-4: Launching CreateTables] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\massimoc\Documents\GitHub\Trio_Magnifico\GestioneSaleOspedale\GestioneSale_db_sqlite\src\test\resources
+2023-12-09 14:12:33,434 [Worker-8: Loading available Gradle versions] INFO  o.e.b.c.i.u.g.PublishedGradleVersions - Gradle version information cache is up-to-date. Trying to read.
+2023-12-09 14:13:18,869 [Worker-14: Enabling Maven Dependency Management] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: GestioneSale:GestioneSale_logic:0.0.1-SNAPSHOT @ C:\Users\massimoc\Documents\GitHub\Trio_Magnifico\GestioneSaleOspedale\GestioneSale_logic\pom.xml.
+2023-12-09 14:13:20,918 [Worker-0: Building] WARN  o.a.m.s.f.DefaultMavenResourcesFiltering - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2023-12-09 14:13:20,920 [Worker-0: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\massimoc\Documents\GitHub\Trio_Magnifico\GestioneSaleOspedale\GestioneSale_logic\src\main\resources
+2023-12-09 14:13:20,934 [Worker-0: Building] WARN  o.a.m.s.f.DefaultMavenResourcesFiltering - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2023-12-09 14:13:20,936 [Worker-0: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\massimoc\Documents\GitHub\Trio_Magnifico\GestioneSaleOspedale\GestioneSale_logic\src\test\resources
+2023-12-09 14:13:21,703 [Worker-14: Enabling Maven Dependency Management] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding source folder /GestioneSale_logic/src
+2023-12-09 14:13:21,704 [Worker-14: Enabling Maven Dependency Management] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Resources folder /GestioneSale_logic/src/main/resources overlaps with sources folder /GestioneSale_logic/src
+2023-12-09 14:13:21,709 [Worker-14: Enabling Maven Dependency Management] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Not adding source folder /GestioneSale_logic/src/test/java because it overlaps with /GestioneSale_logic/src
+2023-12-09 14:13:21,710 [Worker-14: Enabling Maven Dependency Management] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Resources folder /GestioneSale_logic/src/test/resources overlaps with sources folder /GestioneSale_logic/src
+2023-12-09 14:13:21,895 [Worker-14: Enabling Maven Dependency Management] INFO  o.e.m.c.i.p.ProjectConfigurationManager - Update started
+2023-12-09 14:13:22,755 [Worker-14: Enabling Maven Dependency Management] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: GestioneSale:GestioneSale_logic:0.0.1-SNAPSHOT @ C:\Users\massimoc\Documents\GitHub\Trio_Magnifico\GestioneSaleOspedale\GestioneSale_logic\pom.xml.
+2023-12-09 14:13:23,320 [Worker-2: Building] WARN  o.a.m.s.f.DefaultMavenResourcesFiltering - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2023-12-09 14:13:23,321 [Worker-2: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\massimoc\Documents\GitHub\Trio_Magnifico\GestioneSaleOspedale\GestioneSale_logic\src\main\resources
+2023-12-09 14:13:23,334 [Worker-2: Building] WARN  o.a.m.s.f.DefaultMavenResourcesFiltering - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2023-12-09 14:13:23,337 [Worker-2: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\massimoc\Documents\GitHub\Trio_Magnifico\GestioneSaleOspedale\GestioneSale_logic\src\test\resources
+2023-12-09 14:13:24,224 [Worker-14: Enabling Maven Dependency Management] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding source folder /GestioneSale_logic/src
+2023-12-09 14:13:24,224 [Worker-14: Enabling Maven Dependency Management] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Resources folder /GestioneSale_logic/src/main/resources overlaps with sources folder /GestioneSale_logic/src
+2023-12-09 14:13:24,225 [Worker-14: Enabling Maven Dependency Management] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Not adding source folder /GestioneSale_logic/src/test/java because it overlaps with /GestioneSale_logic/src
+2023-12-09 14:13:24,226 [Worker-14: Enabling Maven Dependency Management] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Resources folder /GestioneSale_logic/src/test/resources overlaps with sources folder /GestioneSale_logic/src
+2023-12-09 14:13:24,361 [Worker-14: Enabling Maven Dependency Management] INFO  o.e.m.c.i.p.ProjectConfigurationManager - Update completed for 1 poms: local refresh takes 0,00 sec, refresh facades takes 0,00 sec, update config takes 1,00 sec 
+2023-12-09 14:13:25,251 [Worker-1: Building] WARN  o.a.m.s.f.DefaultMavenResourcesFiltering - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2023-12-09 14:13:25,254 [Worker-1: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\massimoc\Documents\GitHub\Trio_Magnifico\GestioneSaleOspedale\GestioneSale_logic\src\main\resources
+2023-12-09 14:13:25,260 [Worker-1: Building] WARN  o.a.m.s.f.DefaultMavenResourcesFiltering - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2023-12-09 14:13:25,262 [Worker-1: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\massimoc\Documents\GitHub\Trio_Magnifico\GestioneSaleOspedale\GestioneSale_logic\src\test\resources
+2023-12-09 14:15:15,546 [Worker-11: Building] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: GestioneSale:GestioneSale_logic:0.0.1-SNAPSHOT @ C:\Users\massimoc\Documents\GitHub\Trio_Magnifico\GestioneSaleOspedale\GestioneSale_logic\pom.xml.
+2023-12-09 14:15:15,674 [Worker-11: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/GestioneSale_db_sqlite: GestioneSale:GestioneSale_db_sqlite:0.0.1-SNAPSHOT with classifier  to /GestioneSale_db_sqlite/target/classes
+2023-12-09 14:15:16,022 [Worker-11: Building] WARN  o.a.m.s.f.DefaultMavenResourcesFiltering - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2023-12-09 14:15:16,024 [Worker-11: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\massimoc\Documents\GitHub\Trio_Magnifico\GestioneSaleOspedale\GestioneSale_logic\src\main\resources
+2023-12-09 14:15:16,031 [Worker-11: Building] WARN  o.a.m.s.f.DefaultMavenResourcesFiltering - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2023-12-09 14:15:16,035 [Worker-11: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\massimoc\Documents\GitHub\Trio_Magnifico\GestioneSaleOspedale\GestioneSale_logic\src\test\resources
+2023-12-09 14:15:45,746 [Worker-11: Building] WARN  o.a.m.s.f.DefaultMavenResourcesFiltering - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2023-12-09 14:15:45,752 [Worker-11: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\massimoc\Documents\GitHub\Trio_Magnifico\GestioneSaleOspedale\GestioneSale_logic\src\main\resources
+2023-12-09 14:15:45,759 [Worker-11: Building] WARN  o.a.m.s.f.DefaultMavenResourcesFiltering - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2023-12-09 14:15:45,762 [Worker-11: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\massimoc\Documents\GitHub\Trio_Magnifico\GestioneSaleOspedale\GestioneSale_logic\src\test\resources
+2023-12-09 14:15:50,158 [Worker-9: Building] WARN  o.a.m.s.f.DefaultMavenResourcesFiltering - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2023-12-09 14:15:50,162 [Worker-9: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\massimoc\Documents\GitHub\Trio_Magnifico\GestioneSaleOspedale\GestioneSale_logic\src\main\resources
+2023-12-09 14:15:50,169 [Worker-9: Building] WARN  o.a.m.s.f.DefaultMavenResourcesFiltering - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2023-12-09 14:15:50,171 [Worker-9: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\massimoc\Documents\GitHub\Trio_Magnifico\GestioneSaleOspedale\GestioneSale_logic\src\test\resources
+2023-12-09 14:16:14,768 [Worker-20: Building] WARN  o.a.m.s.f.DefaultMavenResourcesFiltering - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2023-12-09 14:16:14,770 [Worker-20: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\massimoc\Documents\GitHub\Trio_Magnifico\GestioneSaleOspedale\GestioneSale_logic\src\main\resources
+2023-12-09 14:16:14,775 [Worker-20: Building] WARN  o.a.m.s.f.DefaultMavenResourcesFiltering - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2023-12-09 14:16:14,777 [Worker-20: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\massimoc\Documents\GitHub\Trio_Magnifico\GestioneSaleOspedale\GestioneSale_logic\src\test\resources
+2023-12-09 14:16:53,217 [Worker-12: Building] WARN  o.a.m.s.f.DefaultMavenResourcesFiltering - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2023-12-09 14:16:53,221 [Worker-12: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\massimoc\Documents\GitHub\Trio_Magnifico\GestioneSaleOspedale\GestioneSale_logic\src\main\resources
+2023-12-09 14:16:53,229 [Worker-12: Building] WARN  o.a.m.s.f.DefaultMavenResourcesFiltering - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2023-12-09 14:16:53,232 [Worker-12: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\massimoc\Documents\GitHub\Trio_Magnifico\GestioneSaleOspedale\GestioneSale_logic\src\test\resources
+2023-12-09 14:17:38,318 [Worker-20: Launching GenerateCode] WARN  o.a.m.s.f.DefaultMavenResourcesFiltering - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2023-12-09 14:17:38,320 [Worker-20: Launching GenerateCode] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\massimoc\Documents\GitHub\Trio_Magnifico\GestioneSaleOspedale\GestioneSale_logic\src\main\resources
+2023-12-09 14:17:38,326 [Worker-20: Launching GenerateCode] WARN  o.a.m.s.f.DefaultMavenResourcesFiltering - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2023-12-09 14:17:38,328 [Worker-20: Launching GenerateCode] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\massimoc\Documents\GitHub\Trio_Magnifico\GestioneSaleOspedale\GestioneSale_logic\src\test\resources
+2023-12-09 14:17:59,437 [Worker-11: Building] WARN  o.a.m.s.f.DefaultMavenResourcesFiltering - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2023-12-09 14:17:59,440 [Worker-11: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\massimoc\Documents\GitHub\Trio_Magnifico\GestioneSaleOspedale\GestioneSale_logic\src\main\resources
+2023-12-09 14:17:59,445 [Worker-11: Building] WARN  o.a.m.s.f.DefaultMavenResourcesFiltering - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2023-12-09 14:17:59,449 [Worker-11: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\massimoc\Documents\GitHub\Trio_Magnifico\GestioneSaleOspedale\GestioneSale_logic\src\test\resources
+2023-12-09 14:18:04,702 [Worker-6: Launching GenerateCode] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/GestioneSale_db_sqlite: GestioneSale:GestioneSale_db_sqlite:0.0.1-SNAPSHOT with classifier null to /GestioneSale_db_sqlite/target/classes
+2023-12-09 14:18:04,739 [Worker-6: Launching GenerateCode] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/GestioneSale_db_sqlite: GestioneSale:GestioneSale_db_sqlite:0.0.1-SNAPSHOT with classifier null to /GestioneSale_db_sqlite/target/classes
+2023-12-09 14:18:04,774 [Worker-6: Launching GenerateCode] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/GestioneSale_db_sqlite: GestioneSale:GestioneSale_db_sqlite:0.0.1-SNAPSHOT with classifier null to /GestioneSale_db_sqlite/target/classes
+2023-12-09 14:27:47,535 [Worker-12: Building] WARN  o.a.m.s.f.DefaultMavenResourcesFiltering - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2023-12-09 14:27:47,539 [Worker-12: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\massimoc\Documents\GitHub\Trio_Magnifico\GestioneSaleOspedale\GestioneSale_logic\src\main\resources
+2023-12-09 14:27:47,543 [Worker-12: Building] WARN  o.a.m.s.f.DefaultMavenResourcesFiltering - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2023-12-09 14:27:47,544 [Worker-12: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\massimoc\Documents\GitHub\Trio_Magnifico\GestioneSaleOspedale\GestioneSale_logic\src\test\resources
+2023-12-09 14:34:25,201 [Worker-17: Building] WARN  o.a.m.s.f.DefaultMavenResourcesFiltering - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2023-12-09 14:34:25,203 [Worker-17: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\massimoc\Documents\GitHub\Trio_Magnifico\GestioneSaleOspedale\GestioneSale_logic\src\main\resources
+2023-12-09 14:34:25,206 [Worker-17: Building] WARN  o.a.m.s.f.DefaultMavenResourcesFiltering - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2023-12-09 14:34:25,208 [Worker-17: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\massimoc\Documents\GitHub\Trio_Magnifico\GestioneSaleOspedale\GestioneSale_logic\src\test\resources
+2023-12-09 14:34:39,487 [Worker-12: Launching GenerateCode] WARN  o.a.m.s.f.DefaultMavenResourcesFiltering - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2023-12-09 14:34:39,489 [Worker-12: Launching GenerateCode] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\massimoc\Documents\GitHub\Trio_Magnifico\GestioneSaleOspedale\GestioneSale_logic\src\main\resources
+2023-12-09 14:34:39,493 [Worker-12: Launching GenerateCode] WARN  o.a.m.s.f.DefaultMavenResourcesFiltering - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2023-12-09 14:34:39,494 [Worker-12: Launching GenerateCode] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\massimoc\Documents\GitHub\Trio_Magnifico\GestioneSaleOspedale\GestioneSale_logic\src\test\resources
+2023-12-09 14:34:41,166 [Worker-12: Launching GenerateCode] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/GestioneSale_db_sqlite: GestioneSale:GestioneSale_db_sqlite:0.0.1-SNAPSHOT with classifier null to /GestioneSale_db_sqlite/target/classes
+2023-12-09 14:34:41,245 [Worker-12: Launching GenerateCode] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/GestioneSale_db_sqlite: GestioneSale:GestioneSale_db_sqlite:0.0.1-SNAPSHOT with classifier null to /GestioneSale_db_sqlite/target/classes
+2023-12-09 14:34:41,318 [Worker-12: Launching GenerateCode] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/GestioneSale_db_sqlite: GestioneSale:GestioneSale_db_sqlite:0.0.1-SNAPSHOT with classifier null to /GestioneSale_db_sqlite/target/classes
+2023-12-10 14:32:05,227 [Worker-5: Loading available Gradle versions] INFO  o.e.b.c.i.u.g.PublishedGradleVersions - Gradle version information cache is out-of-date. Trying to update.
+2023-12-10 14:40:52,200 [Worker-11: reload maven project] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/GestioneSale_db_sqlite: GestioneSale:GestioneSale_db_sqlite:0.0.1-SNAPSHOT with classifier  to /GestioneSale_db_sqlite/target/classes
+2023-12-10 15:50:00,762 [Worker-11: Building] WARN  o.a.m.s.f.DefaultMavenResourcesFiltering - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2023-12-10 15:50:00,764 [Worker-11: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\massimoc\Documents\GitHub\Trio_Magnifico\GestioneSaleOspedale\GestioneSale_logic\src\main\resources
+2023-12-10 15:50:00,771 [Worker-11: Building] WARN  o.a.m.s.f.DefaultMavenResourcesFiltering - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2023-12-10 15:50:00,772 [Worker-11: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\massimoc\Documents\GitHub\Trio_Magnifico\GestioneSaleOspedale\GestioneSale_logic\src\test\resources
+2023-12-10 15:50:04,185 [Worker-11: Launching GenerateCode] WARN  o.a.m.s.f.DefaultMavenResourcesFiltering - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2023-12-10 15:50:04,188 [Worker-11: Launching GenerateCode] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\massimoc\Documents\GitHub\Trio_Magnifico\GestioneSaleOspedale\GestioneSale_logic\src\main\resources
+2023-12-10 15:50:04,194 [Worker-11: Launching GenerateCode] WARN  o.a.m.s.f.DefaultMavenResourcesFiltering - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2023-12-10 15:50:04,196 [Worker-11: Launching GenerateCode] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\massimoc\Documents\GitHub\Trio_Magnifico\GestioneSaleOspedale\GestioneSale_logic\src\test\resources
+2023-12-10 15:50:05,717 [Worker-11: Launching GenerateCode] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/GestioneSale_db_sqlite: GestioneSale:GestioneSale_db_sqlite:0.0.1-SNAPSHOT with classifier null to /GestioneSale_db_sqlite/target/classes
+2023-12-10 15:50:05,782 [Worker-11: Launching GenerateCode] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/GestioneSale_db_sqlite: GestioneSale:GestioneSale_db_sqlite:0.0.1-SNAPSHOT with classifier null to /GestioneSale_db_sqlite/target/classes
+2023-12-10 15:50:05,842 [Worker-11: Launching GenerateCode] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/GestioneSale_db_sqlite: GestioneSale:GestioneSale_db_sqlite:0.0.1-SNAPSHOT with classifier null to /GestioneSale_db_sqlite/target/classes
+2023-12-11 18:12:24,547 [Worker-61: Building] WARN  o.a.m.s.f.DefaultMavenResourcesFiltering - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2023-12-11 18:12:24,557 [Worker-61: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\massimoc\Documents\GitHub\Trio_Magnifico\GestioneSaleOspedale\GestioneSale_logic\src\main\resources
+2023-12-11 18:12:24,561 [Worker-61: Building] WARN  o.a.m.s.f.DefaultMavenResourcesFiltering - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2023-12-11 18:12:24,562 [Worker-61: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\massimoc\Documents\GitHub\Trio_Magnifico\GestioneSaleOspedale\GestioneSale_logic\src\test\resources
+2023-12-22 09:44:18,354 [Worker-6: Loading available Gradle versions] INFO  o.e.b.c.i.u.g.PublishedGradleVersions - Gradle version information cache is out-of-date. Trying to update.
+2023-12-22 09:44:47,500 [Worker-3: reload maven project] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/GestioneSale_db_sqlite: GestioneSale:GestioneSale_db_sqlite:0.0.1-SNAPSHOT with classifier  to /GestioneSale_db_sqlite/target/classes
+2023-12-22 09:58:58,911 [Worker-5: Loading available Gradle versions] INFO  o.e.b.c.i.u.g.PublishedGradleVersions - Gradle version information cache is up-to-date. Trying to read.
+2023-12-22 09:58:59,459 [Worker-1: reload maven project] ERROR o.e.m2e.editor.pom.MavenPomEditor - failed to load maven project for org.eclipse.ui.part.FileEditorInput(/GestioneSale_logic/pom.xml)
+org.eclipse.core.runtime.CoreException: Could not read maven project
+	at org.eclipse.m2e.core.internal.project.registry.ProjectRegistryManager.readProjectWithDependencies(ProjectRegistryManager.java:914)
+	at org.eclipse.m2e.core.internal.project.registry.MavenProjectCache$CacheLine.lambda$1(MavenProjectCache.java:192)
+	at java.base/java.util.concurrent.ConcurrentHashMap.computeIfAbsent(ConcurrentHashMap.java:1708)
+	at org.eclipse.m2e.core.internal.project.registry.MavenProjectCache$CacheLine.getProject(MavenProjectCache.java:191)
+	at org.eclipse.m2e.core.internal.project.registry.MavenProjectCache.getMavenProject(MavenProjectCache.java:105)
+	at org.eclipse.m2e.core.internal.project.registry.ProjectRegistryManager.lambda$24(ProjectRegistryManager.java:1100)
+	at java.base/java.util.Map.computeIfAbsent(Map.java:1054)
+	at org.eclipse.m2e.core.internal.project.registry.ProjectRegistryManager.getMavenProject(ProjectRegistryManager.java:1099)
+	at org.eclipse.m2e.core.internal.project.registry.MavenProjectFacade.getMavenProject(MavenProjectFacade.java:289)
+	at org.eclipse.m2e.core.ui.internal.actions.SelectionUtil.getMavenProject(SelectionUtil.java:241)
+	at org.eclipse.m2e.editor.pom.MavenPomEditor.readMavenProject(MavenPomEditor.java:708)
+	at org.eclipse.m2e.editor.pom.MavenPomEditor$4.run(MavenPomEditor.java:1028)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+2023-12-22 10:08:42,803 [Worker-4: Loading available Gradle versions] INFO  o.e.b.c.i.u.g.PublishedGradleVersions - Gradle version information cache is up-to-date. Trying to read.
+2023-12-22 10:08:43,179 [Worker-0: reload maven project] ERROR o.e.m2e.editor.pom.MavenPomEditor - failed to load maven project for org.eclipse.ui.part.FileEditorInput(/GestioneSale_logic/pom.xml)
+org.eclipse.core.runtime.CoreException: Could not read maven project
+	at org.eclipse.m2e.core.internal.project.registry.ProjectRegistryManager.readProjectWithDependencies(ProjectRegistryManager.java:914)
+	at org.eclipse.m2e.core.internal.project.registry.MavenProjectCache$CacheLine.lambda$1(MavenProjectCache.java:192)
+	at java.base/java.util.concurrent.ConcurrentHashMap.computeIfAbsent(ConcurrentHashMap.java:1708)
+	at org.eclipse.m2e.core.internal.project.registry.MavenProjectCache$CacheLine.getProject(MavenProjectCache.java:191)
+	at org.eclipse.m2e.core.internal.project.registry.MavenProjectCache.getMavenProject(MavenProjectCache.java:105)
+	at org.eclipse.m2e.core.internal.project.registry.ProjectRegistryManager.lambda$24(ProjectRegistryManager.java:1100)
+	at java.base/java.util.Map.computeIfAbsent(Map.java:1054)
+	at org.eclipse.m2e.core.internal.project.registry.ProjectRegistryManager.getMavenProject(ProjectRegistryManager.java:1099)
+	at org.eclipse.m2e.core.internal.project.registry.MavenProjectFacade.getMavenProject(MavenProjectFacade.java:289)
+	at org.eclipse.m2e.core.ui.internal.actions.SelectionUtil.getMavenProject(SelectionUtil.java:241)
+	at org.eclipse.m2e.editor.pom.MavenPomEditor.readMavenProject(MavenPomEditor.java:708)
+	at org.eclipse.m2e.editor.pom.MavenPomEditor$4.run(MavenPomEditor.java:1028)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+2023-12-22 10:09:19,496 [Worker-7: Building] WARN  o.a.m.s.f.DefaultMavenResourcesFiltering - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2023-12-22 10:09:19,497 [Worker-7: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\massimoc\Documents\GitHub\Trio_Magnifico\GestioneSaleOspedale\GestioneSale_db_sqlite\src\main\resources
+2023-12-22 10:09:19,501 [Worker-7: Building] WARN  o.a.m.s.f.DefaultMavenResourcesFiltering - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2023-12-22 10:09:19,502 [Worker-7: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\massimoc\Documents\GitHub\Trio_Magnifico\GestioneSaleOspedale\GestioneSale_db_sqlite\src\test\resources
+2023-12-22 10:11:06,798 [Worker-8: Enabling Maven Dependency Management] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: GestioneSale:GestioneSale_business_logic:0.0.1-SNAPSHOT @ C:\Users\massimoc\Documents\GitHub\Trio_Magnifico\GestioneSaleOspedale\GestioneSale_business_logic\pom.xml.
+2023-12-22 10:11:07,425 [Worker-8: Enabling Maven Dependency Management] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding source folder /GestioneSale_business_logic/src
+2023-12-22 10:11:07,426 [Worker-8: Enabling Maven Dependency Management] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Resources folder /GestioneSale_business_logic/src/main/resources overlaps with sources folder /GestioneSale_business_logic/src
+2023-12-22 10:11:07,427 [Worker-8: Enabling Maven Dependency Management] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Not adding source folder /GestioneSale_business_logic/src/test/java because it overlaps with /GestioneSale_business_logic/src
+2023-12-22 10:11:07,428 [Worker-8: Enabling Maven Dependency Management] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Resources folder /GestioneSale_business_logic/src/test/resources overlaps with sources folder /GestioneSale_business_logic/src
+2023-12-22 10:11:07,574 [Worker-8: Enabling Maven Dependency Management] INFO  o.e.m.c.i.p.ProjectConfigurationManager - Update started
+2023-12-22 10:11:08,094 [Worker-8: Enabling Maven Dependency Management] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: GestioneSale:GestioneSale_business_logic:0.0.1-SNAPSHOT @ C:\Users\massimoc\Documents\GitHub\Trio_Magnifico\GestioneSaleOspedale\GestioneSale_business_logic\pom.xml.
+2023-12-22 10:11:08,143 [Worker-8: Enabling Maven Dependency Management] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding source folder /GestioneSale_business_logic/src
+2023-12-22 10:11:08,143 [Worker-8: Enabling Maven Dependency Management] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Resources folder /GestioneSale_business_logic/src/main/resources overlaps with sources folder /GestioneSale_business_logic/src
+2023-12-22 10:11:08,143 [Worker-8: Enabling Maven Dependency Management] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Not adding source folder /GestioneSale_business_logic/src/test/java because it overlaps with /GestioneSale_business_logic/src
+2023-12-22 10:11:08,143 [Worker-8: Enabling Maven Dependency Management] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Resources folder /GestioneSale_business_logic/src/test/resources overlaps with sources folder /GestioneSale_business_logic/src
+2023-12-22 10:11:08,207 [Worker-8: Enabling Maven Dependency Management] INFO  o.e.m.c.i.p.ProjectConfigurationManager - Update completed for 1 poms: local refresh takes 0,00 sec, refresh facades takes 0,00 sec, update config takes 0,00 sec 
+2023-12-22 10:11:08,359 [Worker-2: Building] WARN  o.a.m.s.f.DefaultMavenResourcesFiltering - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2023-12-22 10:11:08,360 [Worker-2: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\massimoc\Documents\GitHub\Trio_Magnifico\GestioneSaleOspedale\GestioneSale_business_logic\src\main\resources
+2023-12-22 10:11:08,363 [Worker-2: Building] WARN  o.a.m.s.f.DefaultMavenResourcesFiltering - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2023-12-22 10:11:08,365 [Worker-2: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\massimoc\Documents\GitHub\Trio_Magnifico\GestioneSaleOspedale\GestioneSale_business_logic\src\test\resources
+2023-12-22 10:11:23,412 [Worker-13: Building] ERROR o.e.m.c.i.p.r.ProjectRegistryManager - Could not read pom.xml
+org.eclipse.core.runtime.CoreException: Could not read pom.xml
+	at org.eclipse.m2e.core.internal.IMavenToolbox.readModel(IMavenToolbox.java:236)
+	at org.eclipse.m2e.core.internal.project.registry.ProjectRegistryManager.refreshPhase2(ProjectRegistryManager.java:588)
+	at org.eclipse.m2e.core.internal.project.registry.ProjectRegistryManager.refresh(ProjectRegistryManager.java:488)
+	at org.eclipse.m2e.core.internal.project.registry.ProjectRegistryManager.refresh(ProjectRegistryManager.java:367)
+	at org.eclipse.m2e.core.internal.project.registry.ProjectRegistryManager.refresh(ProjectRegistryManager.java:319)
+	at org.eclipse.m2e.core.internal.builder.MavenBuilder$BuildMethod.getProjectFacade(MavenBuilder.java:146)
+	at org.eclipse.m2e.core.internal.builder.MavenBuilder$BuildMethod.lambda$0(MavenBuilder.java:84)
+	at org.eclipse.m2e.core.internal.embedder.MavenExecutionContext.executeBare(MavenExecutionContext.java:394)
+	at org.eclipse.m2e.core.internal.embedder.MavenExecutionContext.execute(MavenExecutionContext.java:275)
+	at org.eclipse.m2e.core.internal.embedder.MavenExecutionContext.execute(MavenExecutionContext.java:214)
+	at org.eclipse.m2e.core.internal.builder.MavenBuilder$BuildMethod.execute(MavenBuilder.java:83)
+	at org.eclipse.m2e.core.internal.builder.MavenBuilder.build(MavenBuilder.java:192)
+	at org.eclipse.core.internal.events.BuildManager$2.run(BuildManager.java:1079)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:45)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:296)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:352)
+	at org.eclipse.core.internal.events.BuildManager$1.run(BuildManager.java:441)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:45)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:444)
+	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:555)
+	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:503)
+	at org.eclipse.core.internal.events.BuildManager.build(BuildManager.java:585)
+	at org.eclipse.core.internal.events.AutoBuildJob.doBuild(AutoBuildJob.java:207)
+	at org.eclipse.core.internal.events.AutoBuildJob.run(AutoBuildJob.java:300)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+Caused by: org.apache.maven.model.io.ModelParseException: only whitespace content allowed before start tag and not T (position: START_DOCUMENT seen T... @1:2) 
+	at org.apache.maven.model.io.DefaultModelReader.read(DefaultModelReader.java:96)
+	at org.apache.maven.model.io.DefaultModelReader.read(DefaultModelReader.java:74)
+	at org.eclipse.m2e.core.internal.IMavenToolbox.readModel(IMavenToolbox.java:234)
+	... 24 common frames omitted
+Caused by: org.codehaus.plexus.util.xml.pull.XmlPullParserException: only whitespace content allowed before start tag and not T (position: START_DOCUMENT seen T... @1:2) 
+	at org.codehaus.plexus.util.xml.pull.MXParser.parseProlog(MXParser.java:1933)
+	at org.codehaus.plexus.util.xml.pull.MXParser.nextImpl(MXParser.java:1757)
+	at org.codehaus.plexus.util.xml.pull.MXParser.next(MXParser.java:1375)
+	at org.apache.maven.model.io.xpp3.MavenXpp3Reader.read(MavenXpp3Reader.java:627)
+	at org.apache.maven.model.io.xpp3.MavenXpp3Reader.read(MavenXpp3Reader.java:654)
+	at org.apache.maven.model.io.DefaultModelReader.read(DefaultModelReader.java:93)
+	... 26 common frames omitted
+2023-12-22 10:11:26,314 [Worker-7: Building] ERROR o.e.m.c.i.p.r.ProjectRegistryManager - Could not read pom.xml
+org.eclipse.core.runtime.CoreException: Could not read pom.xml
+	at org.eclipse.m2e.core.internal.IMavenToolbox.readModel(IMavenToolbox.java:236)
+	at org.eclipse.m2e.core.internal.project.registry.ProjectRegistryManager.refreshPhase2(ProjectRegistryManager.java:588)
+	at org.eclipse.m2e.core.internal.project.registry.ProjectRegistryManager.refresh(ProjectRegistryManager.java:488)
+	at org.eclipse.m2e.core.internal.project.registry.ProjectRegistryManager.refresh(ProjectRegistryManager.java:367)
+	at org.eclipse.m2e.core.internal.project.registry.ProjectRegistryManager.refresh(ProjectRegistryManager.java:319)
+	at org.eclipse.m2e.core.internal.builder.MavenBuilder$BuildMethod.getProjectFacade(MavenBuilder.java:146)
+	at org.eclipse.m2e.core.internal.builder.MavenBuilder$BuildMethod.lambda$0(MavenBuilder.java:84)
+	at org.eclipse.m2e.core.internal.embedder.MavenExecutionContext.executeBare(MavenExecutionContext.java:394)
+	at org.eclipse.m2e.core.internal.embedder.MavenExecutionContext.execute(MavenExecutionContext.java:275)
+	at org.eclipse.m2e.core.internal.embedder.MavenExecutionContext.execute(MavenExecutionContext.java:214)
+	at org.eclipse.m2e.core.internal.builder.MavenBuilder$BuildMethod.execute(MavenBuilder.java:83)
+	at org.eclipse.m2e.core.internal.builder.MavenBuilder.build(MavenBuilder.java:192)
+	at org.eclipse.core.internal.events.BuildManager$2.run(BuildManager.java:1079)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:45)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:296)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:352)
+	at org.eclipse.core.internal.events.BuildManager$1.run(BuildManager.java:441)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:45)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:444)
+	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:555)
+	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:503)
+	at org.eclipse.core.internal.events.BuildManager.build(BuildManager.java:585)
+	at org.eclipse.core.internal.events.AutoBuildJob.doBuild(AutoBuildJob.java:207)
+	at org.eclipse.core.internal.events.AutoBuildJob.run(AutoBuildJob.java:300)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+Caused by: org.apache.maven.model.io.ModelParseException: only whitespace content allowed before start tag and not T (position: START_DOCUMENT seen T... @1:2) 
+	at org.apache.maven.model.io.DefaultModelReader.read(DefaultModelReader.java:96)
+	at org.apache.maven.model.io.DefaultModelReader.read(DefaultModelReader.java:74)
+	at org.eclipse.m2e.core.internal.IMavenToolbox.readModel(IMavenToolbox.java:234)
+	... 24 common frames omitted
+Caused by: org.codehaus.plexus.util.xml.pull.XmlPullParserException: only whitespace content allowed before start tag and not T (position: START_DOCUMENT seen T... @1:2) 
+	at org.codehaus.plexus.util.xml.pull.MXParser.parseProlog(MXParser.java:1933)
+	at org.codehaus.plexus.util.xml.pull.MXParser.nextImpl(MXParser.java:1757)
+	at org.codehaus.plexus.util.xml.pull.MXParser.next(MXParser.java:1375)
+	at org.apache.maven.model.io.xpp3.MavenXpp3Reader.read(MavenXpp3Reader.java:627)
+	at org.apache.maven.model.io.xpp3.MavenXpp3Reader.read(MavenXpp3Reader.java:654)
+	at org.apache.maven.model.io.DefaultModelReader.read(DefaultModelReader.java:93)
+	... 26 common frames omitted
+2023-12-22 10:14:51,355 [Worker-6: Building] ERROR o.e.m.c.i.p.r.ProjectRegistryManager - Could not read pom.xml
+org.eclipse.core.runtime.CoreException: Could not read pom.xml
+	at org.eclipse.m2e.core.internal.IMavenToolbox.readModel(IMavenToolbox.java:236)
+	at org.eclipse.m2e.core.internal.project.registry.ProjectRegistryManager.refreshPhase2(ProjectRegistryManager.java:588)
+	at org.eclipse.m2e.core.internal.project.registry.ProjectRegistryManager.refresh(ProjectRegistryManager.java:488)
+	at org.eclipse.m2e.core.internal.project.registry.ProjectRegistryManager.refresh(ProjectRegistryManager.java:367)
+	at org.eclipse.m2e.core.internal.project.registry.ProjectRegistryManager.refresh(ProjectRegistryManager.java:319)
+	at org.eclipse.m2e.core.internal.builder.MavenBuilder$BuildMethod.getProjectFacade(MavenBuilder.java:146)
+	at org.eclipse.m2e.core.internal.builder.MavenBuilder$BuildMethod.lambda$0(MavenBuilder.java:84)
+	at org.eclipse.m2e.core.internal.embedder.MavenExecutionContext.executeBare(MavenExecutionContext.java:394)
+	at org.eclipse.m2e.core.internal.embedder.MavenExecutionContext.execute(MavenExecutionContext.java:275)
+	at org.eclipse.m2e.core.internal.embedder.MavenExecutionContext.execute(MavenExecutionContext.java:214)
+	at org.eclipse.m2e.core.internal.builder.MavenBuilder$BuildMethod.execute(MavenBuilder.java:83)
+	at org.eclipse.m2e.core.internal.builder.MavenBuilder.build(MavenBuilder.java:192)
+	at org.eclipse.core.internal.events.BuildManager$2.run(BuildManager.java:1079)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:45)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:296)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:352)
+	at org.eclipse.core.internal.events.BuildManager$1.run(BuildManager.java:441)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:45)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:444)
+	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:555)
+	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:503)
+	at org.eclipse.core.internal.events.BuildManager.build(BuildManager.java:585)
+	at org.eclipse.core.internal.events.AutoBuildJob.doBuild(AutoBuildJob.java:207)
+	at org.eclipse.core.internal.events.AutoBuildJob.run(AutoBuildJob.java:300)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+Caused by: org.apache.maven.model.io.ModelParseException: only whitespace content allowed before start tag and not T (position: START_DOCUMENT seen T... @1:2) 
+	at org.apache.maven.model.io.DefaultModelReader.read(DefaultModelReader.java:96)
+	at org.apache.maven.model.io.DefaultModelReader.read(DefaultModelReader.java:74)
+	at org.eclipse.m2e.core.internal.IMavenToolbox.readModel(IMavenToolbox.java:234)
+	... 24 common frames omitted
+Caused by: org.codehaus.plexus.util.xml.pull.XmlPullParserException: only whitespace content allowed before start tag and not T (position: START_DOCUMENT seen T... @1:2) 
+	at org.codehaus.plexus.util.xml.pull.MXParser.parseProlog(MXParser.java:1933)
+	at org.codehaus.plexus.util.xml.pull.MXParser.nextImpl(MXParser.java:1757)
+	at org.codehaus.plexus.util.xml.pull.MXParser.next(MXParser.java:1375)
+	at org.apache.maven.model.io.xpp3.MavenXpp3Reader.read(MavenXpp3Reader.java:627)
+	at org.apache.maven.model.io.xpp3.MavenXpp3Reader.read(MavenXpp3Reader.java:654)
+	at org.apache.maven.model.io.DefaultModelReader.read(DefaultModelReader.java:93)
+	... 26 common frames omitted
+2023-12-22 10:14:55,681 [Worker-2: reload maven project] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/GestioneSale_db_sqlite: GestioneSale:GestioneSale_db_sqlite:0.0.1-SNAPSHOT with classifier  to /GestioneSale_db_sqlite/target/classes
+2023-12-22 10:14:55,731 [Worker-2: reload maven project] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/GestioneSale_db_sqlite: GestioneSale:GestioneSale_db_sqlite:0.0.1-SNAPSHOT with classifier  to /GestioneSale_db_sqlite/target/classes
+2023-12-22 10:14:56,129 [Worker-13: Building] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: anagrafiche:anagrafiche_business_logic:0.0.1-SNAPSHOT @ C:\Users\massimoc\Documents\GitHub\Trio_Magnifico\GestioneSaleOspedale\GestioneSale_business_logic\pom.xml.
+2023-12-22 10:14:56,174 [Worker-13: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/GestioneSale_db_sqlite: GestioneSale:GestioneSale_db_sqlite:0.0.1-SNAPSHOT with classifier  to /GestioneSale_db_sqlite/target/classes
+2023-12-22 10:14:56,533 [Worker-13: Building] WARN  o.a.m.s.f.DefaultMavenResourcesFiltering - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2023-12-22 10:14:56,534 [Worker-13: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\massimoc\Documents\GitHub\Trio_Magnifico\GestioneSaleOspedale\GestioneSale_business_logic\src\main\resources
+2023-12-22 10:14:56,536 [Worker-13: Building] WARN  o.a.m.s.f.DefaultMavenResourcesFiltering - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2023-12-22 10:14:56,538 [Worker-13: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\massimoc\Documents\GitHub\Trio_Magnifico\GestioneSaleOspedale\GestioneSale_business_logic\src\test\resources
+2023-12-22 10:15:31,041 [Worker-10: Building] WARN  o.a.m.s.f.DefaultMavenResourcesFiltering - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2023-12-22 10:15:31,043 [Worker-10: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\massimoc\Documents\GitHub\Trio_Magnifico\GestioneSaleOspedale\GestioneSale_business_logic\src\main\resources
+2023-12-22 10:15:31,046 [Worker-10: Building] WARN  o.a.m.s.f.DefaultMavenResourcesFiltering - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2023-12-22 10:15:31,048 [Worker-10: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\massimoc\Documents\GitHub\Trio_Magnifico\GestioneSaleOspedale\GestioneSale_business_logic\src\test\resources
+2023-12-22 10:20:53,674 [Worker-1: Building] WARN  o.a.m.s.f.DefaultMavenResourcesFiltering - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2023-12-22 10:20:53,675 [Worker-1: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\massimoc\Documents\GitHub\Trio_Magnifico\GestioneSaleOspedale\GestioneSale_business_logic\src\main\resources
+2023-12-22 10:20:53,677 [Worker-1: Building] WARN  o.a.m.s.f.DefaultMavenResourcesFiltering - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2023-12-22 10:20:53,678 [Worker-1: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\massimoc\Documents\GitHub\Trio_Magnifico\GestioneSaleOspedale\GestioneSale_business_logic\src\test\resources
+2023-12-22 10:20:56,333 [Worker-4: Building] WARN  o.a.m.s.f.DefaultMavenResourcesFiltering - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2023-12-22 10:20:56,334 [Worker-4: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\massimoc\Documents\GitHub\Trio_Magnifico\GestioneSaleOspedale\GestioneSale_business_logic\src\main\resources
+2023-12-22 10:20:56,336 [Worker-4: Building] WARN  o.a.m.s.f.DefaultMavenResourcesFiltering - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2023-12-22 10:20:56,337 [Worker-4: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\massimoc\Documents\GitHub\Trio_Magnifico\GestioneSaleOspedale\GestioneSale_business_logic\src\test\resources
+2023-12-22 10:21:41,594 [Worker-12: Building] WARN  o.a.m.s.f.DefaultMavenResourcesFiltering - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2023-12-22 10:21:41,595 [Worker-12: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\massimoc\Documents\GitHub\Trio_Magnifico\GestioneSaleOspedale\GestioneSale_business_logic\src\main\resources
+2023-12-22 10:21:41,598 [Worker-12: Building] WARN  o.a.m.s.f.DefaultMavenResourcesFiltering - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2023-12-22 10:21:41,599 [Worker-12: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\massimoc\Documents\GitHub\Trio_Magnifico\GestioneSaleOspedale\GestioneSale_business_logic\src\test\resources
+2023-12-22 10:21:59,890 [Worker-16: Building] WARN  o.a.m.s.f.DefaultMavenResourcesFiltering - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2023-12-22 10:21:59,892 [Worker-16: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\massimoc\Documents\GitHub\Trio_Magnifico\GestioneSaleOspedale\GestioneSale_business_logic\src\main\resources
+2023-12-22 10:21:59,896 [Worker-16: Building] WARN  o.a.m.s.f.DefaultMavenResourcesFiltering - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2023-12-22 10:21:59,897 [Worker-16: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\massimoc\Documents\GitHub\Trio_Magnifico\GestioneSaleOspedale\GestioneSale_business_logic\src\test\resources
+2023-12-22 10:22:30,039 [Worker-4: Launching GenerateCode (1)] WARN  o.a.m.s.f.DefaultMavenResourcesFiltering - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2023-12-22 10:22:30,040 [Worker-4: Launching GenerateCode (1)] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\massimoc\Documents\GitHub\Trio_Magnifico\GestioneSaleOspedale\GestioneSale_business_logic\src\main\resources
+2023-12-22 10:22:30,042 [Worker-4: Launching GenerateCode (1)] WARN  o.a.m.s.f.DefaultMavenResourcesFiltering - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2023-12-22 10:22:30,044 [Worker-4: Launching GenerateCode (1)] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\massimoc\Documents\GitHub\Trio_Magnifico\GestioneSaleOspedale\GestioneSale_business_logic\src\test\resources
+2023-12-22 10:22:31,687 [Worker-4: Launching GenerateCode (1)] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/GestioneSale_db_sqlite: GestioneSale:GestioneSale_db_sqlite:0.0.1-SNAPSHOT with classifier null to /GestioneSale_db_sqlite/target/classes
+2023-12-22 10:22:31,708 [Worker-4: Launching GenerateCode (1)] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/GestioneSale_db_sqlite: GestioneSale:GestioneSale_db_sqlite:0.0.1-SNAPSHOT with classifier null to /GestioneSale_db_sqlite/target/classes
+2023-12-22 10:22:31,730 [Worker-4: Launching GenerateCode (1)] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/GestioneSale_db_sqlite: GestioneSale:GestioneSale_db_sqlite:0.0.1-SNAPSHOT with classifier null to /GestioneSale_db_sqlite/target/classes
+2023-12-22 10:24:14,536 [Worker-12: Building] WARN  o.a.m.s.f.DefaultMavenResourcesFiltering - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2023-12-22 10:24:14,538 [Worker-12: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\massimoc\Documents\GitHub\Trio_Magnifico\GestioneSaleOspedale\GestioneSale_business_logic\src\main\resources
+2023-12-22 10:24:14,539 [Worker-12: Building] WARN  o.a.m.s.f.DefaultMavenResourcesFiltering - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2023-12-22 10:24:14,539 [Worker-12: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\massimoc\Documents\GitHub\Trio_Magnifico\GestioneSaleOspedale\GestioneSale_business_logic\src\test\resources
+2023-12-22 10:24:33,034 [Worker-1: Launching GenerateCode (1)] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/GestioneSale_db_sqlite: GestioneSale:GestioneSale_db_sqlite:0.0.1-SNAPSHOT with classifier null to /GestioneSale_db_sqlite/target/classes
+2023-12-22 10:24:33,056 [Worker-1: Launching GenerateCode (1)] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/GestioneSale_db_sqlite: GestioneSale:GestioneSale_db_sqlite:0.0.1-SNAPSHOT with classifier null to /GestioneSale_db_sqlite/target/classes
+2023-12-22 10:24:33,077 [Worker-1: Launching GenerateCode (1)] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/GestioneSale_db_sqlite: GestioneSale:GestioneSale_db_sqlite:0.0.1-SNAPSHOT with classifier null to /GestioneSale_db_sqlite/target/classes
+2023-12-22 10:25:22,265 [Worker-1: Building] WARN  o.a.m.s.f.DefaultMavenResourcesFiltering - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2023-12-22 10:25:22,266 [Worker-1: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\massimoc\Documents\GitHub\Trio_Magnifico\GestioneSaleOspedale\GestioneSale_business_logic\src\main\resources
+2023-12-22 10:25:22,268 [Worker-1: Building] WARN  o.a.m.s.f.DefaultMavenResourcesFiltering - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2023-12-22 10:25:22,269 [Worker-1: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\massimoc\Documents\GitHub\Trio_Magnifico\GestioneSaleOspedale\GestioneSale_business_logic\src\test\resources
+2023-12-22 10:25:56,462 [Worker-1: Building] WARN  o.a.m.s.f.DefaultMavenResourcesFiltering - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2023-12-22 10:25:56,463 [Worker-1: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\massimoc\Documents\GitHub\Trio_Magnifico\GestioneSaleOspedale\GestioneSale_business_logic\src\main\resources
+2023-12-22 10:25:56,466 [Worker-1: Building] WARN  o.a.m.s.f.DefaultMavenResourcesFiltering - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2023-12-22 10:25:56,467 [Worker-1: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\massimoc\Documents\GitHub\Trio_Magnifico\GestioneSaleOspedale\GestioneSale_business_logic\src\test\resources
+2023-12-22 10:30:35,874 [Worker-12: Building] WARN  o.a.m.s.f.DefaultMavenResourcesFiltering - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2023-12-22 10:30:35,874 [Worker-12: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\massimoc\Documents\GitHub\Trio_Magnifico\GestioneSaleOspedale\GestioneSale_business_logic\src\main\resources
+2023-12-22 10:30:35,877 [Worker-12: Building] WARN  o.a.m.s.f.DefaultMavenResourcesFiltering - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2023-12-22 10:30:35,878 [Worker-12: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\massimoc\Documents\GitHub\Trio_Magnifico\GestioneSaleOspedale\GestioneSale_business_logic\src\test\resources
+2023-12-22 10:32:23,306 [Worker-16: Building] WARN  o.a.m.s.f.DefaultMavenResourcesFiltering - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2023-12-22 10:32:23,307 [Worker-16: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\massimoc\Documents\GitHub\Trio_Magnifico\GestioneSaleOspedale\GestioneSale_business_logic\src\main\resources
+2023-12-22 10:32:23,310 [Worker-16: Building] WARN  o.a.m.s.f.DefaultMavenResourcesFiltering - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2023-12-22 10:32:23,311 [Worker-16: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\massimoc\Documents\GitHub\Trio_Magnifico\GestioneSaleOspedale\GestioneSale_business_logic\src\test\resources
+2023-12-22 10:33:11,318 [Worker-1: Building] WARN  o.a.m.s.f.DefaultMavenResourcesFiltering - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2023-12-22 10:33:11,319 [Worker-1: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\massimoc\Documents\GitHub\Trio_Magnifico\GestioneSaleOspedale\GestioneSale_business_logic\src\main\resources
+2023-12-22 10:33:11,322 [Worker-1: Building] WARN  o.a.m.s.f.DefaultMavenResourcesFiltering - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2023-12-22 10:33:11,324 [Worker-1: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\massimoc\Documents\GitHub\Trio_Magnifico\GestioneSaleOspedale\GestioneSale_business_logic\src\test\resources
+2023-12-22 10:48:07,705 [Worker-4: Launching GenerateCode (1)] WARN  o.a.m.s.f.DefaultMavenResourcesFiltering - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2023-12-22 10:48:07,706 [Worker-4: Launching GenerateCode (1)] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\massimoc\Documents\GitHub\Trio_Magnifico\GestioneSaleOspedale\GestioneSale_business_logic\src\main\resources
+2023-12-22 10:48:07,709 [Worker-4: Launching GenerateCode (1)] WARN  o.a.m.s.f.DefaultMavenResourcesFiltering - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2023-12-22 10:48:07,710 [Worker-4: Launching GenerateCode (1)] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\massimoc\Documents\GitHub\Trio_Magnifico\GestioneSaleOspedale\GestioneSale_business_logic\src\test\resources
+2023-12-22 10:48:08,850 [Worker-4: Launching GenerateCode (1)] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/GestioneSale_db_sqlite: GestioneSale:GestioneSale_db_sqlite:0.0.1-SNAPSHOT with classifier null to /GestioneSale_db_sqlite/target/classes
+2023-12-22 10:48:08,870 [Worker-4: Launching GenerateCode (1)] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/GestioneSale_db_sqlite: GestioneSale:GestioneSale_db_sqlite:0.0.1-SNAPSHOT with classifier null to /GestioneSale_db_sqlite/target/classes
+2023-12-22 10:48:08,893 [Worker-4: Launching GenerateCode (1)] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/GestioneSale_db_sqlite: GestioneSale:GestioneSale_db_sqlite:0.0.1-SNAPSHOT with classifier null to /GestioneSale_db_sqlite/target/classes
+2023-12-22 11:03:37,568 [Worker-4: Building] WARN  o.a.m.s.f.DefaultMavenResourcesFiltering - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2023-12-22 11:03:37,570 [Worker-4: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\massimoc\Documents\GitHub\Trio_Magnifico\GestioneSaleOspedale\GestioneSale_business_logic\src\main\resources
+2023-12-22 11:03:37,575 [Worker-4: Building] WARN  o.a.m.s.f.DefaultMavenResourcesFiltering - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2023-12-22 11:03:37,577 [Worker-4: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\massimoc\Documents\GitHub\Trio_Magnifico\GestioneSaleOspedale\GestioneSale_business_logic\src\test\resources
