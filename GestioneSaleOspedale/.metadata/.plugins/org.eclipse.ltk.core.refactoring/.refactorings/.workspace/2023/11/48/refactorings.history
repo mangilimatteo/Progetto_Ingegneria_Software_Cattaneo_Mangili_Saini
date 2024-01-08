@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename Java project &apos;db_sqlite&apos; to &apos;anagrafiche_db_sqlite&apos;&#x0D;&#x0A;- Original element: &apos;db_sqlite&apos;&#x0D;&#x0A;- Renamed element: &apos;db_sqlite&apos;&#x0D;&#x0A;- Update references to refactored element" description="Rename Java project &apos;db_sqlite&apos;" flags="7" id="org.eclipse.jdt.ui.rename.java.project" input="=db_sqlite" name="anagrafiche_db_sqlite" references="true" stamp="1701246958227" version="1.0"/>
+</session>
