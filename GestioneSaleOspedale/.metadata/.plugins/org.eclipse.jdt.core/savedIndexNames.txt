@@ -1,5 +1,6 @@
 INDEX VERSION 1.134+C:\Users\massimoc\Documents\GitHub\Trio_Magnifico\GestioneSaleOspedale\.metadata\.plugins\org.eclipse.jdt.core
 1865797976.index
+<<<<<<< Updated upstream
 3209958003.index
 2103390788.index
 2266417080.index
@@ -7,3 +8,5 @@ INDEX VERSION 1.134+C:\Users\massimoc\Documents\GitHub\Trio_Magnifico\GestioneSa
 1839216368.index
 1543857625.index
 3607353331.index
+=======
+>>>>>>> Stashed changes

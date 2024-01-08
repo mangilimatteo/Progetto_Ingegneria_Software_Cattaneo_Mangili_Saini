@@ -1,2 +1,6 @@
 eclipse.preferences.version=1
+<<<<<<< Updated upstream
 org.eclipse.jdt.launching.PREF_VM_XML=<?xml version\="1.0" encoding\="UTF-8" standalone\="no"?>\r\n<vmSettings defaultVM\="57,org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType13,1702121641641" defaultVMConnector\="">\r\n    <vmType id\="org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType">\r\n        <vm id\="1702121641641" name\="jre" path\="C\:\\Users\\massimoc\\Desktop\\Nicola\\eclipse\\plugins\\org.eclipse.justj.openjdk.hotspot.jre.full.win32.x86_64_17.0.9.v20231028-0858\\jre"/>\r\n    </vmType>\r\n</vmSettings>\r\n
+=======
+org.eclipse.jdt.launching.PREF_VM_XML=<?xml version\="1.0" encoding\="UTF-8" standalone\="no"?>\r\n<vmSettings defaultVM\="57,org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType13,1701246771901">\r\n    <vmType id\="org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType">\r\n        <vm id\="1701246771901" javadocURL\="https\://docs.oracle.com/en/java/javase/17/docs/api/" name\="jre" path\="C\:\\Users\\massimoc\\Desktop\\Nicola\\eclipse\\plugins\\org.eclipse.justj.openjdk.hotspot.jre.full.win32.x86_64_17.0.8.v20230831-1047\\jre"/>\r\n    </vmType>\r\n</vmSettings>\r\n
+>>>>>>> Stashed changes
