@@ -1,5 +1,0 @@
-INDEX VERSION 1.131+C:\Users\teoma\OneDrive\Desktop\Trio_Magnifico\.metadata\.plugins\org.eclipse.jdt.core
-3986710544.index
-1865797976.index
-3271193799.index
-2270868195.index
