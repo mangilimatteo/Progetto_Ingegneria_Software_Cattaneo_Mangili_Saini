@@ -1,0 +1,9 @@
+INDEX VERSION 1.134+C:\Users\massimoc\Documents\GitHub\Trio_Magnifico\GestioneSaleOspedale\.metadata\.plugins\org.eclipse.jdt.core
+1865797976.index
+3209958003.index
+2103390788.index
+2266417080.index
+459288507.index
+1839216368.index
+1543857625.index
+3607353331.index

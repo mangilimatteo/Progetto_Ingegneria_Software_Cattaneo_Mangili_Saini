@@ -1,0 +1,48 @@
+package model;
+
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.util.List;
+
+import org.jooq.DSLContext;
+import org.jooq.SQLDialect;
+import org.jooq.impl.DSL;
+
+import GestioneSale.model.generated.tables.Indirizzi;
+import GestioneSale.model.generated.tables.records.IndirizziRecord;
+import GestioneSale.db_sqlite.CreateDB;
+
+/**
+ * 
+ * Questa classe fornisce dei servizi interfacciarsi con il db_sqlite usando il linguaggio Java.
+ * Per usare questa classe bisogna creare un oggetto con new DataService() e poi chiamare i metodi di interesse.
+ * 
+ * @author Wasim Essbai
+ * @version 1.0
+ * 
+ */
+
+public class DataService {
+	
+	private Connection conn;
+	
+	private DSLContext create;
+	
+	
+	public DataService() {
+		try {
+			conn = DriverManager.getConnection(CreateDB.DB_URL);
+			create = DSL.using(conn, SQLDialect.SQLITE);
+		}
+		catch (SQLException e) {
+		   System.out.println("ERROR: failed to connect!");
+		   System.out.println("ERROR: " + e.getErrorCode());
+		   e.printStackTrace();
+		}
+	}
+	
+	//inserire metodi per l'estrazione dati dal db
+
+}
