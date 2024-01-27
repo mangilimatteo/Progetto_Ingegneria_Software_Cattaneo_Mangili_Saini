@@ -9,6 +9,7 @@ import org.jooq.SQLDialect;
 import org.jooq.impl.DSL;
 
 
+import model.generated.tables.*;
 import GestioneSale.db_sqlite.CreateDB;
 
 
@@ -31,7 +32,5 @@ public class DataService {
 		   e.printStackTrace();
 		}
 	}
-	
-	
 
 }
