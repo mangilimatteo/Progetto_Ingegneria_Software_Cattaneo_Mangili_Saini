@@ -19,7 +19,7 @@ public class DataService {
 	
 	private Connection conn;
 	
-	private DSLContext create;
+	private static DSLContext create;
 	
 	
 	public DataService() {
@@ -34,13 +34,19 @@ public class DataService {
 		}
 	}
 	
-	boolean credenzialiCorrette(String id, String psw) {
+	public boolean credenzialiCorrette(String matricola, String psw) {
 		DipendenteRecord DipendenteCorretto = create.selectFrom(Dipendente.DIPENDENTE).
-				where(Dipendente.DIPENDENTE.CODICE.eq(id)).fetchOne();
-		if(DipendenteCorretto == null) return false;
-		else if(psw == DipendenteCorretto.component4()) return true;
+				where(Dipendente.DIPENDENTE.CODICE.eq(matricola)).fetchSingle();
+		if(DipendenteCorretto.equals(null)) return false;
+		else if(psw.equals(DipendenteCorretto.component4().toString())) return true;
 		else return false;
 		
+	}
+
+	public String ruoloDipendente(String matricola) {
+		
+		return create.selectFrom(Dipendente.DIPENDENTE).
+				where(Dipendente.DIPENDENTE.CODICE.eq(matricola)).fetchOne().component5();
 	}
 
 

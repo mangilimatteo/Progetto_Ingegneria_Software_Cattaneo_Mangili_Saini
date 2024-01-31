@@ -18,7 +18,6 @@ public class CreateTables {
 					" CODICE			 		TEXT NOT NULL PRIMARY KEY, " +
 					" PASSWORD 					TEXT NOT NULL, " +
 					" RUOLO						TEXT NOT NULL, " +
-					" TELEFONO 					TEXT NOT NULL " +
 					");" +					
 						
 					"CREATE TABLE ANAGRAFICHE (" + 
@@ -59,7 +58,26 @@ public class CreateTables {
 					" GIORNO	 				TEXT NOT NULL, " +
 					" ORARIO		 			TEXT NOT NULL, " +
 					" FOREIGN KEY (INTERVENTO) REFERENCES LISTE_ATTESA(INTERVENTO) " +
-					");";
+					");" +
+					
+					"INSERT DIPENDENTE " +
+					"VALUES (\"Alessandro\", \"Rossi\", \"M001a\",\"psw1\", \"Medico\") " +
+				
+					"INSERT DIPENDENTE " +
+					"VALUES (\"Giorgia\", \"Renna\", \"M001b\",\"psw2\", \"Medico\") " +
+					
+					"INSERT DIPENDENTE " +
+					"VALUES (\"Marta\", \"Gelfi\", \"I001a\",\"psw3\", \"Infermiere\") " +
+					
+					"INSERT DIPENDENTE " +
+					"VALUES (\"Francesco\", \"Valli\", \"I001b\",\"psw4\", \"Infermiere\") " +
+					
+					"INSERT DIPENDENTE " +
+					"VALUES (\"Luca\", \"Zappella\", \"C001a\",\"psw5\", \"Cabina di regia\") " +
+					
+					"INSERT DIPENDENTE " +
+					"VALUES (\"Eva\", \"Capelli\", \"C001b\",\"psw6\", \"Cabina di regia\") ";
+					
 					
 				stmt.executeUpdate(sql);
 				stmt.close();

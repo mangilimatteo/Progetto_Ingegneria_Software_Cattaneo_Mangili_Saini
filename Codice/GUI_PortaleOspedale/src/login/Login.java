@@ -1,6 +1,6 @@
 package login;
 
-import java.awt.EventQueue; 
+import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -31,12 +31,15 @@ import javax.swing.BoxLayout;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
+import model.DataService;
+ 
 public class Login extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JTextField textMatricola;
 	private JPasswordField passwordField;
+	private DataService dataService;
 
 	/**
 	 * Launch the application.
@@ -58,6 +61,7 @@ public class Login extends JFrame {
 	 * Create the frame.
 	 */
 	public Login() {
+		dataService = new DataService();
 		setTitle("Portale digitale Personale Sanitario dell'ospedale [inserire nome ospedale]");
 		setIconImage(Toolkit.getDefaultToolkit().getImage(Login.class.getResource("/resources/LogoOspedale.png")));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -103,26 +107,34 @@ public class Login extends JFrame {
 		bottoneLogin.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 		//inserire nello switch la condizione per l'accesso alle varie pagine!!!		
-				switch(1){
-					case 1:
-						SchermataMedico schermatamedico= new SchermataMedico();
-						schermatamedico.setVisible(true);
-						dispose();
-						break;
-					case 2:
-						SchermataInfermiere schermatainfermiere= new SchermataInfermiere();
-						schermatainfermiere.setVisible(true);
-						dispose();
-						break;
-					case 3:
-						SchermataCabinadiregia schermatacabinadiregia= new SchermataCabinadiregia();
-						schermatacabinadiregia.setVisible(true);
-						dispose();
-						break;
-					default:
-						passwordField.setText("");
-						JOptionPane.showMessageDialog(null,"errore, credenziali errate riprova");
-					}
+				if(dataService.credenzialiCorrette(textMatricola.getText(), passwordField.getText()))
+					switch(dataService.ruoloDipendente(textMatricola.getText())){
+						case "Medico":
+							SchermataMedico schermatamedico= new SchermataMedico();
+							schermatamedico.setVisible(true);
+							dispose();
+							break;
+						case "Infermiere":
+							SchermataInfermiere schermatainfermiere= new SchermataInfermiere();
+							schermatainfermiere.setVisible(true);
+							dispose();
+							break;
+						case "Cabina di regia":
+							SchermataCabinadiregia schermatacabinadiregia= new SchermataCabinadiregia();
+							schermatacabinadiregia.setVisible(true);
+							dispose();
+							break;
+						default:
+							passwordField.setText("");
+							JOptionPane.showMessageDialog(null,"errore, credenziali errate riprova");
+						}
+				else {
+					
+					System.out.println(textMatricola.getText() + " " + passwordField.getText());
+					System.out.print(dataService.credenzialiCorrette(textMatricola.getText(), passwordField.getText()));
+					textMatricola.setText("");
+					passwordField.setText("");
+				}
 			}
 		});
 		contentPane.setLayout(null);
