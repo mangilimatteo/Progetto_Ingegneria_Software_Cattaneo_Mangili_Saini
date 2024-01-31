@@ -4,13 +4,13 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-import org.jetbrains.annotations.Nullable;
 import org.jooq.DSLContext;
 import org.jooq.SQLDialect;
 import org.jooq.impl.DSL;
 
 import model.generated.tables.*;
 import model.generated.tables.records.AnagraficheRecord;
+import model.generated.tables.records.DipendenteRecord;
 import GestioneSale.db_sqlite.CreateDB;
 
 
@@ -35,10 +35,11 @@ public class DataService {
 	}
 	
 	boolean credenzialiCorrette(String id, String psw) {
-		AnagraficheRecord AnagraficaCorretta = create.selectFrom(Anagrafiche.ANAGRAFICHE).
-				where(Anagrafiche.ANAGRAFICHE.CODICE.eq(id)).fetchOne();
-		if(AnagraficaCorretta == null) return false;
-		else if(AnagraficaCorretta.)
+		DipendenteRecord DipendenteCorretto = create.selectFrom(Dipendente.DIPENDENTE).
+				where(Dipendente.DIPENDENTE.CODICE.eq(id)).fetchOne();
+		if(DipendenteCorretto == null) return false;
+		else if(psw == DipendenteCorretto.component4()) return true;
+		else return false;
 		
 	}
 
