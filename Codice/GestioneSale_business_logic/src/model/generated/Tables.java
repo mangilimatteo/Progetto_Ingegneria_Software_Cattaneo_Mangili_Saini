@@ -5,9 +5,7 @@ package model.generated;
 
 
 import model.generated.tables.Anagrafiche;
-import model.generated.tables.Interventi;
-import model.generated.tables.ListeAttesa;
-import model.generated.tables.ListeOperatorie;
+import model.generated.tables.Dipendente;
 
 
 /**
@@ -22,17 +20,7 @@ public class Tables {
     public static final Anagrafiche ANAGRAFICHE = Anagrafiche.ANAGRAFICHE;
 
     /**
-     * The table <code>INTERVENTI</code>.
+     * The table <code>DIPENDENTE</code>.
      */
-    public static final Interventi INTERVENTI = Interventi.INTERVENTI;
-
-    /**
-     * The table <code>LISTE_ATTESA</code>.
-     */
-    public static final ListeAttesa LISTE_ATTESA = ListeAttesa.LISTE_ATTESA;
-
-    /**
-     * The table <code>LISTE_OPERATORIE</code>.
-     */
-    public static final ListeOperatorie LISTE_OPERATORIE = ListeOperatorie.LISTE_OPERATORIE;
+    public static final Dipendente DIPENDENTE = Dipendente.DIPENDENTE;
 }

@@ -8,9 +8,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import model.generated.tables.Anagrafiche;
-import model.generated.tables.Interventi;
-import model.generated.tables.ListeAttesa;
-import model.generated.tables.ListeOperatorie;
+import model.generated.tables.Dipendente;
 
 import org.jooq.Catalog;
 import org.jooq.Table;
@@ -36,19 +34,9 @@ public class DefaultSchema extends SchemaImpl {
     public final Anagrafiche ANAGRAFICHE = Anagrafiche.ANAGRAFICHE;
 
     /**
-     * The table <code>INTERVENTI</code>.
+     * The table <code>DIPENDENTE</code>.
      */
-    public final Interventi INTERVENTI = Interventi.INTERVENTI;
-
-    /**
-     * The table <code>LISTE_ATTESA</code>.
-     */
-    public final ListeAttesa LISTE_ATTESA = ListeAttesa.LISTE_ATTESA;
-
-    /**
-     * The table <code>LISTE_OPERATORIE</code>.
-     */
-    public final ListeOperatorie LISTE_OPERATORIE = ListeOperatorie.LISTE_OPERATORIE;
+    public final Dipendente DIPENDENTE = Dipendente.DIPENDENTE;
 
     /**
      * No further instances allowed
@@ -67,9 +55,7 @@ public class DefaultSchema extends SchemaImpl {
     public final List<Table<?>> getTables() {
         return Arrays.asList(
             Anagrafiche.ANAGRAFICHE,
-            Interventi.INTERVENTI,
-            ListeAttesa.LISTE_ATTESA,
-            ListeOperatorie.LISTE_OPERATORIE
+            Dipendente.DIPENDENTE
         );
     }
 }

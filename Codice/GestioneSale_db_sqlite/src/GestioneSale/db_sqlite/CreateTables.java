@@ -12,9 +12,18 @@ public class CreateTables {
 			if (conn != null) {
 				Statement stmt = conn.createStatement();
 				String sql = 
+					"CREATE TABLE DIPENDENTE (" + 
+					" NOME        				TEXT NOT NULL," + 
+					" COGNOME	 				TEXT NOT NULL, " +
+					" CODICE			 		TEXT NOT NULL PRIMARY KEY, " +
+					" PASSWORD 					TEXT NOT NULL, " +
+					" RUOLO						TEXT NOT NULL, " +
+					" TELEFONO 					TEXT NOT NULL " +
+					");" +					
+						
 					"CREATE TABLE ANAGRAFICHE (" + 
 					" NOME        				TEXT NOT NULL," + 
-					" COGNOME	 				TEXT, " +
+					" COGNOME	 				TEXT NOT NULL, " +
 					" CODICE_FISCALE	 		TEXT NOT NULL PRIMARY KEY, " +
 					" DATA_NASCITA	 			TEXT NOT NULL, " +
 					" LUOGO_NASCITA	 			TEXT NOT NULL, " +
