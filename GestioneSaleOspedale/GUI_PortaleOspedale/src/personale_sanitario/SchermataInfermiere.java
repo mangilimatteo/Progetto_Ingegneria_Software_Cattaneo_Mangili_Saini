@@ -35,7 +35,7 @@ public class SchermataInfermiere extends JFrame {
 	 */
 	public SchermataInfermiere() {
 		setIconImage(Toolkit.getDefaultToolkit().getImage(SchermataInfermiere.class.getResource("/resources/LogoOspedale.png")));
-		setTitle("Portale digitale Personale Sanitario dell'ospedale [inserire nome ospedale]");
+		setTitle("Portale digitale Personale Sanitario dell'ospedale Papa Giovanni XIII");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
