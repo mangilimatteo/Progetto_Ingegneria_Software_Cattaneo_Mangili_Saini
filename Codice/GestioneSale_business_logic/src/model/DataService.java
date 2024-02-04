@@ -35,13 +35,20 @@ public class DataService {
 	}
 	
 	public boolean credenzialiCorrette(String matricola, String psw) {
-		DipendenteRecord DipendenteCorretto = create.selectFrom(Dipendente.DIPENDENTE).
-				where(Dipendente.DIPENDENTE.CODICE.eq(matricola)).fetchSingle();
-		if(DipendenteCorretto.equals(null)) return false;
-		else if(psw.equals(DipendenteCorretto.component4().toString())) return true;
-		else return false;
-		
+	    DipendenteRecord DipendenteCorretto = 
+	    		create.selectFrom(Dipendente.DIPENDENTE)
+	            .where(Dipendente.DIPENDENTE.CODICE.eq(matricola))
+	            .fetchOptional()
+	            .orElse(null);
+
+	    if (DipendenteCorretto == null) {
+	        return false;
+	    } else {
+	        String passwordCorretta = DipendenteCorretto.component4().toString();
+	        return psw.equals(passwordCorretta);
+	    }
 	}
+
 
 	public String ruoloDipendente(String matricola) {
 		

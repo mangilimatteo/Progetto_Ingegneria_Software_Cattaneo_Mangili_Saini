@@ -582,11 +582,11 @@ public class VerbalePaziente extends JFrame {
 		
 		JRadioButton rdbtnNessunOperatore = new JRadioButton("Nessun Operatore");
 		int[] nessunOperatore= {1};
-		rdbtnNessunOperatore.addItemListener(new ItemListener() {
+		/*rdbtnNessunOperatore.addItemListener(new ItemListener() {
 			public void itemStateChanged(ItemEvent e) {
 				setOpzionaleTesto(nessunOperatore,textNomeSecondoOperatore,textCognomeSecondoOperatore);
 			}
-		});
+		});*/
 		panel_2.add(rdbtnNessunOperatore);
 		
 		JLabel textTerzoOperatore = new JLabel("Terzo Operatore:");

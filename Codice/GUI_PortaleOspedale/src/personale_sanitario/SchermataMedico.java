@@ -6,6 +6,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import model.DataService;
 import paziente.PaginaAnagraficaPaziente;
 
 import javax.swing.JLabel;
@@ -19,6 +20,7 @@ public class SchermataMedico extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
+	private DataService dataService;
 
 	/**
 	 * Launch the application.
@@ -39,7 +41,10 @@ public class SchermataMedico extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public SchermataMedico() {
+	 public SchermataMedico() {
+		 
+		 dataService = new DataService();
+		
 		setIconImage(Toolkit.getDefaultToolkit().getImage(SchermataMedico.class.getResource("/resources/LogoOspedale.png")));
 		setTitle("Portale digitale Personale Sanitario dell'ospedale [inserire nome ospedale]");
 		
@@ -99,4 +104,5 @@ public class SchermataMedico extends JFrame {
 		bottoneVisualizzaVerbali.setBounds(266, 237, 221, 42);
 		contentPane.add(bottoneVisualizzaVerbali);
 	}
+
 }

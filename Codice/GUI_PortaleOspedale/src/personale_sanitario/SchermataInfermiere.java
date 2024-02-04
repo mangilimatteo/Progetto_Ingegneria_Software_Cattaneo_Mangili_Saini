@@ -5,6 +5,9 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import model.DataService;
+
 import javax.swing.JLabel;
 import java.awt.Toolkit;
 import java.awt.Font;
@@ -13,6 +16,7 @@ public class SchermataInfermiere extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
+	private DataService dataService;
 
 	/**
 	 * Launch the application.
@@ -34,6 +38,9 @@ public class SchermataInfermiere extends JFrame {
 	 * Create the frame.
 	 */
 	public SchermataInfermiere() {
+		
+		dataService = new DataService();
+
 		setIconImage(Toolkit.getDefaultToolkit().getImage(SchermataInfermiere.class.getResource("/resources/LogoOspedale.png")));
 		setTitle("Portale digitale Personale Sanitario dell'ospedale [inserire nome ospedale]");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
