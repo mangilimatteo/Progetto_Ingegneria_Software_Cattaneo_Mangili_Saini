@@ -1,6 +1,6 @@
 package GestioneSale.db_sqlite;
 
-import java.io.IOException;
+import java.io.IOException; 
 import java.sql.*;
 
 public class CreateTables {
@@ -12,15 +12,15 @@ public class CreateTables {
 			if (conn != null) {
 				Statement stmt = conn.createStatement();
 				String sql = 
-					"CREATE TABLE DIPENDENTE (" + 
+					"CREATE TABLE IF NOT EXISTS DIPENDENTE (" + 
 					" NOME        				TEXT NOT NULL," + 
 					" COGNOME	 				TEXT NOT NULL, " +
 					" CODICE			 		TEXT NOT NULL PRIMARY KEY, " +
 					" PASSWORD 					TEXT NOT NULL, " +
-					" RUOLO						TEXT NOT NULL, " +
-					");" +					
+					" RUOLO						TEXT NOT NULL " +
+					"); " +					
 						
-					"CREATE TABLE ANAGRAFICHE (" + 
+					"CREATE TABLE IF NOT EXISTS ANAGRAFICHE (" + 
 					" NOME        				TEXT NOT NULL," + 
 					" COGNOME	 				TEXT NOT NULL, " +
 					" CODICE_FISCALE	 		TEXT NOT NULL PRIMARY KEY, " +
@@ -33,7 +33,7 @@ public class CreateTables {
 					" ANAMNESI_PREGRESSA		TEXT NOT NULL " +
 					");" +
 					
-					"CREATE TABLE INTERVENTI (" + 
+					"CREATE TABLE IF NOT EXISTS INTERVENTI (" + 
 					" ID        				TEXT NOT NULL PRIMARY KEY," +
 					" PAZIENTE        			TEXT NOT NULL," +
 					" DESCRIZIONE	 			TEXT NOT NULL, " +
@@ -43,40 +43,31 @@ public class CreateTables {
 					" NOTE		 				TEXT NOT NULL, " +
 					" VIA						TEXT, " +
 					" FOREIGN KEY (PAZIENTE) REFERENCES ANAGRAFICHE(CODICE_FISCALE) " +
-					");" +
+					"); " +
 					
-					"CREATE TABLE LISTE_ATTESA (" + 
+					"CREATE TABLE IF NOT EXISTS LISTE_ATTESA (" + 
 					" INTERVENTO   				TEXT NOT NULL PRIMARY KEY," +
 					" TIPO_INTERVENTO  			TEXT NOT NULL," +
 					" TIPO_LISTA	 			TEXT NOT NULL, " +
 					" FOREIGN KEY (INTERVENTO) REFERENCES INTERVENTO(ID) " +
-					");" +
+					"); " +
 					
-					"CREATE TABLE LISTE_OPERATORIE (" + 
+					"CREATE TABLE IF NOT EXISTS LISTE_OPERATORIE (" + 
 					" INTERVENTO   				TEXT NOT NULL PRIMARY KEY," +
 					" PRIMO_OPERATORE  			TEXT NOT NULL," +
 					" GIORNO	 				TEXT NOT NULL, " +
 					" ORARIO		 			TEXT NOT NULL, " +
 					" FOREIGN KEY (INTERVENTO) REFERENCES LISTE_ATTESA(INTERVENTO) " +
-					");" +
+					"); " +
 					
-					"INSERT DIPENDENTE " +
-					"VALUES (\"Alessandro\", \"Rossi\", \"M001a\",\"psw1\", \"Medico\") " +
-				
-					"INSERT DIPENDENTE " +
-					"VALUES (\"Giorgia\", \"Renna\", \"M001b\",\"psw2\", \"Medico\") " +
-					
-					"INSERT DIPENDENTE " +
-					"VALUES (\"Marta\", \"Gelfi\", \"I001a\",\"psw3\", \"Infermiere\") " +
-					
-					"INSERT DIPENDENTE " +
-					"VALUES (\"Francesco\", \"Valli\", \"I001b\",\"psw4\", \"Infermiere\") " +
-					
-					"INSERT DIPENDENTE " +
-					"VALUES (\"Luca\", \"Zappella\", \"C001a\",\"psw5\", \"Cabina di regia\") " +
-					
-					"INSERT DIPENDENTE " +
-					"VALUES (\"Eva\", \"Capelli\", \"C001b\",\"psw6\", \"Cabina di regia\") ";
+					"INSERT INTO DIPENDENTE " +
+					" VALUES " +
+					" 	(\"Francesco\", \"Valli\", \"m001a\", \"psw1\", \"Medico\"), " +
+					" 	(\"Marta\", \"Gelfi\", \"m001b\", \"psw2\", \"Medico\"), " +
+					" 	(\"Anna\", \"Bognolo\", \"i001a\", \"psw3\", \"Infermiere\"), " +
+					" 	(\"Sara\", \"Magitteri\", \"i001b\", \"psw4\", \"Infermiere\"), " +
+					" 	(\"Yuri\", \"Carminati\", \"c001a\", \"psw5\", \"Cabina di regia\"), " +
+					" 	(\"Valerio\", \"Cattaneo\", \"c001b\", \"psw6\", \"Cabina di regia\"); ";
 					
 					
 				stmt.executeUpdate(sql);

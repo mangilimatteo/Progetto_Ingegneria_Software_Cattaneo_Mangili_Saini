@@ -7,22 +7,20 @@ package model.generated.tables;
 import java.util.function.Function;
 
 import model.generated.DefaultSchema;
-import model.generated.Keys;
 import model.generated.tables.records.DipendenteRecord;
 
 import org.jooq.Field;
 import org.jooq.ForeignKey;
-import org.jooq.Function6;
+import org.jooq.Function5;
 import org.jooq.Name;
 import org.jooq.Record;
 import org.jooq.Records;
-import org.jooq.Row6;
+import org.jooq.Row5;
 import org.jooq.Schema;
 import org.jooq.SelectField;
 import org.jooq.Table;
 import org.jooq.TableField;
 import org.jooq.TableOptions;
-import org.jooq.UniqueKey;
 import org.jooq.impl.DSL;
 import org.jooq.impl.SQLDataType;
 import org.jooq.impl.TableImpl;
@@ -74,11 +72,6 @@ public class Dipendente extends TableImpl<DipendenteRecord> {
      */
     public final TableField<DipendenteRecord, String> RUOLO = createField(DSL.name("RUOLO"), SQLDataType.CLOB.nullable(false), this, "");
 
-    /**
-     * The column <code>DIPENDENTE.TELEFONO</code>.
-     */
-    public final TableField<DipendenteRecord, String> TELEFONO = createField(DSL.name("TELEFONO"), SQLDataType.CLOB.nullable(false), this, "");
-
     private Dipendente(Name alias, Table<DipendenteRecord> aliased) {
         this(alias, aliased, null);
     }
@@ -115,11 +108,6 @@ public class Dipendente extends TableImpl<DipendenteRecord> {
     @Override
     public Schema getSchema() {
         return aliased() ? null : DefaultSchema.DEFAULT_SCHEMA;
-    }
-
-    @Override
-    public UniqueKey<DipendenteRecord> getPrimaryKey() {
-        return Keys.DIPENDENTE__PK_DIPENDENTE;
     }
 
     @Override
@@ -162,18 +150,18 @@ public class Dipendente extends TableImpl<DipendenteRecord> {
     }
 
     // -------------------------------------------------------------------------
-    // Row6 type methods
+    // Row5 type methods
     // -------------------------------------------------------------------------
 
     @Override
-    public Row6<String, String, String, String, String, String> fieldsRow() {
-        return (Row6) super.fieldsRow();
+    public Row5<String, String, String, String, String> fieldsRow() {
+        return (Row5) super.fieldsRow();
     }
 
     /**
      * Convenience mapping calling {@link SelectField#convertFrom(Function)}.
      */
-    public <U> SelectField<U> mapping(Function6<? super String, ? super String, ? super String, ? super String, ? super String, ? super String, ? extends U> from) {
+    public <U> SelectField<U> mapping(Function5<? super String, ? super String, ? super String, ? super String, ? super String, ? extends U> from) {
         return convertFrom(Records.mapping(from));
     }
 
@@ -181,7 +169,7 @@ public class Dipendente extends TableImpl<DipendenteRecord> {
      * Convenience mapping calling {@link SelectField#convertFrom(Class,
      * Function)}.
      */
-    public <U> SelectField<U> mapping(Class<U> toType, Function6<? super String, ? super String, ? super String, ? super String, ? super String, ? super String, ? extends U> from) {
+    public <U> SelectField<U> mapping(Class<U> toType, Function5<? super String, ? super String, ? super String, ? super String, ? super String, ? extends U> from) {
         return convertFrom(toType, Records.mapping(from));
     }
 }

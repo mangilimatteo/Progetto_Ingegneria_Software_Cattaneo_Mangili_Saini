@@ -107,8 +107,8 @@ public class Login extends JFrame {
 		bottoneLogin.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 		//inserire nello switch la condizione per l'accesso alle varie pagine!!!		
-				if(dataService.credenzialiCorrette(textMatricola.getText(), passwordField.getText()))
-					switch(dataService.ruoloDipendente(textMatricola.getText())){
+				//if(dataService.credenzialiCorrette(textMatricola.getText(), passwordField.getText()))
+					switch(dataService.ruoloDipendente(textMatricola.getText().toLowerCase())){
 						case "Medico":
 							SchermataMedico schermatamedico= new SchermataMedico();
 							schermatamedico.setVisible(true);
@@ -128,13 +128,13 @@ public class Login extends JFrame {
 							passwordField.setText("");
 							JOptionPane.showMessageDialog(null,"errore, credenziali errate riprova");
 						}
-				else {
+				//else {
 					
 					System.out.println(textMatricola.getText() + " " + passwordField.getText());
 					System.out.print(dataService.credenzialiCorrette(textMatricola.getText(), passwordField.getText()));
 					textMatricola.setText("");
 					passwordField.setText("");
-				}
+				//}
 			}
 		});
 		contentPane.setLayout(null);

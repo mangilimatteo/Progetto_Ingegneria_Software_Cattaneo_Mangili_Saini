@@ -46,7 +46,7 @@ public class DataService {
 	public String ruoloDipendente(String matricola) {
 		
 		return create.selectFrom(Dipendente.DIPENDENTE).
-				where(Dipendente.DIPENDENTE.CODICE.eq(matricola)).fetchOne().component5();
+				where(Dipendente.DIPENDENTE.CODICE.eq(matricola)).fetchSingle().component5();
 	}
 
 

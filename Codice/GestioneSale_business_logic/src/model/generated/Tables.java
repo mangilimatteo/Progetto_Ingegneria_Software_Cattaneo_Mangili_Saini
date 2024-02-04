@@ -6,6 +6,9 @@ package model.generated;
 
 import model.generated.tables.Anagrafiche;
 import model.generated.tables.Dipendente;
+import model.generated.tables.Interventi;
+import model.generated.tables.ListeAttesa;
+import model.generated.tables.ListeOperatorie;
 
 
 /**
@@ -23,4 +26,19 @@ public class Tables {
      * The table <code>DIPENDENTE</code>.
      */
     public static final Dipendente DIPENDENTE = Dipendente.DIPENDENTE;
+
+    /**
+     * The table <code>INTERVENTI</code>.
+     */
+    public static final Interventi INTERVENTI = Interventi.INTERVENTI;
+
+    /**
+     * The table <code>LISTE_ATTESA</code>.
+     */
+    public static final ListeAttesa LISTE_ATTESA = ListeAttesa.LISTE_ATTESA;
+
+    /**
+     * The table <code>LISTE_OPERATORIE</code>.
+     */
+    public static final ListeOperatorie LISTE_OPERATORIE = ListeOperatorie.LISTE_OPERATORIE;
 }
