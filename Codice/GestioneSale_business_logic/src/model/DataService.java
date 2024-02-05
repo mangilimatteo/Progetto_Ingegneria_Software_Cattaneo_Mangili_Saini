@@ -79,4 +79,20 @@ public class DataService {
 		return create.selectFrom(Dipendente.DIPENDENTE).
 				where(Dipendente.DIPENDENTE.MATRICOLA.eq(matricola)).fetchSingle().component2(); 
 	}
+	
+	
+	
+	//controlla se la matricola ha un valore nullo e crea una nuova matricola in modo sequenziale
+	public String getCodiceAnagrafica(String codiceAnagrafica) {
+		if(codiceAnagrafica.equals("")){
+			return create.select(coalesce(max(Anagrafica.MATRICOLA.cast(Integer.class)), 0).plus(1).as("nuovaMatricola"))
+				    .from(Anagrafica)
+				    .fetchOne()
+				    .getValue("nuovaMatricola", String.class);
+		}
+		else return codiceAnagrafica;
+	}
+
 }
+	
+	

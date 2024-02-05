@@ -25,14 +25,16 @@ public class CreateTables {
 					" NOME        				TEXT NOT NULL," + 
 					" COGNOME	 				TEXT NOT NULL, " +
 					" CODICE_FISCALE	 		TEXT NOT NULL, " +
-					" DATA_NASCITA	 			TEXT NOT NULL, " +
+					" GIORNO_NASCITA	 		TEXT NOT NULL, " +
+					" MESE_NASCITA		 		TEXT NOT NULL, " +
+					" ANNO_NASCITA		 		TEXT NOT NULL, " +
 					" LUOGO_NASCITA	 			TEXT NOT NULL, " +
 					" CITTA		 				TEXT NOT NULL, " +
-					" VIA						TEXT NOT NULL, " +
+					" INDIRIZZO					TEXT NOT NULL, " +
 					" TELEFONO					TEXT NOT NULL, " +
 					" EMAIL						TEXT NOT NULL, " +
 					" DIAGNOSI			 		TEXT NOT NULL, " +
-					" DESCRIZIONE	 			TEXT NOT NULL, " +
+					" INTERVENTO	 			TEXT NOT NULL, " +
 					" ANAMNESI_PREGRESSA		TEXT NOT NULL, " +
 					" ANAMNESI_PROSSIMA			TEXT NOT NULL, " +
 					" TEMPO ATTESA	 			TEXT NOT NULL, " +

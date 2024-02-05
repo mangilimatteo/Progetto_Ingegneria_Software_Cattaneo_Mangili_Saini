@@ -34,8 +34,9 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
 import model.DataService;
+import personale_sanitario.SchermataMedico;
 
-public class PaginaAnagraficaPaziente extends JFrame {
+public class ModificaPaginaAnagrafica extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
@@ -50,27 +51,24 @@ public class PaginaAnagraficaPaziente extends JFrame {
 	private JTextField textNomeMedico;
 	private JTextField textCognomeMedico;
 	private JTextField textMatricolaMedico;
-	private JSpinner spinnerTempodiAttesaPaziente;
+	private JTextField textTempodiAttesaPaziente;
 	private JTextArea textAnamnesiProssimaPaziente;
 	private JTextArea textAnamnesiPregressaPaziente;
 	private JTextArea textInterventoPaziente;
 	private JTextArea textDiagnosiPaziente;
-	private JSpinner spinnerGiorno;
-	private JSpinner spinnerMese;
-	private JSpinner spinnerAnno;
+	private JTextField textDataNascitaPaziente;
 	private JButton bottoneSalva;
 	private JButton bottoneModifica;
 	private JTextArea textNotePaziente;
 	
+	private String[] valori;
 	private DataService dataService;
-	private String matricolaMedico;
-
 
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					PaginaAnagraficaPaziente frame = new PaginaAnagraficaPaziente("m001a", false);
+					VisualizzazionePaginaAnagrafica frame = new VisualizzazionePaginaAnagrafica("m001a");
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -80,10 +78,10 @@ public class PaginaAnagraficaPaziente extends JFrame {
 	}
 
 	
-	public PaginaAnagraficaPaziente(String matricolaMedico, boolean modifica) {
+	public ModificaPaginaAnagrafica(String codiceAnagrafica) {
 		
 		dataService = new DataService();
-		this.matricolaMedico = matricolaMedico;
+		valori = getValori
 		
 		setIconImage(Toolkit.getDefaultToolkit().getImage(PaginaAnagraficaPaziente.class.getResource("/resources/LogoOspedale.png")));
 		setTitle("Portale digitale Personale Sanitario dell'ospedale Papa Giovanni XIII");
@@ -100,7 +98,7 @@ public class PaginaAnagraficaPaziente extends JFrame {
 		gbl_contentPane.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 1.0, 0.0, 1.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 1.0, Double.MIN_VALUE};
 		contentPane.setLayout(gbl_contentPane);
 		
-		JLabel textPaginaAnagrafica = new JLabel("Pagaina anagrafica paziente");
+		JLabel textPaginaAnagrafica = new JLabel("Pagina anagrafica paziente");
 		textPaginaAnagrafica.setFont(new Font("Arial", Font.BOLD, 16));
 		GridBagConstraints gbc_textPaginaAnagrafica = new GridBagConstraints();
 		gbc_textPaginaAnagrafica.gridwidth = 3;
@@ -122,7 +120,7 @@ public class PaginaAnagraficaPaziente extends JFrame {
 		
 		//ATTENZIONE creare un metodo per settare il nome del paziente all'accesso se proviene da buttone di visualizza e non di crea pagina anagrafica e cosi per ogni dato!!!
 		textNomePaziente = new JTextField();
-		textNomePaziente.setText("aaa");
+		textNomePaziente.setText(valori[1]);
 		textNomePaziente.setHorizontalAlignment(SwingConstants.LEFT);
 		textNomePaziente.setEditable(false);
 		textNomePaziente.setFont(new Font("Arial", Font.PLAIN, 14));
@@ -145,7 +143,7 @@ public class PaginaAnagraficaPaziente extends JFrame {
 		contentPane.add(textCognome, gbc_textCognome);
 		
 		textCognomePaziente = new JTextField();
-		textCognomePaziente.setText("aaa");
+		textCognomePaziente.setText(valori[2]);
 		textCognomePaziente.setHorizontalAlignment(SwingConstants.LEFT);
 		textCognomePaziente.setFont(new Font("Arial", Font.PLAIN, 14));
 		textCognomePaziente.setEditable(false);
@@ -168,7 +166,7 @@ public class PaginaAnagraficaPaziente extends JFrame {
 		contentPane.add(textCodiceFiscale, gbc_textCodiceFiscale);
 		
 		textCodiceFiscalePaziente = new JTextField();
-		textCodiceFiscalePaziente.setText("aaa");
+		textCodiceFiscalePaziente.setText(valori[3]);
 		textCodiceFiscalePaziente.setHorizontalAlignment(SwingConstants.LEFT);
 		textCodiceFiscalePaziente.setFont(new Font("Arial", Font.PLAIN, 14));
 		textCodiceFiscalePaziente.setEditable(false);
@@ -181,41 +179,28 @@ public class PaginaAnagraficaPaziente extends JFrame {
 		gbc_textCodiceFiscalePaziente.gridy = 4;
 		contentPane.add(textCodiceFiscalePaziente, gbc_textCodiceFiscalePaziente);
 		
-		JLabel textDatadiNascita = new JLabel("Data di Nascita (gg/mm/aa):");
-		textDatadiNascita.setFont(new Font("Arial", Font.BOLD, 16));
-		GridBagConstraints gbc_textDatadiNascita = new GridBagConstraints();
-		gbc_textDatadiNascita.anchor = GridBagConstraints.WEST;
-		gbc_textDatadiNascita.insets = new Insets(0, 0, 5, 5);
-		gbc_textDatadiNascita.gridx = 0;
-		gbc_textDatadiNascita.gridy = 5;
-		contentPane.add(textDatadiNascita, gbc_textDatadiNascita);
+		JLabel textDataNascita = new JLabel("Data di Nascita (gg/mm/aa):");
+		textDataNascita.setFont(new Font("Arial", Font.BOLD, 16));
+		GridBagConstraints gbc_textDataNascita = new GridBagConstraints();
+		gbc_textDataNascita.anchor = GridBagConstraints.WEST;
+		gbc_textDataNascita.insets = new Insets(0, 0, 5, 5);
+		gbc_textDataNascita.gridx = 0;
+		gbc_textDataNascita.gridy = 5;
+		contentPane.add(textDataNascita, gbc_textDataNascita);
 		
-		JPanel Data = new JPanel();
-		GridBagConstraints gbc_Data = new GridBagConstraints();
-		gbc_Data.anchor = GridBagConstraints.WEST;
-		gbc_Data.insets = new Insets(0, 0, 5, 5);
-		gbc_Data.gridx = 2;
-		gbc_Data.gridy = 5;
-		contentPane.add(Data, gbc_Data);
-		Data.setLayout(new BoxLayout(Data, BoxLayout.X_AXIS));
-		
-		spinnerGiorno = new JSpinner();
-		Data.add(spinnerGiorno);
-		spinnerGiorno.setEnabled(false);
-		spinnerGiorno.setModel(new SpinnerNumberModel(1, 1, 31, 1));
-		spinnerGiorno.setFont(new Font("Arial", Font.BOLD, 14));
-		
-		spinnerMese = new JSpinner();
-		spinnerMese.setModel(new SpinnerNumberModel(1, 1, 12, 1));
-		spinnerMese.setFont(new Font("Arial", Font.BOLD, 14));
-		spinnerMese.setEnabled(false);
-		Data.add(spinnerMese);
-		
-		spinnerAnno = new JSpinner();
-		spinnerAnno.setModel(new SpinnerNumberModel(Integer.valueOf(1800), Integer.valueOf(1800), null, Integer.valueOf(1)));
-		spinnerAnno.setFont(new Font("Arial", Font.BOLD, 14));
-		spinnerAnno.setEnabled(false);
-		Data.add(spinnerAnno);
+		textDataNascitaPaziente = new JTextField();
+		textDataNascitaPaziente.setText(valori[4] + "/" + valori[5] + "/" + valori[6]);
+		textDataNascitaPaziente.setHorizontalAlignment(SwingConstants.LEFT);
+		textDataNascitaPaziente.setFont(new Font("Arial", Font.PLAIN, 14));
+		textDataNascitaPaziente.setEditable(false);
+		textDataNascitaPaziente.setColumns(10);
+		GridBagConstraints gbc_textDatadiNascitaPaziente = new GridBagConstraints();
+		gbc_textDatadiNascitaPaziente.fill = GridBagConstraints.HORIZONTAL;
+		gbc_textDatadiNascitaPaziente.anchor = GridBagConstraints.NORTH;
+		gbc_textDatadiNascitaPaziente.insets = new Insets(0, 0, 5, 5);
+		gbc_textDatadiNascitaPaziente.gridx = 2;
+		gbc_textDatadiNascitaPaziente.gridy = 4;
+		contentPane.add(textDataNascitaPaziente, gbc_textDatadiNascitaPaziente);
 		
 		JLabel textLuogodiNascita = new JLabel("Luogo di Nascita:");
 		textLuogodiNascita.setHorizontalAlignment(SwingConstants.LEFT);
@@ -228,7 +213,7 @@ public class PaginaAnagraficaPaziente extends JFrame {
 		contentPane.add(textLuogodiNascita, gbc_textLuogodiNascita);
 		
 		textLuogodiNascitaPaziente = new JTextField();
-		textLuogodiNascitaPaziente.setText("(paese)");
+		textLuogodiNascitaPaziente.setText(valori[7]);
 		textLuogodiNascitaPaziente.setHorizontalAlignment(SwingConstants.LEFT);
 		textLuogodiNascitaPaziente.setForeground(Color.BLACK);
 		textLuogodiNascitaPaziente.setFont(new Font("Arial", Font.PLAIN, 14));
@@ -252,7 +237,7 @@ public class PaginaAnagraficaPaziente extends JFrame {
 		contentPane.add(textCitta, gbc_textCitta);
 		
 		textCittaPaziente = new JTextField();
-		textCittaPaziente.setText("(citta')");
+		textCittaPaziente.setText(valori[8]);
 		textCittaPaziente.setHorizontalAlignment(SwingConstants.LEFT);
 		textCittaPaziente.setForeground(Color.BLACK);
 		textCittaPaziente.setFont(new Font("Arial", Font.PLAIN, 14));
@@ -276,7 +261,7 @@ public class PaginaAnagraficaPaziente extends JFrame {
 		contentPane.add(textIndirizzo, gbc_textIndirizzo);
 		
 		textIndirizzoPaziente = new JTextField();
-		textIndirizzoPaziente.setText("(via, numero)");
+		textIndirizzoPaziente.setText(valori[9]);
 		textIndirizzoPaziente.setHorizontalAlignment(SwingConstants.LEFT);
 		textIndirizzoPaziente.setForeground(Color.BLACK);
 		textIndirizzoPaziente.setFont(new Font("Arial", Font.PLAIN, 14));
@@ -301,6 +286,7 @@ public class PaginaAnagraficaPaziente extends JFrame {
 		contentPane.add(textNumerodiTelefono, gbc_textNumerodiTelefono);
 		
 		textNumeroTelefonoPaziente = new JTextField();
+		textNumeroTelefonoPaziente.setText(valori[10]);
 		textNumeroTelefonoPaziente.setHorizontalAlignment(SwingConstants.LEFT);
 		textNumeroTelefonoPaziente.setForeground(Color.BLACK);
 		textNumeroTelefonoPaziente.setFont(new Font("Arial", Font.PLAIN, 14));
@@ -324,6 +310,7 @@ public class PaginaAnagraficaPaziente extends JFrame {
 		contentPane.add(textEmail, gbc_textEmail);
 		
 		textEmailPaziente = new JTextField();
+		textEmailPaziente.setText(valori[11]);
 		textEmailPaziente.setHorizontalAlignment(SwingConstants.LEFT);
 		textEmailPaziente.setForeground(Color.BLACK);
 		textEmailPaziente.setFont(new Font("Arial", Font.PLAIN, 14));
@@ -347,6 +334,7 @@ public class PaginaAnagraficaPaziente extends JFrame {
 		contentPane.add(textDiagnosi, gbc_textDiagnosi);
 		
 		textDiagnosiPaziente = new JTextArea();
+		textDiagnosiPaziente.setText(valori[12]);
 		textDiagnosiPaziente.setFont(new Font("Arial", Font.PLAIN, 14));
 		textDiagnosiPaziente.setEditable(false);
 		GridBagConstraints gbc_textDiagnosiPaziente = new GridBagConstraints();
@@ -368,6 +356,7 @@ public class PaginaAnagraficaPaziente extends JFrame {
 		contentPane.add(textIntervento, gbc_textIntervento);
 		
 		textInterventoPaziente = new JTextArea();
+		textInterventoPaziente.setText(valori[13]);
 		textInterventoPaziente.addKeyListener(new KeyAdapter() {
 			public void keyPressed(KeyEvent e) {
 				saveNomeMedico();
@@ -394,6 +383,7 @@ public class PaginaAnagraficaPaziente extends JFrame {
 		contentPane.add(textAnamnesiPregressa, gbc_textAnamnesiPregressa);
 		
 		textAnamnesiPregressaPaziente = new JTextArea();
+		textAnamnesiPregressaPaziente.setText(valori[14]);
 		textAnamnesiPregressaPaziente.setFont(new Font("Arial", Font.PLAIN, 14));
 		textAnamnesiPregressaPaziente.setEditable(false);
 		GridBagConstraints gbc_textAnamnesiPregressaPaziente = new GridBagConstraints();
@@ -415,6 +405,7 @@ public class PaginaAnagraficaPaziente extends JFrame {
 		contentPane.add(textAnamnesiPossima, gbc_textAnamnesiPossima);
 		
 		textAnamnesiProssimaPaziente = new JTextArea();
+		textAnamnesiProssimaPaziente.setText(valori[15]);
 		textAnamnesiProssimaPaziente.setFont(new Font("Arial", Font.PLAIN, 14));
 		textAnamnesiProssimaPaziente.setEditable(false);
 		GridBagConstraints gbc_textAnamnesiProssimaPaziente = new GridBagConstraints();
@@ -435,16 +426,16 @@ public class PaginaAnagraficaPaziente extends JFrame {
 		gbc_textTempodiAttesa.gridy = 19;
 		contentPane.add(textTempodiAttesa, gbc_textTempodiAttesa);
 		
-		spinnerTempodiAttesaPaziente = new JSpinner();
-		spinnerTempodiAttesaPaziente.setEnabled(false);
-		spinnerTempodiAttesaPaziente.setFont(new Font("Arial", Font.BOLD, 14));
-		spinnerTempodiAttesaPaziente.setModel(new SpinnerListModel(new String[] {"-", "A", "B", "C", "D"}));
-		GridBagConstraints gbc_spinnerTempodiAttesaPaziente = new GridBagConstraints();
-		gbc_spinnerTempodiAttesaPaziente.fill = GridBagConstraints.HORIZONTAL;
-		gbc_spinnerTempodiAttesaPaziente.insets = new Insets(0, 0, 5, 5);
-		gbc_spinnerTempodiAttesaPaziente.gridx = 2;
-		gbc_spinnerTempodiAttesaPaziente.gridy = 19;
-		contentPane.add(spinnerTempodiAttesaPaziente, gbc_spinnerTempodiAttesaPaziente);
+		textTempodiAttesaPaziente = new JTextField();
+		textTempodiAttesaPaziente.setText(valori[16]);
+		textTempodiAttesaPaziente.setEnabled(false);
+		textTempodiAttesaPaziente.setFont(new Font("Arial", Font.BOLD, 14));
+		GridBagConstraints gbc_textTempodiAttesaPaziente = new GridBagConstraints();
+		gbc_textTempodiAttesaPaziente.fill = GridBagConstraints.HORIZONTAL;
+		gbc_textTempodiAttesaPaziente.insets = new Insets(0, 0, 5, 5);
+		gbc_textTempodiAttesaPaziente.gridx = 2;
+		gbc_textTempodiAttesaPaziente.gridy = 19;
+		contentPane.add(textTempodiAttesaPaziente, gbc_textTempodiAttesaPaziente);
 		
 		JLabel textDatiMedico = new JLabel("Dati medico che ha richiesto intervento");
 		textDatiMedico.setFont(new Font("Arial", Font.BOLD, 16));
@@ -466,7 +457,7 @@ public class PaginaAnagraficaPaziente extends JFrame {
 		contentPane.add(textNome_1, gbc_textNome_1);
 		
 		textNomeMedico = new JTextField();
-		textNomeMedico.setText(dataService.getNomeDipendente(matricolaMedico));
+		textNomeMedico.setText(dataService.getNomeDipendente(valori[17]));
 		textNomeMedico.setHorizontalAlignment(SwingConstants.LEFT);
 		textNomeMedico.setFont(new Font("Arial", Font.PLAIN, 14));
 		textNomeMedico.setEditable(false);
@@ -488,7 +479,7 @@ public class PaginaAnagraficaPaziente extends JFrame {
 		contentPane.add(textCognome_1, gbc_textCognome_1);
 		
 		textCognomeMedico = new JTextField();
-		textCognomeMedico.setText(dataService.getCognomeDipendente(matricolaMedico));
+		textCognomeMedico.setText(dataService.getCognomeDipendente(valori[17]));
 		textCognomeMedico.setHorizontalAlignment(SwingConstants.LEFT);
 		textCognomeMedico.setFont(new Font("Arial", Font.PLAIN, 14));
 		textCognomeMedico.setEditable(false);
@@ -510,7 +501,7 @@ public class PaginaAnagraficaPaziente extends JFrame {
 		contentPane.add(textMatricola, gbc_textMatricola);
 		
 		textMatricolaMedico = new JTextField();
-		textMatricolaMedico.setText(matricolaMedico);
+		textMatricolaMedico.setText(valori[17]);
 		textMatricolaMedico.setHorizontalAlignment(SwingConstants.LEFT);
 		textMatricolaMedico.setFont(new Font("Arial", Font.PLAIN, 14));
 		textMatricolaMedico.setEditable(false);
@@ -536,11 +527,12 @@ public class PaginaAnagraficaPaziente extends JFrame {
 		bottoneModifica = new JButton("Modifica");
 		bottoneModifica.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				enableModifica();
+				enableModifica(valori[0]);
 			}
 		});
 		
 		textNotePaziente = new JTextArea();
+		textNotePaziente.setText(valori[18]);
 		textNotePaziente.setFont(new Font("Arial", Font.PLAIN, 14));
 		textNotePaziente.setEditable(false);
 		GridBagConstraints gbc_textNotePaziente = new GridBagConstraints();
@@ -557,15 +549,7 @@ public class PaginaAnagraficaPaziente extends JFrame {
 		gbc_bottoneModifica.gridy = 28;
 		contentPane.add(bottoneModifica, gbc_bottoneModifica);
 		
-		
-		bottoneSalva = new JButton("Salva");
-		bottoneSalva.setVisible(false);
-		bottoneSalva.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				saveModifica();
-			}
-		});
-		
+
 		bottoneSalva.setFont(new Font("Arial", Font.PLAIN, 14));
 		GridBagConstraints gbc_bottoneConferma = new GridBagConstraints();
 		gbc_bottoneConferma.anchor = GridBagConstraints.WEST;
@@ -574,90 +558,10 @@ public class PaginaAnagraficaPaziente extends JFrame {
 		gbc_bottoneConferma.gridx = 1;
 		gbc_bottoneConferma.gridy = 28;
 		contentPane.add(bottoneSalva, gbc_bottoneConferma);
-		
-		//se la pagina deve essere aperta per essere modificata viene richiamato il metodo per farlo
-		if(modifica) { 
-			enableModifica();
-		}
-		
-		
+				
 		
 	}
 	
-	//questo metodo salva conferma le modifiche
-	void saveModifica() {
-		
-		/*int errore = dataService.salvaAnagrafica(
-				textNomePaziente.getText(),
-				textCognomePaziente.getText(),
-				textCodiceFiscalePaziente.getText(),
-				textLuogodiNascitaPaziente.getText(),
-				textCittaPaziente.getText(),
-				textIndirizzoPaziente.getText(),
-				textNumeroTelefonoPaziente.getText(),
-				textEmailPaziente.getText(),
-				textMatricolaMedico.getText(),
-				spinnerTempodiAttesaPaziente.getValue().toString(),
-				textAnamnesiProssimaPaziente.getText(),
-				textAnamnesiPregressaPaziente.getText(),
-				textInterventoPaziente.getText(),
-				textDiagnosiPaziente.getText(),
-				spinnerGiorno.getValue().toString(),
-				spinnerMese.getValue().toString(),
-				spinnerAnno.getValue().toString(),
-				textNotePaziente.getText()
-				);
-		
-		if(errore == 0) {*/
-			textNomePaziente.setEditable(false);
-			textCognomePaziente.setEditable(false);
-			textCodiceFiscalePaziente.setEditable(false);
-			spinnerGiorno.setEnabled(false);
-			spinnerMese.setEnabled(false);
-			spinnerAnno.setEnabled(false);
-			textNumeroTelefonoPaziente.setEditable(false);
-			textCittaPaziente.setEditable(false);
-			textEmailPaziente.setEditable(false);
-			textDiagnosiPaziente.setEditable(false);
-			textLuogodiNascitaPaziente.setEditable(false);
-			textInterventoPaziente.setEditable(false);
-			textAnamnesiPregressaPaziente.setEditable(false);
-			textAnamnesiProssimaPaziente.setEditable(false);
-			spinnerTempodiAttesaPaziente.setEnabled(false);
-			bottoneSalva.setVisible(false);
-			bottoneModifica.setEnabled(true);  
-			textNotePaziente.setEditable(false);
-		//}
-		
-	}
+
 	
-	
-	//questo metodo abilita alle modifiche
-	void enableModifica() {
-		textNomePaziente.setEditable(true);
-		textCognomePaziente.setEditable(true);
-		textCodiceFiscalePaziente.setEditable(true);
-		spinnerGiorno.setEnabled(true);
-		spinnerMese.setEnabled(true);
-		spinnerAnno.setEnabled(true);
-		textNumeroTelefonoPaziente.setEditable(true);
-		textCittaPaziente.setEditable(true);
-		textEmailPaziente.setEditable(true);
-		textDiagnosiPaziente.setEditable(true);
-		textLuogodiNascitaPaziente.setEditable(true);
-		textInterventoPaziente.setEditable(true);
-		textAnamnesiPregressaPaziente.setEditable(true);
-		textAnamnesiProssimaPaziente.setEditable(true);
-		spinnerTempodiAttesaPaziente.setEnabled(true);
-		bottoneSalva.setVisible(true);
-		bottoneModifica.setEnabled(false);
-		textNotePaziente.setEditable(true);		
-	}
-	
-	//ATTENZIONE!!!(collegare al DB)questo metodo modifica i dati del medico che ha modificato "intervento"
-	void saveNomeMedico() {
-		textNomeMedico.setText("ciao");
-		textCognomeMedico.setText("ciao");
-		textMatricolaMedico.setText("ciao");
-	}
 }
