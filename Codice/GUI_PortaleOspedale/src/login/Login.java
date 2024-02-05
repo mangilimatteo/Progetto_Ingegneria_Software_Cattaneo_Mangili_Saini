@@ -1,6 +1,6 @@
 package login;
 
-import java.awt.EventQueue;
+import java.awt.EventQueue; 
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -117,21 +117,22 @@ public class Login extends JFrame {
 	@SuppressWarnings("deprecation")
 	//inserire nello switch la condizione per l'accesso alle varie pagine!!!		
 	void effettuaLogin(){
-		if(dataService.credenzialiCorrette(textMatricola.getText(), passwordField.getText())) {
+		String matricola = textMatricola.getText();
+		if(dataService.credenzialiCorrette(matricola, passwordField.getPassword())) {
 			String ruolo = dataService.ruoloDipendente(textMatricola.getText().toLowerCase());
 			switch(ruolo){
 				case "Medico":
-					SchermataMedico schermatamedico= new SchermataMedico();
+					SchermataMedico schermatamedico= new SchermataMedico(matricola);
 					schermatamedico.setVisible(true);
 					dispose();
 					break;
 				case "Infermiere":
-					SchermataInfermiere schermatainfermiere= new SchermataInfermiere();
+					SchermataInfermiere schermatainfermiere= new SchermataInfermiere(matricola);
 					schermatainfermiere.setVisible(true);
 					dispose();
 					break;
 				case "Cabina di regia":
-					SchermataCabinadiregia schermatacabinadiregia= new SchermataCabinadiregia();
+					SchermataCabinadiregia schermatacabinadiregia= new SchermataCabinadiregia(matricola);
 					schermatacabinadiregia.setVisible(true);
 					dispose();
 				}

@@ -20,6 +20,7 @@ public class SchermataMedico extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
+	private String matricolaMedico;
 	private DataService dataService;
 
 	/**
@@ -29,7 +30,7 @@ public class SchermataMedico extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					SchermataMedico frame = new SchermataMedico();
+					SchermataMedico frame = new SchermataMedico("m001a");
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -41,9 +42,10 @@ public class SchermataMedico extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	 public SchermataMedico() {
-		 
-		 dataService = new DataService();
+	public SchermataMedico(String matricolaMedico) {
+		
+		this.matricolaMedico=matricolaMedico;
+		dataService = new DataService();
 		
 		setIconImage(Toolkit.getDefaultToolkit().getImage(SchermataMedico.class.getResource("/resources/LogoOspedale.png")));
 		setTitle("Portale digitale Personale Sanitario dell'ospedale [inserire nome ospedale]");
@@ -63,7 +65,7 @@ public class SchermataMedico extends JFrame {
 		
 		JLabel textNomeMedico = new JLabel("Dottore:");
 		//ATTENZIONE inserire modo per associare nome+cognome del medico all'accesso della pagina!!!
-		textNomeMedico.setText("ciao");
+		textNomeMedico.setText(dataService.getNomeDipendente(matricolaMedico) + " " + dataService.getCognomeDipendente(matricolaMedico));
 		textNomeMedico.setFont(new Font("Arial", Font.BOLD, 16));
 		textNomeMedico.setBounds(77, 11, 477, 42);
 		contentPane.add(textNomeMedico);
@@ -71,7 +73,8 @@ public class SchermataMedico extends JFrame {
 		JButton bottoneRegistraPaziente = new JButton("Registra Paziente");
 		bottoneRegistraPaziente.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				PaginaAnagraficaPaziente paginaanagraficapaziente= new PaginaAnagraficaPaziente();
+				//si apre la pagina anagrafica già modificabile
+				PaginaAnagraficaPaziente paginaanagraficapaziente= new PaginaAnagraficaPaziente(matricolaMedico, true);
 				paginaanagraficapaziente.setVisible(true);
 			}
 		});
@@ -104,5 +107,4 @@ public class SchermataMedico extends JFrame {
 		bottoneVisualizzaVerbali.setBounds(266, 237, 221, 42);
 		contentPane.add(bottoneVisualizzaVerbali);
 	}
-
 }

@@ -58,9 +58,9 @@ public class Dipendente extends TableImpl<DipendenteRecord> {
     public final TableField<DipendenteRecord, String> COGNOME = createField(DSL.name("COGNOME"), SQLDataType.CLOB.nullable(false), this, "");
 
     /**
-     * The column <code>DIPENDENTE.CODICE</code>.
+     * The column <code>DIPENDENTE.MATRICOLA</code>.
      */
-    public final TableField<DipendenteRecord, String> CODICE = createField(DSL.name("CODICE"), SQLDataType.CLOB.nullable(false), this, "");
+    public final TableField<DipendenteRecord, String> MATRICOLA = createField(DSL.name("MATRICOLA"), SQLDataType.CLOB.nullable(false), this, "");
 
     /**
      * The column <code>DIPENDENTE.PASSWORD</code>.

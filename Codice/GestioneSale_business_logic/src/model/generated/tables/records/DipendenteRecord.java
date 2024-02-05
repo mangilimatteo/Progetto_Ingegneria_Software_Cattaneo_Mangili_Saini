@@ -49,16 +49,16 @@ public class DipendenteRecord extends TableRecordImpl<DipendenteRecord> implemen
     }
 
     /**
-     * Setter for <code>DIPENDENTE.CODICE</code>.
+     * Setter for <code>DIPENDENTE.MATRICOLA</code>.
      */
-    public void setCodice(String value) {
+    public void setMatricola(String value) {
         set(2, value);
     }
 
     /**
-     * Getter for <code>DIPENDENTE.CODICE</code>.
+     * Getter for <code>DIPENDENTE.MATRICOLA</code>.
      */
-    public String getCodice() {
+    public String getMatricola() {
         return (String) get(2);
     }
 
@@ -116,7 +116,7 @@ public class DipendenteRecord extends TableRecordImpl<DipendenteRecord> implemen
 
     @Override
     public Field<String> field3() {
-        return Dipendente.DIPENDENTE.CODICE;
+        return Dipendente.DIPENDENTE.MATRICOLA;
     }
 
     @Override
@@ -141,7 +141,7 @@ public class DipendenteRecord extends TableRecordImpl<DipendenteRecord> implemen
 
     @Override
     public String component3() {
-        return getCodice();
+        return getMatricola();
     }
 
     @Override
@@ -166,7 +166,7 @@ public class DipendenteRecord extends TableRecordImpl<DipendenteRecord> implemen
 
     @Override
     public String value3() {
-        return getCodice();
+        return getMatricola();
     }
 
     @Override
@@ -193,7 +193,7 @@ public class DipendenteRecord extends TableRecordImpl<DipendenteRecord> implemen
 
     @Override
     public DipendenteRecord value3(String value) {
-        setCodice(value);
+        setMatricola(value);
         return this;
     }
 
@@ -233,12 +233,12 @@ public class DipendenteRecord extends TableRecordImpl<DipendenteRecord> implemen
     /**
      * Create a detached, initialised DipendenteRecord
      */
-    public DipendenteRecord(String nome, String cognome, String codice, String password, String ruolo) {
+    public DipendenteRecord(String nome, String cognome, String matricola, String password, String ruolo) {
         super(Dipendente.DIPENDENTE);
 
         setNome(nome);
         setCognome(cognome);
-        setCodice(codice);
+        setMatricola(matricola);
         setPassword(password);
         setRuolo(ruolo);
         resetChangedOnNotNull();
