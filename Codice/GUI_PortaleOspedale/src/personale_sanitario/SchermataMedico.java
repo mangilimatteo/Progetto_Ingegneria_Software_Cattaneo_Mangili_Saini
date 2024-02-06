@@ -1,13 +1,13 @@
 package personale_sanitario;
 
-import java.awt.EventQueue;
+import java.awt.EventQueue; 
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import model.DataService;
-import paziente.PaginaAnagraficaPaziente;
+import paziente.*;
 
 import javax.swing.JLabel;
 import java.awt.Font;
@@ -20,7 +20,6 @@ public class SchermataMedico extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
-	private String matricolaMedico;
 	private DataService dataService;
 
 	/**
@@ -44,7 +43,6 @@ public class SchermataMedico extends JFrame {
 	 */
 	public SchermataMedico(String matricolaMedico) {
 		
-		this.matricolaMedico=matricolaMedico;
 		dataService = new DataService();
 		
 		setIconImage(Toolkit.getDefaultToolkit().getImage(SchermataMedico.class.getResource("/resources/LogoOspedale.png")));
@@ -74,7 +72,7 @@ public class SchermataMedico extends JFrame {
 		bottoneRegistraPaziente.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				//si apre la pagina anagrafica già modificabile
-				PaginaAnagraficaPaziente paginaanagraficapaziente= new PaginaAnagraficaPaziente(matricolaMedico, true);
+				ModificaPaginaAnagrafica paginaanagraficapaziente= new ModificaPaginaAnagrafica("", matricolaMedico);
 				paginaanagraficapaziente.setVisible(true);
 			}
 		});

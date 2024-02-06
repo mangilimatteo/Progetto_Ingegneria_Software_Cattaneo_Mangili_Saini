@@ -119,7 +119,7 @@ public class Login extends JFrame {
 	void effettuaLogin(){
 		String matricola = textMatricola.getText();
 		if(dataService.credenzialiCorrette(matricola, passwordField.getPassword())) {
-			String ruolo = dataService.ruoloDipendente(textMatricola.getText().toLowerCase());
+			String ruolo = dataService.getRuoloDipendente(textMatricola.getText().toLowerCase()); 
 			switch(ruolo){
 				case "Medico":
 					SchermataMedico schermatamedico= new SchermataMedico(matricola);

@@ -5,6 +5,7 @@ package model.generated;
 
 
 import model.generated.tables.Anagrafica;
+import model.generated.tables.Codice;
 import model.generated.tables.Dipendente;
 import model.generated.tables.ListaAttesa;
 import model.generated.tables.ListaOperatorie;
@@ -20,6 +21,11 @@ public class Tables {
      * The table <code>ANAGRAFICA</code>.
      */
     public static final Anagrafica ANAGRAFICA = Anagrafica.ANAGRAFICA;
+
+    /**
+     * The table <code>CODICE</code>.
+     */
+    public static final Codice CODICE = Codice.CODICE;
 
     /**
      * The table <code>DIPENDENTE</code>.

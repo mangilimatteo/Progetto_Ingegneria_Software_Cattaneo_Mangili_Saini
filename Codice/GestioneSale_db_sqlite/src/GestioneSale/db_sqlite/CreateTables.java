@@ -37,7 +37,7 @@ public class CreateTables {
 					" INTERVENTO	 			TEXT NOT NULL, " +
 					" ANAMNESI_PREGRESSA		TEXT NOT NULL, " +
 					" ANAMNESI_PROSSIMA			TEXT NOT NULL, " +
-					" TEMPO ATTESA	 			TEXT NOT NULL, " +
+					" TEMPO_ATTESA	 			TEXT NOT NULL, " +
 					" MATR_MEDICO				TEXT NOT NULL, " +
 					" NOTE		 				TEXT NOT NULL, " +
 					" FOREIGN KEY (MATR_MEDICO) REFERENCES DIPENDENTE(MATRICOLA) " +
@@ -58,6 +58,11 @@ public class CreateTables {
 					" FOREIGN KEY (INTERVENTO) REFERENCES LISTA_ATTESA(INTERVENTO) " +
 					"); " +
 					
+					"CREATE TABLE IF NOT EXISTS CODICE (" + 
+					" TIPO        				TEXT NOT NULL PRIMARY KEY," + 
+					" CONTATORE	 				INTEGER NOT NULL " +
+					"); " +	
+					
 					"INSERT INTO DIPENDENTE " +
 					" VALUES " +
 					" 	(\"Francesco\", \"Valli\", \"m001a\", \"psw1\", \"Medico\"), " +
@@ -65,8 +70,16 @@ public class CreateTables {
 					" 	(\"Anna\", \"Bognolo\", \"i001a\", \"psw3\", \"Infermiere\"), " +
 					" 	(\"Sara\", \"Magitteri\", \"i001b\", \"psw4\", \"Infermiere\"), " +
 					" 	(\"Yuri\", \"Carminati\", \"c001a\", \"psw5\", \"Cabina di regia\"), " +
-					" 	(\"Valerio\", \"Cattaneo\", \"c001b\", \"psw6\", \"Cabina di regia\") ";
+					" 	(\"Valerio\", \"Cattaneo\", \"c001b\", \"psw6\", \"Cabina di regia\"); " +
 					
+					"INSERT INTO CODICE " +
+					" VALUES " +
+					" 	(\"Anagrafica\", 0); " +
+				
+					"INSERT INTO ANAGRAFICA " +
+					" VALUES " +
+					" 	(\"0\",\"\",\"\",\"\",\"1\",\"1\",\"1800\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\");";
+	
 					
 				stmt.executeUpdate(sql);
 				stmt.close();

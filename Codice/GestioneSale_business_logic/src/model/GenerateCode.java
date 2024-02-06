@@ -18,6 +18,6 @@ public class GenerateCode {
 		Generator generator = new Generator().withDatabase(database).withTarget(target);
 		
 		Configuration configuration = new Configuration().withGenerator(generator).withJdbc(jdbc);
-		GenerationTool.generate(configuration);
+		GenerationTool.generate(configuration); 
 	}
-}
+} 

@@ -7,6 +7,7 @@ package model.generated.tables;
 import java.util.function.Function;
 
 import model.generated.DefaultSchema;
+import model.generated.Keys;
 import model.generated.tables.records.DipendenteRecord;
 
 import org.jooq.Field;
@@ -21,6 +22,7 @@ import org.jooq.SelectField;
 import org.jooq.Table;
 import org.jooq.TableField;
 import org.jooq.TableOptions;
+import org.jooq.UniqueKey;
 import org.jooq.impl.DSL;
 import org.jooq.impl.SQLDataType;
 import org.jooq.impl.TableImpl;
@@ -108,6 +110,11 @@ public class Dipendente extends TableImpl<DipendenteRecord> {
     @Override
     public Schema getSchema() {
         return aliased() ? null : DefaultSchema.DEFAULT_SCHEMA;
+    }
+
+    @Override
+    public UniqueKey<DipendenteRecord> getPrimaryKey() {
+        return Keys.DIPENDENTE__PK_DIPENDENTE;
     }
 
     @Override

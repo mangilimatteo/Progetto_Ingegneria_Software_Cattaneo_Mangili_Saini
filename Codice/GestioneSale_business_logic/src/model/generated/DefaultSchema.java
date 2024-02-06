@@ -8,6 +8,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import model.generated.tables.Anagrafica;
+import model.generated.tables.Codice;
 import model.generated.tables.Dipendente;
 import model.generated.tables.ListaAttesa;
 import model.generated.tables.ListaOperatorie;
@@ -34,6 +35,11 @@ public class DefaultSchema extends SchemaImpl {
      * The table <code>ANAGRAFICA</code>.
      */
     public final Anagrafica ANAGRAFICA = Anagrafica.ANAGRAFICA;
+
+    /**
+     * The table <code>CODICE</code>.
+     */
+    public final Codice CODICE = Codice.CODICE;
 
     /**
      * The table <code>DIPENDENTE</code>.
@@ -67,6 +73,7 @@ public class DefaultSchema extends SchemaImpl {
     public final List<Table<?>> getTables() {
         return Arrays.asList(
             Anagrafica.ANAGRAFICA,
+            Codice.CODICE,
             Dipendente.DIPENDENTE,
             ListaAttesa.LISTA_ATTESA,
             ListaOperatorie.LISTA_OPERATORIE

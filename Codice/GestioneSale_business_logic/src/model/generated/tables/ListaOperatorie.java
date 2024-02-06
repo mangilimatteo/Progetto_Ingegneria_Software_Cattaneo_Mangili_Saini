@@ -4,9 +4,12 @@
 package model.generated.tables;
 
 
+import java.util.Arrays;
+import java.util.List;
 import java.util.function.Function;
 
 import model.generated.DefaultSchema;
+import model.generated.Keys;
 import model.generated.tables.records.ListaOperatorieRecord;
 
 import org.jooq.Field;
@@ -21,6 +24,7 @@ import org.jooq.SelectField;
 import org.jooq.Table;
 import org.jooq.TableField;
 import org.jooq.TableOptions;
+import org.jooq.UniqueKey;
 import org.jooq.impl.DSL;
 import org.jooq.impl.SQLDataType;
 import org.jooq.impl.TableImpl;
@@ -103,6 +107,28 @@ public class ListaOperatorie extends TableImpl<ListaOperatorieRecord> {
     @Override
     public Schema getSchema() {
         return aliased() ? null : DefaultSchema.DEFAULT_SCHEMA;
+    }
+
+    @Override
+    public UniqueKey<ListaOperatorieRecord> getPrimaryKey() {
+        return Keys.LISTA_OPERATORIE__PK_LISTA_OPERATORIE;
+    }
+
+    @Override
+    public List<ForeignKey<ListaOperatorieRecord, ?>> getReferences() {
+        return Arrays.asList(Keys.LISTA_OPERATORIE__FK_LISTA_OPERATORIE_PK_LISTA_ATTESA);
+    }
+
+    private transient ListaAttesa _listaAttesa;
+
+    /**
+     * Get the implicit join path to the <code>LISTA_ATTESA</code> table.
+     */
+    public ListaAttesa listaAttesa() {
+        if (_listaAttesa == null)
+            _listaAttesa = new ListaAttesa(this, Keys.LISTA_OPERATORIE__FK_LISTA_OPERATORIE_PK_LISTA_ATTESA);
+
+        return _listaAttesa;
     }
 
     @Override
