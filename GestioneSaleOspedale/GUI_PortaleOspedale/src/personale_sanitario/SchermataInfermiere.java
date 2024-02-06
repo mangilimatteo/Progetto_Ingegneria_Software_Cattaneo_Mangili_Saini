@@ -8,6 +8,7 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
 import java.awt.Toolkit;
 import java.awt.Font;
+import javax.swing.JButton;
 
 public class SchermataInfermiere extends JFrame {
 
@@ -35,7 +36,7 @@ public class SchermataInfermiere extends JFrame {
 	 */
 	public SchermataInfermiere() {
 		setIconImage(Toolkit.getDefaultToolkit().getImage(SchermataInfermiere.class.getResource("/resources/LogoOspedale.png")));
-		setTitle("Portale digitale Personale Sanitario dell'ospedale Papa Giovanni XIII");
+		setTitle("Portale digitale Personale Sanitario dell'ospedale [inserire nome ospedale]");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
@@ -54,6 +55,16 @@ public class SchermataInfermiere extends JFrame {
 		textNomeInfermiere.setFont(new Font("Arial", Font.BOLD, 16));
 		textNomeInfermiere.setBounds(94, 11, 330, 42);
 		contentPane.add(textNomeInfermiere);
+		
+		JButton bottoneVisualizzaDatiPazienti = new JButton("Visualizza Pazienti");
+		bottoneVisualizzaDatiPazienti.setFont(new Font("Arial", Font.PLAIN, 16));
+		bottoneVisualizzaDatiPazienti.setBounds(10, 70, 414, 42);
+		contentPane.add(bottoneVisualizzaDatiPazienti);
+		
+		JButton bottoneVisualizzaVerbali = new JButton("Visualizza Verbali");
+		bottoneVisualizzaVerbali.setFont(new Font("Arial", Font.PLAIN, 16));
+		bottoneVisualizzaVerbali.setBounds(10, 133, 414, 42);
+		contentPane.add(bottoneVisualizzaVerbali);
 	}
 
 }
