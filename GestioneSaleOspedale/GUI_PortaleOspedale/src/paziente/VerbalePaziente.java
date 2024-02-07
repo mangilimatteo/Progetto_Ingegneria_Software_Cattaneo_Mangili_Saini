@@ -32,6 +32,7 @@ import javax.swing.SpinnerListModel;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.JTextArea;
+import javax.swing.JButton;
 
 public class VerbalePaziente extends JFrame {
 
@@ -73,16 +74,16 @@ public class VerbalePaziente extends JFrame {
 		setIconImage(Toolkit.getDefaultToolkit().getImage(VerbalePaziente.class.getResource("/resources/LogoOspedale.png")));
 		setTitle("Portale digitale Personale Sanitario dell'ospedale Papa Giovanni XIII");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 800, 843);
+		setBounds(100, 100, 800, 1000);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
 		setContentPane(contentPane);
 		GridBagLayout gbl_contentPane = new GridBagLayout();
 		gbl_contentPane.columnWidths = new int[]{148, 35, 408, 0};
-		gbl_contentPane.rowHeights = new int[]{58, 35, 19, 23, 29, 19, 23, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 44, 0, 0, 0, 0, 0, 0, 0, 0, 62, 0};
+		gbl_contentPane.rowHeights = new int[]{58, 35, 19, 23, 29, 19, 23, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 44, 0, 0, 0, 0, 0, 0, 0, 0, 0, 62, 0};
 		gbl_contentPane.columnWeights = new double[]{0.0, 0.0, 1.0, Double.MIN_VALUE};
-		gbl_contentPane.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 1.0, 1.0, 1.0, Double.MIN_VALUE};
+		gbl_contentPane.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 1.0, 1.0, 0.0, 0.0, Double.MIN_VALUE};
 		contentPane.setLayout(gbl_contentPane);
 		
 		JLabel textVerbalePaziente = new JLabel("Verbale Paziente:");
@@ -849,6 +850,32 @@ public class VerbalePaziente extends JFrame {
 		gbc_textArea_2.gridx = 2;
 		gbc_textArea_2.gridy = 27;
 		contentPane.add(textArea_2, gbc_textArea_2);
+		
+		JButton bottoneModifica = new JButton("Modifica");
+		bottoneModifica.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				enableModifica();
+			}
+		});
+		bottoneModifica.setFont(new Font("Arial", Font.PLAIN, 14));
+		GridBagConstraints gbc_bottoneModifica = new GridBagConstraints();
+		gbc_bottoneModifica.insets = new Insets(0, 0, 0, 5);
+		gbc_bottoneModifica.gridx = 0;
+		gbc_bottoneModifica.gridy = 29;
+		contentPane.add(bottoneModifica, gbc_bottoneModifica);
+		
+		JButton bottoneConferma = new JButton("Conferma");
+		bottoneConferma.setVisible(false);
+		bottoneConferma.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				saveModifica();
+			}
+		});
+		bottoneConferma.setFont(new Font("Arial", Font.PLAIN, 14));
+		GridBagConstraints gbc_bottoneConferma = new GridBagConstraints();
+		gbc_bottoneConferma.gridx = 2;
+		gbc_bottoneConferma.gridy = 29;
+		contentPane.add(bottoneConferma, gbc_bottoneConferma);
 
 	}
 
@@ -878,5 +905,48 @@ public class VerbalePaziente extends JFrame {
 			cognome.setVisible(true);
 			x[0]=1;
 		}	
-	}	
+	}
+	
+	//questo metodo salva conferma le modifiche
+		void saveModifica() {
+	/*		textNomePaziente.setEditable(false);
+			textCognomePaziente.setEditable(false);
+			textCodiceFiscalePaziente.setEditable(false);
+			spinnerGiorno.setEnabled(false);
+			spinnerMese.setEnabled(false);
+			spinnerAnno.setEnabled(false);
+			textNumeroTelefonoPaziente.setEditable(false);
+			textResidenzaPaziente.setEditable(false);
+			textEmailPaziente.setEditable(false);
+			textDiagnosiPaziente.setEditable(false);
+			textLuogodiNascitaPaziente.setEditable(false);
+			textInterventoPaziente.setEditable(false);
+			textAnamnesiPregressaPaziente.setEditable(false);
+			textAnamnesiProssimaPaziente.setEditable(false);
+			spinnerTempodiAttesaPaziente.setEnabled(false);
+			bottoneConferma.setVisible(false);
+			bottoneModifica.setEnabled(true);  
+	*/			
+		}
+		
+		//questo metodo abilita alle modifiche
+		void enableModifica() {
+	/*		textCognomePaziente.setEditable(true);
+			textCodiceFiscalePaziente.setEditable(true);
+			spinnerGiorno.setEnabled(true);
+			spinnerMese.setEnabled(true);
+			spinnerAnno.setEnabled(true);
+			textNumeroTelefonoPaziente.setEditable(true);
+			textResidenzaPaziente.setEditable(true);
+			textEmailPaziente.setEditable(true);
+			textDiagnosiPaziente.setEditable(true);
+			textLuogodiNascitaPaziente.setEditable(true);
+			textInterventoPaziente.setEditable(true);
+			textAnamnesiPregressaPaziente.setEditable(true);
+			textAnamnesiProssimaPaziente.setEditable(true);
+			spinnerTempodiAttesaPaziente.setEnabled(true);
+			bottoneConferma.setVisible(true);
+			bottoneModifica.setEnabled(false);
+	*/		
+		}
 }

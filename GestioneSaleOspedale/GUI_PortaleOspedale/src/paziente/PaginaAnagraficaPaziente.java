@@ -32,6 +32,14 @@ import javax.swing.event.AncestorListener;
 import javax.swing.event.AncestorEvent;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import javax.swing.event.CaretListener;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
+import javax.swing.event.CaretEvent;
+import java.awt.event.InputMethodListener;
+import java.awt.event.InputMethodEvent;
+import java.awt.event.ContainerAdapter;
+import java.awt.event.ContainerEvent;
 
 public class PaginaAnagraficaPaziente extends JFrame {
 
@@ -333,10 +341,31 @@ public class PaginaAnagraficaPaziente extends JFrame {
 		contentPane.add(textIntervento, gbc_textIntervento);
 		
 		textInterventoPaziente = new JTextArea();
-		textInterventoPaziente.addKeyListener(new KeyAdapter() {
-			public void keyPressed(KeyEvent e) {
+		textInterventoPaziente.getDocument().addDocumentListener(new DocumentListener(){
+
+			@Override
+			public void insertUpdate(DocumentEvent e) {
 				saveNomeMedicico();
+				
 			}
+
+			@Override
+			public void removeUpdate(DocumentEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public void changedUpdate(DocumentEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+		});
+		textInterventoPaziente.addKeyListener(new KeyAdapter() {
+		/*	public void keyPressed(KeyEvent e) {
+				saveNomeMedicico();
+			}*/
 		});
 		textInterventoPaziente.setFont(new Font("Arial", Font.PLAIN, 14));
 		textInterventoPaziente.setEditable(false);
