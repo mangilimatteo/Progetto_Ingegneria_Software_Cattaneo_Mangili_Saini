@@ -314,7 +314,6 @@ public class ListaOperatoria extends JFrame {
 	//regola il numero sale in base al blocco operatorio
 	void IntervalloSala(JSpinner spinner, int[] sala_min, int[] sala_max) {
 		if(spinner.getValue()=="Giallo") {
-			System.out.println("paaaaaa");
 			sala_min[0]=1;
 			sala_max[0]=6;
 		}
