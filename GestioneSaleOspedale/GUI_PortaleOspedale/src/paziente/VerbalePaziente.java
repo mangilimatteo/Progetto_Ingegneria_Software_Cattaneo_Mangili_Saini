@@ -23,6 +23,9 @@ import javax.swing.JRadioButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.event.ChangeListener;
+
+import personale_sanitario.SchermataMedico;
+
 import javax.swing.event.ChangeEvent;
 import java.awt.event.ItemListener;
 import java.awt.event.ItemEvent;
@@ -87,6 +90,10 @@ public class VerbalePaziente extends JFrame {
 	private JSpinner spinnerRischioAnestesiologico;
 	private JButton bottoneModifica;
 	private JButton bottoneConferma;
+	private JRadioButton rdbtnNessunOperatore;
+	private JRadioButton rdbtnOpzionale2_1;
+	private JRadioButton rdbtnOpzionale2_1_1;
+	private JButton bottoneaAccediPaginaAnagrafica;
 	
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -168,6 +175,7 @@ public class VerbalePaziente extends JFrame {
 		
 		
 		rdbtnOpzionale1 = new JRadioButton("Opzionale");
+		rdbtnOpzionale1.setEnabled(false);
 		int[] opzionale1= {1};
 		rdbtnOpzionale1.addItemListener(new ItemListener() {
 			public void itemStateChanged(ItemEvent e) {
@@ -206,6 +214,7 @@ public class VerbalePaziente extends JFrame {
 		panel_1.add(spinnerMinuto2);
 		
 		rdbtnOpzionale2 = new JRadioButton("Opzionale");
+		rdbtnOpzionale2.setEnabled(false);
 		int[] opzionale2= {1};
 		rdbtnOpzionale2.addItemListener(new ItemListener() {
 			public void itemStateChanged(ItemEvent e) {
@@ -244,6 +253,7 @@ public class VerbalePaziente extends JFrame {
 		panel_1_1.add(spinnerMinuto3);
 		
 		rdbtnOpzionale3 = new JRadioButton("Opzionale");
+		rdbtnOpzionale3.setEnabled(false);
 		int[] opzionale3= {1};
 		rdbtnOpzionale3.addItemListener(new ItemListener() {
 			public void itemStateChanged(ItemEvent e) {
@@ -282,6 +292,7 @@ public class VerbalePaziente extends JFrame {
 		panel_1_2.add(spinnerMinuto4);
 		
 		rdbtnOpzionale4 = new JRadioButton("Opzionale");
+		rdbtnOpzionale4.setEnabled(false);
 		int[] opzionale4= {1};
 		rdbtnOpzionale4.addItemListener(new ItemListener() {
 			public void itemStateChanged(ItemEvent e) {
@@ -320,6 +331,7 @@ public class VerbalePaziente extends JFrame {
 		panel_1_3.add(spinnerMinuto5);
 		
 		rdbtnOpzionale5 = new JRadioButton("Opzionale");
+		rdbtnOpzionale5.setEnabled(false);
 		int[] opzionale5= {1};
 		rdbtnOpzionale5.addItemListener(new ItemListener() {
 			public void itemStateChanged(ItemEvent e) {
@@ -416,6 +428,7 @@ public class VerbalePaziente extends JFrame {
 		panel_1_4.add(spinnerMinuto8);
 		
 		rdbtnOpzionale8 = new JRadioButton("Opzionale");
+		rdbtnOpzionale8.setEnabled(false);
 		int[] opzionale8= {1};
 		rdbtnOpzionale8.addItemListener(new ItemListener() {
 			public void itemStateChanged(ItemEvent e) {
@@ -454,6 +467,7 @@ public class VerbalePaziente extends JFrame {
 		panel_1_5.add(spinnerMinuto9);
 		
 		rdbtnOpzionale9 = new JRadioButton("Opzionale");
+		rdbtnOpzionale9.setEnabled(false);
 		int[] opzionale9= {1};
 		rdbtnOpzionale9.addItemListener(new ItemListener() {
 			public void itemStateChanged(ItemEvent e) {
@@ -492,6 +506,7 @@ public class VerbalePaziente extends JFrame {
 		panel_1_6.add(spinnerMinuto10);
 		
 		rdbtnOpzionale10 = new JRadioButton("Opzionale");
+		rdbtnOpzionale10.setEnabled(false);
 		int[] opzionale10= {1};
 		rdbtnOpzionale10.addItemListener(new ItemListener() {
 			public void itemStateChanged(ItemEvent e) {
@@ -613,7 +628,8 @@ public class VerbalePaziente extends JFrame {
 		textCognomeSecondoOperatore.setColumns(10);
 		panel_2.add(textCognomeSecondoOperatore);
 		
-		JRadioButton rdbtnNessunOperatore = new JRadioButton("Nessun Operatore");
+		rdbtnNessunOperatore = new JRadioButton("Nessun Operatore");
+		rdbtnNessunOperatore.setEnabled(false);
 		int[] nessunOperatore= {1};
 		rdbtnNessunOperatore.addItemListener(new ItemListener() {
 			public void itemStateChanged(ItemEvent e) {
@@ -656,10 +672,12 @@ public class VerbalePaziente extends JFrame {
 		textCognomeTerzoOperatore.setColumns(10);
 		panel_1_9.add(textCognomeTerzoOperatore);
 		
-		JRadioButton rdbtnOpzionale2_1 = new JRadioButton("Opzionale");
+		rdbtnOpzionale2_1 = new JRadioButton("Opzionale");
+		rdbtnOpzionale2_1.setEnabled(false);
+		int[] terzooperatoreopzionale= {1};
 		rdbtnOpzionale2_1.addItemListener(new ItemListener() {
 			public void itemStateChanged(ItemEvent e) {
-				setOpzionaleTesto(nessunOperatore,textNomeTerzoOperatore,textCognomeTerzoOperatore);
+				setOpzionaleTesto(terzooperatoreopzionale,textNomeTerzoOperatore,textCognomeTerzoOperatore);
 			}
 		});
 		panel_1_9.add(rdbtnOpzionale2_1);
@@ -834,10 +852,12 @@ public class VerbalePaziente extends JFrame {
 		textCognomeTecnicodiRadiologia.setColumns(10);
 		panel_3.add(textCognomeTecnicodiRadiologia);
 		
-		JRadioButton rdbtnOpzionale2_1_1 = new JRadioButton("Opzionale");
+		rdbtnOpzionale2_1_1 = new JRadioButton("Opzionale");
+		rdbtnOpzionale2_1_1.setEnabled(false);
+		int[] tecnicoradiologiaopzionale= {1};
 		rdbtnOpzionale2_1_1.addItemListener(new ItemListener() {
 			public void itemStateChanged(ItemEvent e) {
-				setOpzionaleTesto(nessunOperatore,textNomeTecnicodiRadiologia, textCognomeTecnicodiRadiologia);
+				setOpzionaleTesto(tecnicoradiologiaopzionale,textNomeTecnicodiRadiologia, textCognomeTecnicodiRadiologia);
 			}
 		});
 		panel_3.add(rdbtnOpzionale2_1_1);
@@ -852,6 +872,7 @@ public class VerbalePaziente extends JFrame {
 		contentPane.add(textDiagnosi, gbc_textDiagnosi);
 		
 		JTextArea textArea = new JTextArea();
+		textArea.setEditable(false);
 		GridBagConstraints gbc_textArea = new GridBagConstraints();
 		gbc_textArea.insets = new Insets(0, 0, 5, 0);
 		gbc_textArea.fill = GridBagConstraints.BOTH;
@@ -869,6 +890,7 @@ public class VerbalePaziente extends JFrame {
 		contentPane.add(textIntervento, gbc_textIntervento);
 		
 		JTextArea textArea_1 = new JTextArea();
+		textArea_1.setEditable(false);
 		GridBagConstraints gbc_textArea_1 = new GridBagConstraints();
 		gbc_textArea_1.insets = new Insets(0, 0, 5, 0);
 		gbc_textArea_1.fill = GridBagConstraints.BOTH;
@@ -886,6 +908,7 @@ public class VerbalePaziente extends JFrame {
 		contentPane.add(textProcedura, gbc_textProcedura);
 		
 		JTextArea textArea_2 = new JTextArea();
+		textArea_2.setEditable(false);
 		GridBagConstraints gbc_textArea_2 = new GridBagConstraints();
 		gbc_textArea_2.insets = new Insets(0, 0, 5, 0);
 		gbc_textArea_2.fill = GridBagConstraints.BOTH;
@@ -899,6 +922,18 @@ public class VerbalePaziente extends JFrame {
 				enableModifica();
 			}
 		});
+		
+		bottoneaAccediPaginaAnagrafica = new JButton("Pagina anagrafica");
+		bottoneaAccediPaginaAnagrafica.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				accessoPaginaAnagrafica();
+			}
+		});
+		GridBagConstraints gbc_bottoneaAccediPaginaAnagrafica = new GridBagConstraints();
+		gbc_bottoneaAccediPaginaAnagrafica.insets = new Insets(0, 0, 5, 5);
+		gbc_bottoneaAccediPaginaAnagrafica.gridx = 0;
+		gbc_bottoneaAccediPaginaAnagrafica.gridy = 28;
+		contentPane.add(bottoneaAccediPaginaAnagrafica, gbc_bottoneaAccediPaginaAnagrafica);
 		bottoneModifica.setFont(new Font("Arial", Font.PLAIN, 14));
 		GridBagConstraints gbc_bottoneModifica = new GridBagConstraints();
 		gbc_bottoneModifica.insets = new Insets(0, 0, 0, 5);
@@ -981,6 +1016,10 @@ public class VerbalePaziente extends JFrame {
 			rdbtnOpzionale10.setEnabled(false);
 			spinnerTipoAnestesia.setEnabled(false);
 			spinnerRischioAnestesiologico.setEnabled(false);
+			rdbtnNessunOperatore.setEnabled(false);
+			rdbtnOpzionale2_1.setEnabled(false);
+			rdbtnOpzionale2_1_1.setEnabled(false);
+			
 			bottoneConferma.setVisible(false);
 			bottoneModifica.setEnabled(true);  
 				
@@ -1018,7 +1057,16 @@ public class VerbalePaziente extends JFrame {
 			rdbtnOpzionale10.setEnabled(true);
 			spinnerTipoAnestesia.setEnabled(true);
 			spinnerRischioAnestesiologico.setEnabled(true);
+			rdbtnNessunOperatore.setEnabled(true);
+			rdbtnOpzionale2_1.setEnabled(true);
+			rdbtnOpzionale2_1_1.setEnabled(true);
+			
 			bottoneConferma.setVisible(true);
 			bottoneModifica.setEnabled(false);		
+		}
+		
+		void accessoPaginaAnagrafica() {
+			PaginaAnagraficaPaziente paginaAnagraficaPaziente= new PaginaAnagraficaPaziente();
+			paginaAnagraficaPaziente.setVisible(true);
 		}
 }
