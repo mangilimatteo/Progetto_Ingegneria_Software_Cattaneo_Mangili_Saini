@@ -582,11 +582,11 @@ public class VerbalePaziente extends JFrame {
 		
 		JRadioButton rdbtnNessunOperatore = new JRadioButton("Nessun Operatore");
 		int[] nessunOperatore= {1};
-		/*rdbtnNessunOperatore.addItemListener(new ItemListener() {
+		rdbtnNessunOperatore.addItemListener(new ItemListener() {
 			public void itemStateChanged(ItemEvent e) {
 				setOpzionaleTesto(nessunOperatore,textNomeSecondoOperatore,textCognomeSecondoOperatore);
 			}
-		});*/
+		});
 		panel_2.add(rdbtnNessunOperatore);
 		
 		JLabel textTerzoOperatore = new JLabel("Terzo Operatore:");
@@ -867,7 +867,7 @@ public class VerbalePaziente extends JFrame {
 	}
 	
 	//setOpzionale cancella/riinserisce testo nome e cognome in base al button
-	void setOpzionaleTesto(int[] x, JRadioButton nome , JRadioButton cognome ) {
+	void setOpzionaleTesto(int[] x, JTextField nome , JTextField cognome ) {
 		if(x[0]==1) {
 			nome.setVisible(false);
 			cognome.setVisible(false);
@@ -877,6 +877,6 @@ public class VerbalePaziente extends JFrame {
 			nome.setVisible(true);
 			cognome.setVisible(true);
 			x[0]=1;
-		}
-	}
+		}	
+	}	
 }
