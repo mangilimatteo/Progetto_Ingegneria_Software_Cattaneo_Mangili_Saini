@@ -72,7 +72,7 @@ public class SchermataMedico extends JFrame {
 		bottoneRegistraPaziente.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				//si apre la pagina anagrafica già modificabile
-				ModificaPaginaAnagrafica paginaanagraficapaziente= new ModificaPaginaAnagrafica("", matricolaMedico);
+				ModificaPaginaAnagrafica paginaanagraficapaziente= new ModificaPaginaAnagrafica("", matricolaMedico,true);
 				paginaanagraficapaziente.setVisible(true);
 			}
 		});

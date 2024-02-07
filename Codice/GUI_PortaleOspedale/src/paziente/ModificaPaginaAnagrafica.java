@@ -7,6 +7,8 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import java.awt.Toolkit;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.Font;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
@@ -69,7 +71,7 @@ public class ModificaPaginaAnagrafica extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					ModificaPaginaAnagrafica frame = new ModificaPaginaAnagrafica("", "m001a");
+					ModificaPaginaAnagrafica frame = new ModificaPaginaAnagrafica("", "m001a", true);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -79,7 +81,7 @@ public class ModificaPaginaAnagrafica extends JFrame {
 	}
 
 	
-	public ModificaPaginaAnagrafica(String codiceAnagrafica, String matricolaMedico) {
+	public ModificaPaginaAnagrafica(String codiceAnagrafica, String matricolaMedico, boolean nuova) {
 		
 		dataService = new DataService();
 		this.codiceAnagrafica = dataService.getCodiceAnagrafica(codiceAnagrafica);
@@ -443,9 +445,10 @@ public class ModificaPaginaAnagrafica extends JFrame {
 		contentPane.add(textTempodiAttesa, gbc_textTempodiAttesa);
 		
 		spinnerTempodiAttesaPaziente = new JSpinner();
+		spinnerTempodiAttesaPaziente.setModel(new SpinnerListModel(new String[] {"","Classe A", "Classe B", "Classe C", "Classe D"}));
+		spinnerTempodiAttesaPaziente.setValue("");
 		spinnerTempodiAttesaPaziente.setEnabled(true);
 		spinnerTempodiAttesaPaziente.setFont(new Font("Arial", Font.BOLD, 14));
-		spinnerTempodiAttesaPaziente.setModel(new SpinnerListModel(new String[] {"Classe A", "Classe B", "Classe C", "Classe D"}));
 		GridBagConstraints gbc_spinnerTempodiAttesaPaziente = new GridBagConstraints();
 		gbc_spinnerTempodiAttesaPaziente.fill = GridBagConstraints.HORIZONTAL;
 		gbc_spinnerTempodiAttesaPaziente.insets = new Insets(0, 0, 5, 5);
@@ -546,7 +549,7 @@ public class ModificaPaginaAnagrafica extends JFrame {
 		contentPane.add(textNotePaziente, gbc_textNotePaziente);
 		
 		
-		bottoneSalva = new JButton("Salva e chiudi");
+		bottoneSalva = new JButton("Salva");
 		bottoneSalva.setVisible(true);
 		bottoneSalva.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -566,7 +569,12 @@ public class ModificaPaginaAnagrafica extends JFrame {
 		bottoneChiudi.setVisible(true);
 		bottoneChiudi.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				chiudi();
+				if(nuova) {
+					eliminaAnagraficaVuota();
+				}
+				else {
+					chiudi();
+				}
 			}
 		});
 		bottoneChiudi.setFont(new Font("Arial", Font.PLAIN, 14));
@@ -579,6 +587,12 @@ public class ModificaPaginaAnagrafica extends JFrame {
 		contentPane.add(bottoneChiudi, gbc_bottoneChiudi);
 				
 		
+	}
+
+
+	protected void eliminaAnagraficaVuota() {
+		dataService.eliminaAnagraficaVuota(codiceAnagrafica);
+		dispose();
 	}
 
 
@@ -604,16 +618,19 @@ public class ModificaPaginaAnagrafica extends JFrame {
 				textMatricolaMedico.getText(),
 				textNotePaziente.getText()
 		};
-		dataService.salvaAnagrafica(codiceAnagrafica, valori);
-		chiudi();
+		if(dataService.salvaAnagrafica(codiceAnagrafica, valori)) {
+			chiudi();
+		}
+		else {
+			JOptionPane.showMessageDialog(null,"Errore, tutti i campi, tranne \"Note\", devono essere compilati");
+		}
+		
 	}
 	
 	
 	protected void chiudi() {
-		if(!dataService.eliminaAnagraficaVuota(codiceAnagrafica)) {
-			VisualizzazionePaginaAnagrafica visualizzaAnagrafica= new VisualizzazionePaginaAnagrafica(codiceAnagrafica, matricolaMedico);
-			visualizzaAnagrafica.setVisible(true);
-		}
+		VisualizzazionePaginaAnagrafica visualizzaAnagrafica= new VisualizzazionePaginaAnagrafica(codiceAnagrafica, matricolaMedico);
+		visualizzaAnagrafica.setVisible(true);
 		dispose();
 	}
 

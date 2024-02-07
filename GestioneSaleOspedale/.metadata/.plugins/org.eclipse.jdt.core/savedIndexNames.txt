@@ -1,0 +1,4 @@
+INDEX VERSION 1.134+C:\Users\massimoc\Documents\GitHub\Progetto_Ingegneria_Software_Cattaneo_Mangili_Saini\GestioneSaleOspedale\.metadata\.plugins\org.eclipse.jdt.core
+1865797976.index
+2670826414.index
+87370657.index

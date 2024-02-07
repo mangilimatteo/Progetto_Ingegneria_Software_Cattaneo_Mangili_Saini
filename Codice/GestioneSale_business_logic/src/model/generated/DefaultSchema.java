@@ -12,6 +12,7 @@ import model.generated.tables.Codice;
 import model.generated.tables.Dipendente;
 import model.generated.tables.ListaAttesa;
 import model.generated.tables.ListaOperatorie;
+import model.generated.tables.Verbale;
 
 import org.jooq.Catalog;
 import org.jooq.Table;
@@ -57,6 +58,11 @@ public class DefaultSchema extends SchemaImpl {
     public final ListaOperatorie LISTA_OPERATORIE = ListaOperatorie.LISTA_OPERATORIE;
 
     /**
+     * The table <code>VERBALE</code>.
+     */
+    public final Verbale VERBALE = Verbale.VERBALE;
+
+    /**
      * No further instances allowed
      */
     private DefaultSchema() {
@@ -76,7 +82,8 @@ public class DefaultSchema extends SchemaImpl {
             Codice.CODICE,
             Dipendente.DIPENDENTE,
             ListaAttesa.LISTA_ATTESA,
-            ListaOperatorie.LISTA_OPERATORIE
+            ListaOperatorie.LISTA_OPERATORIE,
+            Verbale.VERBALE
         );
     }
 }

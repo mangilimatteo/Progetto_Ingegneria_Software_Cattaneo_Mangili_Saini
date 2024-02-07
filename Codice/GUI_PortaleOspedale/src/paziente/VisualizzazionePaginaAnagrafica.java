@@ -47,7 +47,7 @@ public class VisualizzazionePaginaAnagrafica extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					VisualizzazionePaginaAnagrafica frame = new VisualizzazionePaginaAnagrafica("3", "m001a");
+					VisualizzazionePaginaAnagrafica frame = new VisualizzazionePaginaAnagrafica("8", "m001a");
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -517,7 +517,7 @@ public class VisualizzazionePaginaAnagrafica extends JFrame {
 	
 
 	protected void enableModifica() {
-		ModificaPaginaAnagrafica modificaAnagrafica= new ModificaPaginaAnagrafica(codiceAnagrafica, "");
+		ModificaPaginaAnagrafica modificaAnagrafica= new ModificaPaginaAnagrafica(codiceAnagrafica, "",false);
 		modificaAnagrafica.setVisible(true);
 		dispose();
 		
