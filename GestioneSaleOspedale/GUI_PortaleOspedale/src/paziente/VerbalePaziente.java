@@ -23,6 +23,9 @@ import javax.swing.JRadioButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.event.ChangeListener;
+
+import personale_sanitario.SchermataMedico;
+
 import javax.swing.event.ChangeEvent;
 import java.awt.event.ItemListener;
 import java.awt.event.ItemEvent;
@@ -55,6 +58,42 @@ public class VerbalePaziente extends JFrame {
 	private JTextField textNomeAiutoanestetista;
 	private JTextField textCognomeAiutoanestetista;
 	private JTextField textCognomeTecnicodiRadiologia;
+	private JSpinner spinnerOra1;
+	private JSpinner spinnerOra2;
+	private JSpinner spinnerOra3;
+	private JSpinner spinnerOra4;
+	private JSpinner spinnerOra5;
+	private JSpinner spinnerOra6;
+	private JSpinner spinnerOra7;
+	private JSpinner spinnerOra8;
+	private JSpinner spinnerOra9;
+	private JSpinner spinnerOra10;
+	private JSpinner spinnerMinuto2;
+	private JSpinner spinnerMinuto3;
+	private JSpinner spinnerMinuto4;
+	private JSpinner spinnerMinuto5;
+	private JSpinner spinnerMinuto6;
+	private JSpinner spinnerMinuto7;
+	private JSpinner spinnerMinuto8;
+	private JSpinner spinnerMinuto9;
+	private JSpinner spinnerMinuto10;
+	private JRadioButton rdbtnOpzionale1;
+	private JRadioButton rdbtnOpzionale2;
+	private JRadioButton rdbtnOpzionale3;
+	private JRadioButton rdbtnOpzionale4;
+	private JRadioButton rdbtnOpzionale5;
+	private JRadioButton rdbtnOpzionale8;
+	private JRadioButton rdbtnOpzionale9;
+	private JRadioButton rdbtnOpzionale10;
+	private JSpinner spinnerTipoAnestesia;
+	private JLabel textRischioAnestesiologico;
+	private JSpinner spinnerRischioAnestesiologico;
+	private JButton bottoneModifica;
+	private JButton bottoneConferma;
+	private JRadioButton rdbtnNessunOperatore;
+	private JRadioButton rdbtnOpzionale2_1;
+	private JRadioButton rdbtnOpzionale2_1_1;
+	private JButton bottoneaAccediPaginaAnagrafica;
 	
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -122,7 +161,7 @@ public class VerbalePaziente extends JFrame {
 		gbc_panel.gridy = 2;
 		contentPane.add(panel, gbc_panel);
 		
-		JSpinner spinnerOra1 = new JSpinner();
+		spinnerOra1 = new JSpinner();
 		spinnerOra1.setEnabled(false);
 		spinnerOra1.setModel(new SpinnerNumberModel(0, 0, 23, 1));
 		spinnerOra1.setFont(new Font("Arial", Font.BOLD, 14));
@@ -135,7 +174,8 @@ public class VerbalePaziente extends JFrame {
 		panel.add(spinnerMinuto1);
 		
 		
-		JRadioButton rdbtnOpzionale1 = new JRadioButton("Opzionale");
+		rdbtnOpzionale1 = new JRadioButton("Opzionale");
+		rdbtnOpzionale1.setEnabled(false);
 		int[] opzionale1= {1};
 		rdbtnOpzionale1.addItemListener(new ItemListener() {
 			public void itemStateChanged(ItemEvent e) {
@@ -161,19 +201,20 @@ public class VerbalePaziente extends JFrame {
 		gbc_panel_1.gridy = 3;
 		contentPane.add(panel_1, gbc_panel_1);
 		
-		JSpinner spinnerOra2 = new JSpinner();
+		spinnerOra2 = new JSpinner();
 		spinnerOra2.setModel(new SpinnerNumberModel(0, 0, 23, 1));
 		spinnerOra2.setFont(new Font("Arial", Font.BOLD, 14));
 		spinnerOra2.setEnabled(false);
 		panel_1.add(spinnerOra2);
 		
-		JSpinner spinnerMinuto2 = new JSpinner();
+		spinnerMinuto2 = new JSpinner();
 		spinnerMinuto2.setModel(new SpinnerNumberModel(0, 0, 59, 1));
 		spinnerMinuto2.setFont(new Font("Arial", Font.BOLD, 14));
 		spinnerMinuto2.setEnabled(false);
 		panel_1.add(spinnerMinuto2);
 		
-		JRadioButton rdbtnOpzionale2 = new JRadioButton("Opzionale");
+		rdbtnOpzionale2 = new JRadioButton("Opzionale");
+		rdbtnOpzionale2.setEnabled(false);
 		int[] opzionale2= {1};
 		rdbtnOpzionale2.addItemListener(new ItemListener() {
 			public void itemStateChanged(ItemEvent e) {
@@ -199,19 +240,20 @@ public class VerbalePaziente extends JFrame {
 		gbc_panel_1_1.gridy = 4;
 		contentPane.add(panel_1_1, gbc_panel_1_1);
 		
-		JSpinner spinnerOra3 = new JSpinner();
+		spinnerOra3 = new JSpinner();
 		spinnerOra3.setModel(new SpinnerNumberModel(0, 0, 23, 1));
 		spinnerOra3.setFont(new Font("Arial", Font.BOLD, 14));
 		spinnerOra3.setEnabled(false);
 		panel_1_1.add(spinnerOra3);
 		
-		JSpinner spinnerMinuto3 = new JSpinner();
+		spinnerMinuto3 = new JSpinner();
 		spinnerMinuto3.setModel(new SpinnerNumberModel(0, 0, 59, 1));
 		spinnerMinuto3.setFont(new Font("Arial", Font.BOLD, 14));
 		spinnerMinuto3.setEnabled(false);
 		panel_1_1.add(spinnerMinuto3);
 		
-		JRadioButton rdbtnOpzionale3 = new JRadioButton("Opzionale");
+		rdbtnOpzionale3 = new JRadioButton("Opzionale");
+		rdbtnOpzionale3.setEnabled(false);
 		int[] opzionale3= {1};
 		rdbtnOpzionale3.addItemListener(new ItemListener() {
 			public void itemStateChanged(ItemEvent e) {
@@ -237,19 +279,20 @@ public class VerbalePaziente extends JFrame {
 		gbc_panel_1_2.gridy = 5;
 		contentPane.add(panel_1_2, gbc_panel_1_2);
 		
-		JSpinner spinnerOra4 = new JSpinner();
+		spinnerOra4 = new JSpinner();
 		spinnerOra4.setModel(new SpinnerNumberModel(0, 0, 23, 1));
 		spinnerOra4.setFont(new Font("Arial", Font.BOLD, 14));
 		spinnerOra4.setEnabled(false);
 		panel_1_2.add(spinnerOra4);
 		
-		JSpinner spinnerMinuto4 = new JSpinner();
+		spinnerMinuto4 = new JSpinner();
 		spinnerMinuto4.setModel(new SpinnerNumberModel(0, 0, 59, 1));
 		spinnerMinuto4.setFont(new Font("Arial", Font.BOLD, 14));
 		spinnerMinuto4.setEnabled(false);
 		panel_1_2.add(spinnerMinuto4);
 		
-		JRadioButton rdbtnOpzionale4 = new JRadioButton("Opzionale");
+		rdbtnOpzionale4 = new JRadioButton("Opzionale");
+		rdbtnOpzionale4.setEnabled(false);
 		int[] opzionale4= {1};
 		rdbtnOpzionale4.addItemListener(new ItemListener() {
 			public void itemStateChanged(ItemEvent e) {
@@ -275,19 +318,20 @@ public class VerbalePaziente extends JFrame {
 		gbc_panel_1_3.gridy = 6;
 		contentPane.add(panel_1_3, gbc_panel_1_3);
 		
-		JSpinner spinnerOra5 = new JSpinner();
+		spinnerOra5 = new JSpinner();
 		spinnerOra5.setModel(new SpinnerNumberModel(0, 0, 23, 1));
 		spinnerOra5.setFont(new Font("Arial", Font.BOLD, 14));
 		spinnerOra5.setEnabled(false);
 		panel_1_3.add(spinnerOra5);
 		
-		JSpinner spinnerMinuto5 = new JSpinner();
+		spinnerMinuto5 = new JSpinner();
 		spinnerMinuto5.setModel(new SpinnerNumberModel(0, 0, 59, 1));
 		spinnerMinuto5.setFont(new Font("Arial", Font.BOLD, 14));
 		spinnerMinuto5.setEnabled(false);
 		panel_1_3.add(spinnerMinuto5);
 		
-		JRadioButton rdbtnOpzionale5 = new JRadioButton("Opzionale");
+		rdbtnOpzionale5 = new JRadioButton("Opzionale");
+		rdbtnOpzionale5.setEnabled(false);
 		int[] opzionale5= {1};
 		rdbtnOpzionale5.addItemListener(new ItemListener() {
 			public void itemStateChanged(ItemEvent e) {
@@ -313,13 +357,13 @@ public class VerbalePaziente extends JFrame {
 		gbc_panel_1_7.gridy = 7;
 		contentPane.add(panel_1_7, gbc_panel_1_7);
 		
-		JSpinner spinnerOra6 = new JSpinner();
+		spinnerOra6 = new JSpinner();
 		spinnerOra6.setModel(new SpinnerNumberModel(0, 0, 23, 1));
 		spinnerOra6.setFont(new Font("Arial", Font.BOLD, 14));
 		spinnerOra6.setEnabled(false);
 		panel_1_7.add(spinnerOra6);
 		
-		JSpinner spinnerMinuto6 = new JSpinner();
+		spinnerMinuto6 = new JSpinner();
 		spinnerMinuto6.setModel(new SpinnerNumberModel(0, 0, 59, 1));
 		spinnerMinuto6.setFont(new Font("Arial", Font.BOLD, 14));
 		spinnerMinuto6.setEnabled(false);
@@ -342,13 +386,13 @@ public class VerbalePaziente extends JFrame {
 		gbc_panel_1_8.gridy = 8;
 		contentPane.add(panel_1_8, gbc_panel_1_8);
 		
-		JSpinner spinnerOra7 = new JSpinner();
+		spinnerOra7 = new JSpinner();
 		spinnerOra7.setModel(new SpinnerNumberModel(0, 0, 23, 1));
 		spinnerOra7.setFont(new Font("Arial", Font.BOLD, 14));
 		spinnerOra7.setEnabled(false);
 		panel_1_8.add(spinnerOra7);
 		
-		JSpinner spinnerMinuto7 = new JSpinner();
+		spinnerMinuto7 = new JSpinner();
 		spinnerMinuto7.setModel(new SpinnerNumberModel(0, 0, 59, 1));
 		spinnerMinuto7.setFont(new Font("Arial", Font.BOLD, 14));
 		spinnerMinuto7.setEnabled(false);
@@ -371,19 +415,20 @@ public class VerbalePaziente extends JFrame {
 		gbc_panel_1_4.gridy = 9;
 		contentPane.add(panel_1_4, gbc_panel_1_4);
 		
-		JSpinner spinnerOra8 = new JSpinner();
+		spinnerOra8 = new JSpinner();
 		spinnerOra8.setModel(new SpinnerNumberModel(0, 0, 23, 1));
 		spinnerOra8.setFont(new Font("Arial", Font.BOLD, 14));
 		spinnerOra8.setEnabled(false);
 		panel_1_4.add(spinnerOra8);
 		
-		JSpinner spinnerMinuto8 = new JSpinner();
+		spinnerMinuto8 = new JSpinner();
 		spinnerMinuto8.setModel(new SpinnerNumberModel(0, 0, 59, 1));
 		spinnerMinuto8.setFont(new Font("Arial", Font.BOLD, 14));
 		spinnerMinuto8.setEnabled(false);
 		panel_1_4.add(spinnerMinuto8);
 		
-		JRadioButton rdbtnOpzionale8 = new JRadioButton("Opzionale");
+		rdbtnOpzionale8 = new JRadioButton("Opzionale");
+		rdbtnOpzionale8.setEnabled(false);
 		int[] opzionale8= {1};
 		rdbtnOpzionale8.addItemListener(new ItemListener() {
 			public void itemStateChanged(ItemEvent e) {
@@ -409,19 +454,20 @@ public class VerbalePaziente extends JFrame {
 		gbc_panel_1_5.gridy = 10;
 		contentPane.add(panel_1_5, gbc_panel_1_5);
 		
-		JSpinner spinnerOra9 = new JSpinner();
+		spinnerOra9 = new JSpinner();
 		spinnerOra9.setModel(new SpinnerNumberModel(0, 0, 23, 1));
 		spinnerOra9.setFont(new Font("Arial", Font.BOLD, 14));
 		spinnerOra9.setEnabled(false);
 		panel_1_5.add(spinnerOra9);
 		
-		JSpinner spinnerMinuto9 = new JSpinner();
+		spinnerMinuto9 = new JSpinner();
 		spinnerMinuto9.setModel(new SpinnerNumberModel(0, 0, 59, 1));
 		spinnerMinuto9.setFont(new Font("Arial", Font.BOLD, 14));
 		spinnerMinuto9.setEnabled(false);
 		panel_1_5.add(spinnerMinuto9);
 		
-		JRadioButton rdbtnOpzionale9 = new JRadioButton("Opzionale");
+		rdbtnOpzionale9 = new JRadioButton("Opzionale");
+		rdbtnOpzionale9.setEnabled(false);
 		int[] opzionale9= {1};
 		rdbtnOpzionale9.addItemListener(new ItemListener() {
 			public void itemStateChanged(ItemEvent e) {
@@ -447,19 +493,20 @@ public class VerbalePaziente extends JFrame {
 		gbc_panel_1_6.gridy = 11;
 		contentPane.add(panel_1_6, gbc_panel_1_6);
 		
-		JSpinner spinnerOra10 = new JSpinner();
+		spinnerOra10 = new JSpinner();
 		spinnerOra10.setModel(new SpinnerNumberModel(0, 0, 23, 1));
 		spinnerOra10.setFont(new Font("Arial", Font.BOLD, 14));
 		spinnerOra10.setEnabled(false);
 		panel_1_6.add(spinnerOra10);
 		
-		JSpinner spinnerMinuto10 = new JSpinner();
+		spinnerMinuto10 = new JSpinner();
 		spinnerMinuto10.setModel(new SpinnerNumberModel(0, 0, 59, 1));
 		spinnerMinuto10.setFont(new Font("Arial", Font.BOLD, 14));
 		spinnerMinuto10.setEnabled(false);
 		panel_1_6.add(spinnerMinuto10);
 		
-		JRadioButton rdbtnOpzionale10 = new JRadioButton("Opzionale");
+		rdbtnOpzionale10 = new JRadioButton("Opzionale");
+		rdbtnOpzionale10.setEnabled(false);
 		int[] opzionale10= {1};
 		rdbtnOpzionale10.addItemListener(new ItemListener() {
 			public void itemStateChanged(ItemEvent e) {
@@ -477,16 +524,16 @@ public class VerbalePaziente extends JFrame {
 		gbc_textTipodiAnestesia.gridy = 12;
 		contentPane.add(textTipodiAnestesia, gbc_textTipodiAnestesia);
 		
-		JSpinner spinner = new JSpinner();
-		spinner.setModel(new SpinnerListModel(new String[] {"-", "Generale", "Locoregionale", "Locale", "Spinale"}));
-		GridBagConstraints gbc_spinner = new GridBagConstraints();
-		gbc_spinner.fill = GridBagConstraints.HORIZONTAL;
-		gbc_spinner.insets = new Insets(0, 0, 5, 0);
-		gbc_spinner.gridx = 2;
-		gbc_spinner.gridy = 12;
-		contentPane.add(spinner, gbc_spinner);
+		spinnerTipoAnestesia = new JSpinner();
+		spinnerTipoAnestesia.setModel(new SpinnerListModel(new String[] {"-", "Generale", "Locoregionale", "Locale", "Spinale"}));
+		GridBagConstraints gbc_spinnerTipoAnestesia = new GridBagConstraints();
+		gbc_spinnerTipoAnestesia.fill = GridBagConstraints.HORIZONTAL;
+		gbc_spinnerTipoAnestesia.insets = new Insets(0, 0, 5, 0);
+		gbc_spinnerTipoAnestesia.gridx = 2;
+		gbc_spinnerTipoAnestesia.gridy = 12;
+		contentPane.add(spinnerTipoAnestesia, gbc_spinnerTipoAnestesia);
 		
-		JLabel textRischioAnestesiologico = new JLabel("Rischio anestesiologico:");
+		textRischioAnestesiologico = new JLabel("Rischio anestesiologico:");
 		textRischioAnestesiologico.setFont(new Font("Arial", Font.BOLD, 16));
 		GridBagConstraints gbc_textRischioAnestesiologico = new GridBagConstraints();
 		gbc_textRischioAnestesiologico.anchor = GridBagConstraints.WEST;
@@ -495,14 +542,14 @@ public class VerbalePaziente extends JFrame {
 		gbc_textRischioAnestesiologico.gridy = 13;
 		contentPane.add(textRischioAnestesiologico, gbc_textRischioAnestesiologico);
 		
-		JSpinner spinner_1 = new JSpinner();
-		spinner_1.setModel(new SpinnerListModel(new String[] {"-", "Asa1", "Asa2", "Asa3", "Asa4", "Asa5"}));
-		GridBagConstraints gbc_spinner_1 = new GridBagConstraints();
-		gbc_spinner_1.fill = GridBagConstraints.HORIZONTAL;
-		gbc_spinner_1.insets = new Insets(0, 0, 5, 0);
-		gbc_spinner_1.gridx = 2;
-		gbc_spinner_1.gridy = 13;
-		contentPane.add(spinner_1, gbc_spinner_1);
+		spinnerRischioAnestesiologico = new JSpinner();
+		spinnerRischioAnestesiologico.setModel(new SpinnerListModel(new String[] {"-", "Asa1", "Asa2", "Asa3", "Asa4", "Asa5"}));
+		GridBagConstraints gbc_spinnerRischioAnestesiologico = new GridBagConstraints();
+		gbc_spinnerRischioAnestesiologico.fill = GridBagConstraints.HORIZONTAL;
+		gbc_spinnerRischioAnestesiologico.insets = new Insets(0, 0, 5, 0);
+		gbc_spinnerRischioAnestesiologico.gridx = 2;
+		gbc_spinnerRischioAnestesiologico.gridy = 13;
+		contentPane.add(spinnerRischioAnestesiologico, gbc_spinnerRischioAnestesiologico);
 		
 		JLabel textNomeEquipe = new JLabel("Nomi dell’equipe");
 		textNomeEquipe.setFont(new Font("Arial", Font.BOLD, 18));
@@ -581,7 +628,8 @@ public class VerbalePaziente extends JFrame {
 		textCognomeSecondoOperatore.setColumns(10);
 		panel_2.add(textCognomeSecondoOperatore);
 		
-		JRadioButton rdbtnNessunOperatore = new JRadioButton("Nessun Operatore");
+		rdbtnNessunOperatore = new JRadioButton("Nessun Operatore");
+		rdbtnNessunOperatore.setEnabled(false);
 		int[] nessunOperatore= {1};
 		rdbtnNessunOperatore.addItemListener(new ItemListener() {
 			public void itemStateChanged(ItemEvent e) {
@@ -624,7 +672,14 @@ public class VerbalePaziente extends JFrame {
 		textCognomeTerzoOperatore.setColumns(10);
 		panel_1_9.add(textCognomeTerzoOperatore);
 		
-		JRadioButton rdbtnOpzionale2_1 = new JRadioButton("Opzionale");
+		rdbtnOpzionale2_1 = new JRadioButton("Opzionale");
+		rdbtnOpzionale2_1.setEnabled(false);
+		int[] terzooperatoreopzionale= {1};
+		rdbtnOpzionale2_1.addItemListener(new ItemListener() {
+			public void itemStateChanged(ItemEvent e) {
+				setOpzionaleTesto(terzooperatoreopzionale,textNomeTerzoOperatore,textCognomeTerzoOperatore);
+			}
+		});
 		panel_1_9.add(rdbtnOpzionale2_1);
 		
 		JLabel textAnestesita = new JLabel("Anestesita:");
@@ -797,7 +852,14 @@ public class VerbalePaziente extends JFrame {
 		textCognomeTecnicodiRadiologia.setColumns(10);
 		panel_3.add(textCognomeTecnicodiRadiologia);
 		
-		JRadioButton rdbtnOpzionale2_1_1 = new JRadioButton("Opzionale");
+		rdbtnOpzionale2_1_1 = new JRadioButton("Opzionale");
+		rdbtnOpzionale2_1_1.setEnabled(false);
+		int[] tecnicoradiologiaopzionale= {1};
+		rdbtnOpzionale2_1_1.addItemListener(new ItemListener() {
+			public void itemStateChanged(ItemEvent e) {
+				setOpzionaleTesto(tecnicoradiologiaopzionale,textNomeTecnicodiRadiologia, textCognomeTecnicodiRadiologia);
+			}
+		});
 		panel_3.add(rdbtnOpzionale2_1_1);
 		
 		JLabel textDiagnosi = new JLabel("Diagnosi:");
@@ -810,6 +872,7 @@ public class VerbalePaziente extends JFrame {
 		contentPane.add(textDiagnosi, gbc_textDiagnosi);
 		
 		JTextArea textArea = new JTextArea();
+		textArea.setEditable(false);
 		GridBagConstraints gbc_textArea = new GridBagConstraints();
 		gbc_textArea.insets = new Insets(0, 0, 5, 0);
 		gbc_textArea.fill = GridBagConstraints.BOTH;
@@ -827,6 +890,7 @@ public class VerbalePaziente extends JFrame {
 		contentPane.add(textIntervento, gbc_textIntervento);
 		
 		JTextArea textArea_1 = new JTextArea();
+		textArea_1.setEditable(false);
 		GridBagConstraints gbc_textArea_1 = new GridBagConstraints();
 		gbc_textArea_1.insets = new Insets(0, 0, 5, 0);
 		gbc_textArea_1.fill = GridBagConstraints.BOTH;
@@ -844,6 +908,7 @@ public class VerbalePaziente extends JFrame {
 		contentPane.add(textProcedura, gbc_textProcedura);
 		
 		JTextArea textArea_2 = new JTextArea();
+		textArea_2.setEditable(false);
 		GridBagConstraints gbc_textArea_2 = new GridBagConstraints();
 		gbc_textArea_2.insets = new Insets(0, 0, 5, 0);
 		gbc_textArea_2.fill = GridBagConstraints.BOTH;
@@ -851,12 +916,24 @@ public class VerbalePaziente extends JFrame {
 		gbc_textArea_2.gridy = 27;
 		contentPane.add(textArea_2, gbc_textArea_2);
 		
-		JButton bottoneModifica = new JButton("Modifica");
+		bottoneModifica = new JButton("Modifica");
 		bottoneModifica.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				enableModifica();
 			}
 		});
+		
+		bottoneaAccediPaginaAnagrafica = new JButton("Pagina anagrafica");
+		bottoneaAccediPaginaAnagrafica.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				accessoPaginaAnagrafica();
+			}
+		});
+		GridBagConstraints gbc_bottoneaAccediPaginaAnagrafica = new GridBagConstraints();
+		gbc_bottoneaAccediPaginaAnagrafica.insets = new Insets(0, 0, 5, 5);
+		gbc_bottoneaAccediPaginaAnagrafica.gridx = 0;
+		gbc_bottoneaAccediPaginaAnagrafica.gridy = 28;
+		contentPane.add(bottoneaAccediPaginaAnagrafica, gbc_bottoneaAccediPaginaAnagrafica);
 		bottoneModifica.setFont(new Font("Arial", Font.PLAIN, 14));
 		GridBagConstraints gbc_bottoneModifica = new GridBagConstraints();
 		gbc_bottoneModifica.insets = new Insets(0, 0, 0, 5);
@@ -864,7 +941,7 @@ public class VerbalePaziente extends JFrame {
 		gbc_bottoneModifica.gridy = 29;
 		contentPane.add(bottoneModifica, gbc_bottoneModifica);
 		
-		JButton bottoneConferma = new JButton("Conferma");
+		bottoneConferma = new JButton("Conferma");
 		bottoneConferma.setVisible(false);
 		bottoneConferma.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -909,44 +986,87 @@ public class VerbalePaziente extends JFrame {
 	
 	//questo metodo salva conferma le modifiche
 		void saveModifica() {
-	/*		textNomePaziente.setEditable(false);
-			textCognomePaziente.setEditable(false);
-			textCodiceFiscalePaziente.setEditable(false);
-			spinnerGiorno.setEnabled(false);
-			spinnerMese.setEnabled(false);
-			spinnerAnno.setEnabled(false);
-			textNumeroTelefonoPaziente.setEditable(false);
-			textResidenzaPaziente.setEditable(false);
-			textEmailPaziente.setEditable(false);
-			textDiagnosiPaziente.setEditable(false);
-			textLuogodiNascitaPaziente.setEditable(false);
-			textInterventoPaziente.setEditable(false);
-			textAnamnesiPregressaPaziente.setEditable(false);
-			textAnamnesiProssimaPaziente.setEditable(false);
-			spinnerTempodiAttesaPaziente.setEnabled(false);
+			spinnerOra1.setEnabled(false);
+			spinnerOra2.setEnabled(false);
+			spinnerOra3.setEnabled(false);
+			spinnerOra4.setEnabled(false);
+			spinnerOra5.setEnabled(false);
+			spinnerOra6.setEnabled(false);
+			spinnerOra7.setEnabled(false);
+			spinnerOra8.setEnabled(false);
+			spinnerOra9.setEnabled(false);
+			spinnerOra10.setEnabled(false);
+			spinnerMinuto1.setEnabled(false);
+			spinnerMinuto2.setEnabled(false);
+			spinnerMinuto3.setEnabled(false);
+			spinnerMinuto4.setEnabled(false);
+			spinnerMinuto5.setEnabled(false);
+			spinnerMinuto6.setEnabled(false);
+			spinnerMinuto7.setEnabled(false);
+			spinnerMinuto8.setEnabled(false);
+			spinnerMinuto9.setEnabled(false);
+			spinnerMinuto10.setEnabled(false);
+			rdbtnOpzionale1.setEnabled(false);
+			rdbtnOpzionale2.setEnabled(false);
+			rdbtnOpzionale3.setEnabled(false);
+			rdbtnOpzionale4.setEnabled(false);
+			rdbtnOpzionale5.setEnabled(false);
+			rdbtnOpzionale8.setEnabled(false);
+			rdbtnOpzionale9.setEnabled(false);
+			rdbtnOpzionale10.setEnabled(false);
+			spinnerTipoAnestesia.setEnabled(false);
+			spinnerRischioAnestesiologico.setEnabled(false);
+			rdbtnNessunOperatore.setEnabled(false);
+			rdbtnOpzionale2_1.setEnabled(false);
+			rdbtnOpzionale2_1_1.setEnabled(false);
+			
 			bottoneConferma.setVisible(false);
 			bottoneModifica.setEnabled(true);  
-	*/			
+				
 		}
 		
 		//questo metodo abilita alle modifiche
 		void enableModifica() {
-	/*		textCognomePaziente.setEditable(true);
-			textCodiceFiscalePaziente.setEditable(true);
-			spinnerGiorno.setEnabled(true);
-			spinnerMese.setEnabled(true);
-			spinnerAnno.setEnabled(true);
-			textNumeroTelefonoPaziente.setEditable(true);
-			textResidenzaPaziente.setEditable(true);
-			textEmailPaziente.setEditable(true);
-			textDiagnosiPaziente.setEditable(true);
-			textLuogodiNascitaPaziente.setEditable(true);
-			textInterventoPaziente.setEditable(true);
-			textAnamnesiPregressaPaziente.setEditable(true);
-			textAnamnesiProssimaPaziente.setEditable(true);
-			spinnerTempodiAttesaPaziente.setEnabled(true);
+			spinnerOra1.setEnabled(true);
+			spinnerOra2.setEnabled(true);
+			spinnerOra3.setEnabled(true);
+			spinnerOra4.setEnabled(true);
+			spinnerOra5.setEnabled(true);
+			spinnerOra6.setEnabled(true);
+			spinnerOra7.setEnabled(true);
+			spinnerOra8.setEnabled(true);
+			spinnerOra9.setEnabled(true);
+			spinnerOra10.setEnabled(true);
+			spinnerMinuto1.setEnabled(true);
+			spinnerMinuto2.setEnabled(true);
+			spinnerMinuto3.setEnabled(true);
+			spinnerMinuto4.setEnabled(true);
+			spinnerMinuto5.setEnabled(true);
+			spinnerMinuto6.setEnabled(true);
+			spinnerMinuto7.setEnabled(true);
+			spinnerMinuto8.setEnabled(true);
+			spinnerMinuto9.setEnabled(true);
+			spinnerMinuto10.setEnabled(true);
+			rdbtnOpzionale1.setEnabled(true);
+			rdbtnOpzionale2.setEnabled(true);
+			rdbtnOpzionale3.setEnabled(true);
+			rdbtnOpzionale4.setEnabled(true);
+			rdbtnOpzionale5.setEnabled(true);
+			rdbtnOpzionale8.setEnabled(true);
+			rdbtnOpzionale9.setEnabled(true);
+			rdbtnOpzionale10.setEnabled(true);
+			spinnerTipoAnestesia.setEnabled(true);
+			spinnerRischioAnestesiologico.setEnabled(true);
+			rdbtnNessunOperatore.setEnabled(true);
+			rdbtnOpzionale2_1.setEnabled(true);
+			rdbtnOpzionale2_1_1.setEnabled(true);
+			
 			bottoneConferma.setVisible(true);
-			bottoneModifica.setEnabled(false);
-	*/		
+			bottoneModifica.setEnabled(false);		
+		}
+		
+		void accessoPaginaAnagrafica() {
+			PaginaAnagraficaPaziente paginaAnagraficaPaziente= new PaginaAnagraficaPaziente();
+			paginaAnagraficaPaziente.setVisible(true);
 		}
 }
