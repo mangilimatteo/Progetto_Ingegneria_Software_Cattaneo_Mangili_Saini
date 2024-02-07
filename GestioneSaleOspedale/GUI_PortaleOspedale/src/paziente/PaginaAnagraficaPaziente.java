@@ -342,31 +342,17 @@ public class PaginaAnagraficaPaziente extends JFrame {
 		
 		textInterventoPaziente = new JTextArea();
 		textInterventoPaziente.getDocument().addDocumentListener(new DocumentListener(){
-
-			@Override
 			public void insertUpdate(DocumentEvent e) {
-				saveNomeMedicico();
-				
+				saveNomeMedicico();	
 			}
-
-			@Override
 			public void removeUpdate(DocumentEvent e) {
-				// TODO Auto-generated method stub
-				
+				saveNomeMedicico();	
 			}
-
-			@Override
 			public void changedUpdate(DocumentEvent e) {
-				// TODO Auto-generated method stub
-				
-			}
-			
-		});
-		textInterventoPaziente.addKeyListener(new KeyAdapter() {
-		/*	public void keyPressed(KeyEvent e) {
 				saveNomeMedicico();
-			}*/
+				}	
 		});
+		
 		textInterventoPaziente.setFont(new Font("Arial", Font.PLAIN, 14));
 		textInterventoPaziente.setEditable(false);
 		GridBagConstraints gbc_textInterventoPaziente = new GridBagConstraints();
