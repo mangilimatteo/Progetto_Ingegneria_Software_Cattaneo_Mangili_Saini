@@ -9,6 +9,7 @@ import model.generated.tables.Codice;
 import model.generated.tables.Dipendente;
 import model.generated.tables.ListaAttesa;
 import model.generated.tables.ListaOperatorie;
+import model.generated.tables.Verbale;
 
 
 /**
@@ -41,4 +42,9 @@ public class Tables {
      * The table <code>LISTA_OPERATORIE</code>.
      */
     public static final ListaOperatorie LISTA_OPERATORIE = ListaOperatorie.LISTA_OPERATORIE;
+
+    /**
+     * The table <code>VERBALE</code>.
+     */
+    public static final Verbale VERBALE = Verbale.VERBALE;
 }

@@ -9,11 +9,13 @@ import model.generated.tables.Codice;
 import model.generated.tables.Dipendente;
 import model.generated.tables.ListaAttesa;
 import model.generated.tables.ListaOperatorie;
+import model.generated.tables.Verbale;
 import model.generated.tables.records.AnagraficaRecord;
 import model.generated.tables.records.CodiceRecord;
 import model.generated.tables.records.DipendenteRecord;
 import model.generated.tables.records.ListaAttesaRecord;
 import model.generated.tables.records.ListaOperatorieRecord;
+import model.generated.tables.records.VerbaleRecord;
 
 import org.jooq.ForeignKey;
 import org.jooq.TableField;
@@ -38,6 +40,7 @@ public class Keys {
     public static final UniqueKey<DipendenteRecord> DIPENDENTE__PK_DIPENDENTE = Internal.createUniqueKey(Dipendente.DIPENDENTE, DSL.name("pk_DIPENDENTE"), new TableField[] { Dipendente.DIPENDENTE.MATRICOLA }, true);
     public static final UniqueKey<ListaAttesaRecord> LISTA_ATTESA__PK_LISTA_ATTESA = Internal.createUniqueKey(ListaAttesa.LISTA_ATTESA, DSL.name("pk_LISTA_ATTESA"), new TableField[] { ListaAttesa.LISTA_ATTESA.INTERVENTO }, true);
     public static final UniqueKey<ListaOperatorieRecord> LISTA_OPERATORIE__PK_LISTA_OPERATORIE = Internal.createUniqueKey(ListaOperatorie.LISTA_OPERATORIE, DSL.name("pk_LISTA_OPERATORIE"), new TableField[] { ListaOperatorie.LISTA_OPERATORIE.INTERVENTO }, true);
+    public static final UniqueKey<VerbaleRecord> VERBALE__PK_VERBALE = Internal.createUniqueKey(Verbale.VERBALE, DSL.name("pk_VERBALE"), new TableField[] { Verbale.VERBALE.CODICE }, true);
 
     // -------------------------------------------------------------------------
     // FOREIGN KEY definitions
@@ -46,4 +49,5 @@ public class Keys {
     public static final ForeignKey<AnagraficaRecord, DipendenteRecord> ANAGRAFICA__FK_ANAGRAFICA_PK_DIPENDENTE = Internal.createForeignKey(Anagrafica.ANAGRAFICA, DSL.name("fk_ANAGRAFICA_pk_DIPENDENTE"), new TableField[] { Anagrafica.ANAGRAFICA.MATR_MEDICO }, Keys.DIPENDENTE__PK_DIPENDENTE, new TableField[] { Dipendente.DIPENDENTE.MATRICOLA }, true);
     public static final ForeignKey<ListaAttesaRecord, AnagraficaRecord> LISTA_ATTESA__FK_LISTA_ATTESA_PK_ANAGRAFICA = Internal.createForeignKey(ListaAttesa.LISTA_ATTESA, DSL.name("fk_LISTA_ATTESA_pk_ANAGRAFICA"), new TableField[] { ListaAttesa.LISTA_ATTESA.INTERVENTO }, Keys.ANAGRAFICA__PK_ANAGRAFICA, new TableField[] { Anagrafica.ANAGRAFICA.CODICE }, true);
     public static final ForeignKey<ListaOperatorieRecord, ListaAttesaRecord> LISTA_OPERATORIE__FK_LISTA_OPERATORIE_PK_LISTA_ATTESA = Internal.createForeignKey(ListaOperatorie.LISTA_OPERATORIE, DSL.name("fk_LISTA_OPERATORIE_pk_LISTA_ATTESA"), new TableField[] { ListaOperatorie.LISTA_OPERATORIE.INTERVENTO }, Keys.LISTA_ATTESA__PK_LISTA_ATTESA, new TableField[] { ListaAttesa.LISTA_ATTESA.INTERVENTO }, true);
+    public static final ForeignKey<VerbaleRecord, AnagraficaRecord> VERBALE__FK_VERBALE_PK_ANAGRAFICA = Internal.createForeignKey(Verbale.VERBALE, DSL.name("fk_VERBALE_pk_ANAGRAFICA"), new TableField[] { Verbale.VERBALE.CODICE_ANAGRAFICA }, Keys.ANAGRAFICA__PK_ANAGRAFICA, new TableField[] { Anagrafica.ANAGRAFICA.CODICE }, true);
 }

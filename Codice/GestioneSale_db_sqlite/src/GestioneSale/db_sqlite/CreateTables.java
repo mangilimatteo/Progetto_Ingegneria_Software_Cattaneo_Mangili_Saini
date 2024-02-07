@@ -43,6 +43,33 @@ public class CreateTables {
 					" FOREIGN KEY (MATR_MEDICO) REFERENCES DIPENDENTE(MATRICOLA) " +
 					"); " +
 					
+					"CREATE TABLE IF NOT EXISTS VERBALE (" +
+					" CODICE       				TEXT NOT NULL PRIMARY KEY," +
+					" INGRESSO_BLOCCO        	TIME," + 
+					" INGRESSO_SALA	 			TIME, " +
+					" POSIZIONAMENTO	 		TIME, " +
+					" INIZIO_ANESTESIA	 		TIME, " +
+					" FINE_ANESTESIA		 	TIME, " +
+					" INIZIO_INTERVENTO		 	TIME, " +
+					" FINE_INTERVENTO	 		TIME, " +
+					" RISVEGLIO		 			TIME, " +
+					" USCITA_SALA				TIME, " +
+					" USCITA_BLOCCO				TIME, " +
+					" TIPO_ANESTESIA			TEXT NOT NULL, " +
+					" RISCHIO_ANESTESIA			TEXT NOT NULL, " +
+					" PRIMO_OPERATORE	 		TEXT NOT NULL, " +
+					" SECONDO_OPERATORE			TEXT NOT NULL, " +
+					" TERZO_OPERATORE			TEXT NOT NULL, " +
+					" ANESTESISTA	 			TEXT NOT NULL, " +
+					" STRUMENTISTA				TEXT NOT NULL, " +
+					" INFERMIERE		 		TEXT NOT NULL, " +
+					" AIUTO_ANESTESISTA		 	TEXT NOT NULL, " +
+					" TECNICO_RADIOLOGIA		TEXT NOT NULL, " +
+					" PROCEDURA					TEXT NOT NULL, " +
+					" CODICE_ANAGRAFICA		 	TEXT NOT NULL, " +
+					" FOREIGN KEY (CODICE_ANAGRAFICA) REFERENCES ANAGRAFICA(CODICE) " +
+					"); " +
+					
 					"CREATE TABLE IF NOT EXISTS LISTA_ATTESA (" + 
 					" INTERVENTO   				TEXT NOT NULL PRIMARY KEY," +
 					" TIPO_INTERVENTO  			TEXT NOT NULL," +
@@ -74,13 +101,18 @@ public class CreateTables {
 					
 					"INSERT INTO CODICE " +
 					" VALUES " +
-					" 	(\"Anagrafica\", 0); " +
+					" 	(\"Anagrafica\", 0), " +
+					" 	(\"Verbale\", 0); " +
 				
 					"INSERT INTO ANAGRAFICA " +
 					" VALUES " +
-					" 	(\"0\",\"\",\"\",\"\",\"1\",\"1\",\"1800\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\");";
+					" 	(\"0\",\"\",\"\",\"\",\"1\",\"1\",\"1800\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\");" +
 	
-					
+					"INSERT INTO VERBALE " +
+					" VALUES " +
+					" 	(\"0\",NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\");";
+
+				
 				stmt.executeUpdate(sql);
 				stmt.close();
 				conn.close();
