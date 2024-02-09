@@ -15,6 +15,7 @@ import javax.swing.JSpinner;
 import java.awt.FlowLayout;
 import java.awt.BorderLayout;
 import javax.swing.BoxLayout;
+import javax.swing.JButton;
 import javax.swing.SpinnerNumberModel;
 import javax.swing.SpinnerDateModel;
 import java.util.Date;
@@ -48,7 +49,7 @@ public class VisualizzazioneVerbale extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					VisualizzazioneVerbale frame = new VisualizzazioneVerbale("0", "m00a1");
+					VisualizzazioneVerbale frame = new VisualizzazioneVerbale("6", "m00a1");
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -525,7 +526,40 @@ public class VisualizzazioneVerbale extends JFrame {
 		gbc_textArea_2.gridx = 2;
 		gbc_textArea_2.gridy = 27;
 		contentPane.add(textProceduraVerbale, gbc_textArea_2);
+		
+		JButton bottoneModifica = new JButton("Modifica");
+		bottoneModifica.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				modifica();
+			}
+		});
+		bottoneModifica.setFont(new Font("Arial", Font.PLAIN, 14));
+		GridBagConstraints gbc_bottoneModifica = new GridBagConstraints();
+		gbc_bottoneModifica.insets = new Insets(0, 0, 0, 5);
+		gbc_bottoneModifica.gridx = 0;
+		gbc_bottoneModifica.gridy = 28;
+		contentPane.add(bottoneModifica, gbc_bottoneModifica);
+		
+		JButton bottoneConferma = new JButton("Chiudi");
+		bottoneConferma.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+			}
+		});
+		bottoneConferma.setFont(new Font("Arial", Font.PLAIN, 14));
+		GridBagConstraints gbc_bottoneConferma = new GridBagConstraints();
+		gbc_bottoneConferma.gridx = 2;
+		gbc_bottoneConferma.gridy = 28;
+		contentPane.add(bottoneConferma, gbc_bottoneConferma);
 
+	}
+
+
+	protected void modifica() {
+		ModificaVerbale modificaVerbale= new ModificaVerbale(codiceVerbale, matricolaDipendente, "");
+		modificaVerbale.setVisible(true);
+		dispose();
+		
 	}
 
 }

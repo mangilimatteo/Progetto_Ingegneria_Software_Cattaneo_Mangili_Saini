@@ -329,16 +329,16 @@ public class VerbaleRecord extends UpdatableRecordImpl<VerbaleRecord> {
     }
 
     /**
-     * Setter for <code>VERBALE.CODICE_ANAGRAFICA</code>.
+     * Setter for <code>VERBALE.CODICE_OPERAZIONE</code>.
      */
-    public void setCodiceAnagrafica(String value) {
+    public void setCodiceOperazione(String value) {
         set(22, value);
     }
 
     /**
-     * Getter for <code>VERBALE.CODICE_ANAGRAFICA</code>.
+     * Getter for <code>VERBALE.CODICE_OPERAZIONE</code>.
      */
-    public String getCodiceAnagrafica() {
+    public String getCodiceOperazione() {
         return (String) get(22);
     }
 
@@ -365,7 +365,7 @@ public class VerbaleRecord extends UpdatableRecordImpl<VerbaleRecord> {
     /**
      * Create a detached, initialised VerbaleRecord
      */
-    public VerbaleRecord(String codice, LocalTime ingressoBlocco, LocalTime ingressoSala, LocalTime posizionamento, LocalTime inizioAnestesia, LocalTime fineAnestesia, LocalTime inizioIntervento, LocalTime fineIntervento, LocalTime risveglio, LocalTime uscitaSala, LocalTime uscitaBlocco, String tipoAnestesia, String rischioAnestesia, String primoOperatore, String secondoOperatore, String terzoOperatore, String anestesista, String strumentista, String infermiere, String aiutoAnestesista, String tecnicoRadiologia, String procedura, String codiceAnagrafica) {
+    public VerbaleRecord(String codice, LocalTime ingressoBlocco, LocalTime ingressoSala, LocalTime posizionamento, LocalTime inizioAnestesia, LocalTime fineAnestesia, LocalTime inizioIntervento, LocalTime fineIntervento, LocalTime risveglio, LocalTime uscitaSala, LocalTime uscitaBlocco, String tipoAnestesia, String rischioAnestesia, String primoOperatore, String secondoOperatore, String terzoOperatore, String anestesista, String strumentista, String infermiere, String aiutoAnestesista, String tecnicoRadiologia, String procedura, String codiceOperazione) {
         super(Verbale.VERBALE);
 
         setCodice(codice);
@@ -390,7 +390,7 @@ public class VerbaleRecord extends UpdatableRecordImpl<VerbaleRecord> {
         setAiutoAnestesista(aiutoAnestesista);
         setTecnicoRadiologia(tecnicoRadiologia);
         setProcedura(procedura);
-        setCodiceAnagrafica(codiceAnagrafica);
+        setCodiceOperazione(codiceOperazione);
         resetChangedOnNotNull();
     }
 }

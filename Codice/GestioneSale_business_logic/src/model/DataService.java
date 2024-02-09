@@ -1,9 +1,10 @@
 package model;
 
-import java.sql.Connection;   
+import java.sql.Connection;    
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
 
 import org.jooq.DSLContext;
@@ -15,9 +16,7 @@ import org.jooq.impl.DSL;
 import static org.jooq.impl.DSL.*;
 
 import model.generated.tables.*;
-import model.generated.tables.records.AnagraficaRecord;
-import model.generated.tables.records.DipendenteRecord;
-import model.generated.tables.records.VerbaleRecord;
+import model.generated.tables.records.*;
 import GestioneSale.db_sqlite.CreateDB;
 
 
@@ -93,20 +92,6 @@ public class DataService {
 		return String.valueOf(nuovoCodice);	
 	}
 	
-	
-	//se la matricola ha un valore nullo significa che si sta creando una nuova anagrafica,
-	// quindi serve generare una nuova matricola. Dopodiché si crea una nuova anagrafica che, per il momento,
-	//conterrà valori standard (si riempie con i valori affettivi al salvataggio)
-	public String getCodiceAnagrafica(String codiceAnagrafica) {
-		if(codiceAnagrafica.equals("")){
-			String nuovoCodice = generaNuovoCodice("Anagrafica");
-			creaNuovaAnagrafica(nuovoCodice);			
-			return nuovoCodice;
-		}
-		else 	
-			return codiceAnagrafica;
-	}
-	
 	public String getPazienteAnagrafica(String codiceAnagrafica) {
 		String[] valori = getValoriAnagrafica(codiceAnagrafica, "");
 		return valori[0] + " " + valori [1];
@@ -116,17 +101,22 @@ public class DataService {
 	//crea una nuova anagrafica con tutti i campi standard
 	private void creaNuovaAnagrafica(String nuovoCodice) {
 		AnagraficaRecord nuovaAnagrafica = new AnagraficaRecord(
-				nuovoCodice,"","","","1","1","1800","","","", "", "", "", "", "", "", "", "", "");
+				nuovoCodice,"","","","","","","","","", "", "", "", "", "", "", "", "", "");
 		int result = create.insertInto(Anagrafica.ANAGRAFICA).set(nuovaAnagrafica).execute();
 		System.out.println(result); // stampa 1 se tutto andato bene
 	}
 
-	public boolean salvaAnagrafica(String codice, String[] valori) {
+	public boolean salvaAnagrafica(String codice, String[] valori, boolean nuova) {
 		//se ci sono campi vuoti, ad eccezioni delle note, non va bene
 		for(int i = 0; i < 17; i++) {
 			if(valori[i].equals(""))
 				return false;
 		}
+		
+		if(nuova) {
+			creaNuovaAnagrafica(codice);
+		}
+		
 		//salvo tutto
 		create
 		.update(Anagrafica.ANAGRAFICA)
@@ -190,20 +180,6 @@ public class DataService {
 		};
 		return valori;
 	}
-
-
-	public boolean eliminaAnagraficaVuota(String codiceAnagrafica) {
-		String[] anagrafica = getValoriAnagrafica(codiceAnagrafica,"");
-		String[] anagraficaVuota = getValoriAnagrafica("0","");
-		for(int i = 0; i <18; i++)
-			if(!(anagrafica[i].equals(anagraficaVuota[i]))){
-				return false;
-			}
-		eliminaAnagrafica(codiceAnagrafica);
-		decrementaCodice("Anagrafica");
-		return true;
-		
-	}
 	
 	
 	private void eliminaAnagrafica(String codiceAnagrafica) {
@@ -213,18 +189,25 @@ public class DataService {
 	}
 
 
-	protected void decrementaCodice(String tipo) {
-		int codiceDecrementato = -1 + create
+	public void decrementaCodice(String codice, String tipo) {
+		int contatore = create
 		        .selectFrom(Codice.CODICE)
 		        .where(Codice.CODICE.TIPO.eq(tipo))
 		        .fetchOne()
 		        .getValue(Codice.CODICE.CONTATORE);
-			
+		//decremeento il contatore del codice a cui si è arrivati solo se nel frattempo 
+		//non sono state create altre anagrafice/operazioni/verbali, altrimenti ci sarebbero probelimi 
+		//di non univocità delle chiavi. Se non si può decrementare il codice, si accetta di perdere
+		//delle potenziali chiavi.
+		if(contatore == Integer.valueOf(codice)) {
 			create.update(Codice.CODICE)
-	        .set(Codice.CODICE.CONTATORE, codiceDecrementato)
+	        .set(Codice.CODICE.CONTATORE, contatore - 1)
 	        .where(Codice.CODICE.TIPO.eq(tipo))
 	        .execute();
-		
+		}
+			
+			
+				
 	} 
 
 
@@ -255,7 +238,7 @@ public class DataService {
 		String valore18 = verbale.getValue(Verbale.VERBALE.AIUTO_ANESTESISTA);
 		String valore19 = verbale.getValue(Verbale.VERBALE.TECNICO_RADIOLOGIA);
 		String valore20 = verbale.getValue(Verbale.VERBALE.PROCEDURA);
-		String valore21 = verbale.getValue(Verbale.VERBALE.CODICE_ANAGRAFICA);
+		String valore21 = verbale.getValue(Verbale.VERBALE.CODICE_OPERAZIONE);
 		
 		
 		String[] valori = {
@@ -273,7 +256,7 @@ public class DataService {
 			return orario.toString();
 	}
 	
-	public boolean salvaVerbale(String codiceVerbale, String[] valori) {
+	public boolean salvaVerbale(String codiceOperazione, String[] valori) {
 		
 		if(valori[5].equals("") || valori[6].equals("") || valori[6].equals("") || valori[11].equals("") 
 				|| valori[13].equals("") || valori[17].equals("") || valori[20].equals("")) {
@@ -282,18 +265,20 @@ public class DataService {
 		
 		//DA AGGIUNGERE IL CONTROLLO DELL'ANESTESIA
 		
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm");
+		
 		create
 		.update(Verbale.VERBALE)
-		.set(Verbale.VERBALE.INGRESSO_BLOCCO, valori[0])
-		.set(Verbale.VERBALE.INGRESSO_SALA, valori[1])
-		.set(Verbale.VERBALE.POSIZIONAMENTO, valori[2])
-		.set(Verbale.VERBALE.INIZIO_ANESTESIA, valori[3])
-		.set(Verbale.VERBALE.FINE_ANESTESIA, valori[4])
-		.set(Verbale.VERBALE.INIZIO_INTERVENTO, valori[5])
-		.set(Verbale.VERBALE.FINE_INTERVENTO, valori[6])
-		.set(Verbale.VERBALE.RISVEGLIO, valori[7])
-		.set(Verbale.VERBALE.USCITA_SALA, valori[8])
-		.set(Verbale.VERBALE.USCITA_BLOCCO, valori[9])
+		.set(Verbale.VERBALE.INGRESSO_BLOCCO, LocalTime.parse(valori[0], formatter))
+		.set(Verbale.VERBALE.INGRESSO_SALA, LocalTime.parse(valori[1], formatter))
+		.set(Verbale.VERBALE.POSIZIONAMENTO, LocalTime.parse(valori[2], formatter))
+		.set(Verbale.VERBALE.INIZIO_ANESTESIA, LocalTime.parse(valori[3], formatter))
+		.set(Verbale.VERBALE.FINE_ANESTESIA, LocalTime.parse(valori[4], formatter))
+		.set(Verbale.VERBALE.INIZIO_INTERVENTO, LocalTime.parse(valori[5], formatter))
+		.set(Verbale.VERBALE.FINE_INTERVENTO, LocalTime.parse(valori[6], formatter))
+		.set(Verbale.VERBALE.RISVEGLIO, LocalTime.parse(valori[7], formatter))
+		.set(Verbale.VERBALE.USCITA_SALA, LocalTime.parse(valori[8], formatter))
+		.set(Verbale.VERBALE.USCITA_BLOCCO, LocalTime.parse(valori[9], formatter))
 		.set(Verbale.VERBALE.TIPO_ANESTESIA, valori[10])
 		.set(Verbale.VERBALE.RISCHIO_ANESTESIA, valori[11])
 		.set(Verbale.VERBALE.PRIMO_OPERATORE, valori[12])
@@ -305,8 +290,7 @@ public class DataService {
 		.set(Verbale.VERBALE.AIUTO_ANESTESISTA, valori[18])
 		.set(Verbale.VERBALE.TECNICO_RADIOLOGIA, valori[19])
 		.set(Verbale.VERBALE.PROCEDURA, valori[20])
-		.set(Verbale.VERBALE.CODICE_ANAGRAFICA, valori[21])
-		.where(Verbale.VERBALE.CODICE.eq(codiceVerbale))
+		.where(Verbale.VERBALE.CODICE.eq(codiceOperazione))
 		.execute();
 		
 		return true;
@@ -368,10 +352,99 @@ public class DataService {
 	}
 
 
-	
+	public String getCodiceOperazione(String codiceOperazione) {
+		if(codiceOperazione.equals("")){
+			String nuovoCodice = generaNuovoCodice("Operazione");
+			creaNuovaOperazione(nuovoCodice);			
+			return nuovoCodice;
+		}
+		else 	
+			return codiceOperazione;
+	}
 
 
+	private void creaNuovaOperazione(String nuovoCodice) {
+		OperazioneRecord nuovaOperazione = new OperazioneRecord(nuovoCodice, "", "    ", false, "", "");
+		int result = create.insertInto(Operazione.OPERAZIONE).set(nuovaOperazione).execute();
+		System.out.println(result); // stampa 1 se tutto andato bene
+		
+	}
+
+
+	public String[] getValoriOperazione(String codiceOperazione) {
+		OperazioneRecord operazione = create
+	            .selectFrom(Operazione.OPERAZIONE)
+	            .where(Operazione.OPERAZIONE.CODICE.eq(codiceOperazione))
+	            .fetchOne();
+		
+		String valore0 = operazione.getValue(Operazione.OPERAZIONE.CODICE_ANAGRAFICA);
+		String valore1 = operazione.getValue(Operazione.OPERAZIONE.BLOCCO);
+		String valore2 = operazione.getValue(Operazione.OPERAZIONE.SALA);
+		String valore3 = operazione.getValue(Operazione.OPERAZIONE.ANESTESIA).toString();
+		String valore4 = operazione.getValue(Operazione.OPERAZIONE.PRIMO_OPERATORE);
+				
+		String[] valori = {valore0, valore1, valore2, valore3, valore4};
+		
+		return valori;
+		
+		
+	}
+
+
+	public String getNomeAnagrafica(String codiceAnagrafica) {
+		String[] valori = getValoriAnagrafica(codiceAnagrafica, "");
+		return valori[0];
+	}
 	
+	
+	public String getCognomeAnagrafica(String codiceAnagrafica) {
+		String[] valori = getValoriAnagrafica(codiceAnagrafica, "");
+		return valori[1];
+	}
+
+
+	public String getNascitaAnagrafica(String codiceAnagrafica) {
+		String[] valori = getValoriAnagrafica(codiceAnagrafica, "");
+		return valori[3] + "/" + valori[4] + "/" + valori[5];
+	}
+
+
+	public int salvaOperazione(String codiceOperazione, String[] valori) {
+		if(valori[1].equals("") || valori[2].equals("    ") || valori[4].equals("")){
+			return 1;
+		}
+		
+		if(getRuoloDipendente(valori[4])==null || !getRuoloDipendente(valori[4]).equals("Medico")) {
+			return 2;
+		}
+		
+		create
+		.update(Operazione.OPERAZIONE)
+		.set(Operazione.OPERAZIONE.BLOCCO,valori[1])
+		.set(Operazione.OPERAZIONE.SALA, valori[2])
+		.set(Operazione.OPERAZIONE.ANESTESIA, Boolean.valueOf(valori[3]))
+		.set(Operazione.OPERAZIONE.PRIMO_OPERATORE, valori[4])
+		.set(Operazione.OPERAZIONE.CODICE_ANAGRAFICA, valori[0])
+		.where(Operazione.OPERAZIONE.CODICE.eq(codiceOperazione))
+		.execute();
+		
+		return 0;
+	}
+
+
+	public void eliminaOperazione(String codiceOperazione) {
+		create.deleteFrom(Operazione.OPERAZIONE)
+		.where(Operazione.OPERAZIONE.CODICE.eq(codiceOperazione))
+		.execute();
+	}
+
+
+	public void eliminaVerbale(String codiceVerbale) {
+		create.deleteFrom(Verbale.VERBALE)
+		.where(Operazione.OPERAZIONE.CODICE.eq(codiceVerbale))
+		.execute();
+	}
+
 
 }
 	

@@ -158,9 +158,9 @@ public class Verbale extends TableImpl<VerbaleRecord> {
     public final TableField<VerbaleRecord, String> PROCEDURA = createField(DSL.name("PROCEDURA"), SQLDataType.CLOB.nullable(false), this, "");
 
     /**
-     * The column <code>VERBALE.CODICE_ANAGRAFICA</code>.
+     * The column <code>VERBALE.CODICE_OPERAZIONE</code>.
      */
-    public final TableField<VerbaleRecord, String> CODICE_ANAGRAFICA = createField(DSL.name("CODICE_ANAGRAFICA"), SQLDataType.CLOB.nullable(false), this, "");
+    public final TableField<VerbaleRecord, String> CODICE_OPERAZIONE = createField(DSL.name("CODICE_OPERAZIONE"), SQLDataType.CLOB.nullable(false), this, "");
 
     private Verbale(Name alias, Table<VerbaleRecord> aliased) {
         this(alias, aliased, null);
@@ -207,19 +207,19 @@ public class Verbale extends TableImpl<VerbaleRecord> {
 
     @Override
     public List<ForeignKey<VerbaleRecord, ?>> getReferences() {
-        return Arrays.asList(Keys.VERBALE__FK_VERBALE_PK_ANAGRAFICA);
+        return Arrays.asList(Keys.VERBALE__FK_VERBALE_PK_OPERAZIONE);
     }
 
-    private transient Anagrafica _anagrafica;
+    private transient Operazione _operazione;
 
     /**
-     * Get the implicit join path to the <code>ANAGRAFICA</code> table.
+     * Get the implicit join path to the <code>OPERAZIONE</code> table.
      */
-    public Anagrafica anagrafica() {
-        if (_anagrafica == null)
-            _anagrafica = new Anagrafica(this, Keys.VERBALE__FK_VERBALE_PK_ANAGRAFICA);
+    public Operazione operazione() {
+        if (_operazione == null)
+            _operazione = new Operazione(this, Keys.VERBALE__FK_VERBALE_PK_OPERAZIONE);
 
-        return _anagrafica;
+        return _operazione;
     }
 
     @Override

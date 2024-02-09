@@ -8,7 +8,8 @@ import model.generated.tables.Anagrafica;
 import model.generated.tables.Codice;
 import model.generated.tables.Dipendente;
 import model.generated.tables.ListaAttesa;
-import model.generated.tables.ListaOperatorie;
+import model.generated.tables.ListaOperatoria;
+import model.generated.tables.Operazione;
 import model.generated.tables.Verbale;
 
 
@@ -39,9 +40,14 @@ public class Tables {
     public static final ListaAttesa LISTA_ATTESA = ListaAttesa.LISTA_ATTESA;
 
     /**
-     * The table <code>LISTA_OPERATORIE</code>.
+     * The table <code>LISTA_OPERATORIA</code>.
      */
-    public static final ListaOperatorie LISTA_OPERATORIE = ListaOperatorie.LISTA_OPERATORIE;
+    public static final ListaOperatoria LISTA_OPERATORIA = ListaOperatoria.LISTA_OPERATORIA;
+
+    /**
+     * The table <code>OPERAZIONE</code>.
+     */
+    public static final Operazione OPERAZIONE = Operazione.OPERAZIONE;
 
     /**
      * The table <code>VERBALE</code>.

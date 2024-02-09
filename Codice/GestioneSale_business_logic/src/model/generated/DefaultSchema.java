@@ -11,7 +11,8 @@ import model.generated.tables.Anagrafica;
 import model.generated.tables.Codice;
 import model.generated.tables.Dipendente;
 import model.generated.tables.ListaAttesa;
-import model.generated.tables.ListaOperatorie;
+import model.generated.tables.ListaOperatoria;
+import model.generated.tables.Operazione;
 import model.generated.tables.Verbale;
 
 import org.jooq.Catalog;
@@ -53,9 +54,14 @@ public class DefaultSchema extends SchemaImpl {
     public final ListaAttesa LISTA_ATTESA = ListaAttesa.LISTA_ATTESA;
 
     /**
-     * The table <code>LISTA_OPERATORIE</code>.
+     * The table <code>LISTA_OPERATORIA</code>.
      */
-    public final ListaOperatorie LISTA_OPERATORIE = ListaOperatorie.LISTA_OPERATORIE;
+    public final ListaOperatoria LISTA_OPERATORIA = ListaOperatoria.LISTA_OPERATORIA;
+
+    /**
+     * The table <code>OPERAZIONE</code>.
+     */
+    public final Operazione OPERAZIONE = Operazione.OPERAZIONE;
 
     /**
      * The table <code>VERBALE</code>.
@@ -82,7 +88,8 @@ public class DefaultSchema extends SchemaImpl {
             Codice.CODICE,
             Dipendente.DIPENDENTE,
             ListaAttesa.LISTA_ATTESA,
-            ListaOperatorie.LISTA_OPERATORIE,
+            ListaOperatoria.LISTA_OPERATORIA,
+            Operazione.OPERAZIONE,
             Verbale.VERBALE
         );
     }

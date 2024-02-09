@@ -66,6 +66,7 @@ public class ModificaPaginaAnagrafica extends JFrame {
 	private DataService dataService;
 	private String codiceAnagrafica;
 	private String matricolaMedico;
+	private boolean nuova;
 
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -84,10 +85,21 @@ public class ModificaPaginaAnagrafica extends JFrame {
 	public ModificaPaginaAnagrafica(String codiceAnagrafica, String matricolaMedico, boolean nuova) {
 		
 		dataService = new DataService();
-		this.codiceAnagrafica = dataService.getCodiceAnagrafica(codiceAnagrafica);
 		this.matricolaMedico = matricolaMedico;
+		this.nuova = nuova;
+		String[] valori;
+		if(nuova) {
+			this.codiceAnagrafica= dataService.generaNuovoCodice("Anagrafica");
+			valori = dataService.getValoriAnagrafica("0", matricolaMedico);
+		}
+		else {
+			this.codiceAnagrafica = codiceAnagrafica;
+			valori = dataService.getValoriAnagrafica(this.codiceAnagrafica, matricolaMedico);
+		}
 		
-		String[] valori = dataService.getValoriAnagrafica(this.codiceAnagrafica, matricolaMedico);
+		
+		
+		 
 		
 		setIconImage(Toolkit.getDefaultToolkit().getImage(ModificaPaginaAnagrafica.class.getResource("/resources/LogoOspedale.png")));
 		setTitle("Portale digitale Personale Sanitario dell'ospedale Papa Giovanni XIII");
@@ -569,12 +581,7 @@ public class ModificaPaginaAnagrafica extends JFrame {
 		bottoneChiudi.setVisible(true);
 		bottoneChiudi.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if(nuova) {
-					eliminaAnagraficaVuota();
-				}
-				else {
-					chiudi();
-				}
+				chiudi();
 			}
 		});
 		bottoneChiudi.setFont(new Font("Arial", Font.PLAIN, 14));
@@ -589,11 +596,6 @@ public class ModificaPaginaAnagrafica extends JFrame {
 		
 	}
 
-
-	protected void eliminaAnagraficaVuota() {
-		dataService.eliminaAnagraficaVuota(codiceAnagrafica);
-		dispose();
-	}
 
 
 	protected void salva(){
@@ -618,7 +620,8 @@ public class ModificaPaginaAnagrafica extends JFrame {
 				textMatricolaMedico.getText(),
 				textNotePaziente.getText()
 		};
-		if(dataService.salvaAnagrafica(codiceAnagrafica, valori)) {
+		if(dataService.salvaAnagrafica(codiceAnagrafica, valori, nuova)) {
+			nuova = false;
 			chiudi();
 		}
 		else {
@@ -629,8 +632,13 @@ public class ModificaPaginaAnagrafica extends JFrame {
 	
 	
 	protected void chiudi() {
-		VisualizzazionePaginaAnagrafica visualizzaAnagrafica= new VisualizzazionePaginaAnagrafica(codiceAnagrafica, matricolaMedico);
-		visualizzaAnagrafica.setVisible(true);
+		if(nuova) {
+			dataService.decrementaCodice(codiceAnagrafica, "Anagrafica");
+		}
+		else {
+			VisualizzazionePaginaAnagrafica visualizzaAnagrafica= new VisualizzazionePaginaAnagrafica(codiceAnagrafica, matricolaMedico);
+			visualizzaAnagrafica.setVisible(true);
+		}
 		dispose();
 	}
 

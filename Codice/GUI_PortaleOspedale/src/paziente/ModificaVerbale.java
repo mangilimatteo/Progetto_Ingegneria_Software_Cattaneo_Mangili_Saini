@@ -77,8 +77,9 @@ public class ModificaVerbale extends JFrame {
 	
 	private DataService dataService;
 	private String codiceVerbale;
-	private String codiceAnagrafica;
+	private String codiceOperazioneAssociata;
 	private String matricolaDipendente;
+	private boolean nuovo;
 	
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -93,23 +94,24 @@ public class ModificaVerbale extends JFrame {
 		});
 	}
 
-
-	public ModificaVerbale(String codiceVerbale, String matricolaDipendente, String codiceAnagrafica) {
+	//codiceAnagrafica serve per collegare il verbale alla giusta anagrafica. Se si sta modificando
+	//un verbale già esistente, questo è già associato ad un'anagrafica e dunque codiceAnagrafica = ""
+	public ModificaVerbale(String codiceVerbale, String matricolaDipendente, String codiceOperazioneAssociata) {
 		
 		dataService = new DataService();
-		this.codiceVerbale = dataService.getCodiceVerbale(codiceVerbale);
 		this.matricolaDipendente = matricolaDipendente;
-
-		String[] valori = dataService.getValoriVerbale(this.codiceVerbale);
-		
-		//se si è in fase di creazione del verbale non non è ancora stato registrata
-		//l'anagrafica a cui corrisponde, dunque si tiene in considerazione il codice dell'anagrafica
-		//passato come parametro.
-		if(valori[21].equals("")) {
-			valori[21] = codiceAnagrafica;
+		nuovo = !codiceOperazioneAssociata.equals("");
+		String[] valori;
+		if(nuovo) {
+			this.codiceVerbale = dataService.generaNuovoCodice("Operazione");
+			valori = dataService.getValoriOperazione("0");
+			this.codiceOperazioneAssociata = codiceOperazioneAssociata;
 		}
-		
-		this.codiceAnagrafica = valori[21];
+		else {
+			this.codiceVerbale = codiceOperazioneAssociata;
+			valori = dataService.getValoriOperazione(this.codiceVerbale);
+			this.codiceOperazioneAssociata = valori[21];
+		}
 		
 		String[] ore = ore();
 		String[] minuti = minuti();
@@ -138,7 +140,7 @@ public class ModificaVerbale extends JFrame {
 		gbc_textVerbalePaziente.gridy = 0;
 		contentPane.add(textVerbalePaziente, gbc_textVerbalePaziente);
 		
-		JLabel textNomePaziente = new JLabel(dataService.getPazienteAnagrafica(codiceAnagrafica));
+		JLabel textNomePaziente = new JLabel(dataService.getPazienteAnagrafica(codiceOperazioneAssociata));
 		textNomePaziente.setFont(new Font("Arial", Font.BOLD, 16));
 		GridBagConstraints gbc_textNomePaziente = new GridBagConstraints();
 		gbc_textNomePaziente.gridwidth = 2;
@@ -768,8 +770,13 @@ public class ModificaVerbale extends JFrame {
 
 
 	protected void chiudi() {
-		VisualizzazioneVerbale visualizzaVerbale= new VisualizzazioneVerbale(codiceAnagrafica, matricolaDipendente);
-		visualizzaVerbale.setVisible(true);
+		if(nuovo) {
+			dataService.decrementaCodice(codiceVerbale, "Verbale");
+		}
+		else {
+			VisualizzazioneVerbale visualizzaVerbale= new VisualizzazioneVerbale(codiceVerbale, matricolaDipendente);
+			visualizzaVerbale.setVisible(true);
+		}
 		dispose();
 		
 	}
@@ -799,10 +806,11 @@ public class ModificaVerbale extends JFrame {
 				textAiutoanestetistaVerbale.getText(),
 				textTecnicodiRadiologiaVerbale.getText(),
 				textProceduraVerbale.getText(),
-				codiceAnagrafica
+				codiceVerbale
 		};
 		
 		if(dataService.salvaVerbale(codiceVerbale, valori)) {
+			nuovo = false;
 			chiudi();
 		}
 		else {
@@ -813,16 +821,24 @@ public class ModificaVerbale extends JFrame {
 	private String[] ore() {
 		String[] ore = new String[25];
 		ore[0] = "    ";
-		for(int i = 1; i <= 24; i++)
+		for(int i = 1; i <= 24; i++) {
 			ore[i] = "" + (i - 1);
+			if(i-1 < 10) {
+				ore[i] = "0" + ore[i];
+			}
+		}
 		return ore;
 	}
 	
 	private String[] minuti() {
 		String[] minuti = new String[61];
 		minuti[0] = "    ";
-		for(int i = 1; i <= 60; i++)
+		for(int i = 1; i <= 60; i++) {
 			minuti[i] = "" + (i - 1);
+			if(i-1 < 10) {
+				minuti[i] = "0" + minuti[i];
+			}
+		}
 		return minuti;
 	}
 	
