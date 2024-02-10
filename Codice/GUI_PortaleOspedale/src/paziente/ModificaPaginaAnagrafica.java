@@ -1,6 +1,6 @@
 package paziente;
 
-import java.awt.EventQueue;
+import java.awt.EventQueue; 
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -16,27 +16,17 @@ import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
 import java.awt.Color;
-import java.awt.Component;
 
 import javax.swing.JTextArea;
 import javax.swing.JSpinner;
-import javax.swing.SpinnerDateModel;
-import java.util.Date;
-import java.util.Calendar;
 import javax.swing.SpinnerListModel;
 import javax.swing.SpinnerNumberModel;
-import java.awt.BorderLayout;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-import javax.swing.event.AncestorListener;
-import javax.swing.event.AncestorEvent;
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
 
 import model.DataService;
-import personale_sanitario.SchermataMedico;
 
 public class ModificaPaginaAnagrafica extends JFrame {
 

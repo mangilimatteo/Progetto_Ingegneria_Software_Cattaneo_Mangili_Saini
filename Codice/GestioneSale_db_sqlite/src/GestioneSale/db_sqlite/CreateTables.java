@@ -125,7 +125,7 @@ public class CreateTables {
 
 					"INSERT INTO OPERAZIONE " +
 					" VALUES " +
-					" 	(\"0\",\"    \",\"    \",FALSE,\"\",\"\");";
+					" 	(\"0\",\"\",\"    \",FALSE,\"\",\"\");";
 
 				
 				stmt.executeUpdate(sql);

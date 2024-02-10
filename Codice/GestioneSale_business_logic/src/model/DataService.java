@@ -1,6 +1,6 @@
 package model;
 
-import java.sql.Connection;    
+import java.sql.Connection;     
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.time.LocalTime;
@@ -9,11 +9,8 @@ import java.util.Arrays;
 
 import org.jooq.DSLContext;
 import org.jooq.SQLDialect;
-import org.jooq.UpdateConditionStep;
-import org.jooq.UpdateSetMoreStep;
-import org.jooq.impl.DSL;
 
-import static org.jooq.impl.DSL.*;
+import org.jooq.impl.DSL;
 
 import model.generated.tables.*;
 import model.generated.tables.records.*;
@@ -256,7 +253,7 @@ public class DataService {
 			return orario.toString();
 	}
 	
-	public boolean salvaVerbale(String codiceOperazione, String[] valori) {
+	public boolean salvaVerbale(String codiceVerbale, String[] valori, boolean nuovo) {
 		
 		if(valori[5].equals("") || valori[6].equals("") || valori[6].equals("") || valori[11].equals("") 
 				|| valori[13].equals("") || valori[17].equals("") || valori[20].equals("")) {
@@ -264,6 +261,10 @@ public class DataService {
 		}
 		
 		//DA AGGIUNGERE IL CONTROLLO DELL'ANESTESIA
+		
+		if(nuovo) {
+			creaNuovoVerbale(codiceVerbale);
+		}
 		
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm");
 		
@@ -290,21 +291,10 @@ public class DataService {
 		.set(Verbale.VERBALE.AIUTO_ANESTESISTA, valori[18])
 		.set(Verbale.VERBALE.TECNICO_RADIOLOGIA, valori[19])
 		.set(Verbale.VERBALE.PROCEDURA, valori[20])
-		.where(Verbale.VERBALE.CODICE.eq(codiceOperazione))
+		.where(Verbale.VERBALE.CODICE.eq(codiceVerbale))
 		.execute();
 		
 		return true;
-	}
-
-
-	public String getCodiceVerbale(String codiceVerbale) {
-		if(codiceVerbale.equals("")){
-			String nuovoCodice = generaNuovoCodice("Verbale");
-			creaNuovoVerbale(nuovoCodice);			
-			return nuovoCodice;
-		}
-		else 	
-			return codiceVerbale;
 	}
 
 
@@ -351,16 +341,6 @@ public class DataService {
 		return valori[12];
 	}
 
-
-	public String getCodiceOperazione(String codiceOperazione) {
-		if(codiceOperazione.equals("")){
-			String nuovoCodice = generaNuovoCodice("Operazione");
-			creaNuovaOperazione(nuovoCodice);			
-			return nuovoCodice;
-		}
-		else 	
-			return codiceOperazione;
-	}
 
 
 	private void creaNuovaOperazione(String nuovoCodice) {
@@ -409,13 +389,17 @@ public class DataService {
 	}
 
 
-	public int salvaOperazione(String codiceOperazione, String[] valori) {
+	public int salvaOperazione(String codiceOperazione, String[] valori, boolean nuova) {
 		if(valori[1].equals("") || valori[2].equals("    ") || valori[4].equals("")){
 			return 1;
 		}
 		
 		if(getRuoloDipendente(valori[4])==null || !getRuoloDipendente(valori[4]).equals("Medico")) {
 			return 2;
+		}
+		
+		if(nuova) {
+			creaNuovaOperazione(codiceOperazione);
 		}
 		
 		create
@@ -445,6 +429,26 @@ public class DataService {
 		.execute();
 	}
 
+
+	public String getDiagnosiOperazione(String codiceOperazione) {
+		String[] valoriOperazione = getValoriOperazione(codiceOperazione);
+		//return getDiagnosiAnagrafica(valoriOperazione[0]);
+		//DA ELIMINARE
+		return "0";
+	}
+
+	public String getInterventoOperazione(String codiceOperazione) {
+		String[] valoriOperazione = getValoriOperazione(codiceOperazione);
+		//return getInterventoAnagrafica(valoriOperazione[0]);
+		//DA ELIMINARE
+		return "0";
+	}
+
+
+	public String getCodiceAnagraficaOperazione(String codiceOperazione) {
+		String[] valori = getValoriOperazione(codiceOperazione);
+		return valori[0];
+	}
 
 }
 	
