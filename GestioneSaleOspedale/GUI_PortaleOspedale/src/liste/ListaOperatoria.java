@@ -47,6 +47,7 @@ public class ListaOperatoria extends JFrame {
 	}
 
 	public ListaOperatoria() {
+		
 		setTitle("Portale digitale Personale Sanitario dell'ospedale Giovanni XIII");
 		setIconImage(Toolkit.getDefaultToolkit().getImage(ListaOperatoria.class.getResource("/resources/LogoOspedale.png")));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
