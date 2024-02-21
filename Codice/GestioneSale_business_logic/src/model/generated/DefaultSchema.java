@@ -7,11 +7,13 @@ package model.generated;
 import java.util.Arrays;
 import java.util.List;
 
-import model.generated.tables.Anagrafiche;
+import model.generated.tables.Anagrafica;
+import model.generated.tables.Codice;
 import model.generated.tables.Dipendente;
-import model.generated.tables.Interventi;
-import model.generated.tables.ListeAttesa;
-import model.generated.tables.ListeOperatorie;
+import model.generated.tables.ListaAttesa;
+import model.generated.tables.ListaOperatoria;
+import model.generated.tables.Operazione;
+import model.generated.tables.Verbale;
 
 import org.jooq.Catalog;
 import org.jooq.Table;
@@ -32,9 +34,14 @@ public class DefaultSchema extends SchemaImpl {
     public static final DefaultSchema DEFAULT_SCHEMA = new DefaultSchema();
 
     /**
-     * The table <code>ANAGRAFICHE</code>.
+     * The table <code>ANAGRAFICA</code>.
      */
-    public final Anagrafiche ANAGRAFICHE = Anagrafiche.ANAGRAFICHE;
+    public final Anagrafica ANAGRAFICA = Anagrafica.ANAGRAFICA;
+
+    /**
+     * The table <code>CODICE</code>.
+     */
+    public final Codice CODICE = Codice.CODICE;
 
     /**
      * The table <code>DIPENDENTE</code>.
@@ -42,19 +49,24 @@ public class DefaultSchema extends SchemaImpl {
     public final Dipendente DIPENDENTE = Dipendente.DIPENDENTE;
 
     /**
-     * The table <code>INTERVENTI</code>.
+     * The table <code>LISTA_ATTESA</code>.
      */
-    public final Interventi INTERVENTI = Interventi.INTERVENTI;
+    public final ListaAttesa LISTA_ATTESA = ListaAttesa.LISTA_ATTESA;
 
     /**
-     * The table <code>LISTE_ATTESA</code>.
+     * The table <code>LISTA_OPERATORIA</code>.
      */
-    public final ListeAttesa LISTE_ATTESA = ListeAttesa.LISTE_ATTESA;
+    public final ListaOperatoria LISTA_OPERATORIA = ListaOperatoria.LISTA_OPERATORIA;
 
     /**
-     * The table <code>LISTE_OPERATORIE</code>.
+     * The table <code>OPERAZIONE</code>.
      */
-    public final ListeOperatorie LISTE_OPERATORIE = ListeOperatorie.LISTE_OPERATORIE;
+    public final Operazione OPERAZIONE = Operazione.OPERAZIONE;
+
+    /**
+     * The table <code>VERBALE</code>.
+     */
+    public final Verbale VERBALE = Verbale.VERBALE;
 
     /**
      * No further instances allowed
@@ -72,11 +84,13 @@ public class DefaultSchema extends SchemaImpl {
     @Override
     public final List<Table<?>> getTables() {
         return Arrays.asList(
-            Anagrafiche.ANAGRAFICHE,
+            Anagrafica.ANAGRAFICA,
+            Codice.CODICE,
             Dipendente.DIPENDENTE,
-            Interventi.INTERVENTI,
-            ListeAttesa.LISTE_ATTESA,
-            ListeOperatorie.LISTE_OPERATORIE
+            ListaAttesa.LISTA_ATTESA,
+            ListaOperatoria.LISTA_OPERATORIA,
+            Operazione.OPERAZIONE,
+            Verbale.VERBALE
         );
     }
 }

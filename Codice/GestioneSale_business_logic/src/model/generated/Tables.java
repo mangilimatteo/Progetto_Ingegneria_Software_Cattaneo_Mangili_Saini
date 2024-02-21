@@ -4,11 +4,13 @@
 package model.generated;
 
 
-import model.generated.tables.Anagrafiche;
+import model.generated.tables.Anagrafica;
+import model.generated.tables.Codice;
 import model.generated.tables.Dipendente;
-import model.generated.tables.Interventi;
-import model.generated.tables.ListeAttesa;
-import model.generated.tables.ListeOperatorie;
+import model.generated.tables.ListaAttesa;
+import model.generated.tables.ListaOperatoria;
+import model.generated.tables.Operazione;
+import model.generated.tables.Verbale;
 
 
 /**
@@ -18,9 +20,14 @@ import model.generated.tables.ListeOperatorie;
 public class Tables {
 
     /**
-     * The table <code>ANAGRAFICHE</code>.
+     * The table <code>ANAGRAFICA</code>.
      */
-    public static final Anagrafiche ANAGRAFICHE = Anagrafiche.ANAGRAFICHE;
+    public static final Anagrafica ANAGRAFICA = Anagrafica.ANAGRAFICA;
+
+    /**
+     * The table <code>CODICE</code>.
+     */
+    public static final Codice CODICE = Codice.CODICE;
 
     /**
      * The table <code>DIPENDENTE</code>.
@@ -28,17 +35,22 @@ public class Tables {
     public static final Dipendente DIPENDENTE = Dipendente.DIPENDENTE;
 
     /**
-     * The table <code>INTERVENTI</code>.
+     * The table <code>LISTA_ATTESA</code>.
      */
-    public static final Interventi INTERVENTI = Interventi.INTERVENTI;
+    public static final ListaAttesa LISTA_ATTESA = ListaAttesa.LISTA_ATTESA;
 
     /**
-     * The table <code>LISTE_ATTESA</code>.
+     * The table <code>LISTA_OPERATORIA</code>.
      */
-    public static final ListeAttesa LISTE_ATTESA = ListeAttesa.LISTE_ATTESA;
+    public static final ListaOperatoria LISTA_OPERATORIA = ListaOperatoria.LISTA_OPERATORIA;
 
     /**
-     * The table <code>LISTE_OPERATORIE</code>.
+     * The table <code>OPERAZIONE</code>.
      */
-    public static final ListeOperatorie LISTE_OPERATORIE = ListeOperatorie.LISTE_OPERATORIE;
+    public static final Operazione OPERAZIONE = Operazione.OPERAZIONE;
+
+    /**
+     * The table <code>VERBALE</code>.
+     */
+    public static final Verbale VERBALE = Verbale.VERBALE;
 }
