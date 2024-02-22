@@ -39,7 +39,7 @@ public class VisualizzazioneOperazione extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					VisualizzazioneOperazione frame = new VisualizzazioneOperazione("0", "m001a");
+					VisualizzazioneOperazione frame = new VisualizzazioneOperazione("1", "m001a");
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -57,10 +57,6 @@ public class VisualizzazioneOperazione extends JFrame {
 		String[] valori = dataService.getValoriOperazione(this.codiceOperazione);
 		
 		codiceAnagraficaAssociata = valori[0];
-		
-		//DA ELIMINARE
-		codiceAnagraficaAssociata = "0";
-	
 		
 		setIconImage(Toolkit.getDefaultToolkit().getImage(VisualizzazioneOperazione.class.getResource("/resources/LogoOspedale.png")));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -94,7 +90,7 @@ public class VisualizzazioneOperazione extends JFrame {
 		}
 		
 		JButton bottoneMostraAnagrafica = new JButton("Mostra Anagrafica");
-		bottoneMostraAnagrafica.setFont(new Font("Arial", Font.PLAIN, 16));
+		bottoneMostraAnagrafica.setFont(new Font("Arial", Font.PLAIN, 14));
 		bottoneMostraAnagrafica.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				MostraAnagrafica();
@@ -242,17 +238,18 @@ public class VisualizzazioneOperazione extends JFrame {
 		textInterventoOperazione.setFont(new Font("Arial", Font.PLAIN, 14));
 		textInterventoOperazione.setText(dataService.getInterventoAnagrafica(valori[0]));
 		GridBagConstraints gbc_textInterventoOperazione = new GridBagConstraints();
-		gbc_textInterventoOperazione.gridheight = 3;
+		gbc_textInterventoOperazione.gridheight = 2;
 		gbc_textInterventoOperazione.insets = new Insets(0, 0, 5, 0);
 		gbc_textInterventoOperazione.fill = GridBagConstraints.BOTH;
 		gbc_textInterventoOperazione.gridx = 2;
 		gbc_textInterventoOperazione.gridy = 10;
 		contentPane.add(textInterventoOperazione, gbc_textInterventoOperazione);
+		
 		GridBagConstraints gbc_rdbtnAnestesiaY = new GridBagConstraints();
 		gbc_rdbtnAnestesiaY.insets = new Insets(0, 0, 5, 0);
 		gbc_rdbtnAnestesiaY.anchor = GridBagConstraints.WEST;
 		gbc_rdbtnAnestesiaY.gridx = 2;
-		gbc_rdbtnAnestesiaY.gridy = 11;
+		gbc_rdbtnAnestesiaY.gridy = 12;
 		contentPane.add(Anestesia, gbc_rdbtnAnestesiaY);
 		
 		JButton bottoneModifica = new JButton("Modifica");
@@ -269,7 +266,7 @@ public class VisualizzazioneOperazione extends JFrame {
 		gbc_textPresenzaAnestesia.anchor = GridBagConstraints.WEST;
 		gbc_textPresenzaAnestesia.insets = new Insets(0, 0, 5, 5);
 		gbc_textPresenzaAnestesia.gridx = 0;
-		gbc_textPresenzaAnestesia.gridy = 13;
+		gbc_textPresenzaAnestesia.gridy = 12;
 		contentPane.add(textPresenzaAnestesia, gbc_textPresenzaAnestesia);
 		
 		JLabel textNomePrimoOperatore = new JLabel("Nome Primo Operatore:");
@@ -278,7 +275,7 @@ public class VisualizzazioneOperazione extends JFrame {
 		gbc_textNomePrimoOperatore.anchor = GridBagConstraints.WEST;
 		gbc_textNomePrimoOperatore.insets = new Insets(0, 0, 5, 5);
 		gbc_textNomePrimoOperatore.gridx = 0;
-		gbc_textNomePrimoOperatore.gridy = 15;
+		gbc_textNomePrimoOperatore.gridy = 14;
 		contentPane.add(textNomePrimoOperatore, gbc_textNomePrimoOperatore);
 		
 		JLabel textPrimoOperatore = new JLabel();
@@ -289,13 +286,14 @@ public class VisualizzazioneOperazione extends JFrame {
 		gbc_textNomeMedico.insets = new Insets(0, 0, 5, 0);
 		gbc_textNomeMedico.fill = GridBagConstraints.HORIZONTAL;
 		gbc_textNomeMedico.gridx = 2;
-		gbc_textNomeMedico.gridy = 15;
+		gbc_textNomeMedico.gridy = 14;
 		contentPane.add(textPrimoOperatore, gbc_textNomeMedico);
+		
 		bottoneModifica.setFont(new Font("Arial", Font.PLAIN, 14));
 		GridBagConstraints gbc_bottoneModifica = new GridBagConstraints();
 		gbc_bottoneModifica.insets = new Insets(0, 0, 0, 5);
 		gbc_bottoneModifica.gridx = 0;
-		gbc_bottoneModifica.gridy = 17;
+		gbc_bottoneModifica.gridy = 16;
 		contentPane.add(bottoneModifica, gbc_bottoneModifica);
 		
 		JButton bottoneConferma = new JButton("Chiudi");
@@ -307,7 +305,7 @@ public class VisualizzazioneOperazione extends JFrame {
 		bottoneConferma.setFont(new Font("Arial", Font.PLAIN, 14));
 		GridBagConstraints gbc_bottoneConferma = new GridBagConstraints();
 		gbc_bottoneConferma.gridx = 2;
-		gbc_bottoneConferma.gridy = 17;
+		gbc_bottoneConferma.gridy = 16;
 		contentPane.add(bottoneConferma, gbc_bottoneConferma);
 		
 	}

@@ -1,10 +1,13 @@
 package paziente;
 
-import java.awt.EventQueue; 
+import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import liste.ListaPagineAnagrafiche;
+
 import java.awt.Toolkit;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -612,7 +615,7 @@ public class ModificaPaginaAnagrafica extends JFrame {
 		};
 		if(dataService.salvaAnagrafica(codiceAnagrafica, valori, nuova)) {
 			nuova = false;
-			chiudi();
+;			chiudi();
 		}
 		else {
 			JOptionPane.showMessageDialog(null,"Errore, tutti i campi, tranne \"Note\", devono essere compilati");

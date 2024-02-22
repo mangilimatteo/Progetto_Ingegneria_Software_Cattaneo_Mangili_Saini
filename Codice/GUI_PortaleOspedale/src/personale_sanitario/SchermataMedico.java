@@ -1,11 +1,12 @@
 package personale_sanitario;
 
-import java.awt.EventQueue; 
+import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import liste.*;
 import model.DataService;
 import paziente.*;
 
@@ -41,12 +42,12 @@ public class SchermataMedico extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public SchermataMedico(String matricolaMedico) {
+	public SchermataMedico(String matricolaDipendente) {
 		
 		dataService = new DataService();
 		
 		setIconImage(Toolkit.getDefaultToolkit().getImage(SchermataMedico.class.getResource("/resources/LogoOspedale.png")));
-		setTitle("Portale digitale Personale Sanitario dell'ospedale [inserire nome ospedale]");
+		setTitle("Portale digitale Personale Sanitario dell'ospedale Papa Giovanni XXIII");
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 545, 388);
@@ -62,17 +63,16 @@ public class SchermataMedico extends JFrame {
 		contentPane.add(textDottore);
 		
 		JLabel textNomeMedico = new JLabel("Dottore:");
-		//ATTENZIONE inserire modo per associare nome+cognome del medico all'accesso della pagina!!!
-		textNomeMedico.setText(dataService.getNomeDipendente(matricolaMedico) + " " + dataService.getCognomeDipendente(matricolaMedico));
+		textNomeMedico.setText(dataService.getNomeDipendente(matricolaDipendente) + " " + dataService.getCognomeDipendente(matricolaDipendente));
 		textNomeMedico.setFont(new Font("Arial", Font.BOLD, 16));
 		textNomeMedico.setBounds(77, 11, 477, 42);
 		contentPane.add(textNomeMedico);
 		
-		JButton bottoneRegistraPaziente = new JButton("Registra Paziente");
+		JButton bottoneRegistraPaziente = new JButton("Registra anagrafica");
 		bottoneRegistraPaziente.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				//si apre la pagina anagrafica già modificabile
-				ModificaPaginaAnagrafica paginaanagraficapaziente= new ModificaPaginaAnagrafica("", matricolaMedico,true);
+				ModificaPaginaAnagrafica paginaanagraficapaziente= new ModificaPaginaAnagrafica("", matricolaDipendente,true);
 				paginaanagraficapaziente.setVisible(true);
 			}
 		});
@@ -80,29 +80,59 @@ public class SchermataMedico extends JFrame {
 		bottoneRegistraPaziente.setBounds(10, 79, 221, 42);
 		contentPane.add(bottoneRegistraPaziente);
 		
-		JButton bottoneVisualizzaDatiPazienti = new JButton("Visualizza Pazienti");
+		JButton bottoneVisualizzaDatiPazienti = new JButton("Visualizza anagrafiche");
+		bottoneVisualizzaDatiPazienti.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ListaPagineAnagrafiche listaAnagrafiche= new ListaPagineAnagrafiche(matricolaDipendente);
+				listaAnagrafiche.setVisible(true);
+			}
+		});
 		bottoneVisualizzaDatiPazienti.setFont(new Font("Arial", Font.PLAIN, 16));
 		bottoneVisualizzaDatiPazienti.setBounds(266, 79, 221, 42);
 		contentPane.add(bottoneVisualizzaDatiPazienti);
 		
-		JButton bottoneCreaListaOperatoria = new JButton("Crea Lista Operatoria");
-		bottoneCreaListaOperatoria.setFont(new Font("Arial", Font.PLAIN, 16));
-		bottoneCreaListaOperatoria.setBounds(10, 155, 221, 42);
-		contentPane.add(bottoneCreaListaOperatoria);
+		JButton bottoneCreaOperazione = new JButton("Crea Lista Operatoria");
+		bottoneCreaOperazione.setFont(new Font("Arial", Font.PLAIN, 16));
+		bottoneCreaOperazione.setBounds(10, 155, 221, 42);
+		bottoneCreaOperazione.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				SelezionePaginaAnagrafica selezione = new SelezionePaginaAnagrafica(matricolaDipendente);
+				selezione.setVisible(true);	
+			}
+		});
+		contentPane.add(bottoneCreaOperazione);
 		
-		JButton bottoneVisualizzaListeOperatorie = new JButton("Visualizza Liste Operatorie");
-		bottoneVisualizzaListeOperatorie.setFont(new Font("Arial", Font.PLAIN, 16));
-		bottoneVisualizzaListeOperatorie.setBounds(266, 155, 221, 42);
-		contentPane.add(bottoneVisualizzaListeOperatorie);
+		JButton bottoneVisualizzaOperazioni = new JButton("Visualizza Liste Operatorie");
+		bottoneVisualizzaOperazioni.setFont(new Font("Arial", Font.PLAIN, 16));
+		bottoneVisualizzaOperazioni.setBounds(266, 155, 221, 42);
+		bottoneVisualizzaOperazioni.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ListaOperazioni listaOperazioni = new ListaOperazioni(matricolaDipendente);
+				listaOperazioni.setVisible(true);
+			}
+		});
+		contentPane.add(bottoneVisualizzaOperazioni);
 		
 		JButton bottoneCreaVerbale = new JButton("Crea Verbale");
 		bottoneCreaVerbale.setFont(new Font("Arial", Font.PLAIN, 16));
 		bottoneCreaVerbale.setBounds(10, 237, 221, 42);
+		bottoneCreaVerbale.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				SelezioneOperazione selezione = new SelezioneOperazione(matricolaDipendente);
+				selezione.setVisible(true);	
+			}
+		});
 		contentPane.add(bottoneCreaVerbale);
 		
 		JButton bottoneVisualizzaVerbali = new JButton("Visualizza Verbali");
 		bottoneVisualizzaVerbali.setFont(new Font("Arial", Font.PLAIN, 16));
 		bottoneVisualizzaVerbali.setBounds(266, 237, 221, 42);
+		bottoneVisualizzaVerbali.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ListaVerbali listaVerbali = new ListaVerbali(matricolaDipendente);
+				listaVerbali.setVisible(true);
+			}
+		});
 		contentPane.add(bottoneVisualizzaVerbali);
 	}
 }
