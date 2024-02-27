@@ -1,6 +1,6 @@
 package model;
 
-import java.sql.Connection;    
+import java.sql.Connection; 
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.time.LocalTime;
@@ -183,7 +183,7 @@ public class DataService {
 		}
 		String valore17 = anagrafica.getValue(Anagrafica.ANAGRAFICA.NOTE);
 		
-		String[] valori = {
+		String[] valori = { 
 				valore0, valore1, valore2, valore3, valore4, valore5, valore6, valore7, valore8, valore9, 
 				valore10, valore11, valore12, valore13, valore14, valore15, valore16, valore17
 		};
