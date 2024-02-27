@@ -80,21 +80,6 @@ public class CreateTables {
 					" FOREIGN KEY (CODICE_OPERAZIONE) REFERENCES OPERAZIONE(CODICE) " +
 					"); " +
 					
-					"CREATE TABLE IF NOT EXISTS LISTA_ATTESA (" + 
-					" INTERVENTO   				TEXT NOT NULL PRIMARY KEY," +
-					" TIPO_INTERVENTO  			TEXT NOT NULL," +
-					" TIPO_LISTA	 			TEXT NOT NULL, " +
-					" FOREIGN KEY (INTERVENTO) REFERENCES ANAGRAFICA(CODICE) " +
-					"); " +
-					
-					"CREATE TABLE IF NOT EXISTS LISTA_OPERATORIA (" + 
-					" INTERVENTO   				TEXT NOT NULL PRIMARY KEY," +
-					" PRIMO_OPERATORE  			TEXT NOT NULL," +
-					" GIORNO	 				TEXT NOT NULL, " +
-					" ORARIO		 			TEXT NOT NULL, " +
-					" FOREIGN KEY (INTERVENTO) REFERENCES LISTA_ATTESA(INTERVENTO) " +
-					"); " +
-					
 					"CREATE TABLE IF NOT EXISTS CODICE (" + 
 					" TIPO        				TEXT NOT NULL PRIMARY KEY," + 
 					" CONTATORE	 				INTEGER NOT NULL " +
@@ -117,7 +102,7 @@ public class CreateTables {
 				
 					"INSERT INTO ANAGRAFICA " +
 					" VALUES " +
-					" 	(\"0\",\"\",\"\",\"\",\"1\",\"1\",\"1800\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\");" +
+					" 	(\"0\",\"\",\"\",\"\",\"1\",\"1\",\"1900\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\");" +
 	
 					"INSERT INTO VERBALE " +
 					" VALUES " +

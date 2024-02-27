@@ -31,7 +31,7 @@ public class VisualizzazioneVerbale extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					VisualizzazioneVerbale frame = new VisualizzazioneVerbale("17", "m00a1");
+					VisualizzazioneVerbale frame = new VisualizzazioneVerbale("18", "m00a1");
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -75,7 +75,7 @@ public class VisualizzazioneVerbale extends JFrame {
 		contentPane.add(textVerbalePaziente, gbc_textVerbalePaziente);
 		
 		JButton bottoneMostraAnagrafica = new JButton("Mostra Anagrafica");
-		bottoneMostraAnagrafica.setFont(new Font("Arial", Font.PLAIN, 16));
+		bottoneMostraAnagrafica.setFont(new Font("Arial", Font.PLAIN, 14));
 		bottoneMostraAnagrafica.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				mostraAnagrafica();
@@ -470,7 +470,7 @@ public class VisualizzazioneVerbale extends JFrame {
 		contentPane.add(textDiagnosi, gbc_textDiagnosi);
 
 		JLabel textDiagnosiVerbale = new JLabel();
-		textDiagnosiVerbale.setText(dataService.getDiagnosiAnagrafica(valori[21]));
+		textDiagnosiVerbale.setText(dataService.getDiagnosiOperazione(valori[21]));
 		GridBagConstraints gbc_textArea = new GridBagConstraints();
 		gbc_textArea.insets = new Insets(0, 0, 5, 0);
 		gbc_textArea.fill = GridBagConstraints.BOTH;
@@ -489,7 +489,7 @@ public class VisualizzazioneVerbale extends JFrame {
 
 		JLabel textInterventoVerbale = new JLabel();
 		GridBagConstraints gbc_textArea_1 = new GridBagConstraints();
-		textDiagnosiVerbale.setText(dataService.getInterventoAnagrafica(valori[21]));
+		textDiagnosiVerbale.setText(dataService.getInterventoOperazione(valori[21]));
 		gbc_textArea_1.insets = new Insets(0, 0, 5, 0);
 		gbc_textArea_1.fill = GridBagConstraints.BOTH;
 		gbc_textArea_1.gridx = 2;

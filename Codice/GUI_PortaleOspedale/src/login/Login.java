@@ -10,26 +10,9 @@ import personale_sanitario.SchermataCabinadiregia;
 import personale_sanitario.SchermataInfermiere;
 import personale_sanitario.SchermataMedico;
 
-import java.awt.Toolkit;
-import java.awt.Window;
-import java.awt.GridLayout;
-import javax.swing.GroupLayout;
-import javax.swing.GroupLayout.Alignment;
-import javax.swing.LayoutStyle.ComponentPlacement;
-import java.awt.BorderLayout;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import javax.swing.SwingConstants;
-import java.awt.Font;
-import javax.swing.JTextField;
-import java.awt.GridBagLayout;
-import java.awt.GridBagConstraints;
-import java.awt.Insets;
-import javax.swing.JButton;
-import javax.swing.JPasswordField;
-import javax.swing.BoxLayout;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
+import java.awt.*;
+import javax.swing.*;
+import java.awt.event.*;
 
 import model.DataService;
 
@@ -64,43 +47,43 @@ public class Login extends JFrame {
 		setTitle("Portale digitale Personale Sanitario dell'ospedale [inserire nome ospedale]");
 		setIconImage(Toolkit.getDefaultToolkit().getImage(Login.class.getResource("/resources/LogoOspedale.png")));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 560, 293);
+		setBounds(100, 100, 610, 293);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
 		setContentPane(contentPane);
 		
 		JPanel PannelloLogin = new JPanel();
-		PannelloLogin.setBounds(5, 5, 531, 226);
+		PannelloLogin.setBounds(5, 5, 581, 226);
 		PannelloLogin.setLayout(null);
 		
-		JLabel Titolo = new JLabel("Salve inserire credenziali d'accesso");
-		Titolo.setBounds(109, 24, 313, 22);
+		JLabel Titolo = new JLabel("Inserire credenziali d'accesso");
+		Titolo.setBounds(123, 24, 335, 22);
 		PannelloLogin.add(Titolo);
 		Titolo.setFont(new Font("Arial", Font.BOLD, 18));
 		Titolo.setHorizontalAlignment(SwingConstants.CENTER);
 		
 		JLabel Matricola = new JLabel("Matricola:");
-		Matricola.setBounds(0, 69, 61, 20);
+		Matricola.setBounds(10, 69, 84, 20);
 		Matricola.setFont(new Font("Arial", Font.PLAIN, 14));
 		PannelloLogin.add(Matricola);
 		
 		textMatricola = new JTextField();
-		textMatricola.setBounds(70, 70, 451, 20);
+		textMatricola.setBounds(99, 71, 451, 20);
 		PannelloLogin.add(textMatricola);
 		textMatricola.setColumns(10);
 		
 		JLabel Password = new JLabel("Password:");
-		Password.setBounds(0, 97, 65, 27);
+		Password.setBounds(10, 97, 84, 27);
 		Password.setFont(new Font("Arial", Font.PLAIN, 14));
 		PannelloLogin.add(Password);
 		
 		passwordField = new JPasswordField();
-		passwordField.setBounds(70, 101, 451, 20);
+		passwordField.setBounds(99, 102, 451, 20);
 		PannelloLogin.add(passwordField);
 		
 		JButton bottoneLogin = new JButton("Login");
-		bottoneLogin.setBounds(131, 148, 269, 52);
+		bottoneLogin.setBounds(156, 150, 269, 52);
 		PannelloLogin.add(bottoneLogin);
 		bottoneLogin.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -114,8 +97,7 @@ public class Login extends JFrame {
 		contentPane.add(PannelloLogin);
 	}
 	
-	@SuppressWarnings("deprecation")
-	//inserire nello switch la condizione per l'accesso alle varie pagine!!!		
+	
 	void effettuaLogin(){
 		String matricola = textMatricola.getText();
 		if(dataService.credenzialiCorrette(matricola, passwordField.getPassword())) {
