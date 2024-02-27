@@ -120,6 +120,7 @@ public class ModificaOperazione extends JFrame {
 		gbc_textNumeroBloccoOperatorio.gridy = 2;
 		contentPane.add(textNumeroBloccoOperatorio, gbc_textNumeroBloccoOperatorio);
 		spinnerBloccoOperatorio = new JSpinner();
+		spinnerNumeroSala = new JSpinner();
 		spinnerBloccoOperatorio.addChangeListener(new ChangeListener() {
 			public void stateChanged(ChangeEvent e) {
 				IntervalloSala(spinnerBloccoOperatorio, numeriSale);
@@ -146,7 +147,6 @@ public class ModificaOperazione extends JFrame {
 		gbc_textNumerodellaSala.gridx = 0;
 		gbc_textNumerodellaSala.gridy = 3;
 		contentPane.add(textNumerodellaSala, gbc_textNumerodellaSala);
-		spinnerNumeroSala = new JSpinner();
 		
 		spinnerNumeroSala.setModel(new SpinnerListModel(numeriSale));
 		spinnerNumeroSala.setValue(valori[2]);

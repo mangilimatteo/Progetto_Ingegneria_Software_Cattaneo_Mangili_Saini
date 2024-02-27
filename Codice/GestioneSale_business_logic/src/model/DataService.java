@@ -1,6 +1,6 @@
 package model;
 
-import java.sql.Connection;     
+import java.sql.Connection; 
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.time.LocalTime;
@@ -53,34 +53,46 @@ public class DataService {
 	        return Arrays.equals(psw, passwordCorretta.toCharArray()); //controllo che la psw sia corretta
 	    }
 	}
+	
+	private DipendenteRecord getDipendente(String matricola) {
+		return create.selectFrom(Dipendente.DIPENDENTE).
+				where(Dipendente.DIPENDENTE.MATRICOLA.eq(matricola)).fetchSingle();
+	}
+	
+	private OperazioneRecord getOperazione(String codiceOperazione) {
+		return create
+			    .selectFrom(Operazione.OPERAZIONE)
+			    .where(Operazione.OPERAZIONE.CODICE.eq(codiceOperazione))
+			    .fetchOne();
+	}
 
 
 	public String getRuoloDipendente(String matricola) {
-		
-		return create.selectFrom(Dipendente.DIPENDENTE).
-				where(Dipendente.DIPENDENTE.MATRICOLA.eq(matricola)).fetchSingle().component5();
+		return getDipendente(matricola).getRuolo();
 	}
 	
 
 	public String getNomeDipendente(String matricola) { 
-		return create.selectFrom(Dipendente.DIPENDENTE).
-				where(Dipendente.DIPENDENTE.MATRICOLA.eq(matricola)).fetchSingle().component1(); 
+		return getDipendente(matricola).getNome();
 	}
 	
 	public String getCognomeDipendente(String matricola) { 
-		return create.selectFrom(Dipendente.DIPENDENTE).
-				where(Dipendente.DIPENDENTE.MATRICOLA.eq(matricola)).fetchSingle().component2(); 
+		return getDipendente(matricola).getCognome();
+	}
+	
+	public int getContatoreCodice(String tipo) {
+		return create
+	        .selectFrom(Codice.CODICE)
+	        .where(Codice.CODICE.TIPO.eq(tipo))
+	        .fetchOne()
+	        .getContatore();
 	}
 	
 	//questa funzione prende il contatore dei codici nel database e da quello ne genera uno nuovo
 	//in modo incrementale e aggiorna il contatore
 	public String generaNuovoCodice(String tipo) {
-		int nuovoCodice = 1 + create
-	        .selectFrom(Codice.CODICE)
-	        .where(Codice.CODICE.TIPO.eq(tipo))
-	        .fetchOne()
-	        .getValue(Codice.CODICE.CONTATORE);
-		
+		int nuovoCodice = 1 + getContatoreCodice(tipo);
+				
 		create.update(Codice.CODICE)
         .set(Codice.CODICE.CONTATORE, nuovoCodice)
         .where(Codice.CODICE.TIPO.eq(tipo))
@@ -171,7 +183,7 @@ public class DataService {
 		}
 		String valore17 = anagrafica.getValue(Anagrafica.ANAGRAFICA.NOTE);
 		
-		String[] valori = {
+		String[] valori = { 
 				valore0, valore1, valore2, valore3, valore4, valore5, valore6, valore7, valore8, valore9, 
 				valore10, valore11, valore12, valore13, valore14, valore15, valore16, valore17
 		};
@@ -179,19 +191,23 @@ public class DataService {
 	}
 	
 	
-	private void eliminaAnagrafica(String codiceAnagrafica) {
+	public void eliminaAnagrafica(String codiceAnagrafica) {
 		create.deleteFrom(Anagrafica.ANAGRAFICA)
 		.where(Anagrafica.ANAGRAFICA.CODICE.eq(codiceAnagrafica))
 		.execute();
+		
+		decrementaCodice(codiceAnagrafica, "Anagrafica");
+		
+		String operazioneAssociata = getOperazioneAssociata(codiceAnagrafica);
+		if(!operazioneAssociata.equals("")) {
+			eliminaOperazione(operazioneAssociata);
+		}
+		
 	}
 
 
 	public void decrementaCodice(String codice, String tipo) {
-		int contatore = create
-		        .selectFrom(Codice.CODICE)
-		        .where(Codice.CODICE.TIPO.eq(tipo))
-		        .fetchOne()
-		        .getValue(Codice.CODICE.CONTATORE);
+		int contatore = getContatoreCodice(tipo);
 		//decremeento il contatore del codice a cui si è arrivati solo se nel frattempo 
 		//non sono state create altre anagrafice/operazioni/verbali, altrimenti ci sarebbero probelimi 
 		//di non univocità delle chiavi. Se non si può decrementare il codice, si accetta di perdere
@@ -291,6 +307,7 @@ public class DataService {
 		.set(Verbale.VERBALE.AIUTO_ANESTESISTA, valori[18])
 		.set(Verbale.VERBALE.TECNICO_RADIOLOGIA, valori[19])
 		.set(Verbale.VERBALE.PROCEDURA, valori[20])
+		.set(Verbale.VERBALE.CODICE_OPERAZIONE, valori[21])
 		.where(Verbale.VERBALE.CODICE.eq(codiceVerbale))
 		.execute();
 		
@@ -394,7 +411,7 @@ public class DataService {
 			return 1;
 		}
 		
-		if(getRuoloDipendente(valori[4])==null || !getRuoloDipendente(valori[4]).equals("Medico")) {
+		if(!esisteDipendente(valori[4]) || !getRuoloDipendente(valori[4]).equals("Medico")) {
 			return 2;
 		}
 		
@@ -420,28 +437,31 @@ public class DataService {
 		create.deleteFrom(Operazione.OPERAZIONE)
 		.where(Operazione.OPERAZIONE.CODICE.eq(codiceOperazione))
 		.execute();
+		
+		decrementaCodice(codiceOperazione, "Operazione");
+		
+		String verbaleAssociato = getVerbaleAssociato(codiceOperazione);
+		if(!verbaleAssociato.equals("")) {
+			eliminaVerbale(verbaleAssociato);
+		}
 	}
 
 
 	public void eliminaVerbale(String codiceVerbale) {
 		create.deleteFrom(Verbale.VERBALE)
-		.where(Operazione.OPERAZIONE.CODICE.eq(codiceVerbale))
+		.where(Verbale.VERBALE.CODICE.eq(codiceVerbale))
 		.execute();
 	}
 
 
 	public String getDiagnosiOperazione(String codiceOperazione) {
 		String[] valoriOperazione = getValoriOperazione(codiceOperazione);
-		//return getDiagnosiAnagrafica(valoriOperazione[0]);
-		//DA ELIMINARE
-		return "0";
+		return getDiagnosiAnagrafica(valoriOperazione[0]);
 	}
 
 	public String getInterventoOperazione(String codiceOperazione) {
 		String[] valoriOperazione = getValoriOperazione(codiceOperazione);
-		//return getInterventoAnagrafica(valoriOperazione[0]);
-		//DA ELIMINARE
-		return "0";
+		return getInterventoAnagrafica(valoriOperazione[0]);
 	}
 
 
@@ -449,6 +469,69 @@ public class DataService {
 		String[] valori = getValoriOperazione(codiceOperazione);
 		return valori[0];
 	}
+
+
+	public boolean esisteAnagrafica(String codiceAnagrafica) {
+		AnagraficaRecord anagrafica = create
+	            .selectFrom(Anagrafica.ANAGRAFICA)
+	            .where(Anagrafica.ANAGRAFICA.CODICE.eq(codiceAnagrafica))
+	            .fetchOne();
+		return anagrafica != null;
+	}
+	
+	public boolean esisteOperazione(String codiceOperazione) {
+		OperazioneRecord operazione = create
+	            .selectFrom(Operazione.OPERAZIONE)
+	            .where(Operazione.OPERAZIONE.CODICE.eq(codiceOperazione))
+	            .fetchOne();
+		return operazione != null;
+	}
+	
+	public boolean esisteVerbale(String codiceVerbale) {
+		VerbaleRecord verbale = create
+	            .selectFrom(Verbale.VERBALE)
+	            .where(Verbale.VERBALE.CODICE.eq(codiceVerbale))
+	            .fetchOne();
+		return verbale != null;
+	}
+	
+	public boolean esisteDipendente(String matricolaDipendente) {
+		DipendenteRecord dipendente = create
+	            .selectFrom(Dipendente.DIPENDENTE)
+	            .where(Dipendente.DIPENDENTE.MATRICOLA.eq(matricolaDipendente))
+	            .fetchOne();
+		return dipendente != null;
+	}
+
+
+	public String getOperazioneAssociata(String codiceAnagrafica) {
+		OperazioneRecord operazione = create
+			    .selectFrom(Operazione.OPERAZIONE)
+			    .where(Operazione.OPERAZIONE.CODICE_ANAGRAFICA.eq(codiceAnagrafica))
+			    .fetchOne();
+		if(operazione == null) {
+			return "";
+		}
+		return operazione.getCodice();
+	}
+
+
+	public String getVerbaleAssociato(String codiceOperazione) {
+		VerbaleRecord verbale = create
+				.selectFrom(Verbale.VERBALE)
+				.where(Verbale.VERBALE.CODICE_OPERAZIONE.eq(codiceOperazione))
+				.fetchOne();
+		if(verbale == null) {
+			return "";
+		}
+		return verbale.getCodice();
+	}
+
+
+	public boolean getAnestesiaOperazione(String codiceOperazione) {
+		return getOperazione(codiceOperazione).getAnestesia();
+	}
+	
 
 }
 	
