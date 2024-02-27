@@ -165,18 +165,6 @@ public class ListaVerbali extends JFrame {
 		gbc_btnAggiungiLista.gridy = posY+1;
 		contentPane.add(btnAggiungiLista, gbc_btnAggiungiLista);	
 		
-		
-		JButton btnRicarica = new JButton("Ricarica verbali");
-		btnRicarica.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				refresh();
-			}
-		});
-		GridBagConstraints gbc_btnRicarica = new GridBagConstraints();
-		gbc_btnRicarica.insets = new Insets(0, 0, 0, 5);
-		gbc_btnRicarica.gridx = 2;
-		gbc_btnRicarica.gridy = posY+1;
-		contentPane.add(btnRicarica, gbc_btnRicarica);
 	}
 	
 	public void refresh() {
@@ -196,6 +184,7 @@ public class ListaVerbali extends JFrame {
         if (scelta == JOptionPane.YES_OPTION) {
             dataService.eliminaVerbale(codiceVerbale);
             JOptionPane.showMessageDialog(null,"Verbale N. " + codiceVerbale + " eliminato");
+            refresh();
         } else {
         	JOptionPane.showMessageDialog(null,"Eliminazione annullata");
         }

@@ -159,19 +159,6 @@ public class ListaOperazioni extends JFrame {
 		gbc_btnAggiungiLista.gridy = posY+1;
 		contentPane.add(btnAggiungiLista, gbc_btnAggiungiLista);	
 		
-		
-		JButton btnRicarica = new JButton("Ricarica operazioni");
-		btnRicarica.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				refresh();
-			}
-		});
-		GridBagConstraints gbc_btnRicarica = new GridBagConstraints();
-		gbc_btnRicarica.insets = new Insets(0, 0, 5, 0);
-		gbc_btnRicarica.gridx = 2;
-		gbc_btnRicarica.gridy = posY+1;
-		contentPane.add(btnRicarica, gbc_btnRicarica);
-	
 	}
 	
 	protected void eliminaOperazione(String codiceOperazione) {
@@ -186,6 +173,7 @@ public class ListaOperazioni extends JFrame {
         if (scelta == JOptionPane.YES_OPTION) {
             dataService.eliminaOperazione(codiceOperazione);
             JOptionPane.showMessageDialog(null,"Operazione N. " + codiceOperazione + " eliminata");
+            refresh();
         } else {
         	JOptionPane.showMessageDialog(null,"Eliminazione annullata");
         }

@@ -54,6 +54,7 @@ public class SchermataMedico extends JFrame {
 		setTitle("Portale digitale Personale Sanitario dell'ospedale Papa Giovanni XXIII");
 		setUndecorated(true);
 		
+		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 547, 408);
 		contentPane = new JPanel();

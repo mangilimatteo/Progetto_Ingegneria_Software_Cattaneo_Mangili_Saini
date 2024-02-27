@@ -1,6 +1,6 @@
 package login;
 
-import java.awt.EventQueue;
+import java.awt.EventQueue; 
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -10,16 +10,9 @@ import personale_sanitario.SchermataCabinadiregia;
 import personale_sanitario.SchermataInfermiere;
 import personale_sanitario.SchermataMedico;
 
-import java.awt.Toolkit;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import javax.swing.SwingConstants;
-import java.awt.Font;
-import javax.swing.JTextField;
-import javax.swing.JButton;
-import javax.swing.JPasswordField;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
+import java.awt.*;
+import javax.swing.*;
+import java.awt.event.*;
 
 import model.DataService;
 
