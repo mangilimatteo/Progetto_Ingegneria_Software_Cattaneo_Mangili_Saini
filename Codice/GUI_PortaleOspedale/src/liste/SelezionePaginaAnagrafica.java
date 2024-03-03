@@ -146,7 +146,7 @@ public class SelezionePaginaAnagrafica extends JFrame {
 	}
 
 	protected void visualizzaAnagrafica(String codiceAnagrafica) {
-		VisualizzazionePaginaAnagrafica visualizzaAnagrafica= new VisualizzazionePaginaAnagrafica(codiceAnagrafica, matricolaDipendente);
+		VisualizzazionePaginaAnagrafica visualizzaAnagrafica= new VisualizzazionePaginaAnagrafica(codiceAnagrafica, matricolaDipendente, false);
 		visualizzaAnagrafica.setVisible(true);
 		
 	}

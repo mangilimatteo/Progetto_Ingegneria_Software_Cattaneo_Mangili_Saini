@@ -83,7 +83,7 @@ public class VisualizzazioneOperazione extends JFrame {
 		
 		JLabel Anestesia = new JLabel();
 		if(Boolean.valueOf(valori[3])) {
-			Anestesia.setText("Sì");
+			Anestesia.setText("Sï¿½");
 		}
 		else {
 			Anestesia.setText("No");
@@ -311,7 +311,7 @@ public class VisualizzazioneOperazione extends JFrame {
 	}
 	
 	protected void MostraAnagrafica() {
-		VisualizzazionePaginaAnagrafica visualizzaAnagrafica= new VisualizzazionePaginaAnagrafica(codiceAnagraficaAssociata, matricolaDipendente);
+		VisualizzazionePaginaAnagrafica visualizzaAnagrafica= new VisualizzazionePaginaAnagrafica(codiceAnagraficaAssociata, matricolaDipendente, false);
 		visualizzaAnagrafica.setVisible(true);
 				
 	}

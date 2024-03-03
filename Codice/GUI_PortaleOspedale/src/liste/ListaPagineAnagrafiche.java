@@ -196,7 +196,7 @@ public class ListaPagineAnagrafiche extends JFrame {
 	}
 
 	protected void visualizzaAnagrafica(String codiceAnagrafica) {
-		VisualizzazionePaginaAnagrafica visualizzaAnagrafica= new VisualizzazionePaginaAnagrafica(codiceAnagrafica, matricolaDipendente);
+		VisualizzazionePaginaAnagrafica visualizzaAnagrafica= new VisualizzazionePaginaAnagrafica(codiceAnagrafica, matricolaDipendente, true);
 		visualizzaAnagrafica.setVisible(true);
 		
 	}

@@ -328,7 +328,7 @@ public class ModificaOperazione extends JFrame {
 	}
 	
 	protected void MostraAnagrafica() {
-		VisualizzazionePaginaAnagrafica visualizzaAnagrafica= new VisualizzazionePaginaAnagrafica(codiceAnagraficaAssociata, matricolaDipendente);
+		VisualizzazionePaginaAnagrafica visualizzaAnagrafica= new VisualizzazionePaginaAnagrafica(codiceAnagraficaAssociata, matricolaDipendente, false);
 		visualizzaAnagrafica.setVisible(true);
 				
 	}
