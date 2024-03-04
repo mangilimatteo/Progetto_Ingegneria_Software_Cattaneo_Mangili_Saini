@@ -30,7 +30,7 @@ public class VisualizzazionePaginaAnagrafica extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					VisualizzazionePaginaAnagrafica frame = new VisualizzazionePaginaAnagrafica("1", "m001a", false);
+					VisualizzazionePaginaAnagrafica frame = new VisualizzazionePaginaAnagrafica("1", "m001a");
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -40,11 +40,10 @@ public class VisualizzazionePaginaAnagrafica extends JFrame {
 	}
 
 	
-	public VisualizzazionePaginaAnagrafica(String codiceAnagrafica, String matricolaMedico, boolean modifica) {
+	public VisualizzazionePaginaAnagrafica(String codiceAnagrafica, String matricolaMedico) {
 		
 		dataService = new DataService();
 		this.codiceAnagrafica = codiceAnagrafica;
-		modifica = modifica && matricolaMedico.equals(dataService.getMatrMedicoAnagrafica(codiceAnagrafica));
 		
 		String[] valori = dataService.getValoriAnagrafica(codiceAnagrafica, matricolaMedico);
 		

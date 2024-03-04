@@ -82,7 +82,7 @@ public class ModificaVerbale extends JFrame {
 	}
 
 	//codiceAnagrafica serve per collegare il verbale alla giusta anagrafica. Se si sta modificando
-	//un verbale giï¿½ esistente, questo ï¿½ giï¿½ associato ad un'anagrafica e dunque codiceAnagrafica = ""
+	//un verbale già esistente, questo è già associato ad un'anagrafica e dunque codiceAnagrafica = ""
 	public ModificaVerbale(String codiceVerbale, String matricolaDipendente, String codiceOperazioneAssociata) {
 		
 		dataService = new DataService();
@@ -475,7 +475,7 @@ public class ModificaVerbale extends JFrame {
 			contentPane.add(spinner_1, gbc_spinner_1);
 		}
 		
-		JLabel textNomeEquipe = new JLabel("Membri dellï¿½equipe");
+		JLabel textNomeEquipe = new JLabel("Membri dell’equipe");
 		textNomeEquipe.setFont(new Font("Arial", Font.BOLD, 18));
 		GridBagConstraints gbc_textNomeEquipe = new GridBagConstraints();
 		gbc_textNomeEquipe.anchor = GridBagConstraints.WEST;
@@ -768,7 +768,7 @@ public class ModificaVerbale extends JFrame {
 	
 	protected void mostraAnagrafica() {
 		String codiceAnagraficaAssociata = dataService.getCodiceAnagraficaOperazione(codiceOperazioneAssociata);
-		VisualizzazionePaginaAnagrafica visualizzaAnagrafica= new VisualizzazionePaginaAnagrafica(codiceAnagraficaAssociata, matricolaDipendente, false);
+		VisualizzazionePaginaAnagrafica visualizzaAnagrafica= new VisualizzazionePaginaAnagrafica(codiceAnagraficaAssociata, matricolaDipendente);
 		visualizzaAnagrafica.setVisible(true);
 				
 		

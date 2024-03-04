@@ -7,6 +7,8 @@ package model.generated;
 import model.generated.tables.Anagrafica;
 import model.generated.tables.Codice;
 import model.generated.tables.Dipendente;
+import model.generated.tables.ListaAttesa;
+import model.generated.tables.ListaOperatoria;
 import model.generated.tables.Operazione;
 import model.generated.tables.Verbale;
 
@@ -31,6 +33,16 @@ public class Tables {
      * The table <code>DIPENDENTE</code>.
      */
     public static final Dipendente DIPENDENTE = Dipendente.DIPENDENTE;
+
+    /**
+     * The table <code>LISTA_ATTESA</code>.
+     */
+    public static final ListaAttesa LISTA_ATTESA = ListaAttesa.LISTA_ATTESA;
+
+    /**
+     * The table <code>LISTA_OPERATORIA</code>.
+     */
+    public static final ListaOperatoria LISTA_OPERATORIA = ListaOperatoria.LISTA_OPERATORIA;
 
     /**
      * The table <code>OPERAZIONE</code>.

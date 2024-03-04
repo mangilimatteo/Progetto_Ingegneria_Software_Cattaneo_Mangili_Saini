@@ -305,7 +305,7 @@ public class VisualizzazioneVerbale extends JFrame {
 		gbc_textRischioAnestesiologicoPaziente.gridy = 12;
 		contentPane.add(textRischioAnestesiologicoPaziente, gbc_textRischioAnestesiologicoPaziente);
 		
-		JLabel textNomeEquipe = new JLabel("Nomi dellï¿½equipe");
+		JLabel textNomeEquipe = new JLabel("Nomi dell’equipe");
 		textNomeEquipe.setFont(new Font("Arial", Font.BOLD, 18));
 		GridBagConstraints gbc_textNomeEquipe = new GridBagConstraints();
 		gbc_textNomeEquipe.anchor = GridBagConstraints.WEST;
@@ -544,7 +544,7 @@ public class VisualizzazioneVerbale extends JFrame {
 
 	protected void mostraAnagrafica() {
 		String codiceAnagraficaAssociata = dataService.getCodiceAnagraficaOperazione(codiceOperazioneAssociata);
-		VisualizzazionePaginaAnagrafica visualizzaAnagrafica= new VisualizzazionePaginaAnagrafica(codiceAnagraficaAssociata, matricolaDipendente, false);
+		VisualizzazionePaginaAnagrafica visualizzaAnagrafica= new VisualizzazionePaginaAnagrafica(codiceAnagraficaAssociata, matricolaDipendente);
 		visualizzaAnagrafica.setVisible(true);		
 	}
 

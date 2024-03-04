@@ -629,7 +629,7 @@ public class ModificaPaginaAnagrafica extends JFrame {
 			dataService.decrementaCodice(codiceAnagrafica, "Anagrafica");
 		}
 		else {
-			VisualizzazionePaginaAnagrafica visualizzaAnagrafica= new VisualizzazionePaginaAnagrafica(codiceAnagrafica, matricolaMedico, true);
+			VisualizzazionePaginaAnagrafica visualizzaAnagrafica= new VisualizzazionePaginaAnagrafica(codiceAnagrafica, matricolaMedico);
 			visualizzaAnagrafica.setVisible(true);
 		}
 		dispose();
