@@ -279,14 +279,14 @@ public class ModificaOperazione extends JFrame {
 		gbc_rdbtnAnestesiaY.gridy = 12;
 		contentPane.add(rdbtnAnestesia, gbc_rdbtnAnestesiaY);
 		
-		JLabel textNomePrimoOperatore = new JLabel("Nome Primo Operatore:");
-		textNomePrimoOperatore.setFont(new Font("Arial", Font.BOLD, 16));
-		GridBagConstraints gbc_textNomePrimoOperatore = new GridBagConstraints();
-		gbc_textNomePrimoOperatore.anchor = GridBagConstraints.WEST;
-		gbc_textNomePrimoOperatore.insets = new Insets(0, 0, 5, 5);
-		gbc_textNomePrimoOperatore.gridx = 0;
-		gbc_textNomePrimoOperatore.gridy = 14;
-		contentPane.add(textNomePrimoOperatore, gbc_textNomePrimoOperatore);
+		JLabel textMatrPrimoOperatore = new JLabel("Matricola Primo Operatore:");
+		textMatrPrimoOperatore.setFont(new Font("Arial", Font.BOLD, 16));
+		GridBagConstraints gbc_textMatrPrimoOperatore = new GridBagConstraints();
+		gbc_textMatrPrimoOperatore.anchor = GridBagConstraints.WEST;
+		gbc_textMatrPrimoOperatore.insets = new Insets(0, 0, 5, 5);
+		gbc_textMatrPrimoOperatore.gridx = 0;
+		gbc_textMatrPrimoOperatore.gridy = 14;
+		contentPane.add(textMatrPrimoOperatore, gbc_textMatrPrimoOperatore);
 		
 		textPrimoOperatore = new JTextField();
 		textPrimoOperatore.setText(valori[4]);

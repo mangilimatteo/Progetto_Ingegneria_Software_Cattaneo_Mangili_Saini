@@ -10,8 +10,6 @@ import java.util.List;
 import model.generated.tables.Anagrafica;
 import model.generated.tables.Codice;
 import model.generated.tables.Dipendente;
-import model.generated.tables.ListaAttesa;
-import model.generated.tables.ListaOperatoria;
 import model.generated.tables.Operazione;
 import model.generated.tables.Verbale;
 
@@ -49,16 +47,6 @@ public class DefaultSchema extends SchemaImpl {
     public final Dipendente DIPENDENTE = Dipendente.DIPENDENTE;
 
     /**
-     * The table <code>LISTA_ATTESA</code>.
-     */
-    public final ListaAttesa LISTA_ATTESA = ListaAttesa.LISTA_ATTESA;
-
-    /**
-     * The table <code>LISTA_OPERATORIA</code>.
-     */
-    public final ListaOperatoria LISTA_OPERATORIA = ListaOperatoria.LISTA_OPERATORIA;
-
-    /**
      * The table <code>OPERAZIONE</code>.
      */
     public final Operazione OPERAZIONE = Operazione.OPERAZIONE;
@@ -87,8 +75,6 @@ public class DefaultSchema extends SchemaImpl {
             Anagrafica.ANAGRAFICA,
             Codice.CODICE,
             Dipendente.DIPENDENTE,
-            ListaAttesa.LISTA_ATTESA,
-            ListaOperatoria.LISTA_OPERATORIA,
             Operazione.OPERAZIONE,
             Verbale.VERBALE
         );

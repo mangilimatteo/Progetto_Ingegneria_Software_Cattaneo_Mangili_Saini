@@ -1,12 +1,10 @@
 package paziente;
 
-import java.awt.EventQueue;
+import java.awt.EventQueue; 
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-
-import liste.ListaPagineAnagrafiche;
 
 import java.awt.Toolkit;
 import javax.swing.JLabel;
@@ -451,7 +449,7 @@ public class ModificaPaginaAnagrafica extends JFrame {
 		
 		spinnerTempodiAttesaPaziente = new JSpinner();
 		spinnerTempodiAttesaPaziente.setModel(new SpinnerListModel(new String[] {"","Classe A", "Classe B", "Classe C", "Classe D"}));
-		spinnerTempodiAttesaPaziente.setValue("");
+		spinnerTempodiAttesaPaziente.setValue(valori[15]);
 		spinnerTempodiAttesaPaziente.setEnabled(true);
 		spinnerTempodiAttesaPaziente.setFont(new Font("Arial", Font.BOLD, 14));
 		GridBagConstraints gbc_spinnerTempodiAttesaPaziente = new GridBagConstraints();

@@ -36,5 +36,5 @@
 			<artifactId>GestioneSale_db_sqlite</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
-	</dependencies>
+	</dependencies> 
 </project>

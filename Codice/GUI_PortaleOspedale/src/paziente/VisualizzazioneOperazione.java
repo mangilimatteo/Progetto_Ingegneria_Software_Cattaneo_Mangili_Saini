@@ -81,13 +81,6 @@ public class VisualizzazioneOperazione extends JFrame {
 		gbc_textListaOperatoria.gridy = 0;
 		contentPane.add(textListaOperatoria, gbc_textListaOperatoria);
 		
-		JLabel Anestesia = new JLabel();
-		if(Boolean.valueOf(valori[3])) {
-			Anestesia.setText("Sì");
-		}
-		else {
-			Anestesia.setText("No");
-		}
 		
 		JButton bottoneMostraAnagrafica = new JButton("Mostra Anagrafica");
 		bottoneMostraAnagrafica.setFont(new Font("Arial", Font.PLAIN, 14));
@@ -114,6 +107,7 @@ public class VisualizzazioneOperazione extends JFrame {
 		
 		JLabel spinnerBloccoOperatorio = new JLabel();
 		spinnerBloccoOperatorio.setText(valori[1]);
+		spinnerBloccoOperatorio.setFont(new Font("Arial", Font.PLAIN, 14));
 		GridBagConstraints gbc_spinnerBloccoOperatorio = new GridBagConstraints();
 		gbc_spinnerBloccoOperatorio.anchor = GridBagConstraints.SOUTH;
 		gbc_spinnerBloccoOperatorio.fill = GridBagConstraints.HORIZONTAL;
@@ -135,6 +129,7 @@ public class VisualizzazioneOperazione extends JFrame {
 		
 		JLabel spinnerNumeroSala = new JLabel();
 		spinnerNumeroSala.setText(valori[2]);
+		spinnerNumeroSala.setFont(new Font("Arial", Font.PLAIN, 14));
 		GridBagConstraints gbc_spinnerNumeroSala = new GridBagConstraints();
 		gbc_spinnerNumeroSala.anchor = GridBagConstraints.WEST;
 		
@@ -245,19 +240,6 @@ public class VisualizzazioneOperazione extends JFrame {
 		gbc_textInterventoOperazione.gridy = 10;
 		contentPane.add(textInterventoOperazione, gbc_textInterventoOperazione);
 		
-		GridBagConstraints gbc_rdbtnAnestesiaY = new GridBagConstraints();
-		gbc_rdbtnAnestesiaY.insets = new Insets(0, 0, 5, 0);
-		gbc_rdbtnAnestesiaY.anchor = GridBagConstraints.WEST;
-		gbc_rdbtnAnestesiaY.gridx = 2;
-		gbc_rdbtnAnestesiaY.gridy = 12;
-		contentPane.add(Anestesia, gbc_rdbtnAnestesiaY);
-		
-		JButton bottoneModifica = new JButton("Modifica");
-		bottoneModifica.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				modifica();
-			}
-		});
 		
 		JLabel textPresenzaAnestesia = new JLabel("Presenza Anestesia:");
 		textPresenzaAnestesia.setHorizontalAlignment(SwingConstants.LEFT);
@@ -269,31 +251,102 @@ public class VisualizzazioneOperazione extends JFrame {
 		gbc_textPresenzaAnestesia.gridy = 12;
 		contentPane.add(textPresenzaAnestesia, gbc_textPresenzaAnestesia);
 		
-		JLabel textNomePrimoOperatore = new JLabel("Nome Primo Operatore:");
-		textNomePrimoOperatore.setFont(new Font("Arial", Font.BOLD, 16));
-		GridBagConstraints gbc_textNomePrimoOperatore = new GridBagConstraints();
-		gbc_textNomePrimoOperatore.anchor = GridBagConstraints.WEST;
-		gbc_textNomePrimoOperatore.insets = new Insets(0, 0, 5, 5);
-		gbc_textNomePrimoOperatore.gridx = 0;
-		gbc_textNomePrimoOperatore.gridy = 14;
-		contentPane.add(textNomePrimoOperatore, gbc_textNomePrimoOperatore);
+		JLabel Anestesia = new JLabel();
+		if(Boolean.valueOf(valori[3])) {
+			Anestesia.setText("Sï¿½");
+		}
+		else {
+			Anestesia.setText("No");
+		}		
+		Anestesia.setFont(new Font("Arial", Font.PLAIN, 14));
+		GridBagConstraints gbc_rdbtnAnestesiaY = new GridBagConstraints();
+		gbc_rdbtnAnestesiaY.insets = new Insets(0, 0, 5, 0);
+		gbc_rdbtnAnestesiaY.anchor = GridBagConstraints.WEST;
+		gbc_rdbtnAnestesiaY.gridx = 2;
+		gbc_rdbtnAnestesiaY.gridy = 12;
+		contentPane.add(Anestesia, gbc_rdbtnAnestesiaY);
 		
-		JLabel textPrimoOperatore = new JLabel();
-		textPrimoOperatore.setText(valori[4]);
-		textPrimoOperatore.setHorizontalAlignment(SwingConstants.LEFT);
-		textPrimoOperatore.setFont(new Font("Arial", Font.PLAIN, 14));
+		JLabel textDatiMedico = new JLabel("Dati medico che ha richiesto intervento");
+		textDatiMedico.setFont(new Font("Arial", Font.BOLD, 16));
+		GridBagConstraints gbc_textDatiMedico = new GridBagConstraints();
+		gbc_textDatiMedico.fill = GridBagConstraints.HORIZONTAL;
+		gbc_textDatiMedico.gridwidth = 4;
+		gbc_textDatiMedico.insets = new Insets(0, 0, 5, 0);
+		gbc_textDatiMedico.gridx = 0;
+		gbc_textDatiMedico.gridy = 14;
+		contentPane.add(textDatiMedico, gbc_textDatiMedico);
+		
+		JLabel textNomeMedico = new JLabel("Nome:");
+		textNomeMedico.setFont(new Font("Arial", Font.BOLD, 16));
 		GridBagConstraints gbc_textNomeMedico = new GridBagConstraints();
-		gbc_textNomeMedico.insets = new Insets(0, 0, 5, 0);
-		gbc_textNomeMedico.fill = GridBagConstraints.HORIZONTAL;
-		gbc_textNomeMedico.gridx = 2;
-		gbc_textNomeMedico.gridy = 14;
-		contentPane.add(textPrimoOperatore, gbc_textNomeMedico);
+		gbc_textNomeMedico.anchor = GridBagConstraints.WEST;
+		gbc_textNomeMedico.insets = new Insets(0, 0, 5, 5);
+		gbc_textNomeMedico.gridx = 0;
+		gbc_textNomeMedico.gridy = 15;
+		contentPane.add(textNomeMedico, gbc_textNomeMedico);
 		
+		JLabel textNomeMedicoOperazione = new JLabel();
+		textNomeMedicoOperazione.setText(dataService.getNomeDipendente(valori[4]));
+		textNomeMedicoOperazione.setHorizontalAlignment(SwingConstants.LEFT);
+		textNomeMedicoOperazione.setFont(new Font("Arial", Font.PLAIN, 14));
+		GridBagConstraints gbc_textNomeMedicoOperazione = new GridBagConstraints();
+		gbc_textNomeMedicoOperazione.insets = new Insets(0, 0, 5, 5);
+		gbc_textNomeMedicoOperazione.fill = GridBagConstraints.HORIZONTAL;
+		gbc_textNomeMedicoOperazione.gridx = 2;
+		gbc_textNomeMedicoOperazione.gridy = 15;
+		contentPane.add(textNomeMedicoOperazione, gbc_textNomeMedicoOperazione);
+		
+		JLabel textCognomeMedico = new JLabel("Cognome:");
+		textCognomeMedico.setFont(new Font("Arial", Font.BOLD, 16));
+		GridBagConstraints gbc_textCognomeMedico = new GridBagConstraints();
+		gbc_textCognomeMedico.anchor = GridBagConstraints.WEST;
+		gbc_textCognomeMedico.insets = new Insets(0, 0, 5, 5);
+		gbc_textCognomeMedico.gridx = 0;
+		gbc_textCognomeMedico.gridy = 16;
+		contentPane.add(textCognomeMedico, gbc_textCognomeMedico);
+		
+		JLabel textCognomeMedicoOperazione = new JLabel();
+		textCognomeMedicoOperazione.setText(dataService.getCognomeDipendente(valori[4]));
+		textCognomeMedicoOperazione.setHorizontalAlignment(SwingConstants.LEFT);
+		textCognomeMedicoOperazione.setFont(new Font("Arial", Font.PLAIN, 14));
+		GridBagConstraints gbc_textCognomeMedicoOperazione = new GridBagConstraints();
+		gbc_textCognomeMedicoOperazione.insets = new Insets(0, 0, 5, 5);
+		gbc_textCognomeMedicoOperazione.fill = GridBagConstraints.HORIZONTAL;
+		gbc_textCognomeMedicoOperazione.gridx = 2;
+		gbc_textCognomeMedicoOperazione.gridy = 16;
+		contentPane.add(textCognomeMedicoOperazione, gbc_textCognomeMedicoOperazione);
+		
+		JLabel textMatricola = new JLabel("Matricola:");
+		textMatricola.setFont(new Font("Arial", Font.BOLD, 16));
+		GridBagConstraints gbc_textMatricola = new GridBagConstraints();
+		gbc_textMatricola.anchor = GridBagConstraints.WEST;
+		gbc_textMatricola.insets = new Insets(0, 0, 5, 5);
+		gbc_textMatricola.gridx = 0;
+		gbc_textMatricola.gridy = 17;
+		contentPane.add(textMatricola, gbc_textMatricola);
+		
+		JLabel textMatricolaMedico = new JLabel();
+		textMatricolaMedico.setText(valori[4]);
+		textMatricolaMedico.setHorizontalAlignment(SwingConstants.LEFT);
+		textMatricolaMedico.setFont(new Font("Arial", Font.PLAIN, 14));
+		GridBagConstraints gbc_textMatricolaMedico = new GridBagConstraints();
+		gbc_textMatricolaMedico.insets = new Insets(0, 0, 5, 5);
+		gbc_textMatricolaMedico.fill = GridBagConstraints.HORIZONTAL;
+		gbc_textMatricolaMedico.gridx = 2;
+		gbc_textMatricolaMedico.gridy = 17;
+		contentPane.add(textMatricolaMedico, gbc_textMatricolaMedico);
+		
+		JButton bottoneModifica = new JButton("Modifica");
+		bottoneModifica.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				modifica();
+			}
+		});		
 		bottoneModifica.setFont(new Font("Arial", Font.PLAIN, 14));
 		GridBagConstraints gbc_bottoneModifica = new GridBagConstraints();
 		gbc_bottoneModifica.insets = new Insets(0, 0, 0, 5);
 		gbc_bottoneModifica.gridx = 0;
-		gbc_bottoneModifica.gridy = 16;
+		gbc_bottoneModifica.gridy = 19;
 		contentPane.add(bottoneModifica, gbc_bottoneModifica);
 		
 		JButton bottoneConferma = new JButton("Chiudi");
@@ -305,7 +358,7 @@ public class VisualizzazioneOperazione extends JFrame {
 		bottoneConferma.setFont(new Font("Arial", Font.PLAIN, 14));
 		GridBagConstraints gbc_bottoneConferma = new GridBagConstraints();
 		gbc_bottoneConferma.gridx = 2;
-		gbc_bottoneConferma.gridy = 16;
+		gbc_bottoneConferma.gridy = 19;
 		contentPane.add(bottoneConferma, gbc_bottoneConferma);
 		
 	}
