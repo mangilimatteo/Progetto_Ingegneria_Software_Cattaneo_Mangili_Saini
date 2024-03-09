@@ -21,3 +21,4 @@ public class GenerateCode {
 		GenerationTool.generate(configuration); 
 	}
 } 
+
