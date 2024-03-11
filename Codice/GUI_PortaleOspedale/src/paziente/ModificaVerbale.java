@@ -855,6 +855,7 @@ public class ModificaVerbale extends JFrame {
 		if(minuto.equals("")) {
 			return ora + ":00";
 		}
+		
 		return ora + ":" + minuto;
 	}
 	

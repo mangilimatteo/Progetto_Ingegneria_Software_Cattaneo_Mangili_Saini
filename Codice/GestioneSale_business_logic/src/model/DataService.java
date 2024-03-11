@@ -1,10 +1,8 @@
 package model;
 
-import java.sql.Connection; 
+import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
-import java.time.LocalTime;
-import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
 
 import org.jooq.DSLContext;
@@ -239,16 +237,16 @@ public class DataService {
 		
 		VerbaleRecord verbale = getVerbale(codiceVerbale);
 		
-		String valore0 = valutaOrario(verbale.getIngressoBlocco());
-		String valore1 = valutaOrario(verbale.getIngressoSala());
-		String valore2 = valutaOrario(verbale.getPosizionamento());
-		String valore3 = valutaOrario(verbale.getInizioAnestesia());
-		String valore4 = valutaOrario(verbale.getFineAnestesia());
-		String valore5 = valutaOrario(verbale.getInizioIntervento());
-		String valore6 = valutaOrario(verbale.getFineIntervento());
-		String valore7 = valutaOrario(verbale.getRisveglio());
-		String valore8 = valutaOrario(verbale.getUscitaSala());
-		String valore9 = valutaOrario(verbale.getUscitaBlocco());
+		String valore0 = verbale.getIngressoBlocco();
+		String valore1 = verbale.getIngressoSala();
+		String valore2 = verbale.getPosizionamento();
+		String valore3 = verbale.getInizioAnestesia();
+		String valore4 = verbale.getFineAnestesia();
+		String valore5 = verbale.getInizioIntervento();
+		String valore6 = verbale.getFineIntervento();
+		String valore7 = verbale.getRisveglio();
+		String valore8 = verbale.getUscitaSala();
+		String valore9 = verbale.getUscitaBlocco();
 		String valore10 = verbale.getTipoAnestesia();
 		String valore11 = verbale.getRischioAnestesia();
 		String valore12 = verbale.getPrimoOperatore();
@@ -271,12 +269,6 @@ public class DataService {
 		return valori;
 	}
 	
-	protected String valutaOrario(LocalTime orario) {
-		if(orario == null)
-			return "";
-		else 
-			return orario.toString();
-	}
 	
 	public boolean salvaVerbale(String codiceVerbale, String[] valori, boolean nuovo) {
 		
@@ -293,27 +285,27 @@ public class DataService {
 		VerbaleRecord verbale = getVerbale(codiceVerbale);
 		
 		verbale.setIngressoBlocco(valori[0]);
-		verbale.setIngressoSala/valori[1]);
-		verbale.setPosizionamento(valori[2])
-		verbale.set(Verbale.VERBALE.INIZIO_ANESTESIA, LocalTime.parse(valori[3], formatter))
-		verbale.set(Verbale.VERBALE.FINE_ANESTESIA, LocalTime.parse(valori[4], formatter))
-		verbale.set(Verbale.VERBALE.INIZIO_INTERVENTO, LocalTime.parse(valori[5], formatter))
-		verbale.set(Verbale.VERBALE.FINE_INTERVENTO, LocalTime.parse(valori[6], formatter))
-		verbale.set(Verbale.VERBALE.RISVEGLIO, LocalTime.parse(valori[7], formatter))
-		verbale.set(Verbale.VERBALE.USCITA_SALA, LocalTime.parse(valori[8], formatter))
-		verbale.set(Verbale.VERBALE.USCITA_BLOCCO, LocalTime.parse(valori[9], formatter))
-		verbale.set(Verbale.VERBALE.TIPO_ANESTESIA, valori[10])
-		verbale.set(Verbale.VERBALE.RISCHIO_ANESTESIA, valori[11])
-		verbale.set(Verbale.VERBALE.PRIMO_OPERATORE, valori[12])
-		verbale.set(Verbale.VERBALE.SECONDO_OPERATORE, valori[13])
-		verbale.set(Verbale.VERBALE.TERZO_OPERATORE, valori[14])
-		verbale.set(Verbale.VERBALE.ANESTESISTA, valori[15])
-		verbale.set(Verbale.VERBALE.STRUMENTISTA, valori[16])
-		verbale.set(Verbale.VERBALE.INFERMIERE, valori[17])
-		verbale.set(Verbale.VERBALE.AIUTO_ANESTESISTA, valori[18])
-		verbale.set(Verbale.VERBALE.TECNICO_RADIOLOGIA, valori[19])
-		verbale.set(Verbale.VERBALE.PROCEDURA, valori[20])
-		verbale.set(Verbale.VERBALE.CODICE_OPERAZIONE, valori[21])
+		verbale.setIngressoSala(valori[1]);
+		verbale.setPosizionamento(valori[2]);
+		verbale.setInizioAnestesia(valori[3]);
+		verbale.setFineAnestesia(valori[4]);
+		verbale.setInizioIntervento(valori[5]);
+		verbale.setFineIntervento(valori[6]);
+		verbale.setRisveglio(valori[7]);
+		verbale.setUscitaSala(valori[8]);
+		verbale.setUscitaBlocco(valori[9]);
+		verbale.setTipoAnestesia(valori[10]);
+		verbale.setRischioAnestesia(valori[11]);
+		verbale.setPrimoOperatore(valori[12]);
+		verbale.setSecondoOperatore(valori[13]);
+		verbale.setTerzoOperatore(valori[14]);
+		verbale.setAnestesista(valori[15]);
+		verbale.setStrumentista(valori[16]);
+		verbale.setInfermiere(valori[17]);
+		verbale.setAiutoAnestesista(valori[18]);
+		verbale.setTecnicoRadiologia(valori[19]);
+		verbale.setProcedura(valori[20]);
+		verbale.setCodiceOperazione(valori[21]);
 		
 		return true;
 	}

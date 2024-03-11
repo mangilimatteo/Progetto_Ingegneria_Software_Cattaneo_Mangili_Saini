@@ -51,7 +51,7 @@ public class Login extends JFrame {
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
-		setContentPane(contentPane);
+		setContentPane(contentPane); 
 		
 		JPanel PannelloLogin = new JPanel();
 		PannelloLogin.setBounds(5, 5, 581, 226);

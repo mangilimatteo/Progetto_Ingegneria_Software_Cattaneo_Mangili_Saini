@@ -4,8 +4,6 @@
 package model.generated.tables.records;
 
 
-import java.time.LocalTime;
-
 import model.generated.tables.Verbale;
 
 import org.jooq.Record1;
@@ -37,141 +35,141 @@ public class VerbaleRecord extends UpdatableRecordImpl<VerbaleRecord> {
     /**
      * Setter for <code>VERBALE.INGRESSO_BLOCCO</code>.
      */
-    public void setIngressoBlocco(LocalTime value) {
+    public void setIngressoBlocco(String value) {
         set(1, value);
     }
 
     /**
      * Getter for <code>VERBALE.INGRESSO_BLOCCO</code>.
      */
-    public LocalTime getIngressoBlocco() {
-        return (LocalTime) get(1);
+    public String getIngressoBlocco() {
+        return (String) get(1);
     }
 
     /**
      * Setter for <code>VERBALE.INGRESSO_SALA</code>.
      */
-    public void setIngressoSala(LocalTime value) {
+    public void setIngressoSala(String value) {
         set(2, value);
     }
 
     /**
      * Getter for <code>VERBALE.INGRESSO_SALA</code>.
      */
-    public LocalTime getIngressoSala() {
-        return (LocalTime) get(2);
+    public String getIngressoSala() {
+        return (String) get(2);
     }
 
     /**
      * Setter for <code>VERBALE.POSIZIONAMENTO</code>.
      */
-    public void setPosizionamento(LocalTime value) {
+    public void setPosizionamento(String value) {
         set(3, value);
     }
 
     /**
      * Getter for <code>VERBALE.POSIZIONAMENTO</code>.
      */
-    public LocalTime getPosizionamento() {
-        return (LocalTime) get(3);
+    public String getPosizionamento() {
+        return (String) get(3);
     }
 
     /**
      * Setter for <code>VERBALE.INIZIO_ANESTESIA</code>.
      */
-    public void setInizioAnestesia(LocalTime value) {
+    public void setInizioAnestesia(String value) {
         set(4, value);
     }
 
     /**
      * Getter for <code>VERBALE.INIZIO_ANESTESIA</code>.
      */
-    public LocalTime getInizioAnestesia() {
-        return (LocalTime) get(4);
+    public String getInizioAnestesia() {
+        return (String) get(4);
     }
 
     /**
      * Setter for <code>VERBALE.FINE_ANESTESIA</code>.
      */
-    public void setFineAnestesia(LocalTime value) {
+    public void setFineAnestesia(String value) {
         set(5, value);
     }
 
     /**
      * Getter for <code>VERBALE.FINE_ANESTESIA</code>.
      */
-    public LocalTime getFineAnestesia() {
-        return (LocalTime) get(5);
+    public String getFineAnestesia() {
+        return (String) get(5);
     }
 
     /**
      * Setter for <code>VERBALE.INIZIO_INTERVENTO</code>.
      */
-    public void setInizioIntervento(LocalTime value) {
+    public void setInizioIntervento(String value) {
         set(6, value);
     }
 
     /**
      * Getter for <code>VERBALE.INIZIO_INTERVENTO</code>.
      */
-    public LocalTime getInizioIntervento() {
-        return (LocalTime) get(6);
+    public String getInizioIntervento() {
+        return (String) get(6);
     }
 
     /**
      * Setter for <code>VERBALE.FINE_INTERVENTO</code>.
      */
-    public void setFineIntervento(LocalTime value) {
+    public void setFineIntervento(String value) {
         set(7, value);
     }
 
     /**
      * Getter for <code>VERBALE.FINE_INTERVENTO</code>.
      */
-    public LocalTime getFineIntervento() {
-        return (LocalTime) get(7);
+    public String getFineIntervento() {
+        return (String) get(7);
     }
 
     /**
      * Setter for <code>VERBALE.RISVEGLIO</code>.
      */
-    public void setRisveglio(LocalTime value) {
+    public void setRisveglio(String value) {
         set(8, value);
     }
 
     /**
      * Getter for <code>VERBALE.RISVEGLIO</code>.
      */
-    public LocalTime getRisveglio() {
-        return (LocalTime) get(8);
+    public String getRisveglio() {
+        return (String) get(8);
     }
 
     /**
      * Setter for <code>VERBALE.USCITA_SALA</code>.
      */
-    public void setUscitaSala(LocalTime value) {
+    public void setUscitaSala(String value) {
         set(9, value);
     }
 
     /**
      * Getter for <code>VERBALE.USCITA_SALA</code>.
      */
-    public LocalTime getUscitaSala() {
-        return (LocalTime) get(9);
+    public String getUscitaSala() {
+        return (String) get(9);
     }
 
     /**
      * Setter for <code>VERBALE.USCITA_BLOCCO</code>.
      */
-    public void setUscitaBlocco(LocalTime value) {
+    public void setUscitaBlocco(String value) {
         set(10, value);
     }
 
     /**
      * Getter for <code>VERBALE.USCITA_BLOCCO</code>.
      */
-    public LocalTime getUscitaBlocco() {
-        return (LocalTime) get(10);
+    public String getUscitaBlocco() {
+        return (String) get(10);
     }
 
     /**
@@ -365,7 +363,7 @@ public class VerbaleRecord extends UpdatableRecordImpl<VerbaleRecord> {
     /**
      * Create a detached, initialised VerbaleRecord
      */
-    public VerbaleRecord(String codice, LocalTime ingressoBlocco, LocalTime ingressoSala, LocalTime posizionamento, LocalTime inizioAnestesia, LocalTime fineAnestesia, LocalTime inizioIntervento, LocalTime fineIntervento, LocalTime risveglio, LocalTime uscitaSala, LocalTime uscitaBlocco, String tipoAnestesia, String rischioAnestesia, String primoOperatore, String secondoOperatore, String terzoOperatore, String anestesista, String strumentista, String infermiere, String aiutoAnestesista, String tecnicoRadiologia, String procedura, String codiceOperazione) {
+    public VerbaleRecord(String codice, String ingressoBlocco, String ingressoSala, String posizionamento, String inizioAnestesia, String fineAnestesia, String inizioIntervento, String fineIntervento, String risveglio, String uscitaSala, String uscitaBlocco, String tipoAnestesia, String rischioAnestesia, String primoOperatore, String secondoOperatore, String terzoOperatore, String anestesista, String strumentista, String infermiere, String aiutoAnestesista, String tecnicoRadiologia, String procedura, String codiceOperazione) {
         super(Verbale.VERBALE);
 
         setCodice(codice);
