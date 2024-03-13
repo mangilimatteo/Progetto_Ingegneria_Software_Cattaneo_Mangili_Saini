@@ -360,10 +360,6 @@ public class ModificaOperazione extends JFrame {
 		if(nuova) {
 			dataService.decrementaCodice(codiceOperazione, "Operazione");
 		}
-		else {
-			VisualizzazioneOperazione visualizzaOperazione= new VisualizzazioneOperazione(codiceOperazione, matricolaDipendente);
-			visualizzaOperazione.setVisible(true);
-		}
 		dispose();
 		
 	}

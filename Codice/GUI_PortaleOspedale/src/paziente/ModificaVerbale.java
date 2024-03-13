@@ -317,7 +317,7 @@ public class ModificaVerbale extends JFrame {
 		}
 		
 		
-		JLabel textOradiIntervento = new JLabel("Ora inizio intervento");
+		JLabel textOradiIntervento = new JLabel("Ora inizio intervento*");
 		textOradiIntervento.setFont(new Font("Arial", Font.BOLD, 16));
 		GridBagConstraints gbc_textOradiIntervento = new GridBagConstraints();
 		gbc_textOradiIntervento.anchor = GridBagConstraints.WEST;
@@ -348,7 +348,7 @@ public class ModificaVerbale extends JFrame {
 		spinnerMinuto6.setPreferredSize(dimensioneSpinner);
 		panel_1_7.add(spinnerMinuto6);
 		
-		JLabel textOradiFineIntervento = new JLabel("Ora fine intervento");
+		JLabel textOradiFineIntervento = new JLabel("Ora fine intervento*");
 		textOradiFineIntervento.setFont(new Font("Arial", Font.BOLD, 16));
 		GridBagConstraints gbc_textOradiFineIntervento = new GridBagConstraints();
 		gbc_textOradiFineIntervento.anchor = GridBagConstraints.WEST;
@@ -527,7 +527,7 @@ public class ModificaVerbale extends JFrame {
 		gbc_textNomeEquipe.gridy = ++posY;
 		contentPane.add(textNomeEquipe, gbc_textNomeEquipe);
 		
-		JLabel textPrimoOperatore = new JLabel("Primo Operatore:");
+		JLabel textPrimoOperatore = new JLabel("Primo Operatore*:");
 		textPrimoOperatore.setFont(new Font("Arial", Font.BOLD, 16));
 		GridBagConstraints gbc_textPrimoOperatore = new GridBagConstraints();
 		gbc_textPrimoOperatore.anchor = GridBagConstraints.WEST;
@@ -552,7 +552,7 @@ public class ModificaVerbale extends JFrame {
 		textPrimoOperatoreVerbale.setColumns(10);
 		panel_4.add(textPrimoOperatoreVerbale);
 		
-		JLabel textSecondoOperatore = new JLabel("Secondo Operatore:");
+		JLabel textSecondoOperatore = new JLabel("Secondo Operatore*:");
 		textSecondoOperatore.setFont(new Font("Arial", Font.BOLD, 16));
 		GridBagConstraints gbc_textSecondoOperatore = new GridBagConstraints();
 		gbc_textSecondoOperatore.anchor = GridBagConstraints.WEST;
@@ -656,7 +656,7 @@ public class ModificaVerbale extends JFrame {
 		textStrumentistaVerbale.setColumns(10);
 		panel_6.add(textStrumentistaVerbale);
 		
-		JLabel textInfermierediSala = new JLabel("Infermiere di sala:");
+		JLabel textInfermierediSala = new JLabel("Infermiere di sala*:");
 		textInfermierediSala.setFont(new Font("Arial", Font.BOLD, 16));
 		GridBagConstraints gbc_textInfermierediSala = new GridBagConstraints();
 		gbc_textInfermierediSala.anchor = GridBagConstraints.WEST;
@@ -772,7 +772,7 @@ public class ModificaVerbale extends JFrame {
 		gbc_textArea_1.gridy = posY++;
 		contentPane.add(textInterventoVerbale, gbc_textArea_1);
 
-		JLabel textProcedura = new JLabel("Procedura:");
+		JLabel textProcedura = new JLabel("Procedura*:");
 		textProcedura.setFont(new Font("Arial", Font.BOLD, 16));
 		GridBagConstraints gbc_textProcedura = new GridBagConstraints();
 		gbc_textProcedura.anchor = GridBagConstraints.WEST;
@@ -833,10 +833,6 @@ public class ModificaVerbale extends JFrame {
 		if(nuovo) {
 			dataService.decrementaCodice(codiceVerbale, "Verbale");
 		}
-		/*else {
-			VisualizzazioneVerbale visualizzaVerbale= new VisualizzazioneVerbale(codiceVerbale, matricolaDipendente);
-			visualizzaVerbale.setVisible(true);
-		}*/
 		dispose();
 		
 	}

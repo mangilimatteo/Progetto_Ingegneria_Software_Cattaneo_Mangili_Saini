@@ -117,7 +117,8 @@ public class DataService {
 	
 	public String getPazienteAnagrafica(String codiceAnagrafica) {
 		String[] valori = getValoriAnagrafica(codiceAnagrafica, "");
-		return valori[0] + " " + valori [1];
+		AnagraficaRecord anagrafica = getAnagrafica(codiceAnagrafica);
+		return anagrafica.getNome() + " " + anagrafica.getCognome();
 	}
 	
 	
