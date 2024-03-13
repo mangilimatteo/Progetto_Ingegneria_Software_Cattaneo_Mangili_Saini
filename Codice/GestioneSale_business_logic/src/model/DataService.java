@@ -3,8 +3,6 @@ package model;
 import java.sql.Connection;    
 import java.sql.DriverManager;
 import java.sql.SQLException;
-import java.time.LocalTime;
-import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
 
 import org.jooq.DSLContext;
@@ -40,17 +38,12 @@ public class DataService {
 	
 	//controlla che le credenziali inserite al login siano corrette
 	public boolean credenzialiCorrette(String matricola, char[] psw) {
-	    DipendenteRecord DipendenteCorretto =  //cerco il dipendente con la matricola inserita
-	    		create.selectFrom(Dipendente.DIPENDENTE)
-	            .where(Dipendente.DIPENDENTE.MATRICOLA.eq(matricola))
-	            .fetchOptional()
-	            .orElse(null);
+	    DipendenteRecord DipendenteCorretto = getDipendente(matricola);
 
 	    if (DipendenteCorretto == null) {
 	        return false;
 	    } else {
-	        String passwordCorretta = DipendenteCorretto.component4().toString();
-	        return Arrays.equals(psw, passwordCorretta.toCharArray()); //controllo che la psw sia corretta
+	        return psw.equals(DipendenteCorretto.getPassword().toCharArray()); //controllo che la psw sia corretta
 	    }
 	}
 	
@@ -116,7 +109,6 @@ public class DataService {
 	}
 	
 	public String getPazienteAnagrafica(String codiceAnagrafica) {
-		String[] valori = getValoriAnagrafica(codiceAnagrafica, "");
 		AnagraficaRecord anagrafica = getAnagrafica(codiceAnagrafica);
 		return anagrafica.getNome() + " " + anagrafica.getCognome();
 	}
@@ -130,7 +122,7 @@ public class DataService {
 		System.out.println(result); // stampa 1 se tutto andato bene
 	}
 
-	public boolean salvaAnagrafica(String codice, String[] valori, boolean nuova) {
+	public boolean salvaAnagrafica(String codiceAnagrafica, String[] valori, boolean nuova) {
 		//se ci sono campi vuoti, ad eccezioni delle note, non va bene
 		for(int i = 0; i < 17; i++) {
 			if(valori[i].equals(""))
@@ -138,65 +130,62 @@ public class DataService {
 		}
 		
 		if(nuova) {
-			creaNuovaAnagrafica(codice);
+			creaNuovaAnagrafica(codiceAnagrafica);
 		}
 		
 		//salvo tutto
-		create
-		.update(Anagrafica.ANAGRAFICA)
-		.set(Anagrafica.ANAGRAFICA.NOME, valori[0])
-		.set(Anagrafica.ANAGRAFICA.COGNOME, valori[1])
-		.set(Anagrafica.ANAGRAFICA.CODICE_FISCALE, valori[2])
-		.set(Anagrafica.ANAGRAFICA.GIORNO_NASCITA, valori[3])
-		.set(Anagrafica.ANAGRAFICA.MESE_NASCITA, valori[4])
-		.set(Anagrafica.ANAGRAFICA.ANNO_NASCITA, valori[5])
-		.set(Anagrafica.ANAGRAFICA.LUOGO_NASCITA, valori[6])
-		.set(Anagrafica.ANAGRAFICA.CITTA, valori[7])
-		.set(Anagrafica.ANAGRAFICA.INDIRIZZO, valori[8])
-		.set(Anagrafica.ANAGRAFICA.TELEFONO, valori[9])
-		.set(Anagrafica.ANAGRAFICA.EMAIL, valori[10])
-		.set(Anagrafica.ANAGRAFICA.DIAGNOSI, valori[11])
-		.set(Anagrafica.ANAGRAFICA.INTERVENTO, valori[12])
-		.set(Anagrafica.ANAGRAFICA.ANAMNESI_PREGRESSA, valori[13])
-		.set(Anagrafica.ANAGRAFICA.ANAMNESI_PROSSIMA, valori[14])
-		.set(Anagrafica.ANAGRAFICA.TEMPO_ATTESA, valori[15])
-		.set(Anagrafica.ANAGRAFICA.MATR_MEDICO, valori[16])
-		.set(Anagrafica.ANAGRAFICA.NOTE, valori[17])
-		.where(Anagrafica.ANAGRAFICA.CODICE.eq(codice))
-		.execute();
-		 return true;
+		
+		AnagraficaRecord anagrafica = getAnagrafica(codiceAnagrafica);
+		
+		anagrafica.setNome(valori[0]);
+		anagrafica.setCognome(valori[1]);
+		anagrafica.setCodiceFiscale(valori[2]);
+		anagrafica.setGiornoNascita(valori[3]);
+		anagrafica.setMeseNascita(valori[4]);
+		anagrafica.setAnnoNascita(valori[5]);
+		anagrafica.setLuogoNascita(valori[6]);
+		anagrafica.setCitta(valori[7]);
+		anagrafica.setIndirizzo(valori[8]);
+		anagrafica.setTelefono(valori[9]);
+		anagrafica.setEmail(valori[10]);
+		anagrafica.setDiagnosi(valori[11]);
+		anagrafica.setIntervento(valori[12]);
+		anagrafica.setAnamnesiPregressa(valori[13]);
+		anagrafica.setAnamnesiProssima(valori[14]);
+		anagrafica.setTempoAttesa(valori[15]);
+		anagrafica.setMatrMedico(valori[16]);
+		anagrafica.setNote(valori[17]);
+		
+		return true;
 	}
 
 	public String[] getValoriAnagrafica(String codiceAnagrafica, String matricolaMedico) {
 		
-		AnagraficaRecord anagrafica = create
-	            .selectFrom(Anagrafica.ANAGRAFICA)
-	            .where(Anagrafica.ANAGRAFICA.CODICE.eq(codiceAnagrafica))
-	            .fetchOne();
+		AnagraficaRecord anagrafica = getAnagrafica(codiceAnagrafica);
 		
-		String valore0 = anagrafica.getValue(Anagrafica.ANAGRAFICA.NOME);
-		String valore1 = anagrafica.getValue(Anagrafica.ANAGRAFICA.COGNOME);
-		String valore2 = anagrafica.getValue(Anagrafica.ANAGRAFICA.CODICE_FISCALE);
-		String valore3 = anagrafica.getValue(Anagrafica.ANAGRAFICA.GIORNO_NASCITA);
-		String valore4 = anagrafica.getValue(Anagrafica.ANAGRAFICA.MESE_NASCITA);
-		String valore5 = anagrafica.getValue(Anagrafica.ANAGRAFICA.ANNO_NASCITA);
-		String valore6 = anagrafica.getValue(Anagrafica.ANAGRAFICA.LUOGO_NASCITA);
-		String valore7 = anagrafica.getValue(Anagrafica.ANAGRAFICA.CITTA);
-		String valore8 = anagrafica.getValue(Anagrafica.ANAGRAFICA.INDIRIZZO);
-		String valore9 = anagrafica.getValue(Anagrafica.ANAGRAFICA.TELEFONO);
-		String valore10 = anagrafica.getValue(Anagrafica.ANAGRAFICA.EMAIL);
-		String valore11 = anagrafica.getValue(Anagrafica.ANAGRAFICA.DIAGNOSI);
-		String valore12 = anagrafica.getValue(Anagrafica.ANAGRAFICA.INTERVENTO);
-		String valore13 = anagrafica.getValue(Anagrafica.ANAGRAFICA.ANAMNESI_PREGRESSA);
-		String valore14 = anagrafica.getValue(Anagrafica.ANAGRAFICA.ANAMNESI_PROSSIMA);
-		String valore15 = anagrafica.getValue(Anagrafica.ANAGRAFICA.TEMPO_ATTESA);
-		String valore16 = anagrafica.getValue(Anagrafica.ANAGRAFICA.MATR_MEDICO);
+		String valore0 = anagrafica.getNome();
+		String valore1 = anagrafica.getCognome();
+		String valore2 = anagrafica.getCodiceFiscale();
+		String valore3 = anagrafica.getGiornoNascita();
+		String valore4 = anagrafica.getMeseNascita();
+		String valore5 = anagrafica.getAnnoNascita();
+		String valore6 = anagrafica.getLuogoNascita();
+		String valore7 = anagrafica.getCitta();
+		String valore8 = anagrafica.getIndirizzo();
+		String valore9 = anagrafica.getTelefono();
+		String valore10 = anagrafica.getEmail();
+		String valore11 = anagrafica.getDiagnosi();
+		String valore12 = anagrafica.getIntervento();
+		String valore13 = anagrafica.getAnamnesiPregressa();
+		String valore14 = anagrafica.getAnamnesiProssima();
+		String valore15 = anagrafica.getTempoAttesa();
+		String valore16 = anagrafica.getMatrMedico();
 		//se la matricola del medico è vuota significa che quella che sta venendo visualizzata è un'anagrafica
 		//nuova e quindi il medico richiedente è quello che sta compilando
 		if(valore16.equals("")) {
 			valore16 = matricolaMedico;
 		}
-		String valore17 = anagrafica.getValue(Anagrafica.ANAGRAFICA.NOTE);
+		String valore17 = anagrafica.getNote();
 		
 		String[] valori = {
 				valore0, valore1, valore2, valore3, valore4, valore5, valore6, valore7, valore8, valore9, 
@@ -207,9 +196,7 @@ public class DataService {
 	
 	
 	public void eliminaAnagrafica(String codiceAnagrafica) {
-		create.deleteFrom(Anagrafica.ANAGRAFICA)
-		.where(Anagrafica.ANAGRAFICA.CODICE.eq(codiceAnagrafica))
-		.execute();
+		getAnagrafica(codiceAnagrafica).delete();
 		
 		decrementaCodice(codiceAnagrafica, "Anagrafica");
 		
@@ -240,35 +227,31 @@ public class DataService {
 
 
 	public String[] getValoriVerbale(String codiceVerbale) {
-		VerbaleRecord verbale = create
-	            .selectFrom(Verbale.VERBALE)
-	            .where(Verbale.VERBALE.CODICE.eq(codiceVerbale))
-	            .fetchOne();
+		VerbaleRecord verbale = getVerbale(codiceVerbale);
 		
-		String valore0 = verbale.getValue(Verbale.VERBALE.INGRESSO_BLOCCO);
-		String valore1 = verbale.getValue(Verbale.VERBALE.INGRESSO_SALA);
-		String valore2 = verbale.getValue(Verbale.VERBALE.POSIZIONAMENTO);
-		String valore3 = verbale.getValue(Verbale.VERBALE.INIZIO_ANESTESIA);
-		String valore4 = verbale.getValue(Verbale.VERBALE.FINE_ANESTESIA);
-		String valore5 = verbale.getValue(Verbale.VERBALE.INIZIO_INTERVENTO);
-		String valore6 = verbale.getValue(Verbale.VERBALE.FINE_INTERVENTO);
-		String valore7 = verbale.getValue(Verbale.VERBALE.RISVEGLIO);
-		String valore8 = verbale.getValue(Verbale.VERBALE.USCITA_SALA);
-		String valore9 = verbale.getValue(Verbale.VERBALE.USCITA_BLOCCO);
-		String valore10 = verbale.getValue(Verbale.VERBALE.TIPO_ANESTESIA);
-		String valore11 = verbale.getValue(Verbale.VERBALE.RISCHIO_ANESTESIA);
-		String valore12 = verbale.getValue(Verbale.VERBALE.PRIMO_OPERATORE);
-		String valore13 = verbale.getValue(Verbale.VERBALE.SECONDO_OPERATORE);
-		String valore14 = verbale.getValue(Verbale.VERBALE.TERZO_OPERATORE);
-		String valore15 = verbale.getValue(Verbale.VERBALE.ANESTESISTA); 
-		String valore16 = verbale.getValue(Verbale.VERBALE.STRUMENTISTA);
-		String valore17 = verbale.getValue(Verbale.VERBALE.INFERMIERE);
-		String valore18 = verbale.getValue(Verbale.VERBALE.AIUTO_ANESTESISTA);
-		String valore19 = verbale.getValue(Verbale.VERBALE.TECNICO_RADIOLOGIA);
-		String valore20 = verbale.getValue(Verbale.VERBALE.PROCEDURA);
-		String valore21 = verbale.getValue(Verbale.VERBALE.CODICE_OPERAZIONE);
-		
-		
+		String valore0 = verbale.getIngressoBlocco();
+		String valore1 = verbale.getIngressoSala();
+		String valore2 = verbale.getPosizionamento();
+		String valore3 = verbale.getInizioAnestesia();
+		String valore4 = verbale.getFineAnestesia();
+		String valore5 = verbale.getInizioIntervento();
+		String valore6 = verbale.getFineIntervento();
+		String valore7 = verbale.getRisveglio();
+		String valore8 = verbale.getUscitaSala();
+		String valore9 = verbale.getUscitaBlocco();
+		String valore10 = verbale.getTipoAnestesia();
+		String valore11 = verbale.getRischioAnestesia();
+		String valore12 = verbale.getPrimoOperatore();
+		String valore13 = verbale.getSecondoOperatore();
+		String valore14 = verbale.getTerzoOperatore();
+		String valore15 = verbale.getAnestesista(); 
+		String valore16 = verbale.getStrumentista();
+		String valore17 = verbale.getInfermiere();
+		String valore18 = verbale.getAiutoAnestesista();
+		String valore19 = verbale.getTecnicoRadiologia();
+		String valore20 = verbale.getProcedura();
+		String valore21 = verbale.getCodiceOperazione();
+				
 		String[] valori = {
 				valore0, valore1, valore2, valore3, valore4, valore5, valore6, valore7, valore8, valore9, 
 				valore10, valore11, valore12, valore13, valore14, valore15, valore16, valore17, valore18,
@@ -285,39 +268,35 @@ public class DataService {
 				|| valori[13].equals("") || valori[17].equals("") || valori[20].equals("")) {
 			return false;
 		}
-		
-		//DA AGGIUNGERE IL CONTROLLO DELL'ANESTESIA
-		
+				
 		if(nuovo) {
 			creaNuovoVerbale(codiceVerbale);
 		}
 		
-		create
-		.update(Verbale.VERBALE)
-		.set(Verbale.VERBALE.INGRESSO_BLOCCO, valori[0])
-		.set(Verbale.VERBALE.INGRESSO_SALA,valori[1])
-		.set(Verbale.VERBALE.POSIZIONAMENTO, valori[2])
-		.set(Verbale.VERBALE.INIZIO_ANESTESIA, valori[3])
-		.set(Verbale.VERBALE.FINE_ANESTESIA, valori[4])
-		.set(Verbale.VERBALE.INIZIO_INTERVENTO, valori[5])
-		.set(Verbale.VERBALE.FINE_INTERVENTO, valori[6])
-		.set(Verbale.VERBALE.RISVEGLIO, valori[7])
-		.set(Verbale.VERBALE.USCITA_SALA, valori[6])
-		.set(Verbale.VERBALE.USCITA_BLOCCO, valori[9])
-		.set(Verbale.VERBALE.TIPO_ANESTESIA, valori[10])
-		.set(Verbale.VERBALE.RISCHIO_ANESTESIA, valori[11])
-		.set(Verbale.VERBALE.PRIMO_OPERATORE, valori[12])
-		.set(Verbale.VERBALE.SECONDO_OPERATORE, valori[13])
-		.set(Verbale.VERBALE.TERZO_OPERATORE, valori[14])
-		.set(Verbale.VERBALE.ANESTESISTA, valori[15])
-		.set(Verbale.VERBALE.STRUMENTISTA, valori[16])
-		.set(Verbale.VERBALE.INFERMIERE, valori[17])
-		.set(Verbale.VERBALE.AIUTO_ANESTESISTA, valori[18])
-		.set(Verbale.VERBALE.TECNICO_RADIOLOGIA, valori[19])
-		.set(Verbale.VERBALE.PROCEDURA, valori[20])
-		.set(Verbale.VERBALE.CODICE_OPERAZIONE, valori[21])
-		.where(Verbale.VERBALE.CODICE.eq(codiceVerbale))
-		.execute();
+		VerbaleRecord verbale = getVerbale(codiceVerbale);
+		
+		verbale.setIngressoBlocco(valori[0]);
+		verbale.setIngressoSala(valori[1]);
+		verbale.setPosizionamento(valori[2]);
+		verbale.setInizioAnestesia(valori[3]);
+		verbale.setFineAnestesia(valori[4]);
+		verbale.setInizioIntervento(valori[5]);
+		verbale.setFineIntervento(valori[6]);
+		verbale.setRisveglio(valori[7]);
+		verbale.setUscitaSala(valori[8]);
+		verbale.setUscitaBlocco(valori[9]);
+		verbale.setTipoAnestesia(valori[10]);
+		verbale.setRischioAnestesia(valori[11]);
+		verbale.setPrimoOperatore(valori[12]);
+		verbale.setSecondoOperatore(valori[13]);
+		verbale.setTerzoOperatore(valori[14]);
+		verbale.setAnestesista(valori[15]);
+		verbale.setStrumentista(valori[16]);
+		verbale.setInfermiere(valori[17]);
+		verbale.setAiutoAnestesista(valori[18]);
+		verbale.setTecnicoRadiologia(valori[19]);
+		verbale.setProcedura(valori[20]);
+		verbale.setCodiceOperazione(valori[21]);
 		
 		return true;
 	}
@@ -377,11 +356,7 @@ public class DataService {
 
 
 	public String[] getValoriOperazione(String codiceOperazione) {
-		OperazioneRecord operazione = create
-	            .selectFrom(Operazione.OPERAZIONE)
-	            .where(Operazione.OPERAZIONE.CODICE.eq(codiceOperazione))
-	            .fetchOne();
-		
+		OperazioneRecord operazione = getOperazione(codiceOperazione);
 		String valore0 = operazione.getValue(Operazione.OPERAZIONE.CODICE_ANAGRAFICA);
 		String valore1 = operazione.getValue(Operazione.OPERAZIONE.BLOCCO);
 		String valore2 = operazione.getValue(Operazione.OPERAZIONE.SALA);
@@ -390,32 +365,28 @@ public class DataService {
 				
 		String[] valori = {valore0, valore1, valore2, valore3, valore4};
 		
-		return valori;
-		
-		
+		return valori;		
 	}
 
 
 	public String getNomeAnagrafica(String codiceAnagrafica) {
-		String[] valori = getValoriAnagrafica(codiceAnagrafica, "");
-		return valori[0];
+		return getAnagrafica(codiceAnagrafica).getNome();
 	}
 	
 	
 	public String getCognomeAnagrafica(String codiceAnagrafica) {
-		String[] valori = getValoriAnagrafica(codiceAnagrafica, "");
-		return valori[1];
+		return getAnagrafica(codiceAnagrafica).getCognome();
 	}
 
 
 	public String getNascitaAnagrafica(String codiceAnagrafica) {
-		String[] valori = getValoriAnagrafica(codiceAnagrafica, "");
-		return valori[3] + "/" + valori[4] + "/" + valori[5];
+		AnagraficaRecord anagrafica = getAnagrafica(codiceAnagrafica);
+		return anagrafica.getGiornoNascita() + "/" + anagrafica.getMeseNascita() + "/" + anagrafica.getAnnoNascita();
 	}
 
 
 	public int salvaOperazione(String codiceOperazione, String[] valori, boolean nuova) {
-		if(valori[1].equals("") || valori[2].equals("    ") || valori[4].equals("")){
+		if(valori[1].equals("") || valori[2].equals("") || valori[4].equals("")){
 			return 1;
 		}
 		
@@ -427,25 +398,19 @@ public class DataService {
 			creaNuovaOperazione(codiceOperazione);
 		}
 		
-		create
-		.update(Operazione.OPERAZIONE)
-		.set(Operazione.OPERAZIONE.BLOCCO,valori[1])
-		.set(Operazione.OPERAZIONE.SALA, valori[2])
-		.set(Operazione.OPERAZIONE.ANESTESIA, Boolean.valueOf(valori[3]))
-		.set(Operazione.OPERAZIONE.PRIMO_OPERATORE, valori[4])
-		.set(Operazione.OPERAZIONE.CODICE_ANAGRAFICA, valori[0])
-		.where(Operazione.OPERAZIONE.CODICE.eq(codiceOperazione))
-		.execute();
+		OperazioneRecord operazione = getOperazione(codiceOperazione);
+		
+		operazione.setBlocco(valori[1]);
+		operazione.setSala(valori[2]);
+		operazione.setAnestesia(Boolean.valueOf(valori[3]));
+		operazione.setPrimoOperatore(valori[4]);
 		
 		return 0;
 	}
 
 
 	public void eliminaOperazione(String codiceOperazione) {
-		create.deleteFrom(Operazione.OPERAZIONE)
-		.where(Operazione.OPERAZIONE.CODICE.eq(codiceOperazione))
-		.execute();
-		
+		getOperazione(codiceOperazione).delete();		
 		decrementaCodice(codiceOperazione, "Operazione");
 		
 		String verbaleAssociato = getVerbaleAssociato(codiceOperazione);
@@ -456,59 +421,35 @@ public class DataService {
 
 
 	public void eliminaVerbale(String codiceVerbale) {
-		create.deleteFrom(Verbale.VERBALE)
-		.where(Verbale.VERBALE.CODICE.eq(codiceVerbale))
-		.execute();
+		getVerbale(codiceVerbale).delete();
 	}
 
-
+	public String getCodiceAnagraficaOperazione(String codiceOperazione) {
+		return getOperazione(codiceOperazione).getCodiceAnagrafica();
+	}
+	
 	public String getDiagnosiOperazione(String codiceOperazione) {
-		String[] valoriOperazione = getValoriOperazione(codiceOperazione);
-		return getDiagnosiAnagrafica(valoriOperazione[0]);
+		return getDiagnosiAnagrafica(getCodiceAnagraficaOperazione(codiceOperazione));
 	}
 
 	public String getInterventoOperazione(String codiceOperazione) {
-		String[] valoriOperazione = getValoriOperazione(codiceOperazione);
-		return getInterventoAnagrafica(valoriOperazione[0]);
+		return getInterventoAnagrafica(getCodiceAnagraficaOperazione(codiceOperazione));
 	}
-
-
-	public String getCodiceAnagraficaOperazione(String codiceOperazione) {
-		String[] valori = getValoriOperazione(codiceOperazione);
-		return valori[0];
-	}
-
 
 	public boolean esisteAnagrafica(String codiceAnagrafica) {
-		AnagraficaRecord anagrafica = create
-	            .selectFrom(Anagrafica.ANAGRAFICA)
-	            .where(Anagrafica.ANAGRAFICA.CODICE.eq(codiceAnagrafica))
-	            .fetchOne();
-		return anagrafica != null;
+		return getAnagrafica(codiceAnagrafica) != null;
 	}
 	
 	public boolean esisteOperazione(String codiceOperazione) {
-		OperazioneRecord operazione = create
-	            .selectFrom(Operazione.OPERAZIONE)
-	            .where(Operazione.OPERAZIONE.CODICE.eq(codiceOperazione))
-	            .fetchOne();
-		return operazione != null;
+		return getOperazione(codiceOperazione) != null;
 	}
 	
 	public boolean esisteVerbale(String codiceVerbale) {
-		VerbaleRecord verbale = create
-	            .selectFrom(Verbale.VERBALE)
-	            .where(Verbale.VERBALE.CODICE.eq(codiceVerbale))
-	            .fetchOne();
-		return verbale != null;
+		return getVerbale(codiceVerbale) != null;
 	}
 	
 	public boolean esisteDipendente(String matricolaDipendente) {
-		DipendenteRecord dipendente = create
-	            .selectFrom(Dipendente.DIPENDENTE)
-	            .where(Dipendente.DIPENDENTE.MATRICOLA.eq(matricolaDipendente))
-	            .fetchOne();
-		return dipendente != null;
+		return getDipendente(matricolaDipendente) != null;
 	}
 
 
