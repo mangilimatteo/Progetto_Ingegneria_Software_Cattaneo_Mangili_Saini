@@ -9,7 +9,7 @@ import java.sql.SQLException;
 
 public class CreateDB {
 
-	// questo è il percordo relativo del file che contiene il DB
+	// questo e' il percordo relativo del file che contiene il DB
 	public static String DB_REL_FILE = "../db/GestioneSale.db3";
 	public static String DB_URL = "jdbc:sqlite:" + DB_REL_FILE;
 	

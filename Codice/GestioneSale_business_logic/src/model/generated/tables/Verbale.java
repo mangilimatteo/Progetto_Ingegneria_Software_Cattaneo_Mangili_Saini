@@ -69,12 +69,12 @@ public class Verbale extends TableImpl<VerbaleRecord> {
     /**
      * The column <code>VERBALE.INIZIO_ANESTESIA</code>.
      */
-    public final TableField<VerbaleRecord, String> INIZIO_ANESTESIA = createField(DSL.name("INIZIO_ANESTESIA"), SQLDataType.CLOB, this, "");
+    public final TableField<VerbaleRecord, String> INIZIO_ANESTESIA = createField(DSL.name("INIZIO_ANESTESIA"), SQLDataType.CLOB.nullable(false), this, "");
 
     /**
      * The column <code>VERBALE.FINE_ANESTESIA</code>.
      */
-    public final TableField<VerbaleRecord, String> FINE_ANESTESIA = createField(DSL.name("FINE_ANESTESIA"), SQLDataType.CLOB, this, "");
+    public final TableField<VerbaleRecord, String> FINE_ANESTESIA = createField(DSL.name("FINE_ANESTESIA"), SQLDataType.CLOB.nullable(false), this, "");
 
     /**
      * The column <code>VERBALE.INIZIO_INTERVENTO</code>.
@@ -104,12 +104,12 @@ public class Verbale extends TableImpl<VerbaleRecord> {
     /**
      * The column <code>VERBALE.TIPO_ANESTESIA</code>.
      */
-    public final TableField<VerbaleRecord, String> TIPO_ANESTESIA = createField(DSL.name("TIPO_ANESTESIA"), SQLDataType.CLOB, this, "");
+    public final TableField<VerbaleRecord, String> TIPO_ANESTESIA = createField(DSL.name("TIPO_ANESTESIA"), SQLDataType.CLOB.nullable(false), this, "");
 
     /**
      * The column <code>VERBALE.RISCHIO_ANESTESIA</code>.
      */
-    public final TableField<VerbaleRecord, String> RISCHIO_ANESTESIA = createField(DSL.name("RISCHIO_ANESTESIA"), SQLDataType.CLOB, this, "");
+    public final TableField<VerbaleRecord, String> RISCHIO_ANESTESIA = createField(DSL.name("RISCHIO_ANESTESIA"), SQLDataType.CLOB.nullable(false), this, "");
 
     /**
      * The column <code>VERBALE.PRIMO_OPERATORE</code>.
@@ -129,7 +129,7 @@ public class Verbale extends TableImpl<VerbaleRecord> {
     /**
      * The column <code>VERBALE.ANESTESISTA</code>.
      */
-    public final TableField<VerbaleRecord, String> ANESTESISTA = createField(DSL.name("ANESTESISTA"), SQLDataType.CLOB, this, "");
+    public final TableField<VerbaleRecord, String> ANESTESISTA = createField(DSL.name("ANESTESISTA"), SQLDataType.CLOB.nullable(false), this, "");
 
     /**
      * The column <code>VERBALE.STRUMENTISTA</code>.
@@ -144,12 +144,12 @@ public class Verbale extends TableImpl<VerbaleRecord> {
     /**
      * The column <code>VERBALE.AIUTO_ANESTESISTA</code>.
      */
-    public final TableField<VerbaleRecord, String> AIUTO_ANESTESISTA = createField(DSL.name("AIUTO_ANESTESISTA"), SQLDataType.CLOB, this, "");
+    public final TableField<VerbaleRecord, String> AIUTO_ANESTESISTA = createField(DSL.name("AIUTO_ANESTESISTA"), SQLDataType.CLOB.nullable(false), this, "");
 
     /**
      * The column <code>VERBALE.TECNICO_RADIOLOGIA</code>.
      */
-    public final TableField<VerbaleRecord, String> TECNICO_RADIOLOGIA = createField(DSL.name("TECNICO_RADIOLOGIA"), SQLDataType.CLOB, this, "");
+    public final TableField<VerbaleRecord, String> TECNICO_RADIOLOGIA = createField(DSL.name("TECNICO_RADIOLOGIA"), SQLDataType.CLOB.nullable(false), this, "");
 
     /**
      * The column <code>VERBALE.PROCEDURA</code>.

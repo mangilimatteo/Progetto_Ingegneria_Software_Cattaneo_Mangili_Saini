@@ -272,7 +272,7 @@ public class DataService {
 	
 	public boolean salvaVerbale(String codiceVerbale, String[] valori, boolean nuovo) {
 		
-		if(valori[5].equals("") || valori[6].equals("") || valori[6].equals("") || valori[11].equals("") 
+		if(valori[5].equals("") || valori[6].equals("") || valori[12].equals("") 
 				|| valori[13].equals("") || valori[17].equals("") || valori[20].equals("")) {
 			return false;
 		}
@@ -280,7 +280,6 @@ public class DataService {
 		if(nuovo) {
 			creaNuovoVerbale(codiceVerbale);
 		}
-		
 		
 		VerbaleRecord verbale = getVerbale(codiceVerbale);
 		
@@ -313,33 +312,11 @@ public class DataService {
 
 	private void creaNuovoVerbale(String nuovoCodice) {
 		VerbaleRecord nuovoVerbale = new VerbaleRecord(
-				nuovoCodice, null, null, null, null, null, null, null, null, null, null, 
+				nuovoCodice, "AAA", "", "", "", "", "", "", "", "", "", 
 				"", "", "", "", "", "", "", "", "", "", "", "");
 		int result = create.insertInto(Verbale.VERBALE).set(nuovoVerbale).execute();
 		System.out.println(result); // stampa 1 se tutto andato bene
 		
-	}
-
-
-	public String ora(String orario) {
-		if(orario.equals("")) {
-			return "    ";
-		}
-		else {
-			int posizioneFinale = orario.indexOf(":");
-			return orario.substring(0, posizioneFinale);
-		}
-		
-	}
-	
-	public String minuto(String orario) {
-		if(orario.equals("")) {
-			return "    ";
-		}
-		else {
-			int posizioneIniziale = orario.indexOf(":") + 1;
-			return orario.substring(posizioneIniziale);
-		}
 	}
 
 
@@ -451,13 +428,13 @@ public class DataService {
 
 
 	public String getDiagnosiOperazione(String codiceOperazione) {
-		String[] valoriOperazione = getValoriOperazione(codiceOperazione);
-		return getDiagnosiAnagrafica(valoriOperazione[0]);
+		String codiceAnagrafica = getOperazione(codiceOperazione).getCodiceAnagrafica();
+		return getAnagrafica(codiceAnagrafica).getDiagnosi();
 	}
 
 	public String getInterventoOperazione(String codiceOperazione) {
-		String[] valoriOperazione = getValoriOperazione(codiceOperazione);
-		return getInterventoAnagrafica(valoriOperazione[0]);
+		String codiceAnagrafica = getOperazione(codiceOperazione).getCodiceAnagrafica();
+		return getAnagrafica(codiceAnagrafica).getIntervento();
 	}
 
 

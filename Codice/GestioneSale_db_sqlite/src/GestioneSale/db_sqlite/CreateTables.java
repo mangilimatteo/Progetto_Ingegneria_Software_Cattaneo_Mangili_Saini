@@ -58,23 +58,23 @@ public class CreateTables {
 					" INGRESSO_BLOCCO        	TEXT NOT NULL," + 
 					" INGRESSO_SALA	 			TEXT NOT NULL, " +
 					" POSIZIONAMENTO	 		TEXT NOT NULL, " +
-					" INIZIO_ANESTESIA	 		TEXT, " +
-					" FINE_ANESTESIA		 	TEXT, " +
+					" INIZIO_ANESTESIA	 		TEXT NOT NULL, " +
+					" FINE_ANESTESIA		 	TEXT NOT NULL, " +
 					" INIZIO_INTERVENTO		 	TEXT NOT NULL, " +
 					" FINE_INTERVENTO	 		TEXT NOT NULL, " +
 					" RISVEGLIO		 			TEXT NOT NULL, " +
 					" USCITA_SALA				TEXT NOT NULL, " +
 					" USCITA_BLOCCO				TEXT NOT NULL, " +
-					" TIPO_ANESTESIA			TEXT, " +
-					" RISCHIO_ANESTESIA			TEXT, " +
+					" TIPO_ANESTESIA			TEXT NOT NULL, " +
+					" RISCHIO_ANESTESIA			TEXT NOT NULL, " +
 					" PRIMO_OPERATORE	 		TEXT NOT NULL, " +
 					" SECONDO_OPERATORE			TEXT NOT NULL, " +
 					" TERZO_OPERATORE			TEXT NOT NULL, " +
-					" ANESTESISTA	 			TEXT, " +
+					" ANESTESISTA	 			TEXT NOT NULL, " +
 					" STRUMENTISTA				TEXT NOT NULL, " +
 					" INFERMIERE		 		TEXT NOT NULL, " +
-					" AIUTO_ANESTESISTA		 	TEXT, " +
-					" TECNICO_RADIOLOGIA		TEXT, " +
+					" AIUTO_ANESTESISTA		 	TEXT NOT NULL, " +
+					" TECNICO_RADIOLOGIA		TEXT NOT NULL, " +
 					" PROCEDURA					TEXT NOT NULL, " +
 					" CODICE_OPERAZIONE		 	TEXT NOT NULL, " +
 					" FOREIGN KEY (CODICE_OPERAZIONE) REFERENCES OPERAZIONE(CODICE) " +
@@ -106,7 +106,7 @@ public class CreateTables {
 	
 					"INSERT INTO VERBALE " +
 					" VALUES " +
-					" 	(\"0\",NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\");" +
+					" 	(\"0\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\");" +
 
 					"INSERT INTO OPERAZIONE " +
 					" VALUES " +
