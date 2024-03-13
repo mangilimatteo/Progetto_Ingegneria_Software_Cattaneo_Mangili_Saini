@@ -4,7 +4,6 @@
 package model.generated.tables;
 
 
-import java.time.LocalTime;
 import java.util.Arrays;
 import java.util.List;
 
@@ -55,52 +54,52 @@ public class Verbale extends TableImpl<VerbaleRecord> {
     /**
      * The column <code>VERBALE.INGRESSO_BLOCCO</code>.
      */
-    public final TableField<VerbaleRecord, LocalTime> INGRESSO_BLOCCO = createField(DSL.name("INGRESSO_BLOCCO"), SQLDataType.LOCALTIME, this, "");
+    public final TableField<VerbaleRecord, String> INGRESSO_BLOCCO = createField(DSL.name("INGRESSO_BLOCCO"), SQLDataType.CLOB.nullable(false), this, "");
 
     /**
      * The column <code>VERBALE.INGRESSO_SALA</code>.
      */
-    public final TableField<VerbaleRecord, LocalTime> INGRESSO_SALA = createField(DSL.name("INGRESSO_SALA"), SQLDataType.LOCALTIME, this, "");
+    public final TableField<VerbaleRecord, String> INGRESSO_SALA = createField(DSL.name("INGRESSO_SALA"), SQLDataType.CLOB.nullable(false), this, "");
 
     /**
      * The column <code>VERBALE.POSIZIONAMENTO</code>.
      */
-    public final TableField<VerbaleRecord, LocalTime> POSIZIONAMENTO = createField(DSL.name("POSIZIONAMENTO"), SQLDataType.LOCALTIME, this, "");
+    public final TableField<VerbaleRecord, String> POSIZIONAMENTO = createField(DSL.name("POSIZIONAMENTO"), SQLDataType.CLOB.nullable(false), this, "");
 
     /**
      * The column <code>VERBALE.INIZIO_ANESTESIA</code>.
      */
-    public final TableField<VerbaleRecord, LocalTime> INIZIO_ANESTESIA = createField(DSL.name("INIZIO_ANESTESIA"), SQLDataType.LOCALTIME, this, "");
+    public final TableField<VerbaleRecord, String> INIZIO_ANESTESIA = createField(DSL.name("INIZIO_ANESTESIA"), SQLDataType.CLOB.nullable(false), this, "");
 
     /**
      * The column <code>VERBALE.FINE_ANESTESIA</code>.
      */
-    public final TableField<VerbaleRecord, LocalTime> FINE_ANESTESIA = createField(DSL.name("FINE_ANESTESIA"), SQLDataType.LOCALTIME, this, "");
+    public final TableField<VerbaleRecord, String> FINE_ANESTESIA = createField(DSL.name("FINE_ANESTESIA"), SQLDataType.CLOB.nullable(false), this, "");
 
     /**
      * The column <code>VERBALE.INIZIO_INTERVENTO</code>.
      */
-    public final TableField<VerbaleRecord, LocalTime> INIZIO_INTERVENTO = createField(DSL.name("INIZIO_INTERVENTO"), SQLDataType.LOCALTIME, this, "");
+    public final TableField<VerbaleRecord, String> INIZIO_INTERVENTO = createField(DSL.name("INIZIO_INTERVENTO"), SQLDataType.CLOB.nullable(false), this, "");
 
     /**
      * The column <code>VERBALE.FINE_INTERVENTO</code>.
      */
-    public final TableField<VerbaleRecord, LocalTime> FINE_INTERVENTO = createField(DSL.name("FINE_INTERVENTO"), SQLDataType.LOCALTIME, this, "");
+    public final TableField<VerbaleRecord, String> FINE_INTERVENTO = createField(DSL.name("FINE_INTERVENTO"), SQLDataType.CLOB.nullable(false), this, "");
 
     /**
      * The column <code>VERBALE.RISVEGLIO</code>.
      */
-    public final TableField<VerbaleRecord, LocalTime> RISVEGLIO = createField(DSL.name("RISVEGLIO"), SQLDataType.LOCALTIME, this, "");
+    public final TableField<VerbaleRecord, String> RISVEGLIO = createField(DSL.name("RISVEGLIO"), SQLDataType.CLOB.nullable(false), this, "");
 
     /**
      * The column <code>VERBALE.USCITA_SALA</code>.
      */
-    public final TableField<VerbaleRecord, LocalTime> USCITA_SALA = createField(DSL.name("USCITA_SALA"), SQLDataType.LOCALTIME, this, "");
+    public final TableField<VerbaleRecord, String> USCITA_SALA = createField(DSL.name("USCITA_SALA"), SQLDataType.CLOB.nullable(false), this, "");
 
     /**
      * The column <code>VERBALE.USCITA_BLOCCO</code>.
      */
-    public final TableField<VerbaleRecord, LocalTime> USCITA_BLOCCO = createField(DSL.name("USCITA_BLOCCO"), SQLDataType.LOCALTIME, this, "");
+    public final TableField<VerbaleRecord, String> USCITA_BLOCCO = createField(DSL.name("USCITA_BLOCCO"), SQLDataType.CLOB.nullable(false), this, "");
 
     /**
      * The column <code>VERBALE.TIPO_ANESTESIA</code>.

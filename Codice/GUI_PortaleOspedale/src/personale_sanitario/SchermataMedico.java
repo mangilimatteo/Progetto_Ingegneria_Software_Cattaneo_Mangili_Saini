@@ -157,8 +157,6 @@ public class SchermataMedico extends JFrame {
                 JOptionPane.YES_NO_OPTION 
         );
 		 if (scelta == JOptionPane.YES_OPTION) {
-			 Login login = new Login();
-			 login.setVisible(true);
 			 dispose();
 		 }
 		

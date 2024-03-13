@@ -1,6 +1,8 @@
 package paziente;
 
+import java.awt.Dimension;
 import java.awt.EventQueue;
+
 import java.awt.GridBagLayout;
 
 import javax.swing.JFrame;
@@ -82,13 +84,16 @@ public class ModificaVerbale extends JFrame {
 	}
 
 	//codiceAnagrafica serve per collegare il verbale alla giusta anagrafica. Se si sta modificando
-	//un verbale già esistente, questo è già associato ad un'anagrafica e dunque codiceAnagrafica = ""
+	//un verbale gia' esistente, questo e' gia' associato ad un'anagrafica e dunque codiceAnagrafica == ""
 	public ModificaVerbale(String codiceVerbale, String matricolaDipendente, String codiceOperazioneAssociata) {
 		
 		dataService = new DataService();
 		this.matricolaDipendente = matricolaDipendente;
 		nuovo = !codiceOperazioneAssociata.equals("");
 		String[] valori;
+		
+		//se il verbale è nuovo si genera un nuovo verbale e si prendono i valori di default,
+		//altrimenti si considera il verbale esistente
 		if(nuovo) {
 			this.codiceVerbale = dataService.generaNuovoCodice("Verbale");
 			valori = dataService.getValoriVerbale("0");
@@ -100,9 +105,12 @@ public class ModificaVerbale extends JFrame {
 			this.codiceOperazioneAssociata = valori[21];
 		}
 		
-		String[] ore = ore();
-		String[] minuti = minuti();
+		String[] ore = generaOre();
+		String[] minuti = generaMinuti();
+		//si controlla dall'operazione se è prevista anestesia
 		boolean anestesia = dataService.getAnestesiaOperazione(this.codiceOperazioneAssociata);
+		int posY = 0;//variabile per il posizionamento degli oggetti nella gui
+		Dimension dimensioneSpinner = new Dimension(40,22);
 		
 		setIconImage(Toolkit.getDefaultToolkit().getImage(ModificaVerbale.class.getResource("/resources/LogoOspedale.png")));
 		setTitle("Portale digitale Personale Sanitario dell'ospedale Papa Giovanni XIII");
@@ -125,7 +133,7 @@ public class ModificaVerbale extends JFrame {
 		gbc_textVerbalePaziente.anchor = GridBagConstraints.WEST;
 		gbc_textVerbalePaziente.insets = new Insets(0, 0, 5, 5);
 		gbc_textVerbalePaziente.gridx = 0;
-		gbc_textVerbalePaziente.gridy = 0;
+		gbc_textVerbalePaziente.gridy = posY;
 		contentPane.add(textVerbalePaziente, gbc_textVerbalePaziente);
 		
 		JButton bottoneMostraAnagrafica = new JButton("Mostra Anagrafica");
@@ -138,7 +146,7 @@ public class ModificaVerbale extends JFrame {
 		GridBagConstraints gbc_mostraAnagrafica = new GridBagConstraints();
 		gbc_mostraAnagrafica.insets = new Insets(0, 0, 5, 0);
 		gbc_mostraAnagrafica.gridx = 2;
-		gbc_mostraAnagrafica.gridy = 0;
+		gbc_mostraAnagrafica.gridy = posY++;
 		contentPane.add(bottoneMostraAnagrafica, gbc_mostraAnagrafica);
 		
 		JLabel textOradiIngresso = new JLabel("Ora di ingresso del blocco operatorio");
@@ -147,7 +155,7 @@ public class ModificaVerbale extends JFrame {
 		gbc_textOradiIngresso.anchor = GridBagConstraints.WEST;
 		gbc_textOradiIngresso.insets = new Insets(0, 0, 5, 5);
 		gbc_textOradiIngresso.gridx = 0;
-		gbc_textOradiIngresso.gridy = 1;
+		gbc_textOradiIngresso.gridy = posY;
 		contentPane.add(textOradiIngresso, gbc_textOradiIngresso);
 		
 		JPanel panel = new JPanel();
@@ -155,19 +163,21 @@ public class ModificaVerbale extends JFrame {
 		gbc_panel.anchor = GridBagConstraints.WEST;
 		gbc_panel.insets = new Insets(0, 0, 5, 0);
 		gbc_panel.gridx = 2;
-		gbc_panel.gridy = 1;
+		gbc_panel.gridy = posY++;
 		contentPane.add(panel, gbc_panel);
 		
 		spinnerOra1 = new JSpinner();
 		spinnerOra1.setModel(new SpinnerListModel(ore));
-		spinnerOra1.setValue(dataService.ora(valori[0]));
+		spinnerOra1.setValue(getOra(valori[0]));
 		spinnerOra1.setFont(new Font("Arial", Font.PLAIN, 14));
+		spinnerOra1.setPreferredSize(dimensioneSpinner);
 		panel.add(spinnerOra1);
 		
 		spinnerMinuto1 = new JSpinner();
 		spinnerMinuto1.setModel(new SpinnerListModel(minuti));
-		spinnerMinuto1.setValue(dataService.minuto(valori[0]));
+		spinnerMinuto1.setValue(getMinuto(valori[0]));
 		spinnerMinuto1.setFont(new Font("Arial", Font.PLAIN, 14));
+		spinnerMinuto1.setPreferredSize(dimensioneSpinner);
 		panel.add(spinnerMinuto1);
 	
 		JLabel textOradiEntrata = new JLabel("Ora di entrata in sala operatoria");
@@ -176,7 +186,7 @@ public class ModificaVerbale extends JFrame {
 		gbc_textOradiEntrata.anchor = GridBagConstraints.WEST;
 		gbc_textOradiEntrata.insets = new Insets(0, 0, 5, 5);
 		gbc_textOradiEntrata.gridx = 0;
-		gbc_textOradiEntrata.gridy = 2;
+		gbc_textOradiEntrata.gridy = posY;
 		contentPane.add(textOradiEntrata, gbc_textOradiEntrata);
 		
 		JPanel panel_1 = new JPanel();
@@ -184,19 +194,21 @@ public class ModificaVerbale extends JFrame {
 		gbc_panel_1.anchor = GridBagConstraints.WEST;
 		gbc_panel_1.insets = new Insets(0, 0, 5, 0);
 		gbc_panel_1.gridx = 2;
-		gbc_panel_1.gridy = 2;
+		gbc_panel_1.gridy = posY++;
 		contentPane.add(panel_1, gbc_panel_1);
 		
 		spinnerOra2 = new JSpinner();
 		spinnerOra2.setModel(new SpinnerListModel(ore));
-		spinnerOra2.setValue(dataService.ora(valori[1]));
+		spinnerOra2.setValue(getOra(valori[1]));
 		spinnerOra2.setFont(new Font("Arial", Font.PLAIN, 14));
+		spinnerOra2.setPreferredSize(dimensioneSpinner);
 		panel_1.add(spinnerOra2);
 		
 		spinnerMinuto2 = new JSpinner();
 		spinnerMinuto2.setModel(new SpinnerListModel(minuti));
-		spinnerMinuto2.setValue(dataService.minuto(valori[1]));
+		spinnerMinuto2.setValue(getMinuto(valori[1]));
 		spinnerMinuto2.setFont(new Font("Arial", Font.PLAIN, 14));
+		spinnerMinuto2.setPreferredSize(dimensioneSpinner);
 		panel_1.add(spinnerMinuto2);
 		
 		JLabel OrariodelPosizionamento = new JLabel("Orario del posizionamento del paziente");
@@ -205,7 +217,7 @@ public class ModificaVerbale extends JFrame {
 		gbc_OrariodelPosizionamento.anchor = GridBagConstraints.WEST;
 		gbc_OrariodelPosizionamento.insets = new Insets(0, 0, 5, 5);
 		gbc_OrariodelPosizionamento.gridx = 0;
-		gbc_OrariodelPosizionamento.gridy = 3;
+		gbc_OrariodelPosizionamento.gridy = posY;
 		contentPane.add(OrariodelPosizionamento, gbc_OrariodelPosizionamento);
 		
 		JPanel panel_1_1 = new JPanel();
@@ -213,20 +225,39 @@ public class ModificaVerbale extends JFrame {
 		gbc_panel_1_1.anchor = GridBagConstraints.WEST;
 		gbc_panel_1_1.insets = new Insets(0, 0, 5, 0);
 		gbc_panel_1_1.gridx = 2;
-		gbc_panel_1_1.gridy = 3;
+		gbc_panel_1_1.gridy = posY++;
 		contentPane.add(panel_1_1, gbc_panel_1_1);
 		
 		spinnerOra3 = new JSpinner();
 		spinnerOra3.setModel(new SpinnerListModel(ore));
-		spinnerOra3.setValue(dataService.minuto(valori[2]));
+		spinnerOra3.setValue(getMinuto(valori[2]));
 		spinnerOra3.setFont(new Font("Arial", Font.BOLD, 14));
+		spinnerOra3.setPreferredSize(dimensioneSpinner);
 		panel_1_1.add(spinnerOra3);
 		
 		spinnerMinuto3 = new JSpinner();
 		spinnerMinuto3.setModel(new SpinnerListModel(minuti));
-		spinnerMinuto3.setValue(dataService.minuto(valori[2]));
+		spinnerMinuto3.setValue(getMinuto(valori[2]));
 		spinnerMinuto3.setFont(new Font("Arial", Font.BOLD, 14));
+		spinnerMinuto3.setPreferredSize(dimensioneSpinner);
 		panel_1_1.add(spinnerMinuto3);
+		
+		
+		spinnerOra4 = new JSpinner();
+		spinnerOra4.setModel(new SpinnerListModel(ore));
+		spinnerOra4.setValue(getOra(valori[3]));
+		
+		spinnerMinuto4 = new JSpinner();
+		spinnerMinuto4.setModel(new SpinnerListModel(minuti));
+		spinnerMinuto4.setValue(getMinuto(valori[3]));
+		
+		spinnerOra5 = new JSpinner();
+		spinnerOra5.setModel(new SpinnerListModel(ore));
+		spinnerOra5.setValue(getMinuto(valori[4]));
+		
+		spinnerMinuto5 = new JSpinner();
+		spinnerMinuto5.setModel(new SpinnerListModel(minuti));
+		spinnerMinuto5.setValue(getMinuto(valori[4]));
 		
 		if(anestesia) {
 			JLabel textOradiInizioAnestesia = new JLabel("Ora inizio anestesia");
@@ -235,7 +266,7 @@ public class ModificaVerbale extends JFrame {
 			gbc_textOradiInizioAnestesia.anchor = GridBagConstraints.WEST;
 			gbc_textOradiInizioAnestesia.insets = new Insets(0, 0, 5, 5);
 			gbc_textOradiInizioAnestesia.gridx = 0;
-			gbc_textOradiInizioAnestesia.gridy = 4;
+			gbc_textOradiInizioAnestesia.gridy = posY;
 			contentPane.add(textOradiInizioAnestesia, gbc_textOradiInizioAnestesia);
 			
 			JPanel panel_1_2 = new JPanel();
@@ -243,19 +274,17 @@ public class ModificaVerbale extends JFrame {
 			gbc_panel_1_2.anchor = GridBagConstraints.WEST;
 			gbc_panel_1_2.insets = new Insets(0, 0, 5, 0);
 			gbc_panel_1_2.gridx = 2;
-			gbc_panel_1_2.gridy = 4;
+			gbc_panel_1_2.gridy = posY++;
 			contentPane.add(panel_1_2, gbc_panel_1_2);
 			
-			spinnerOra4 = new JSpinner();
-			spinnerOra4.setModel(new SpinnerListModel(ore));
-			spinnerOra4.setValue(dataService.ora(valori[3]));
+			
 			spinnerOra4.setFont(new Font("Arial", Font.BOLD, 14));
+			spinnerOra4.setPreferredSize(dimensioneSpinner);
 			panel_1_2.add(spinnerOra4);
 			
-			spinnerMinuto4 = new JSpinner();
-			spinnerMinuto4.setModel(new SpinnerListModel(minuti));
-			spinnerMinuto4.setValue(dataService.minuto(valori[3]));
+			
 			spinnerMinuto4.setFont(new Font("Arial", Font.BOLD, 14));
+			spinnerMinuto4.setPreferredSize(dimensioneSpinner);
 			panel_1_2.add(spinnerMinuto4);
 		
 		
@@ -265,7 +294,7 @@ public class ModificaVerbale extends JFrame {
 			gbc_textOradiFineAnestesia.anchor = GridBagConstraints.WEST;
 			gbc_textOradiFineAnestesia.insets = new Insets(0, 0, 5, 5);
 			gbc_textOradiFineAnestesia.gridx = 0;
-			gbc_textOradiFineAnestesia.gridy = 5;
+			gbc_textOradiFineAnestesia.gridy = posY;
 			contentPane.add(textOradiFineAnestesia, gbc_textOradiFineAnestesia);
 			
 			JPanel panel_1_3 = new JPanel();
@@ -273,29 +302,28 @@ public class ModificaVerbale extends JFrame {
 			gbc_panel_1_3.anchor = GridBagConstraints.WEST;
 			gbc_panel_1_3.insets = new Insets(0, 0, 5, 0);
 			gbc_panel_1_3.gridx = 2;
-			gbc_panel_1_3.gridy = 5;
+			gbc_panel_1_3.gridy = posY++;
 			contentPane.add(panel_1_3, gbc_panel_1_3);
 			
-			spinnerOra5 = new JSpinner();
-			spinnerOra5.setModel(new SpinnerListModel(ore));
-			spinnerOra5.setValue(dataService.minuto(valori[4]));
+			
 			spinnerOra5.setFont(new Font("Arial", Font.BOLD, 14));
+			spinnerOra5.setPreferredSize(dimensioneSpinner);
 			panel_1_3.add(spinnerOra5);
 			
-			spinnerMinuto5 = new JSpinner();
-			spinnerMinuto5.setModel(new SpinnerListModel(minuti));
-			spinnerMinuto5.setValue(dataService.minuto(valori[4]));
+			
 			spinnerMinuto5.setFont(new Font("Arial", Font.BOLD, 14));
+			spinnerMinuto5.setPreferredSize(dimensioneSpinner);
 			panel_1_3.add(spinnerMinuto5);
 		}
 		
-		JLabel textOradiIntervento = new JLabel("Ora inizio intervento");
+		
+		JLabel textOradiIntervento = new JLabel("Ora inizio intervento*");
 		textOradiIntervento.setFont(new Font("Arial", Font.BOLD, 16));
 		GridBagConstraints gbc_textOradiIntervento = new GridBagConstraints();
 		gbc_textOradiIntervento.anchor = GridBagConstraints.WEST;
 		gbc_textOradiIntervento.insets = new Insets(0, 0, 5, 5);
 		gbc_textOradiIntervento.gridx = 0;
-		gbc_textOradiIntervento.gridy = 6;
+		gbc_textOradiIntervento.gridy = posY;
 		contentPane.add(textOradiIntervento, gbc_textOradiIntervento);
 		
 		JPanel panel_1_7 = new JPanel();
@@ -303,28 +331,30 @@ public class ModificaVerbale extends JFrame {
 		gbc_panel_1_7.anchor = GridBagConstraints.WEST;
 		gbc_panel_1_7.insets = new Insets(0, 0, 5, 0);
 		gbc_panel_1_7.gridx = 2;
-		gbc_panel_1_7.gridy = 6;
+		gbc_panel_1_7.gridy = posY++;
 		contentPane.add(panel_1_7, gbc_panel_1_7);
 		
 		spinnerOra6 = new JSpinner();
 		spinnerOra6.setModel(new SpinnerListModel(ore));
-		spinnerOra6.setValue(dataService.ora(valori[5]));
+		spinnerOra6.setValue(getOra(valori[5]));
 		spinnerOra6.setFont(new Font("Arial", Font.BOLD, 14));
+		spinnerOra6.setPreferredSize(dimensioneSpinner);
 		panel_1_7.add(spinnerOra6);
 		
 		spinnerMinuto6 = new JSpinner();
 		spinnerMinuto6.setModel(new SpinnerListModel(minuti));
-		spinnerMinuto6.setValue(dataService.minuto(valori[5]));
+		spinnerMinuto6.setValue(getMinuto(valori[5]));
 		spinnerMinuto6.setFont(new Font("Arial", Font.BOLD, 14));
+		spinnerMinuto6.setPreferredSize(dimensioneSpinner);
 		panel_1_7.add(spinnerMinuto6);
 		
-		JLabel textOradiFineIntervento = new JLabel("Ora fine intervento");
+		JLabel textOradiFineIntervento = new JLabel("Ora fine intervento*");
 		textOradiFineIntervento.setFont(new Font("Arial", Font.BOLD, 16));
 		GridBagConstraints gbc_textOradiFineIntervento = new GridBagConstraints();
 		gbc_textOradiFineIntervento.anchor = GridBagConstraints.WEST;
 		gbc_textOradiFineIntervento.insets = new Insets(0, 0, 5, 5);
 		gbc_textOradiFineIntervento.gridx = 0;
-		gbc_textOradiFineIntervento.gridy = 7;
+		gbc_textOradiFineIntervento.gridy = posY;
 		contentPane.add(textOradiFineIntervento, gbc_textOradiFineIntervento);
 		
 		JPanel panel_1_8 = new JPanel();
@@ -332,19 +362,21 @@ public class ModificaVerbale extends JFrame {
 		gbc_panel_1_8.anchor = GridBagConstraints.WEST;
 		gbc_panel_1_8.insets = new Insets(0, 0, 5, 0);
 		gbc_panel_1_8.gridx = 2;
-		gbc_panel_1_8.gridy = 7;
+		gbc_panel_1_8.gridy = posY++;
 		contentPane.add(panel_1_8, gbc_panel_1_8);
 		
 		spinnerOra7 = new JSpinner();
 		spinnerOra7.setModel(new SpinnerListModel(ore));
-		spinnerOra7.setValue(dataService.ora(valori[6]));
+		spinnerOra7.setValue(getOra(valori[6]));
 		spinnerOra7.setFont(new Font("Arial", Font.BOLD, 14));
+		spinnerOra7.setPreferredSize(dimensioneSpinner);
 		panel_1_8.add(spinnerOra7);
 		
 		spinnerMinuto7 = new JSpinner();
 		spinnerMinuto7.setModel(new SpinnerListModel(minuti));
-		spinnerMinuto7.setValue(dataService.minuto(valori[6]));
+		spinnerMinuto7.setValue(getMinuto(valori[6]));
 		spinnerMinuto7.setFont(new Font("Arial", Font.BOLD, 14));
+		spinnerMinuto7.setPreferredSize(dimensioneSpinner);
 		panel_1_8.add(spinnerMinuto7);
 		
 		JLabel textOradiRisveglio = new JLabel("Ora risveglio");
@@ -353,7 +385,7 @@ public class ModificaVerbale extends JFrame {
 		gbc_textOradiRisveglio.anchor = GridBagConstraints.WEST;
 		gbc_textOradiRisveglio.insets = new Insets(0, 0, 5, 5);
 		gbc_textOradiRisveglio.gridx = 0;
-		gbc_textOradiRisveglio.gridy = 8;
+		gbc_textOradiRisveglio.gridy = posY;
 		contentPane.add(textOradiRisveglio, gbc_textOradiRisveglio);
 		
 		JPanel panel_1_4 = new JPanel();
@@ -361,19 +393,21 @@ public class ModificaVerbale extends JFrame {
 		gbc_panel_1_4.anchor = GridBagConstraints.WEST;
 		gbc_panel_1_4.insets = new Insets(0, 0, 5, 0);
 		gbc_panel_1_4.gridx = 2;
-		gbc_panel_1_4.gridy = 8;
+		gbc_panel_1_4.gridy = posY++;
 		contentPane.add(panel_1_4, gbc_panel_1_4);
 		
 		spinnerOra8 = new JSpinner();
 		spinnerOra8.setModel(new SpinnerListModel(ore));
-		spinnerOra8.setValue(dataService.ora(valori[7]));
+		spinnerOra8.setValue(getOra(valori[7]));
 		spinnerOra8.setFont(new Font("Arial", Font.BOLD, 14));
+		spinnerOra8.setPreferredSize(dimensioneSpinner);
 		panel_1_4.add(spinnerOra8);
 		
 		spinnerMinuto8 = new JSpinner();
 		spinnerMinuto8.setModel(new SpinnerListModel(minuti));
-		spinnerMinuto8.setValue(dataService.minuto(valori[7]));
+		spinnerMinuto8.setValue(getMinuto(valori[7]));
 		spinnerMinuto8.setFont(new Font("Arial", Font.BOLD, 14));
+		spinnerMinuto8.setPreferredSize(dimensioneSpinner);
 		panel_1_4.add(spinnerMinuto8);
 		
 		JLabel textOradiUscitaSala = new JLabel("Ora uscita sala operatoria");
@@ -382,7 +416,7 @@ public class ModificaVerbale extends JFrame {
 		gbc_textOradiUscitaSala.anchor = GridBagConstraints.WEST;
 		gbc_textOradiUscitaSala.insets = new Insets(0, 0, 5, 5);
 		gbc_textOradiUscitaSala.gridx = 0;
-		gbc_textOradiUscitaSala.gridy = 9;
+		gbc_textOradiUscitaSala.gridy = posY;
 		contentPane.add(textOradiUscitaSala, gbc_textOradiUscitaSala);
 		
 		JPanel panel_1_5 = new JPanel();
@@ -390,19 +424,21 @@ public class ModificaVerbale extends JFrame {
 		gbc_panel_1_5.anchor = GridBagConstraints.WEST;
 		gbc_panel_1_5.insets = new Insets(0, 0, 5, 0);
 		gbc_panel_1_5.gridx = 2;
-		gbc_panel_1_5.gridy = 9;
+		gbc_panel_1_5.gridy = posY++;
 		contentPane.add(panel_1_5, gbc_panel_1_5);
 		
 		spinnerOra9 = new JSpinner();
 		spinnerOra9.setModel(new SpinnerListModel(ore));
-		spinnerOra9.setValue(dataService.ora(valori[8]));
+		spinnerOra9.setValue(getOra(valori[8]));
 		spinnerOra9.setFont(new Font("Arial", Font.BOLD, 14));
+		spinnerOra9.setPreferredSize(dimensioneSpinner);
 		panel_1_5.add(spinnerOra9);
 		
 		spinnerMinuto9 = new JSpinner();
 		spinnerMinuto9.setModel(new SpinnerListModel(minuti));
-		spinnerMinuto9.setValue(dataService.minuto(valori[8]));
+		spinnerMinuto9.setValue(getMinuto(valori[8]));
 		spinnerMinuto9.setFont(new Font("Arial", Font.BOLD, 14));
+		spinnerMinuto9.setPreferredSize(dimensioneSpinner);
 		panel_1_5.add(spinnerMinuto9);
 		
 		JLabel textOraduUscita = new JLabel("Ora uscita blocco operatorio");
@@ -411,7 +447,7 @@ public class ModificaVerbale extends JFrame {
 		gbc_textOraduUscita.anchor = GridBagConstraints.WEST;
 		gbc_textOraduUscita.insets = new Insets(0, 0, 5, 5);
 		gbc_textOraduUscita.gridx = 0;
-		gbc_textOraduUscita.gridy = 10;
+		gbc_textOraduUscita.gridy = posY;
 		contentPane.add(textOraduUscita, gbc_textOraduUscita);
 		
 		JPanel panel_1_6 = new JPanel();
@@ -419,20 +455,31 @@ public class ModificaVerbale extends JFrame {
 		gbc_panel_1_6.anchor = GridBagConstraints.WEST;
 		gbc_panel_1_6.insets = new Insets(0, 0, 5, 0);
 		gbc_panel_1_6.gridx = 2;
-		gbc_panel_1_6.gridy = 10;
+		gbc_panel_1_6.gridy = posY++;
 		contentPane.add(panel_1_6, gbc_panel_1_6);
 		
 		spinnerOra10 = new JSpinner();
 		spinnerOra10.setModel(new SpinnerListModel(ore));
-		spinnerOra10.setValue(dataService.ora(valori[9]));
+		spinnerOra10.setValue(getOra(valori[9]));
 		spinnerOra10.setFont(new Font("Arial", Font.BOLD, 14));
+		spinnerOra10.setPreferredSize(dimensioneSpinner);
 		panel_1_6.add(spinnerOra10);
 		
 		spinnerMinuto10 = new JSpinner();
 		spinnerMinuto10.setModel(new SpinnerListModel(minuti));
-		spinnerMinuto10.setValue(dataService.minuto(valori[9]));
+		spinnerMinuto10.setValue(getMinuto(valori[9]));
 		spinnerMinuto10.setFont(new Font("Arial", Font.BOLD, 14));
+		spinnerMinuto10.setPreferredSize(dimensioneSpinner);
 		panel_1_6.add(spinnerMinuto10);
+		
+		
+		spinner = new JSpinner();
+		spinner.setModel(new SpinnerListModel(new String[] {"", "Generale", "Locoregionale", "Locale", "Spinale"}));
+		spinner.setValue(valori[10]);
+		
+		spinner_1 = new JSpinner();
+		spinner_1.setModel(new SpinnerListModel(new String[] {"", "Asa1", "Asa2", "Asa3", "Asa4", "Asa5"}));
+		spinner_1.setValue(valori[11]);		
 		
 		if(anestesia) {
 		
@@ -442,17 +489,15 @@ public class ModificaVerbale extends JFrame {
 			gbc_textTipodiAnestesia.anchor = GridBagConstraints.WEST;
 			gbc_textTipodiAnestesia.insets = new Insets(0, 0, 5, 5);
 			gbc_textTipodiAnestesia.gridx = 0;
-			gbc_textTipodiAnestesia.gridy = 11;
+			gbc_textTipodiAnestesia.gridy = posY;
 			contentPane.add(textTipodiAnestesia, gbc_textTipodiAnestesia);
 			
-			spinner = new JSpinner();
-			spinner.setModel(new SpinnerListModel(new String[] {"", "Generale", "Locoregionale", "Locale", "Spinale"}));
-			spinner.setValue(valori[10]);
+			
 			GridBagConstraints gbc_spinner = new GridBagConstraints();
 			gbc_spinner.fill = GridBagConstraints.HORIZONTAL;
 			gbc_spinner.insets = new Insets(0, 0, 5, 0);
 			gbc_spinner.gridx = 2;
-			gbc_spinner.gridy = 11;
+			gbc_spinner.gridy = posY++;
 			contentPane.add(spinner, gbc_spinner);
 			
 			JLabel textRischioAnestesiologico = new JLabel("Rischio anestesiologico:");
@@ -461,17 +506,15 @@ public class ModificaVerbale extends JFrame {
 			gbc_textRischioAnestesiologico.anchor = GridBagConstraints.WEST;
 			gbc_textRischioAnestesiologico.insets = new Insets(0, 0, 5, 5);
 			gbc_textRischioAnestesiologico.gridx = 0;
-			gbc_textRischioAnestesiologico.gridy = 12;
+			gbc_textRischioAnestesiologico.gridy = posY;
 			contentPane.add(textRischioAnestesiologico, gbc_textRischioAnestesiologico);
 			
-			spinner_1 = new JSpinner();
-			spinner_1.setModel(new SpinnerListModel(new String[] {"", "Asa1", "Asa2", "Asa3", "Asa4", "Asa5"}));
-			spinner_1.setValue(valori[11]);
+			
 			GridBagConstraints gbc_spinner_1 = new GridBagConstraints();
 			gbc_spinner_1.fill = GridBagConstraints.HORIZONTAL;
 			gbc_spinner_1.insets = new Insets(0, 0, 5, 0);
 			gbc_spinner_1.gridx = 2;
-			gbc_spinner_1.gridy = 12;
+			gbc_spinner_1.gridy = posY++;
 			contentPane.add(spinner_1, gbc_spinner_1);
 		}
 		
@@ -481,16 +524,16 @@ public class ModificaVerbale extends JFrame {
 		gbc_textNomeEquipe.anchor = GridBagConstraints.WEST;
 		gbc_textNomeEquipe.insets = new Insets(0, 0, 5, 5);
 		gbc_textNomeEquipe.gridx = 0;
-		gbc_textNomeEquipe.gridy = 14;
+		gbc_textNomeEquipe.gridy = ++posY;
 		contentPane.add(textNomeEquipe, gbc_textNomeEquipe);
 		
-		JLabel textPrimoOperatore = new JLabel("Primo Operatore:");
+		JLabel textPrimoOperatore = new JLabel("Primo Operatore*:");
 		textPrimoOperatore.setFont(new Font("Arial", Font.BOLD, 16));
 		GridBagConstraints gbc_textPrimoOperatore = new GridBagConstraints();
 		gbc_textPrimoOperatore.anchor = GridBagConstraints.WEST;
 		gbc_textPrimoOperatore.insets = new Insets(0, 0, 5, 5);
 		gbc_textPrimoOperatore.gridx = 0;
-		gbc_textPrimoOperatore.gridy = 15;
+		gbc_textPrimoOperatore.gridy = ++posY;
 		contentPane.add(textPrimoOperatore, gbc_textPrimoOperatore);
 		
 		JPanel panel_4 = new JPanel();
@@ -498,7 +541,7 @@ public class ModificaVerbale extends JFrame {
 		gbc_panel_4.insets = new Insets(0, 0, 5, 0);
 		gbc_panel_4.fill = GridBagConstraints.HORIZONTAL;
 		gbc_panel_4.gridx = 2;
-		gbc_panel_4.gridy = 15;
+		gbc_panel_4.gridy = posY++;
 		contentPane.add(panel_4, gbc_panel_4);
 		panel_4.setLayout(new BoxLayout(panel_4, BoxLayout.X_AXIS));
 		
@@ -509,13 +552,13 @@ public class ModificaVerbale extends JFrame {
 		textPrimoOperatoreVerbale.setColumns(10);
 		panel_4.add(textPrimoOperatoreVerbale);
 		
-		JLabel textSecondoOperatore = new JLabel("Secondo Operatore:");
+		JLabel textSecondoOperatore = new JLabel("Secondo Operatore*:");
 		textSecondoOperatore.setFont(new Font("Arial", Font.BOLD, 16));
 		GridBagConstraints gbc_textSecondoOperatore = new GridBagConstraints();
 		gbc_textSecondoOperatore.anchor = GridBagConstraints.WEST;
 		gbc_textSecondoOperatore.insets = new Insets(0, 0, 5, 5);
 		gbc_textSecondoOperatore.gridx = 0;
-		gbc_textSecondoOperatore.gridy = 16;
+		gbc_textSecondoOperatore.gridy = posY;
 		contentPane.add(textSecondoOperatore, gbc_textSecondoOperatore);
 		
 		JPanel panel_2 = new JPanel();
@@ -523,7 +566,7 @@ public class ModificaVerbale extends JFrame {
 		gbc_panel_2.insets = new Insets(0, 0, 5, 0);
 		gbc_panel_2.fill = GridBagConstraints.HORIZONTAL;
 		gbc_panel_2.gridx = 2;
-		gbc_panel_2.gridy = 16;
+		gbc_panel_2.gridy = posY++;
 		contentPane.add(panel_2, gbc_panel_2);
 		panel_2.setLayout(new BoxLayout(panel_2, BoxLayout.X_AXIS));
 		
@@ -540,7 +583,7 @@ public class ModificaVerbale extends JFrame {
 		gbc_textTerzoOperatore.anchor = GridBagConstraints.WEST;
 		gbc_textTerzoOperatore.insets = new Insets(0, 0, 5, 5);
 		gbc_textTerzoOperatore.gridx = 0;
-		gbc_textTerzoOperatore.gridy = 17;
+		gbc_textTerzoOperatore.gridy = posY;
 		contentPane.add(textTerzoOperatore, gbc_textTerzoOperatore);
 		
 		JPanel panel_1_9 = new JPanel();
@@ -548,7 +591,7 @@ public class ModificaVerbale extends JFrame {
 		gbc_panel_1_9.insets = new Insets(0, 0, 5, 0);
 		gbc_panel_1_9.fill = GridBagConstraints.HORIZONTAL;
 		gbc_panel_1_9.gridx = 2;
-		gbc_panel_1_9.gridy = 17;
+		gbc_panel_1_9.gridy = posY++;
 		contentPane.add(panel_1_9, gbc_panel_1_9);
 		panel_1_9.setLayout(new BoxLayout(panel_1_9, BoxLayout.X_AXIS));
 		
@@ -559,30 +602,34 @@ public class ModificaVerbale extends JFrame {
 		textTerzoOperatoreVerbale.setColumns(10);
 		panel_1_9.add(textTerzoOperatoreVerbale);
 		
-		JLabel textAnestesita = new JLabel("Anestesita:");
-		textAnestesita.setFont(new Font("Arial", Font.BOLD, 16));
-		GridBagConstraints gbc_textAnestesita = new GridBagConstraints();
-		gbc_textAnestesita.anchor = GridBagConstraints.WEST;
-		gbc_textAnestesita.insets = new Insets(0, 0, 5, 5);
-		gbc_textAnestesita.gridx = 0;
-		gbc_textAnestesita.gridy = 18;
-		contentPane.add(textAnestesita, gbc_textAnestesita);
-		
-		JPanel panel_5 = new JPanel();
-		GridBagConstraints gbc_panel_5 = new GridBagConstraints();
-		gbc_panel_5.insets = new Insets(0, 0, 5, 0);
-		gbc_panel_5.fill = GridBagConstraints.HORIZONTAL;
-		gbc_panel_5.gridx = 2;
-		gbc_panel_5.gridy = 18;
-		contentPane.add(panel_5, gbc_panel_5);
-		panel_5.setLayout(new BoxLayout(panel_5, BoxLayout.X_AXIS));
-		
 		textAnestesistaVerbale = new JTextField();
 		textAnestesistaVerbale.setText(valori[15]);
-		textAnestesistaVerbale.setHorizontalAlignment(SwingConstants.LEFT);
-		textAnestesistaVerbale.setFont(new Font("Arial", Font.PLAIN, 14));
-		textAnestesistaVerbale.setColumns(10);
-		panel_5.add(textAnestesistaVerbale);
+		
+		if(anestesia) {
+			JLabel textAnestesita = new JLabel("Anestesita:");
+			textAnestesita.setFont(new Font("Arial", Font.BOLD, 16));
+			GridBagConstraints gbc_textAnestesita = new GridBagConstraints();
+			gbc_textAnestesita.anchor = GridBagConstraints.WEST;
+			gbc_textAnestesita.insets = new Insets(0, 0, 5, 5);
+			gbc_textAnestesita.gridx = 0;
+			gbc_textAnestesita.gridy = posY;
+			contentPane.add(textAnestesita, gbc_textAnestesita);
+			
+			JPanel panel_5 = new JPanel();
+			GridBagConstraints gbc_panel_5 = new GridBagConstraints();
+			gbc_panel_5.insets = new Insets(0, 0, 5, 0);
+			gbc_panel_5.fill = GridBagConstraints.HORIZONTAL;
+			gbc_panel_5.gridx = 2;
+			gbc_panel_5.gridy = posY++;
+			contentPane.add(panel_5, gbc_panel_5);
+			panel_5.setLayout(new BoxLayout(panel_5, BoxLayout.X_AXIS));
+			
+			textAnestesistaVerbale.setHorizontalAlignment(SwingConstants.LEFT);
+			textAnestesistaVerbale.setFont(new Font("Arial", Font.PLAIN, 14));
+			textAnestesistaVerbale.setColumns(10);
+			panel_5.add(textAnestesistaVerbale);
+		}
+		
 		
 		JLabel textStrumentista = new JLabel("Strumentista:");
 		textStrumentista.setFont(new Font("Arial", Font.BOLD, 16));
@@ -590,7 +637,7 @@ public class ModificaVerbale extends JFrame {
 		gbc_textStrumentista.anchor = GridBagConstraints.WEST;
 		gbc_textStrumentista.insets = new Insets(0, 0, 5, 5);
 		gbc_textStrumentista.gridx = 0;
-		gbc_textStrumentista.gridy = 19;
+		gbc_textStrumentista.gridy = posY;
 		contentPane.add(textStrumentista, gbc_textStrumentista);
 		
 		JPanel panel_6 = new JPanel();
@@ -598,7 +645,7 @@ public class ModificaVerbale extends JFrame {
 		gbc_panel_6.insets = new Insets(0, 0, 5, 0);
 		gbc_panel_6.fill = GridBagConstraints.HORIZONTAL;
 		gbc_panel_6.gridx = 2;
-		gbc_panel_6.gridy = 19;
+		gbc_panel_6.gridy = posY++;
 		contentPane.add(panel_6, gbc_panel_6);
 		panel_6.setLayout(new BoxLayout(panel_6, BoxLayout.X_AXIS));
 		
@@ -609,13 +656,13 @@ public class ModificaVerbale extends JFrame {
 		textStrumentistaVerbale.setColumns(10);
 		panel_6.add(textStrumentistaVerbale);
 		
-		JLabel textInfermierediSala = new JLabel("Infermiere di sala:");
+		JLabel textInfermierediSala = new JLabel("Infermiere di sala*:");
 		textInfermierediSala.setFont(new Font("Arial", Font.BOLD, 16));
 		GridBagConstraints gbc_textInfermierediSala = new GridBagConstraints();
 		gbc_textInfermierediSala.anchor = GridBagConstraints.WEST;
 		gbc_textInfermierediSala.insets = new Insets(0, 0, 5, 5);
 		gbc_textInfermierediSala.gridx = 0;
-		gbc_textInfermierediSala.gridy = 20;
+		gbc_textInfermierediSala.gridy = posY;
 		contentPane.add(textInfermierediSala, gbc_textInfermierediSala);
 		
 		JPanel panel_7 = new JPanel();
@@ -623,7 +670,7 @@ public class ModificaVerbale extends JFrame {
 		gbc_panel_7.insets = new Insets(0, 0, 5, 0);
 		gbc_panel_7.fill = GridBagConstraints.HORIZONTAL;
 		gbc_panel_7.gridx = 2;
-		gbc_panel_7.gridy = 20;
+		gbc_panel_7.gridy = posY++;
 		contentPane.add(panel_7, gbc_panel_7);
 		panel_7.setLayout(new BoxLayout(panel_7, BoxLayout.X_AXIS));
 		
@@ -634,30 +681,35 @@ public class ModificaVerbale extends JFrame {
 		textInfermierediSalaVerbale.setColumns(10);
 		panel_7.add(textInfermierediSalaVerbale);
 		
-		JLabel textAiutoanestesista = new JLabel("Aiutoanestesista:");
-		textAiutoanestesista.setFont(new Font("Arial", Font.BOLD, 16));
-		GridBagConstraints gbc_textAiutoanestesista = new GridBagConstraints();
-		gbc_textAiutoanestesista.anchor = GridBagConstraints.WEST;
-		gbc_textAiutoanestesista.insets = new Insets(0, 0, 5, 5);
-		gbc_textAiutoanestesista.gridx = 0;
-		gbc_textAiutoanestesista.gridy = 21;
-		contentPane.add(textAiutoanestesista, gbc_textAiutoanestesista);
-		
-		JPanel panel_8 = new JPanel();
-		GridBagConstraints gbc_panel_8 = new GridBagConstraints();
-		gbc_panel_8.insets = new Insets(0, 0, 5, 0);
-		gbc_panel_8.fill = GridBagConstraints.HORIZONTAL;
-		gbc_panel_8.gridx = 2;
-		gbc_panel_8.gridy = 21;
-		contentPane.add(panel_8, gbc_panel_8);
-		panel_8.setLayout(new BoxLayout(panel_8, BoxLayout.X_AXIS));
-		
 		textAiutoanestetistaVerbale = new JTextField();
 		textAiutoanestetistaVerbale.setText(valori[18]);
-		textAiutoanestetistaVerbale.setHorizontalAlignment(SwingConstants.LEFT);
-		textAiutoanestetistaVerbale.setFont(new Font("Arial", Font.PLAIN, 14));
-		textAiutoanestetistaVerbale.setColumns(10);
-		panel_8.add(textAiutoanestetistaVerbale);
+		
+		if(anestesia) {
+			JLabel textAiutoanestesista = new JLabel("Aiutoanestesista:");
+			textAiutoanestesista.setFont(new Font("Arial", Font.BOLD, 16));
+			GridBagConstraints gbc_textAiutoanestesista = new GridBagConstraints();
+			gbc_textAiutoanestesista.anchor = GridBagConstraints.WEST;
+			gbc_textAiutoanestesista.insets = new Insets(0, 0, 5, 5);
+			gbc_textAiutoanestesista.gridx = 0;
+			gbc_textAiutoanestesista.gridy = posY;
+			contentPane.add(textAiutoanestesista, gbc_textAiutoanestesista);
+			
+			JPanel panel_8 = new JPanel();
+			GridBagConstraints gbc_panel_8 = new GridBagConstraints();
+			gbc_panel_8.insets = new Insets(0, 0, 5, 0);
+			gbc_panel_8.fill = GridBagConstraints.HORIZONTAL;
+			gbc_panel_8.gridx = 2;
+			gbc_panel_8.gridy = posY++;
+			contentPane.add(panel_8, gbc_panel_8);
+			panel_8.setLayout(new BoxLayout(panel_8, BoxLayout.X_AXIS));
+			
+			
+			textAiutoanestetistaVerbale.setHorizontalAlignment(SwingConstants.LEFT);
+			textAiutoanestetistaVerbale.setFont(new Font("Arial", Font.PLAIN, 14));
+			textAiutoanestetistaVerbale.setColumns(10);
+			panel_8.add(textAiutoanestetistaVerbale);
+		}
+		
 		
 		JLabel textTecnicodiRadiologia = new JLabel("Tecnico di radiologia:");
 		textTecnicodiRadiologia.setFont(new Font("Arial", Font.BOLD, 16));
@@ -665,7 +717,7 @@ public class ModificaVerbale extends JFrame {
 		gbc_textTecnicodiRadiologia.anchor = GridBagConstraints.WEST;
 		gbc_textTecnicodiRadiologia.insets = new Insets(0, 0, 5, 5);
 		gbc_textTecnicodiRadiologia.gridx = 0;
-		gbc_textTecnicodiRadiologia.gridy = 22;
+		gbc_textTecnicodiRadiologia.gridy = posY;
 		contentPane.add(textTecnicodiRadiologia, gbc_textTecnicodiRadiologia);
 		
 		JPanel panel_3 = new JPanel();
@@ -673,7 +725,7 @@ public class ModificaVerbale extends JFrame {
 		gbc_panel_3.insets = new Insets(0, 0, 5, 0);
 		gbc_panel_3.fill = GridBagConstraints.HORIZONTAL;
 		gbc_panel_3.gridx = 2;
-		gbc_panel_3.gridy = 22;
+		gbc_panel_3.gridy =posY++;
 		contentPane.add(panel_3, gbc_panel_3);
 		panel_3.setLayout(new BoxLayout(panel_3, BoxLayout.X_AXIS));
 		
@@ -690,7 +742,7 @@ public class ModificaVerbale extends JFrame {
 		gbc_textDiagnosi.anchor = GridBagConstraints.WEST;
 		gbc_textDiagnosi.insets = new Insets(0, 0, 5, 5);
 		gbc_textDiagnosi.gridx = 0;
-		gbc_textDiagnosi.gridy = 24;
+		gbc_textDiagnosi.gridy = ++posY;
 		contentPane.add(textDiagnosi, gbc_textDiagnosi);
 
 		JLabel textDiagnosiVerbale = new JLabel();
@@ -699,7 +751,7 @@ public class ModificaVerbale extends JFrame {
 		gbc_textArea.insets = new Insets(0, 0, 5, 0);
 		gbc_textArea.fill = GridBagConstraints.BOTH;
 		gbc_textArea.gridx = 2;
-		gbc_textArea.gridy = 24;
+		gbc_textArea.gridy = posY++;
 		contentPane.add(textDiagnosiVerbale, gbc_textArea);
 		
 		JLabel textIntervento = new JLabel("Intervento:");
@@ -708,7 +760,7 @@ public class ModificaVerbale extends JFrame {
 		gbc_textIntervento.anchor = GridBagConstraints.WEST;
 		gbc_textIntervento.insets = new Insets(0, 0, 5, 5);
 		gbc_textIntervento.gridx = 0;
-		gbc_textIntervento.gridy = 25;
+		gbc_textIntervento.gridy = posY;
 		contentPane.add(textIntervento, gbc_textIntervento);
 
 		JLabel textInterventoVerbale = new JLabel();
@@ -717,16 +769,16 @@ public class ModificaVerbale extends JFrame {
 		gbc_textArea_1.insets = new Insets(0, 0, 5, 0);
 		gbc_textArea_1.fill = GridBagConstraints.BOTH;
 		gbc_textArea_1.gridx = 2;
-		gbc_textArea_1.gridy = 25;
+		gbc_textArea_1.gridy = posY++;
 		contentPane.add(textInterventoVerbale, gbc_textArea_1);
 
-		JLabel textProcedura = new JLabel("Procedura:");
+		JLabel textProcedura = new JLabel("Procedura*:");
 		textProcedura.setFont(new Font("Arial", Font.BOLD, 16));
 		GridBagConstraints gbc_textProcedura = new GridBagConstraints();
 		gbc_textProcedura.anchor = GridBagConstraints.WEST;
 		gbc_textProcedura.insets = new Insets(0, 0, 5, 5);
 		gbc_textProcedura.gridx = 0;
-		gbc_textProcedura.gridy = 26;
+		gbc_textProcedura.gridy = posY;
 		contentPane.add(textProcedura, gbc_textProcedura);
 
 		textProceduraVerbale = new JTextArea();
@@ -735,7 +787,7 @@ public class ModificaVerbale extends JFrame {
 		gbc_textArea_2.insets = new Insets(0, 0, 5, 0);
 		gbc_textArea_2.fill = GridBagConstraints.BOTH;
 		gbc_textArea_2.gridx = 2;
-		gbc_textArea_2.gridy = 26;
+		gbc_textArea_2.gridy = posY++;
 		contentPane.add(textProceduraVerbale, gbc_textArea_2);
 
 		
@@ -749,7 +801,7 @@ public class ModificaVerbale extends JFrame {
 		GridBagConstraints gbc_bottoneSalva = new GridBagConstraints();
 		gbc_bottoneSalva.insets = new Insets(0, 0, 0, 5);
 		gbc_bottoneSalva.gridx = 0;
-		gbc_bottoneSalva.gridy = 28;
+		gbc_bottoneSalva.gridy = ++posY;
 		contentPane.add(bottoneSalva, gbc_bottoneSalva);
 		
 		JButton bottoneConferma = new JButton("Chiudi senza salvare");
@@ -761,7 +813,7 @@ public class ModificaVerbale extends JFrame {
 		bottoneConferma.setFont(new Font("Arial", Font.PLAIN, 14));
 		GridBagConstraints gbc_bottoneConferma = new GridBagConstraints();
 		gbc_bottoneConferma.gridx = 2;
-		gbc_bottoneConferma.gridy = 28;
+		gbc_bottoneConferma.gridy = posY;
 		contentPane.add(bottoneConferma, gbc_bottoneConferma);
 
 	}
@@ -775,13 +827,11 @@ public class ModificaVerbale extends JFrame {
 	}
 
 
+	//se si sta chiudento un verbale non salvato si decrementa l'indice dei codici dei verbali,
+	//altrimenti si mostra il verbale salvato
 	protected void chiudi() {
 		if(nuovo) {
 			dataService.decrementaCodice(codiceVerbale, "Verbale");
-		}
-		else {
-			VisualizzazioneVerbale visualizzaVerbale= new VisualizzazioneVerbale(codiceVerbale, matricolaDipendente);
-			visualizzaVerbale.setVisible(true);
 		}
 		dispose();
 		
@@ -824,9 +874,10 @@ public class ModificaVerbale extends JFrame {
 		}		
 	}
 	
-	private String[] ore() {
+	//si genera un array di numeri (che in realtà sono stringhe) da 00 a 23 e con un elemento ""
+	private String[] generaOre() {
 		String[] ore = new String[25];
-		ore[0] = "    ";
+		ore[0] = "";
 		for(int i = 1; i <= 24; i++) {
 			ore[i] = "" + (i - 1);
 			if(i-1 < 10) {
@@ -836,9 +887,10 @@ public class ModificaVerbale extends JFrame {
 		return ore;
 	}
 	
-	private String[] minuti() {
+	//si genera un array di numeri (che in realtà sono stringhe) da 00 a 59 e con un elemento ""
+	private String[] generaMinuti() {
 		String[] minuti = new String[61];
-		minuti[0] = "    ";
+		minuti[0] = "";
 		for(int i = 1; i <= 60; i++) {
 			minuti[i] = "" + (i - 1);
 			if(i-1 < 10) {
@@ -855,7 +907,30 @@ public class ModificaVerbale extends JFrame {
 		if(minuto.equals("")) {
 			return ora + ":00";
 		}
+		
 		return ora + ":" + minuto;
 	}
+	
+	public String getMinuto(String orario) {
+		if(orario.equals("")) {
+			return "";
+		}
+		else {
+			int posizioneIniziale = orario.indexOf(":") + 1;
+			return orario.substring(posizioneIniziale);
+		}
+	}
+	
+	public String getOra(String orario) {
+		if(orario.equals("")) {
+			return "";
+		}
+		else {
+			int posizioneFinale = orario.indexOf(":");
+			return orario.substring(0, posizioneFinale);
+		}
+		
+	}
+	
 	
 }

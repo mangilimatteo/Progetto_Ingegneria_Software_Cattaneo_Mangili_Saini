@@ -63,7 +63,7 @@ public class ModificaPaginaAnagrafica extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					ModificaPaginaAnagrafica frame = new ModificaPaginaAnagrafica("", "m001a", true);
+					ModificaPaginaAnagrafica frame = new ModificaPaginaAnagrafica("1", "m001a", false);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -625,10 +625,6 @@ public class ModificaPaginaAnagrafica extends JFrame {
 	protected void chiudi() {
 		if(nuova) {
 			dataService.decrementaCodice(codiceAnagrafica, "Anagrafica");
-		}
-		else {
-			VisualizzazionePaginaAnagrafica visualizzaAnagrafica= new VisualizzazionePaginaAnagrafica(codiceAnagrafica, matricolaMedico);
-			visualizzaAnagrafica.setVisible(true);
 		}
 		dispose();
 	}

@@ -55,16 +55,16 @@ public class CreateTables {
 					
 					"CREATE TABLE IF NOT EXISTS VERBALE (" +
 					" CODICE       				TEXT NOT NULL PRIMARY KEY," +
-					" INGRESSO_BLOCCO        	TIME," + 
-					" INGRESSO_SALA	 			TIME, " +
-					" POSIZIONAMENTO	 		TIME, " +
-					" INIZIO_ANESTESIA	 		TIME, " +
-					" FINE_ANESTESIA		 	TIME, " +
-					" INIZIO_INTERVENTO		 	TIME, " +
-					" FINE_INTERVENTO	 		TIME, " +
-					" RISVEGLIO		 			TIME, " +
-					" USCITA_SALA				TIME, " +
-					" USCITA_BLOCCO				TIME, " +
+					" INGRESSO_BLOCCO        	TEXT NOT NULL," + 
+					" INGRESSO_SALA	 			TEXT NOT NULL, " +
+					" POSIZIONAMENTO	 		TEXT NOT NULL, " +
+					" INIZIO_ANESTESIA	 		TEXT NOT NULL, " +
+					" FINE_ANESTESIA		 	TEXT NOT NULL, " +
+					" INIZIO_INTERVENTO		 	TEXT NOT NULL, " +
+					" FINE_INTERVENTO	 		TEXT NOT NULL, " +
+					" RISVEGLIO		 			TEXT NOT NULL, " +
+					" USCITA_SALA				TEXT NOT NULL, " +
+					" USCITA_BLOCCO				TEXT NOT NULL, " +
 					" TIPO_ANESTESIA			TEXT NOT NULL, " +
 					" RISCHIO_ANESTESIA			TEXT NOT NULL, " +
 					" PRIMO_OPERATORE	 		TEXT NOT NULL, " +
@@ -106,7 +106,7 @@ public class CreateTables {
 	
 					"INSERT INTO VERBALE " +
 					" VALUES " +
-					" 	(\"0\",NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\");" +
+					" 	(\"0\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\");" +
 
 					"INSERT INTO OPERAZIONE " +
 					" VALUES " +
