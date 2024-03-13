@@ -163,25 +163,25 @@ public class VisualizzazioneVerbale extends JFrame {
 			gbc_textInizioAnestesiaPaziente.gridx = 2;
 			gbc_textInizioAnestesiaPaziente.gridy = posY++;
 			contentPane.add(textInizioAnestesiaPaziente, gbc_textInizioAnestesiaPaziente);
-		}
-		
-		JLabel textOradiFineAnestesia = new JLabel("Ora fine anestesia");
-		textOradiFineAnestesia.setFont(new Font("Arial", Font.BOLD, 16));
-		GridBagConstraints gbc_textOradiFineAnestesia = new GridBagConstraints();
-		gbc_textOradiFineAnestesia.anchor = GridBagConstraints.WEST;
-		gbc_textOradiFineAnestesia.insets = new Insets(0, 0, 5, 5);
-		gbc_textOradiFineAnestesia.gridx = 0;
-		gbc_textOradiFineAnestesia.gridy = posY;
-		contentPane.add(textOradiFineAnestesia, gbc_textOradiFineAnestesia);
-		
-		JLabel textFineAnestesiaPaziente =new JLabel(valori[4]);
-		textFineAnestesiaPaziente.setFont(new Font("Arial", Font.BOLD, 16));
-		GridBagConstraints gbc_textFineAnestesiaPaziente = new GridBagConstraints();
-		gbc_textFineAnestesiaPaziente.anchor = GridBagConstraints.WEST;
-		gbc_textFineAnestesiaPaziente.insets = new Insets(0, 0, 5, 0);
-		gbc_textFineAnestesiaPaziente.gridx = 2;
-		gbc_textFineAnestesiaPaziente.gridy = posY++;
-		contentPane.add(textFineAnestesiaPaziente, gbc_textFineAnestesiaPaziente);
+			
+			JLabel textOradiFineAnestesia = new JLabel("Ora fine anestesia");
+			textOradiFineAnestesia.setFont(new Font("Arial", Font.BOLD, 16));
+			GridBagConstraints gbc_textOradiFineAnestesia = new GridBagConstraints();
+			gbc_textOradiFineAnestesia.anchor = GridBagConstraints.WEST;
+			gbc_textOradiFineAnestesia.insets = new Insets(0, 0, 5, 5);
+			gbc_textOradiFineAnestesia.gridx = 0;
+			gbc_textOradiFineAnestesia.gridy = posY;
+			contentPane.add(textOradiFineAnestesia, gbc_textOradiFineAnestesia);
+			
+			JLabel textFineAnestesiaPaziente =new JLabel(valori[4]);
+			textFineAnestesiaPaziente.setFont(new Font("Arial", Font.BOLD, 16));
+			GridBagConstraints gbc_textFineAnestesiaPaziente = new GridBagConstraints();
+			gbc_textFineAnestesiaPaziente.anchor = GridBagConstraints.WEST;
+			gbc_textFineAnestesiaPaziente.insets = new Insets(0, 0, 5, 0);
+			gbc_textFineAnestesiaPaziente.gridx = 2;
+			gbc_textFineAnestesiaPaziente.gridy = posY++;
+			contentPane.add(textFineAnestesiaPaziente, gbc_textFineAnestesiaPaziente);			
+		}		
 		
 		JLabel textOradiIntervento = new JLabel("Ora inizio intervento");
 		textOradiIntervento.setFont(new Font("Arial", Font.BOLD, 16));
@@ -312,7 +312,7 @@ public class VisualizzazioneVerbale extends JFrame {
 			contentPane.add(textRischioAnestesiologicoPaziente, gbc_textRischioAnestesiologicoPaziente);
 		}
 		
-		JLabel textNomeEquipe = new JLabel("Nomi dell�equipe");
+		JLabel textNomeEquipe = new JLabel("Nomi dell'equipe");
 		textNomeEquipe.setFont(new Font("Arial", Font.BOLD, 18));
 		GridBagConstraints gbc_textNomeEquipe = new GridBagConstraints();
 		gbc_textNomeEquipe.anchor = GridBagConstraints.WEST;
