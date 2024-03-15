@@ -68,13 +68,5 @@ class CasiDiTest {
 		//Verifichiamo che la ricerca riporti un codice verbale inesistente
 		assertEquals(result, "");
 	}
-	
-	@Test
-	public void EliminaAnagraficaFallita() {
-		String CodiceAnagrafica = "1";
-		DataService dataService = new DataService();
-	}
-
-	
 
 }
