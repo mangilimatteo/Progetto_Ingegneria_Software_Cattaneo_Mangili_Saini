@@ -271,14 +271,46 @@ public class DataService {
 	
 	
 	
-	public boolean salvaVerbale(String codiceVerbale, String[] valori, boolean nuovo) {
+	public int salvaVerbale(String codiceVerbale, String[] valori, boolean nuovo) {
 		
+		//controllo dei campi obbligatori
 		if(valori[5].equals("") || valori[6].equals("") || valori[6].equals("") || valori[12].equals("") 
-				|| valori[13].equals("") || valori[17].equals("") || valori[20].equals("")) {
-			return false;
+				|| valori[17].equals("") || valori[20].equals("")) {
+			return 1;
 		}
 		
-		//DA AGGIUNGERE IL CONTROLLO DELL'ANESTESIA
+		//conrolli dei ruoli del personale inserito
+		if(!getRuoloDipendente(valori[12]).equals("Medico")) {
+			return 2;
+		}
+		
+		if(!valori[13].equals("nessun operatore") && !getRuoloDipendente(valori[13]).equals("Medico")) {
+			return 3;
+		}
+		
+		if(!valori[14].equals("") && !getRuoloDipendente(valori[14]).equals("Medico")) {
+			return 4;
+		}
+		
+		if(!valori[15].equals("") && !getRuoloDipendente(valori[15]).equals("Medico")) {
+			return 5;
+		}
+		
+		if(!valori[16].equals("") && !getRuoloDipendente(valori[16]).equals("Infermiere")) {
+			return 6;
+		}
+		
+		if(!getRuoloDipendente(valori[17]).equals("Infermiere")) {
+			return 7;
+		}
+		
+		if(!valori[18].equals("") && !getRuoloDipendente(valori[18]).equals("Infermiere")) {
+			return 8;
+		}
+		
+		if(!valori[19].equals("") && !getRuoloDipendente(valori[19]).equals("Infermiere")) {
+			return 9;
+		}
 		
 		if(nuovo) {
 			creaNuovoVerbale(codiceVerbale);
@@ -311,7 +343,7 @@ public class DataService {
 		.where(Verbale.VERBALE.CODICE.eq(codiceVerbale))
 		.execute();
 		
-		return true;
+		return 0;
 	}
 
 

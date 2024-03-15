@@ -571,6 +571,9 @@ public class ModificaVerbale extends JFrame {
 		panel_2.setLayout(new BoxLayout(panel_2, BoxLayout.X_AXIS));
 		
 		textSecondoOperatoreVerbale = new JTextField();
+		if(valori[13].equals("")) {
+			valori[13] = "nessun operatore";
+		}
 		textSecondoOperatoreVerbale.setText(valori[13]);
 		textSecondoOperatoreVerbale.setHorizontalAlignment(SwingConstants.LEFT);
 		textSecondoOperatoreVerbale.setFont(new Font("Arial", Font.PLAIN, 14));
@@ -840,6 +843,10 @@ public class ModificaVerbale extends JFrame {
 
 	protected void salva() {
 		
+		if(textSecondoOperatoreVerbale.getText().trim().equals("")) {
+			textSecondoOperatoreVerbale.setText("nessun operatore");
+		}
+		
 		String[] valori = {
 				convertiOrario(spinnerOra1.getValue().toString(), spinnerMinuto1.getValue().toString()),
 				convertiOrario(spinnerOra2.getValue().toString(), spinnerMinuto2.getValue().toString()),
@@ -853,24 +860,56 @@ public class ModificaVerbale extends JFrame {
 				convertiOrario(spinnerOra10.getValue().toString(), spinnerMinuto10.getValue().toString()),
 				spinner.getValue().toString(),
 				spinner_1.getValue().toString(),
-				textPrimoOperatoreVerbale.getText(),
-				textSecondoOperatoreVerbale.getText(),
-				textTerzoOperatoreVerbale.getText(),
-				textAnestesistaVerbale.getText(),
-				textStrumentistaVerbale.getText(),
-				textInfermierediSalaVerbale.getText(),
-				textAiutoanestetistaVerbale.getText(),
-				textTecnicodiRadiologiaVerbale.getText(),
+				textPrimoOperatoreVerbale.getText().toLowerCase().trim(),
+				textSecondoOperatoreVerbale.getText().toLowerCase().trim(),
+				textTerzoOperatoreVerbale.getText().toLowerCase().trim(),
+				textAnestesistaVerbale.getText().toLowerCase().trim(),
+				textStrumentistaVerbale.getText().toLowerCase(),
+				textInfermierediSalaVerbale.getText().toLowerCase().trim(),
+				textAiutoanestetistaVerbale.getText().toLowerCase().trim(),
+				textTecnicodiRadiologiaVerbale.getText().toLowerCase().trim(),
 				textProceduraVerbale.getText(),
 				codiceOperazioneAssociata
 		};
 		
-		if(dataService.salvaVerbale(codiceVerbale, valori, nuovo)) {
-			nuovo = false;
-			chiudi();
-		}
-		else {
-			JOptionPane.showMessageDialog(null,"Errore, tutti i campi contrassseganti con * devono essere compilati");
+		switch(dataService.salvaVerbale(codiceVerbale, valori, nuovo)) {
+			case 0 :
+				nuovo = false;
+				chiudi();
+				break;
+			case 1: 
+				JOptionPane.showMessageDialog(null,
+						"Errore, tutti i campi contrassseganti con * devono essere compilati");
+				break;
+			case 2:
+				JOptionPane.showMessageDialog(null,
+						"Errore, non esiste nessun medico con matricola \"" + valori[12] + "\" (campo \"Primo operatore\")" );
+				break;
+			case 3:
+				JOptionPane.showMessageDialog(null,
+						"Errore, non esiste nessun medico con matricola \"" + valori[13] + "\" (campo \"Secondo operatore\")" );
+				break;
+			case 4:
+				JOptionPane.showMessageDialog(null,
+						"Errore, non esiste nessun medico con matricola \"" + valori[14] + "\" (campo \"Terzo operatore\")" );
+				break;
+			case 5:
+				JOptionPane.showMessageDialog(null,
+						"Errore, non esiste nessun medico con matricola \"" + valori[15] + "\" (campo \"Anestesista\")" );
+				break;
+			case 6:
+				JOptionPane.showMessageDialog(null,
+						"Errore, non esiste nessun infermiere con matricola \"" + valori[16] + "\" (campo \"Strumentista\")" );
+				break;
+			case 7:
+				JOptionPane.showMessageDialog(null,
+						"Errore, non esiste nessun infermiere con matricola \"" + valori[17] + "\" (campo \"Inferiere di sala\")" );
+				break;
+			case 8:
+				JOptionPane.showMessageDialog(null,
+						"Errore, non esiste nessun infermiere con matricola \"" + valori[18] + "\" (campo \"Aiuto anestesista\")" );
+				break;
+			case 9: 
 		}		
 	}
 	
