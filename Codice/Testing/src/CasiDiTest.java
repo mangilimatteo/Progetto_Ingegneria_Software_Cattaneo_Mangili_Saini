@@ -1,3 +1,4 @@
+import static org.junit.Assert.fail;
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
 
@@ -68,5 +69,21 @@ class CasiDiTest {
 		//Verifichiamo che la ricerca riporti un codice verbale inesistente
 		assertEquals(result, "");
 	}
-
+	
+	@Test
+	public void RuoloDipendenteSbagliato() {
+		//Creiamo un'istanza del sistema
+		DataService dataService = new DataService();
+		
+		//Cerchiamo il ruolo di un dipendente dell'ospedale rispetto alla sua matricola
+		String matricola = "m001a";
+		String ruolo = "infermiere";
+		
+		String cercaRuolo = dataService.getRuoloDipendente(matricola);
+		
+		//Vewrifichiamo che il ruolo dichiarato non corrisponde a quello vero
+		if(cercaRuolo.equals(ruolo)) {
+			fail("ruolo non corrispondente");
+		}
+	}
 }
