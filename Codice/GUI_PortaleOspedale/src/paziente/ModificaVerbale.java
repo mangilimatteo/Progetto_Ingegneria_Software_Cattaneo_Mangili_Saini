@@ -873,43 +873,44 @@ public class ModificaVerbale extends JFrame {
 		};
 		
 		switch(dataService.salvaVerbale(codiceVerbale, valori, nuovo)) {
-			case 0 :
-				nuovo = false;
-				chiudi();
-				break;
-			case 1: 
+			
+			case "-1": 
 				JOptionPane.showMessageDialog(null,
 						"Errore, tutti i campi contrassseganti con * devono essere compilati");
 				break;
-			case 2:
+			case "-2":
 				JOptionPane.showMessageDialog(null,
 						"Errore, non esiste nessun medico con matricola \"" + valori[12] + "\" (campo \"Primo operatore\")" );
 				break;
-			case 3:
+			case "-3":
 				JOptionPane.showMessageDialog(null,
 						"Errore, non esiste nessun medico con matricola \"" + valori[13] + "\" (campo \"Secondo operatore\")" );
 				break;
-			case 4:
+			case "-4":
 				JOptionPane.showMessageDialog(null,
 						"Errore, non esiste nessun medico con matricola \"" + valori[14] + "\" (campo \"Terzo operatore\")" );
 				break;
-			case 5:
+			case "-5":
 				JOptionPane.showMessageDialog(null,
 						"Errore, non esiste nessun medico con matricola \"" + valori[15] + "\" (campo \"Anestesista\")" );
 				break;
-			case 6:
+			case "-6":
 				JOptionPane.showMessageDialog(null,
 						"Errore, non esiste nessun infermiere con matricola \"" + valori[16] + "\" (campo \"Strumentista\")" );
 				break;
-			case 7:
+			case "-7":
 				JOptionPane.showMessageDialog(null,
 						"Errore, non esiste nessun infermiere con matricola \"" + valori[17] + "\" (campo \"Inferiere di sala\")" );
 				break;
-			case 8:
+			case "-8":
 				JOptionPane.showMessageDialog(null,
 						"Errore, non esiste nessun infermiere con matricola \"" + valori[18] + "\" (campo \"Aiuto anestesista\")" );
 				break;
-			case 9: 
+			case "-9":
+			default :
+				nuovo = false;
+				chiudi();
+				break;
 		}		
 	}
 	

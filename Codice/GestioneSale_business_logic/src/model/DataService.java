@@ -54,7 +54,7 @@ public class DataService {
 	
 	private DipendenteRecord getDipendente(String matricola) {
 		return create.selectFrom(Dipendente.DIPENDENTE).
-				where(Dipendente.DIPENDENTE.MATRICOLA.eq(matricola)).fetchSingle();
+				where(Dipendente.DIPENDENTE.MATRICOLA.eq(matricola)).fetchOne();
 	}
 	
 	private AnagraficaRecord getAnagrafica(String codiceAnagrafica) {
@@ -271,45 +271,50 @@ public class DataService {
 	
 	
 	
-	public int salvaVerbale(String codiceVerbale, String[] valori, boolean nuovo) {
+	public String salvaVerbale(String codiceVerbale, String[] valori, boolean nuovo) {
 		
 		//controllo dei campi obbligatori
 		if(valori[5].equals("") || valori[6].equals("") || valori[6].equals("") || valori[12].equals("") 
 				|| valori[17].equals("") || valori[20].equals("")) {
-			return 1;
+			return "-1";
 		}
 		
-		//conrolli dei ruoli del personale inserito
-		if(!getRuoloDipendente(valori[12]).equals("Medico")) {
-			return 2;
+		//controlli dei ruoli del personale inserito
+		if(!esisteDipendente(valori[12]) || !getRuoloDipendente(valori[12]).equals("Medico")) {
+			return "-2";
 		}
 		
-		if(!valori[13].equals("nessun operatore") && !getRuoloDipendente(valori[13]).equals("Medico")) {
-			return 3;
+		if(!valori[13].equals("nessun operatore") && 
+				(!esisteDipendente(valori[13]) || !getRuoloDipendente(valori[13]).equals("Medico"))) {
+			return "-3";
 		}
 		
-		if(!valori[14].equals("") && !getRuoloDipendente(valori[14]).equals("Medico")) {
-			return 4;
+		if(!valori[14].equals("") && 
+				(!esisteDipendente(valori[14]) || !getRuoloDipendente(valori[14]).equals("Medico"))) {
+			return "-4";
 		}
 		
-		if(!valori[15].equals("") && !getRuoloDipendente(valori[15]).equals("Medico")) {
-			return 5;
+		if(!valori[15].equals("") && 
+				(!esisteDipendente(valori[15]) || !getRuoloDipendente(valori[15]).equals("Medico"))) {
+			return "-5";
 		}
 		
-		if(!valori[16].equals("") && !getRuoloDipendente(valori[16]).equals("Infermiere")) {
-			return 6;
+		if(!valori[16].equals("") && 
+				(!esisteDipendente(valori[16]) || !getRuoloDipendente(valori[16]).equals("Infermiere"))) {
+			return "-6";
 		}
 		
-		if(!getRuoloDipendente(valori[17]).equals("Infermiere")) {
-			return 7;
+		if(!esisteDipendente(valori[17]) || !getRuoloDipendente(valori[17]).equals("Infermiere")) {
+			return "-7";
 		}
 		
-		if(!valori[18].equals("") && !getRuoloDipendente(valori[18]).equals("Infermiere")) {
-			return 8;
+		if(!valori[18].equals("") && 
+				(!esisteDipendente(valori[18]) || !getRuoloDipendente(valori[18]).equals("Infermiere"))) {
+			return "-8";
 		}
 		
-		if(!valori[19].equals("") && !getRuoloDipendente(valori[19]).equals("Infermiere")) {
-			return 9;
+		if(!valori[19].equals("") && !esisteDipendente(valori[19])) {
+			return "-9";
 		}
 		
 		if(nuovo) {
@@ -343,7 +348,7 @@ public class DataService {
 		.where(Verbale.VERBALE.CODICE.eq(codiceVerbale))
 		.execute();
 		
-		return 0;
+		return codiceVerbale;
 	}
 
 
