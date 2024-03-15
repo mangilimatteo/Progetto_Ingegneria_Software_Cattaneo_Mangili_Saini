@@ -611,12 +611,12 @@ public class ModificaPaginaAnagrafica extends JFrame {
 				textMatricolaMedico.getText(),
 				textNotePaziente.getText()
 		};
-		if(dataService.salvaAnagrafica(codiceAnagrafica, valori, nuova)) {
-			nuova = false;
-;			chiudi();
+		if(dataService.salvaAnagrafica(codiceAnagrafica, valori, nuova).equals("-1")) {
+			JOptionPane.showMessageDialog(null,"Errore, tutti i campi, tranne \"Note\", devono essere compilati");
 		}
 		else {
-			JOptionPane.showMessageDialog(null,"Errore, tutti i campi, tranne \"Note\", devono essere compilati");
+			nuova = false;
+			chiudi();
 		}
 		
 	}
