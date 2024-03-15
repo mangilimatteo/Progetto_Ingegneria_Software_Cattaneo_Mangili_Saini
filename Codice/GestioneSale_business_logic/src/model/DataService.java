@@ -127,11 +127,11 @@ public class DataService {
 		System.out.println(result); // stampa 1 se tutto andato bene
 	}
 
-	public boolean salvaAnagrafica(String codiceAnagrafica, String[] valori, boolean nuova) {
+	public String salvaAnagrafica(String codiceAnagrafica, String[] valori, boolean nuova) {
 		//se ci sono campi vuoti, ad eccezioni delle note, non va bene
 		for(int i = 0; i < 17; i++) {
 			if(valori[i].equals(""))
-				return false;
+				return "-1";
 		}
 		
 		if(nuova) {
@@ -163,7 +163,7 @@ public class DataService {
 		.where(Anagrafica.ANAGRAFICA.CODICE.eq(codiceAnagrafica))
 		.execute();
 		
-		return true;
+		return codiceAnagrafica;
 	}
 
 	public String[] getValoriAnagrafica(String codiceAnagrafica, String matricolaMedico) {
@@ -435,13 +435,13 @@ public class DataService {
 	}
 
 
-	public int salvaOperazione(String codiceOperazione, String[] valori, boolean nuova) {
+	public String salvaOperazione(String codiceOperazione, String[] valori, boolean nuova) {
 		if(valori[1].equals("") || valori[2].equals("") || valori[4].equals("")){
-			return 1;
+			return "-1";
 		}
 		
 		if(!esisteDipendente(valori[4]) || !getRuoloDipendente(valori[4]).equals("Medico")) {
-			return 2;
+			return "-2";
 		}
 		
 		if(nuova) {
@@ -458,7 +458,7 @@ public class DataService {
 		.where(Operazione.OPERAZIONE.CODICE.eq(codiceOperazione))
 		.execute();
 		
-		return 0;
+		return codiceOperazione;
 	}
 
 

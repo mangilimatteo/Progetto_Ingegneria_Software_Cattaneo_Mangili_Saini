@@ -344,15 +344,16 @@ public class ModificaOperazione extends JFrame {
 		
 		switch(dataService.salvaOperazione(codiceOperazione, valori, nuova)) {
 		
-		case 0: 
-			nuova = false;
-			chiudi();
-			break;
-		case 1: 
+		case "-1": 
 			JOptionPane.showMessageDialog(null,"Errore, tutti i campi devono essere compilati");
 			break;
-		case 2:
-			JOptionPane.showMessageDialog(null,"Errore, la matricola del primo operatore insierita non non corrisponde a nessun medico");
+		case "-2":
+			JOptionPane.showMessageDialog(null,
+					"Errore, la matricola del primo operatore insierita non non corrisponde a nessun medico");
+			break;
+		default: 
+			nuova = false;
+			chiudi();
 		}	
 	}
 
