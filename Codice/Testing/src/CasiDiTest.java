@@ -86,4 +86,24 @@ class CasiDiTest {
 			fail("ruolo non corrispondente");
 		}
 	}
+	
+	@Test
+	public void SalvataggioOperazioneFallito() {
+		//Creiamo un'istanza del sistema
+		DataService dataService = new DataService();
+		
+		//Simuliamo il salvataggio di un'operazione che fallisce
+		String valori[] = new String[5];
+		valori[0] = "1";
+		valori[1] = "Blu";
+		valori[2] = "14";
+		valori[3] = "Sì";
+		valori[4] = "m001a";
+		boolean n = true;
+		
+		String salvaOperazione = dataService.salvaOperazione("", valori, n);
+		
+		assertSame(salvaOperazione,"");
+				
+	}
 }
