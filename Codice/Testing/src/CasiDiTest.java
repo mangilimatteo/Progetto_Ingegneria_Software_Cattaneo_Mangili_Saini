@@ -109,39 +109,87 @@ class CasiDiTest {
 				Integer.parseInt(risultatoSalvataggio) > 0 &&
 				confrontaArray(dataService.getValoriOperazione(codiceOperazione), valori)
 				);
+		dataService.eliminaOperazione(codiceOperazione);
 	}
 	
 	@Test
-	public void SalvataggioOperazionefallito() {
+	public void SalvataggioOperazioneMedicoInesistente() {
 			
-			//Simuliamo il salvataggio di un'operazione che fallisce
-			String valoriMatricolaInesistente[] = {
-					"1",
-					"Blu",
-					"14",
-					"true",
-					"matricolaInesistente"
-			};
-						
-			String valoriMatricolaInfermiere[] = {
+		//Simuliamo il salvataggio di un'operazione che a causa di 
+		//un errore nell'inserimento della matricola del medico
+		String valoriMatricolaInesistente[] = {
+				"1",
+				"Blu",
+				"14",
+				"true",
+				"matricolaInesistente"
+		};
+					
+		String valoriMatricolaInfermiere[] = {
 					"1",
 					"Blu",
 					"14",
 					"true",
 					"i001a"
-			};
+		};
+		
+		String codiceOperazione1 = "300";
+		String codiceOperazione2 = "400";
+		
+		boolean nuovo = true;
+		
+		String risultatoSalvataggio1 = dataService.salvaOperazione(codiceOperazione1, valoriMatricolaInesistente, nuovo);
+		String risultatoSalvataggio2 = dataService.salvaOperazione(codiceOperazione2, valoriMatricolaInfermiere, nuovo);
+		
+		assertEquals(risultatoSalvataggio1, "-2");
+		assertEquals(risultatoSalvataggio2, "-2");
+	}
+
+	@Test
+	public void SalvataggioOperazionefallito() {
 			
-			String codiceOperazione1 = "300";
-			String codiceOperazione2 = "400";
-			
-			boolean nuovo = true;
-			
-			String risultatoSalvataggio1 = dataService.salvaOperazione(codiceOperazione1, valoriMatricolaInesistente, nuovo);
-			String risultatoSalvataggio2 = dataService.salvaOperazione(codiceOperazione2, valoriMatricolaInfermiere, nuovo);
-			
-			assertEquals(risultatoSalvataggio1, "-2");
-			assertEquals(risultatoSalvataggio2, "-2");
-		}
+		//Simuliamo il salvataggio di un'operazione che fallisce a causa di 
+		//mancato inserimento di valori obbligatori
+		String valori1[] = {
+				"1",
+				"",
+				"14",
+				"true",
+				"matricolaInesistente"
+		};
+		
+		String valori2[] = {
+				"1",
+				"Blu",
+				"",
+				"true",
+				"matricolaInesistente"
+		};
+		
+		String valori3[] = {
+				"1",
+				"Blu",
+				"14",
+				"true",
+				""
+		};
+		
+		String codiceOperazione1 = "120";
+		String codiceOperazione2 = "121";
+		String codiceOperazione3 = "122";
+		
+		boolean nuovo = true;
+		
+		String risultatoSalvataggio1 = dataService.salvaOperazione(codiceOperazione1, valori1, nuovo);
+		String risultatoSalvataggio2 = dataService.salvaOperazione(codiceOperazione2, valori2, nuovo);
+		String risultatoSalvataggio3 = dataService.salvaOperazione(codiceOperazione3, valori3, nuovo);
+
+		
+		assertEquals(risultatoSalvataggio1, "-1");
+		assertEquals(risultatoSalvataggio2, "-1");
+		assertEquals(risultatoSalvataggio3, "-1");
+	}
+
 
 	
 	
