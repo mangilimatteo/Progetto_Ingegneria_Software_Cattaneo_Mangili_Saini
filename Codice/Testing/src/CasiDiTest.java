@@ -12,6 +12,18 @@ class CasiDiTest {
 	
 	private DataService dataService = new DataService();
 	
+	private boolean confrontaArray(String[] str1, String[] str2) {
+		if(str1.length != str2.length) {
+			return false;
+		}
+		for (int i = 0; i < str1.length; i++) {
+			if(!str1[i].equals(str2[i])) {
+				return false;
+			}
+		}
+		return true;
+	}
+	
 	@Test
 	public void testSuccessLogin() {
 		//Simuliamo un utente con credenziali d'accesso
@@ -79,38 +91,59 @@ class CasiDiTest {
 	}
 	
 	@Test
-	public void SalvataggioOperazioneFallito() {
+	public void SalvataggioOperazioneRiuscito() {
 		
-		//Simuliamo il salvataggio di un'operazione che fallisce
+		//Simuliamo il salvataggio di un'operazione che non fallisce
 		String valori[] = new String[5];
 		valori[0] = "1";
 		valori[1] = "Blu";
 		valori[2] = "14";
 		valori[3] = "true";
-		valori[4] = "m001a";
+		valori[4] = " m001A";
 		boolean n = true;
 		String codiceOperazione = "200";
 		
 		String risultatoSalvataggio = dataService.salvaOperazione(codiceOperazione, valori, n);
-		String[] valoriSalvati = dataService.getValoriOperazione(codiceOperazione);
-		
 		
 		assertTrue(
 				Integer.parseInt(risultatoSalvataggio) > 0 &&
-				confrontaArray(valori, valoriSalvati)
+				confrontaArray(dataService.getValoriOperazione(codiceOperazione), valori)
 				);
-				
 	}
+	
+	@Test
+	public void SalvataggioOperazionefallito() {
+			
+			//Simuliamo il salvataggio di un'operazione che non fallisce
+			String valoriMatricolaInesistente[] = {
+					"1",
+					"Blu",
+					"14",
+					"true",
+					"matricolaInesistente"
+			};
+						
+			String valoriMatricolaInfermiere[] = {
+					"1",
+					"Blu",
+					"14",
+					"true",
+					"i001a"
+			};
+			
+			String codiceOperazione1 = "200";
+			String codiceOperazione2 = "201";
+			
+			boolean nuovo = true;
+			
+			String risultatoSalvataggio1 = dataService.salvaOperazione(codiceOperazione1, valoriMatricolaInesistente, nuovo);
+			String risultatoSalvataggio2 = dataService.salvaOperazione(codiceOperazione2, valoriMatricolaInfermiere, nuovo);
+			
+			assertTrue(risultatoSalvataggio1.equals("-2"));
+			assertTrue(risultatoSalvataggio2.equals("-2"));
+		}
 
-	private boolean confrontaArray(String[] str1, String[] str2) {
-		if(str1.length != str2.length) {
-			return false;
-		}
-		for (int i = 0; i < str1.length; i++) {
-			if(!str1[i].equals(str2[i])) {
-				return false;
-			}
-		}
-		return true;
-	}
+	
+	
+	
 }
