@@ -99,9 +99,9 @@ class CasiDiTest {
 		valori[1] = "Blu";
 		valori[2] = "14";
 		valori[3] = "true";
-		valori[4] = " m001A";
+		valori[4] = "m001a";
 		boolean n = true;
-		String codiceOperazione = "200";
+		String codiceOperazione = "800";
 		
 		String risultatoSalvataggio = dataService.salvaOperazione(codiceOperazione, valori, n);
 		
@@ -114,7 +114,7 @@ class CasiDiTest {
 	@Test
 	public void SalvataggioOperazionefallito() {
 			
-			//Simuliamo il salvataggio di un'operazione che non fallisce
+			//Simuliamo il salvataggio di un'operazione che fallisce
 			String valoriMatricolaInesistente[] = {
 					"1",
 					"Blu",
@@ -131,16 +131,16 @@ class CasiDiTest {
 					"i001a"
 			};
 			
-			String codiceOperazione1 = "200";
-			String codiceOperazione2 = "201";
+			String codiceOperazione1 = "300";
+			String codiceOperazione2 = "400";
 			
 			boolean nuovo = true;
 			
 			String risultatoSalvataggio1 = dataService.salvaOperazione(codiceOperazione1, valoriMatricolaInesistente, nuovo);
 			String risultatoSalvataggio2 = dataService.salvaOperazione(codiceOperazione2, valoriMatricolaInfermiere, nuovo);
 			
-			assertTrue(risultatoSalvataggio1.equals("-2"));
-			assertTrue(risultatoSalvataggio2.equals("-2"));
+			assertEquals(risultatoSalvataggio1, "-2");
+			assertEquals(risultatoSalvataggio2, "-2");
 		}
 
 	
