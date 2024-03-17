@@ -339,7 +339,7 @@ public class ModificaOperazione extends JFrame {
 				spinnerBloccoOperatorio.getValue().toString(),
 				spinnerNumeroSala.getValue().toString(),
 				String.valueOf(rdbtnAnestesia.isSelected()),
-				textPrimoOperatore.getText()
+				textPrimoOperatore.getText().toLowerCase().trim()
 		};
 		
 		switch(dataService.salvaOperazione(codiceOperazione, valori, nuova)) {

@@ -1,5 +1,8 @@
 import static org.junit.Assert.fail;
 import static org.junit.jupiter.api.Assertions.*;
+
+import java.util.function.BooleanSupplier;
+
 import org.junit.jupiter.api.Test;
 
 import model.DataService;
@@ -7,15 +10,14 @@ import model.generated.tables.Operazione;
 
 class CasiDiTest {
 	
+	private DataService dataService = new DataService();
+	
 	@Test
 	public void testSuccessLogin() {
 		//Simuliamo un utente con credenziali d'accesso
 		String username = "m001a";
 		String password = "psw1";
-		
-		//Creiamo un'istanza del sistema di login
-		DataService dataService = new DataService();
-		
+				
 		//Effettuaimo il login con le credenziali valide
 		boolean loginResult = dataService.credenzialiCorrette(username, password.toCharArray());
 		
@@ -28,9 +30,6 @@ class CasiDiTest {
 		//Simuliamo un utente con credenziali non archiviate
 		String username = "m001a";
 		String password = "invalidPassword";
-		
-		//Creiamo un'istanza del sistema di login
-		DataService dataService = new DataService();
 		
 		//Effettuiamo un login con credenziali non valide
 		boolean loginResult = dataService.credenzialiCorrette(username, password.toCharArray());
@@ -45,9 +44,6 @@ class CasiDiTest {
 		String username = "invalidUsername";
 		String password = "psw1";
 		
-		//Creiamo un'istanza del sistema di login
-		DataService dataService = new DataService();
-		
 		//Effettuiamo un login con credenziali non valide
 		boolean loginResult = dataService.credenzialiCorrette(username, password.toCharArray());
 		
@@ -58,10 +54,7 @@ class CasiDiTest {
 	@Test
 	public void VerbaleInesistente() {
 		//Simuliamo di voler trovare un determinato verbale medico rispetto al codice operazione
-		String codiceOperazione = "4501";
-		
-		//Creiamo un'istanza del sistema
-		DataService dataService = new DataService();
+		String codiceOperazione = "-1";
 		
 		//Effettuiamo una ricerca del verbale rispetto al codice operazione
 		String result = dataService.getVerbaleAssociato(codiceOperazione);
@@ -72,8 +65,6 @@ class CasiDiTest {
 	
 	@Test
 	public void RuoloDipendenteSbagliato() {
-		//Creiamo un'istanza del sistema
-		DataService dataService = new DataService();
 		
 		//Cerchiamo il ruolo di un dipendente dell'ospedale rispetto alla sua matricola
 		String matricola = "m001a";
@@ -89,21 +80,37 @@ class CasiDiTest {
 	
 	@Test
 	public void SalvataggioOperazioneFallito() {
-		//Creiamo un'istanza del sistema
-		DataService dataService = new DataService();
 		
 		//Simuliamo il salvataggio di un'operazione che fallisce
 		String valori[] = new String[5];
 		valori[0] = "1";
 		valori[1] = "Blu";
 		valori[2] = "14";
-		valori[3] = "Sì";
+		valori[3] = "true";
 		valori[4] = "m001a";
 		boolean n = true;
+		String codiceOperazione = "200";
 		
-		String salvaOperazione = dataService.salvaOperazione("", valori, n);
+		String risultatoSalvataggio = dataService.salvaOperazione(codiceOperazione, valori, n);
+		String[] valoriSalvati = dataService.getValoriOperazione(codiceOperazione);
 		
-		assertSame(salvaOperazione,"");
+		
+		assertTrue(
+				Integer.parseInt(risultatoSalvataggio) > 0 &&
+				confrontaArray(valori, valoriSalvati)
+				);
 				
+	}
+
+	private boolean confrontaArray(String[] str1, String[] str2) {
+		if(str1.length != str2.length) {
+			return false;
+		}
+		for (int i = 0; i < str1.length; i++) {
+			if(!str1[i].equals(str2[i])) {
+				return false;
+			}
+		}
+		return true;
 	}
 }
