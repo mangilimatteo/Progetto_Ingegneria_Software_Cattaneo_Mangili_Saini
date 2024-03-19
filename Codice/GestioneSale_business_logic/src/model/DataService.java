@@ -190,8 +190,8 @@ public class DataService {
 		String valore14 = anagrafica.getAnamnesiProssima();
 		String valore15 = anagrafica.getTempoAttesa();
 		String valore16 = anagrafica.getMatrMedico();
-		//se la matricola del medico è vuota significa che quella che sta venendo visualizzata è un'anagrafica
-		//nuova e quindi il medico richiedente è quello che sta compilando
+		//se la matricola del medico ï¿½ vuota significa che quella che sta venendo visualizzata ï¿½ un'anagrafica
+		//nuova e quindi il medico richiedente ï¿½ quello che sta compilando
 		if(valore16.equals("")) {
 			valore16 = matricolaMedico;
 		}
@@ -220,9 +220,9 @@ public class DataService {
 
 	public void decrementaCodice(String codice, String tipo) {
 		int contatore = getContatoreCodice(tipo);
-		//decremeento il contatore del codice a cui si è arrivati solo se nel frattempo 
+		//decremeento il contatore del codice a cui si ï¿½ arrivati solo se nel frattempo 
 		//non sono state create altre anagrafice/operazioni/verbali, altrimenti ci sarebbero probelimi 
-		//di non univocità delle chiavi. Se non si può decrementare il codice, si accetta di perdere
+		//di non univocitï¿½ delle chiavi. Se non si puï¿½ decrementare il codice, si accetta di perdere
 		//delle potenziali chiavi.
 		if(contatore == Integer.valueOf(codice)) {
 			create.update(Codice.CODICE)
@@ -447,7 +447,7 @@ public class DataService {
 		if(nuova) {
 			creaNuovaOperazione(codiceOperazione);
 		}
-		
+		 
 		create
 		.update(Operazione.OPERAZIONE)
 		.set(Operazione.OPERAZIONE.BLOCCO,valori[1])

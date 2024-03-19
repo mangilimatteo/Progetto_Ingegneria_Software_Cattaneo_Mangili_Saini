@@ -47,7 +47,9 @@ public class ModificaOperazione extends JFrame {
 			public void run() {
 				try {
 					ModificaOperazione frame = new ModificaOperazione("", "m001a", "0");
+					frame.setUndecorated(true);
 					frame.setVisible(true);
+					frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
