@@ -25,6 +25,9 @@ import java.awt.event.ActionEvent;
 import javax.swing.SwingConstants;
 
 import model.DataService;
+import javax.swing.JScrollPane;
+import javax.swing.ScrollPaneConstants;
+import java.awt.BorderLayout;
 
 public class ListaVerbali extends JFrame {
 
@@ -41,7 +44,9 @@ public class ListaVerbali extends JFrame {
 			public void run() {
 				try {
 					ListaVerbali frame = new ListaVerbali("m001a");
+					frame.setUndecorated(true);
 					frame.setVisible(true);
+					frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -67,23 +72,6 @@ public class ListaVerbali extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
 		setContentPane(contentPane);
-		GridBagLayout gbl_contentPane = new GridBagLayout();
-		gbl_contentPane.columnWidths = new int[]{140, 122, 127, 0};
-		gbl_contentPane.rowHeights = new int[]{19, 33, 23, 23, 0, 0, 0, 0, 0};
-		gbl_contentPane.columnWeights = new double[]{1.0, 1.0, 1.0, Double.MIN_VALUE};
-		gbl_contentPane.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, Double.MIN_VALUE};
-		contentPane.setLayout(gbl_contentPane);
-		
-		JLabel textListeVerbali = new JLabel("Verbali registrati:");
-		textListeVerbali.setHorizontalAlignment(SwingConstants.CENTER);
-		textListeVerbali.setFont(new Font("Arial", Font.BOLD, 16));
-		GridBagConstraints gbc_textListeVerbali = new GridBagConstraints();
-		gbc_textListeVerbali.gridwidth = 3;
-		gbc_textListeVerbali.anchor = GridBagConstraints.NORTHWEST;
-		gbc_textListeVerbali.insets = new Insets(0, 0, 5, 0);
-		gbc_textListeVerbali.gridx = 0;
-		gbc_textListeVerbali.gridy = 0;
-		contentPane.add(textListeVerbali, gbc_textListeVerbali);
 		
 		for(int i = 1; i <= contatoreVerbale; i++) {
 			
@@ -137,33 +125,60 @@ public class ListaVerbali extends JFrame {
 				posY++;
 			}
 		}
+		contentPane.setLayout(new BorderLayout(0, 0));
+		
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+		contentPane.add(scrollPane);
+		
+		JPanel panel = new JPanel();
+		scrollPane.setViewportView(panel);
+		GridBagLayout gbl_panel = new GridBagLayout();
+		gbl_panel.columnWidths = new int[]{130, 51, 127, 0};
+		gbl_panel.rowHeights = new int[]{19, 47, 24, 0, 0};
+		gbl_panel.columnWeights = new double[]{0.0, 0.0, 0.0, Double.MIN_VALUE};
+		gbl_panel.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
+		panel.setLayout(gbl_panel);
+		
+		JLabel textListeVerbali = new JLabel("Verbali registrati:");
+		GridBagConstraints gbc_textListeVerbali = new GridBagConstraints();
+		gbc_textListeVerbali.anchor = GridBagConstraints.WEST;
+		gbc_textListeVerbali.fill = GridBagConstraints.VERTICAL;
+		gbc_textListeVerbali.insets = new Insets(0, 0, 5, 0);
+		gbc_textListeVerbali.gridwidth = 3;
+		gbc_textListeVerbali.gridx = 0;
+		gbc_textListeVerbali.gridy = 1;
+		panel.add(textListeVerbali, gbc_textListeVerbali);
+		textListeVerbali.setHorizontalAlignment(SwingConstants.CENTER);
+		textListeVerbali.setFont(new Font("Arial", Font.BOLD, 18));
 		
 		
 		
 		JButton btnChiudi = new JButton("Chiudi");
-		btnChiudi.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				dispose();
-			}
-		});
 		GridBagConstraints gbc_btnChiudi = new GridBagConstraints();
+		gbc_btnChiudi.anchor = GridBagConstraints.SOUTHEAST;
 		gbc_btnChiudi.insets = new Insets(0, 0, 0, 5);
 		gbc_btnChiudi.gridx = 0;
-		gbc_btnChiudi.gridy = posY+1;
-		contentPane.add(btnChiudi, gbc_btnChiudi);
+		gbc_btnChiudi.gridy = 3;
+		panel.add(btnChiudi, gbc_btnChiudi);
 		
 		JButton btnAggiungiLista = new JButton("Crea nuovo verbale");
+		GridBagConstraints gbc_btnAggiungiLista = new GridBagConstraints();
+		gbc_btnAggiungiLista.anchor = GridBagConstraints.NORTHWEST;
+		gbc_btnAggiungiLista.gridx = 2;
+		gbc_btnAggiungiLista.gridy = 3;
+		panel.add(btnAggiungiLista, gbc_btnAggiungiLista);
 		btnAggiungiLista.setVerticalAlignment(SwingConstants.BOTTOM);
 		btnAggiungiLista.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				aggiungiVerbale();
 			}
 		});
-		GridBagConstraints gbc_btnAggiungiLista = new GridBagConstraints();
-		gbc_btnAggiungiLista.insets = new Insets(0, 0, 5, 5);
-		gbc_btnAggiungiLista.gridx = 1;
-		gbc_btnAggiungiLista.gridy = posY+1;
-		contentPane.add(btnAggiungiLista, gbc_btnAggiungiLista);	
+		btnChiudi.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+			}
+		});
 		
 	}
 	

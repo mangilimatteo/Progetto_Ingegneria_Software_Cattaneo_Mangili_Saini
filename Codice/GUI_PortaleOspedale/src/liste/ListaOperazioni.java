@@ -1,5 +1,5 @@
 package liste;
-
+ 
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -22,6 +22,11 @@ import java.awt.GridBagConstraints;
 import java.awt.Insets;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.JScrollPane;
+import javax.swing.ScrollPaneConstants;
+import javax.swing.GroupLayout;
+import javax.swing.GroupLayout.Alignment;
+import javax.swing.BoxLayout;
 
 public class ListaOperazioni extends JFrame {
 
@@ -38,7 +43,10 @@ public class ListaOperazioni extends JFrame {
 			public void run() {
 				try {
 					ListaOperazioni frame = new ListaOperazioni("m001a");
+					frame.setUndecorated(true);
 					frame.setVisible(true);
+					frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
+					
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -53,6 +61,7 @@ public class ListaOperazioni extends JFrame {
 		this.matricolaDipendente = matricolaDipendente;
 		dataService = new DataService();
 		
+		
 		int contatoreOperazione = dataService.getContatoreCodice("Operazione");
 		int posY = 2;
 		setTitle("Portale digitale Personale Sanitario dell'ospedale Giovanni XIII");
@@ -63,12 +72,6 @@ public class ListaOperazioni extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
 		setContentPane(contentPane);
-		GridBagLayout gbl_contentPane = new GridBagLayout();
-		gbl_contentPane.columnWidths = new int[]{159, 38, 149, 0};
-		gbl_contentPane.rowHeights = new int[]{19, 23, 23, 0, 0, 0, 0, 0, 0, 0};
-		gbl_contentPane.columnWeights = new double[]{1.0, 1.0, 1.0, Double.MIN_VALUE};
-		gbl_contentPane.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, Double.MIN_VALUE};
-		contentPane.setLayout(gbl_contentPane);
 		
 		
 		for(int i = 1; i <= contatoreOperazione; i++) {
@@ -123,6 +126,20 @@ public class ListaOperazioni extends JFrame {
 				posY++;
 			}
 		}
+		contentPane.setLayout(new BoxLayout(contentPane, BoxLayout.X_AXIS));
+		
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+		contentPane.add(scrollPane);
+		
+		JPanel panel = new JPanel();
+		scrollPane.setViewportView(panel);
+		GridBagLayout gbl_panel = new GridBagLayout();
+		gbl_panel.columnWidths = new int[]{130, 64, 145, 0};
+		gbl_panel.rowHeights = new int[]{19, 69, 24, 0};
+		gbl_panel.columnWeights = new double[]{0.0, 0.0, 0.0, Double.MIN_VALUE};
+		gbl_panel.rowWeights = new double[]{0.0, 0.0, 0.0, Double.MIN_VALUE};
+		panel.setLayout(gbl_panel);
 		
 		JButton btnChiudi = new JButton("Chiudi");
 		btnChiudi.addActionListener(new ActionListener() {
@@ -132,32 +149,33 @@ public class ListaOperazioni extends JFrame {
 		});
 		
 		JLabel textListeOperatoria = new JLabel("Lista Operazioni:");
-		textListeOperatoria.setFont(new Font("Arial", Font.BOLD, 16));
+		textListeOperatoria.setFont(new Font("Arial", Font.BOLD, 18));
 		GridBagConstraints gbc_textListeOperatoria = new GridBagConstraints();
-		gbc_textListeOperatoria.gridwidth = 3;
+		gbc_textListeOperatoria.gridwidth = 2;
 		gbc_textListeOperatoria.anchor = GridBagConstraints.NORTHWEST;
 		gbc_textListeOperatoria.insets = new Insets(0, 0, 5, 5);
 		gbc_textListeOperatoria.gridx = 0;
-		gbc_textListeOperatoria.gridy = 0;
-		contentPane.add(textListeOperatoria, gbc_textListeOperatoria);
+		gbc_textListeOperatoria.gridy = 1;
+		panel.add(textListeOperatoria, gbc_textListeOperatoria);
 		GridBagConstraints gbc_btnChiudi = new GridBagConstraints();
-		gbc_btnChiudi.insets = new Insets(0, 0, 5, 5);
+		gbc_btnChiudi.anchor = GridBagConstraints.SOUTHEAST;
+		gbc_btnChiudi.insets = new Insets(0, 0, 0, 5);
 		gbc_btnChiudi.gridx = 0;
-		gbc_btnChiudi.gridy = posY+1;
-		contentPane.add(btnChiudi, gbc_btnChiudi);
+		gbc_btnChiudi.gridy = 2;
+		panel.add(btnChiudi, gbc_btnChiudi);
 		
 		JButton btnAggiungiLista = new JButton("Crea nuova operazione");
 		btnAggiungiLista.setVerticalAlignment(SwingConstants.BOTTOM);
+		GridBagConstraints gbc_btnAggiungiLista = new GridBagConstraints();
+		gbc_btnAggiungiLista.anchor = GridBagConstraints.NORTHWEST;
+		gbc_btnAggiungiLista.gridx = 2;
+		gbc_btnAggiungiLista.gridy = 2;
+		panel.add(btnAggiungiLista, gbc_btnAggiungiLista);
 		btnAggiungiLista.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				aggiungiOperazione();
 			}
 		});
-		GridBagConstraints gbc_btnAggiungiLista = new GridBagConstraints();
-		gbc_btnAggiungiLista.insets = new Insets(0, 0, 5, 5);
-		gbc_btnAggiungiLista.gridx = 1;
-		gbc_btnAggiungiLista.gridy = posY+1;
-		contentPane.add(btnAggiungiLista, gbc_btnAggiungiLista);	
 		
 	}
 	
@@ -201,5 +219,4 @@ public class ListaOperazioni extends JFrame {
 		SelezionePaginaAnagrafica selezione = new SelezionePaginaAnagrafica(matricolaDipendente);
 		selezione.setVisible(true);		
 	}
-
 }

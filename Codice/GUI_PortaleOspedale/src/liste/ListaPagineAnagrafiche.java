@@ -1,5 +1,5 @@
 package liste;
-
+ 
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -23,6 +23,9 @@ import java.awt.event.ActionEvent;
 import javax.swing.SwingConstants;
 
 import model.DataService;
+import javax.swing.JScrollPane;
+import javax.swing.ScrollPaneConstants;
+import java.awt.BorderLayout;
 
 public class ListaPagineAnagrafiche extends JFrame {
 
@@ -39,7 +42,10 @@ public class ListaPagineAnagrafiche extends JFrame {
 			public void run() {
 				try {
 					ListaPagineAnagrafiche frame = new ListaPagineAnagrafiche("m001a");
+					frame.setUndecorated(true);
 					frame.setVisible(true);
+					frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
+					
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -65,23 +71,6 @@ public class ListaPagineAnagrafiche extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
 		setContentPane(contentPane);
-		GridBagLayout gbl_contentPane = new GridBagLayout();
-		gbl_contentPane.columnWidths = new int[]{153, 199, 155, 0};
-		gbl_contentPane.rowHeights = new int[]{19, 33, 23, 23, 0, 0, 0, 0, 0};
-		gbl_contentPane.columnWeights = new double[]{1.0, 1.0, 1.0, Double.MIN_VALUE};
-		gbl_contentPane.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, Double.MIN_VALUE};
-		contentPane.setLayout(gbl_contentPane);
-		
-		JLabel textListeAnagrafiche = new JLabel("Pagine Anagrafiche registrate:");
-		textListeAnagrafiche.setHorizontalAlignment(SwingConstants.CENTER);
-		textListeAnagrafiche.setFont(new Font("Arial", Font.BOLD, 16));
-		GridBagConstraints gbc_textListeAnagrafiche = new GridBagConstraints();
-		gbc_textListeAnagrafiche.gridwidth = 3;
-		gbc_textListeAnagrafiche.anchor = GridBagConstraints.NORTHWEST;
-		gbc_textListeAnagrafiche.insets = new Insets(0, 0, 5, 0);
-		gbc_textListeAnagrafiche.gridx = 0;
-		gbc_textListeAnagrafiche.gridy = 0;
-		contentPane.add(textListeAnagrafiche, gbc_textListeAnagrafiche);
 		
 		for(int i = 1; i <= contatoreAnagrafica; i++) {
 			
@@ -135,33 +124,43 @@ public class ListaPagineAnagrafiche extends JFrame {
 				posY++;
 			}
 		}
+		contentPane.setLayout(new BorderLayout(0, 0));
+		
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+		scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+		contentPane.add(scrollPane);
+		
+		JPanel panel = new JPanel();
+		scrollPane.setViewportView(panel);
+		panel.setLayout(null);
+		
+		JLabel textListeAnagrafiche = new JLabel("Pagine Anagrafiche registrate:");
+		textListeAnagrafiche.setBounds(10, 11, 266, 22);
+		panel.add(textListeAnagrafiche);
+		textListeAnagrafiche.setHorizontalAlignment(SwingConstants.CENTER);
+		textListeAnagrafiche.setFont(new Font("Arial", Font.BOLD, 18));
 		
 		
 		
 		JButton btnChiudi = new JButton("Chiudi");
-		btnChiudi.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				dispose();
-			}
-		});
-		GridBagConstraints gbc_btnChiudi = new GridBagConstraints();
-		gbc_btnChiudi.insets = new Insets(0, 0, 0, 5);
-		gbc_btnChiudi.gridx = 0;
-		gbc_btnChiudi.gridy = posY+1;
-		contentPane.add(btnChiudi, gbc_btnChiudi);
+		btnChiudi.setBounds(40, 73, 83, 23);
+		panel.add(btnChiudi);
 		
 		JButton btnAggiungiLista = new JButton("Crea nuova pagina anagrafica");
+		btnAggiungiLista.setBounds(160, 72, 177, 23);
+		panel.add(btnAggiungiLista);
 		btnAggiungiLista.setVerticalAlignment(SwingConstants.BOTTOM);
 		btnAggiungiLista.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				aggiungiAnagrafica();
 			}
 		});
-		GridBagConstraints gbc_btnAggiungiLista = new GridBagConstraints();
-		gbc_btnAggiungiLista.insets = new Insets(0, 0, 5, 5);
-		gbc_btnAggiungiLista.gridx = 1;
-		gbc_btnAggiungiLista.gridy = posY+1;
-		contentPane.add(btnAggiungiLista, gbc_btnAggiungiLista);	
+		btnChiudi.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+			}
+		});
 		
 	}
 	
@@ -205,5 +204,4 @@ public class ListaPagineAnagrafiche extends JFrame {
 		ModificaPaginaAnagrafica modificaAnagrafica= new ModificaPaginaAnagrafica("", matricolaDipendente ,true);
 		modificaAnagrafica.setVisible(true);		
 	}
-
 }

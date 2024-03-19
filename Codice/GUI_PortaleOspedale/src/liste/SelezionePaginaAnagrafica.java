@@ -22,6 +22,11 @@ import java.awt.event.ActionEvent;
 import javax.swing.SwingConstants;
 
 import model.DataService;
+import javax.swing.GroupLayout;
+import javax.swing.GroupLayout.Alignment;
+import javax.swing.JScrollPane;
+import java.awt.BorderLayout;
+import javax.swing.ScrollPaneConstants;
 
 public class SelezionePaginaAnagrafica extends JFrame {
 
@@ -38,7 +43,9 @@ public class SelezionePaginaAnagrafica extends JFrame {
 			public void run() {
 				try {
 					SelezionePaginaAnagrafica frame = new SelezionePaginaAnagrafica("m001a");
+					frame.setUndecorated(true);
 					frame.setVisible(true);
+					frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -64,23 +71,6 @@ public class SelezionePaginaAnagrafica extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
 		setContentPane(contentPane);
-		GridBagLayout gbl_contentPane = new GridBagLayout();
-		gbl_contentPane.columnWidths = new int[]{340, 178, 0};
-		gbl_contentPane.rowHeights = new int[]{19, 33, 23, 23, 0, 0, 0, 0, 0};
-		gbl_contentPane.columnWeights = new double[]{0.0, 0.0, Double.MIN_VALUE};
-		gbl_contentPane.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, Double.MIN_VALUE};
-		contentPane.setLayout(gbl_contentPane);
-		
-		JLabel textListeAnagrafiche = new JLabel("Seleziona la pagina anagrafica di cui vuoi registrare l'operazione:");
-		textListeAnagrafiche.setHorizontalAlignment(SwingConstants.CENTER);
-		textListeAnagrafiche.setFont(new Font("Arial", Font.BOLD, 16));
-		GridBagConstraints gbc_textListeAnagrafiche = new GridBagConstraints();
-		gbc_textListeAnagrafiche.gridwidth = 2;
-		gbc_textListeAnagrafiche.anchor = GridBagConstraints.NORTHWEST;
-		gbc_textListeAnagrafiche.insets = new Insets(0, 0, 5, 0);
-		gbc_textListeAnagrafiche.gridx = 0;
-		gbc_textListeAnagrafiche.gridy = 0;
-		contentPane.add(textListeAnagrafiche, gbc_textListeAnagrafiche);
 		
 		for(int i = 1; i <= contatoreAnagrafica; i++) {
 			
@@ -121,20 +111,50 @@ public class SelezionePaginaAnagrafica extends JFrame {
 				posY++;
 			}
 		}
+		contentPane.setLayout(new BorderLayout(0, 0));
+		
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+		contentPane.add(scrollPane);
+		
+		JPanel panel = new JPanel();
+		scrollPane.setViewportView(panel);
+		
+		JLabel textListeAnagrafiche = new JLabel("Seleziona la pagina anagrafica di cui vuoi registrare l'operazione:");
+		textListeAnagrafiche.setHorizontalAlignment(SwingConstants.CENTER);
+		textListeAnagrafiche.setFont(new Font("Arial", Font.BOLD, 18));
 		
 		
 		
 		JButton btnChiudi = new JButton("Chiudi");
+		GroupLayout gl_panel = new GroupLayout(panel);
+		gl_panel.setHorizontalGroup(
+			gl_panel.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_panel.createSequentialGroup()
+					.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
+						.addGroup(gl_panel.createSequentialGroup()
+							.addContainerGap()
+							.addComponent(textListeAnagrafiche))
+						.addGroup(gl_panel.createSequentialGroup()
+							.addGap(227)
+							.addComponent(btnChiudi)))
+					.addContainerGap(12, Short.MAX_VALUE))
+		);
+		gl_panel.setVerticalGroup(
+			gl_panel.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_panel.createSequentialGroup()
+					.addContainerGap()
+					.addComponent(textListeAnagrafiche)
+					.addGap(70)
+					.addComponent(btnChiudi)
+					.addGap(214))
+		);
+		panel.setLayout(gl_panel);
 		btnChiudi.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
 			}
 		});
-		GridBagConstraints gbc_btnChiudi = new GridBagConstraints();
-		gbc_btnChiudi.insets = new Insets(0, 0, 5, 5);
-		gbc_btnChiudi.gridx = 0;
-		gbc_btnChiudi.gridy = posY+1;
-		contentPane.add(btnChiudi, gbc_btnChiudi);
 	}
 
 	
