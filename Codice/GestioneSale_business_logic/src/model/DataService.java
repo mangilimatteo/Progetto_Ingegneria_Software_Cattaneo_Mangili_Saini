@@ -463,12 +463,14 @@ public class DataService {
 
 
 	public void eliminaOperazione(String codiceOperazione) {
-		getOperazione(codiceOperazione).delete();		
-		decrementaCodice(codiceOperazione, "Operazione");
-		
-		String verbaleAssociato = getVerbaleAssociato(codiceOperazione);
-		if(!verbaleAssociato.equals("")) {
-			eliminaVerbale(verbaleAssociato);
+		if(esisteOperazione(codiceOperazione)) {
+			getOperazione(codiceOperazione).delete();		
+			decrementaCodice(codiceOperazione, "Operazione");
+			
+			String verbaleAssociato = getVerbaleAssociato(codiceOperazione);
+			if(!verbaleAssociato.equals("")) {
+				eliminaVerbale(verbaleAssociato);
+			}
 		}
 	}
 

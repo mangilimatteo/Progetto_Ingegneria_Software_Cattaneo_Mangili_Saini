@@ -1,12 +1,9 @@
-import static org.junit.Assert.fail;
+import static org.junit.Assert.fail; 
 import static org.junit.jupiter.api.Assertions.*;
-
-import java.util.function.BooleanSupplier;
 
 import org.junit.jupiter.api.Test;
 
 import model.DataService;
-import model.generated.tables.Operazione;
 
 class CasiDiTest {
 	
@@ -38,7 +35,7 @@ class CasiDiTest {
 	}
 	
 	@Test
-	public void TestInvalidPassword() {
+	public void testInvalidPassword() {
 		//Simuliamo un utente con credenziali non archiviate
 		String username = "m001a";
 		String password = "invalidPassword";
@@ -51,7 +48,7 @@ class CasiDiTest {
 	}
 	
 	@Test
-	public void TestInvalidUserName() {
+	public void testInvalidUserName() {
 		//Simuliamo un utente con credenziali non archiviate
 		String username = "invalidUsername";
 		String password = "psw1";
@@ -64,7 +61,7 @@ class CasiDiTest {
 	}
 	
 	@Test
-	public void VerbaleInesistente() {
+	public void verbaleInesistente() {
 		//Simuliamo di voler trovare un determinato verbale medico rispetto al codice operazione
 		String codiceOperazione = "-1";
 		
@@ -76,22 +73,22 @@ class CasiDiTest {
 	}
 	
 	@Test
-	public void RuoloDipendenteSbagliato() {
+	public void ruoloDipendenteSbagliato() {
 		
-		//Cerchiamo il ruolo di un dipendente dell'ospedale rispetto alla sua matricola
+		//Cerchiamo il ruolo di un dipendente dell'ospedale
 		String matricola = "m001a";
 		String ruolo = "infermiere";
 		
 		String cercaRuolo = dataService.getRuoloDipendente(matricola);
 		
-		//Vewrifichiamo che il ruolo dichiarato non corrisponde a quello vero
+		//Verifichiamo che il ruolo dichiarato non corrisponde a quello vero
 		if(cercaRuolo.equals(ruolo)) {
 			fail("ruolo non corrispondente");
 		}
 	}
 	
 	@Test
-	public void SalvataggioOperazioneRiuscito() {
+	public void salvataggioEdEliminazioneOperazioneRiusciti() {
 		
 		//Simuliamo il salvataggio di un'operazione che non fallisce
 		String valori[] = new String[5];
@@ -109,13 +106,17 @@ class CasiDiTest {
 				Integer.parseInt(risultatoSalvataggio) > 0 &&
 				confrontaArray(dataService.getValoriOperazione(codiceOperazione), valori)
 				);
+		
 		dataService.eliminaOperazione(codiceOperazione);
+		assertFalse(dataService.esisteOperazione(codiceOperazione));
+		
 	}
 	
+	
 	@Test
-	public void SalvataggioOperazioneMedicoInesistente() {
+	public void salvataggioOperazioneMedicoInesistente() {
 			
-		//Simuliamo il salvataggio di un'operazione che a causa di 
+		//Simuliamo il salvataggio di un'operazione che fallise a causa di 
 		//un errore nell'inserimento della matricola del medico
 		String valoriMatricolaInesistente[] = {
 				"1",
@@ -126,11 +127,11 @@ class CasiDiTest {
 		};
 					
 		String valoriMatricolaInfermiere[] = {
-					"1",
-					"Blu",
-					"14",
-					"true",
-					"i001a"
+				"1",
+				"Blu",
+				"14",
+				"true",
+				"i001a"
 		};
 		
 		String codiceOperazione1 = "300";
@@ -151,27 +152,27 @@ class CasiDiTest {
 		//Simuliamo il salvataggio di un'operazione che fallisce a causa di 
 		//mancato inserimento di valori obbligatori
 		String valori1[] = {
-				"1",
-				"",
-				"14",
-				"true",
-				"matricolaInesistente"
+			"1",
+			"",
+			"14",
+			"true",
+			"matricolaInesistente"
 		};
 		
 		String valori2[] = {
-				"1",
-				"Blu",
-				"",
-				"true",
-				"matricolaInesistente"
+			"1",
+			"Blu",
+			"",
+			"true",
+			"matricolaInesistente"
 		};
 		
 		String valori3[] = {
-				"1",
-				"Blu",
-				"14",
-				"true",
-				""
+			"1",
+			"Blu",
+			"14",
+			"true",
+			""
 		};
 		
 		String codiceOperazione1 = "120";
@@ -189,9 +190,17 @@ class CasiDiTest {
 		assertEquals(risultatoSalvataggio2, "-1");
 		assertEquals(risultatoSalvataggio3, "-1");
 	}
+	
+	@Test
+	public void eliminazioneOperazioneInesistente() {
+		try {
+			dataService.eliminaOperazione("matricolaInesistente");
+		}catch(Exception e) {
+			 fail("La funzione ha fallito con un'eccezione: " + e.getMessage());
+		}		
+	}
+	
+	
+	
 
-
-	
-	
-	
 }
