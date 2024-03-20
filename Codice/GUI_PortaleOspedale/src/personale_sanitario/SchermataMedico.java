@@ -1,15 +1,18 @@
 package personale_sanitario;
 
-import java.awt.EventQueue;
+import java.awt.EventQueue; 
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import liste.*;
-import login.Login;
 import model.DataService;
-import paziente.*;
+import operazione.ListaOperazioni;
+import operazione.SelezionePaginaAnagrafica;
+import paginaAnagrafica.ListaPagineAnagrafiche;
+import paginaAnagrafica.ModificaPaginaAnagrafica;
+import verbale.ListaVerbali;
+import verbale.SelezioneOperazione;
 
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
