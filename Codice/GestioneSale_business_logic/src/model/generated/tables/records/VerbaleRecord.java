@@ -340,6 +340,20 @@ public class VerbaleRecord extends UpdatableRecordImpl<VerbaleRecord> {
         return (String) get(22);
     }
 
+    /**
+     * Setter for <code>VERBALE.DATA_ORA_CREAZIONE</code>.
+     */
+    public void setDataOraCreazione(String value) {
+        set(23, value);
+    }
+
+    /**
+     * Getter for <code>VERBALE.DATA_ORA_CREAZIONE</code>.
+     */
+    public String getDataOraCreazione() {
+        return (String) get(23);
+    }
+
     // -------------------------------------------------------------------------
     // Primary key information
     // -------------------------------------------------------------------------
@@ -363,7 +377,7 @@ public class VerbaleRecord extends UpdatableRecordImpl<VerbaleRecord> {
     /**
      * Create a detached, initialised VerbaleRecord
      */
-    public VerbaleRecord(String codice, String ingressoBlocco, String ingressoSala, String posizionamento, String inizioAnestesia, String fineAnestesia, String inizioIntervento, String fineIntervento, String risveglio, String uscitaSala, String uscitaBlocco, String tipoAnestesia, String rischioAnestesia, String primoOperatore, String secondoOperatore, String terzoOperatore, String anestesista, String strumentista, String infermiere, String aiutoAnestesista, String tecnicoRadiologia, String procedura, String codiceOperazione) {
+    public VerbaleRecord(String codice, String ingressoBlocco, String ingressoSala, String posizionamento, String inizioAnestesia, String fineAnestesia, String inizioIntervento, String fineIntervento, String risveglio, String uscitaSala, String uscitaBlocco, String tipoAnestesia, String rischioAnestesia, String primoOperatore, String secondoOperatore, String terzoOperatore, String anestesista, String strumentista, String infermiere, String aiutoAnestesista, String tecnicoRadiologia, String procedura, String codiceOperazione, String dataOraCreazione) {
         super(Verbale.VERBALE);
 
         setCodice(codice);
@@ -389,6 +403,7 @@ public class VerbaleRecord extends UpdatableRecordImpl<VerbaleRecord> {
         setTecnicoRadiologia(tecnicoRadiologia);
         setProcedura(procedura);
         setCodiceOperazione(codiceOperazione);
+        setDataOraCreazione(dataOraCreazione);
         resetChangedOnNotNull();
     }
 }

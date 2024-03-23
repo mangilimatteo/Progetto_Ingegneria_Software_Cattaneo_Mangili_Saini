@@ -14,11 +14,11 @@ import model.generated.tables.records.OperazioneRecord;
 
 import org.jooq.Field;
 import org.jooq.ForeignKey;
-import org.jooq.Function6;
+import org.jooq.Function7;
 import org.jooq.Name;
 import org.jooq.Record;
 import org.jooq.Records;
-import org.jooq.Row6;
+import org.jooq.Row7;
 import org.jooq.Schema;
 import org.jooq.SelectField;
 import org.jooq.Table;
@@ -81,6 +81,11 @@ public class Operazione extends TableImpl<OperazioneRecord> {
      */
     public final TableField<OperazioneRecord, String> CODICE_ANAGRAFICA = createField(DSL.name("CODICE_ANAGRAFICA"), SQLDataType.CLOB.nullable(false), this, "");
 
+    /**
+     * The column <code>OPERAZIONE.MEDICO_SCHEDULAZIONE</code>.
+     */
+    public final TableField<OperazioneRecord, String> MEDICO_SCHEDULAZIONE = createField(DSL.name("MEDICO_SCHEDULAZIONE"), SQLDataType.CLOB.nullable(false), this, "");
+
     private Operazione(Name alias, Table<OperazioneRecord> aliased) {
         this(alias, aliased, null);
     }
@@ -126,10 +131,21 @@ public class Operazione extends TableImpl<OperazioneRecord> {
 
     @Override
     public List<ForeignKey<OperazioneRecord, ?>> getReferences() {
-        return Arrays.asList(Keys.OPERAZIONE__FK_OPERAZIONE_PK_ANAGRAFICA);
+        return Arrays.asList(Keys.OPERAZIONE__FK_OPERAZIONE_PK_DIPENDENTE, Keys.OPERAZIONE__FK_OPERAZIONE_PK_ANAGRAFICA);
     }
 
+    private transient Dipendente _dipendente;
     private transient Anagrafica _anagrafica;
+
+    /**
+     * Get the implicit join path to the <code>DIPENDENTE</code> table.
+     */
+    public Dipendente dipendente() {
+        if (_dipendente == null)
+            _dipendente = new Dipendente(this, Keys.OPERAZIONE__FK_OPERAZIONE_PK_DIPENDENTE);
+
+        return _dipendente;
+    }
 
     /**
      * Get the implicit join path to the <code>ANAGRAFICA</code> table.
@@ -181,18 +197,18 @@ public class Operazione extends TableImpl<OperazioneRecord> {
     }
 
     // -------------------------------------------------------------------------
-    // Row6 type methods
+    // Row7 type methods
     // -------------------------------------------------------------------------
 
     @Override
-    public Row6<String, String, String, Boolean, String, String> fieldsRow() {
-        return (Row6) super.fieldsRow();
+    public Row7<String, String, String, Boolean, String, String, String> fieldsRow() {
+        return (Row7) super.fieldsRow();
     }
 
     /**
      * Convenience mapping calling {@link SelectField#convertFrom(Function)}.
      */
-    public <U> SelectField<U> mapping(Function6<? super String, ? super String, ? super String, ? super Boolean, ? super String, ? super String, ? extends U> from) {
+    public <U> SelectField<U> mapping(Function7<? super String, ? super String, ? super String, ? super Boolean, ? super String, ? super String, ? super String, ? extends U> from) {
         return convertFrom(Records.mapping(from));
     }
 
@@ -200,7 +216,7 @@ public class Operazione extends TableImpl<OperazioneRecord> {
      * Convenience mapping calling {@link SelectField#convertFrom(Class,
      * Function)}.
      */
-    public <U> SelectField<U> mapping(Class<U> toType, Function6<? super String, ? super String, ? super String, ? super Boolean, ? super String, ? super String, ? extends U> from) {
+    public <U> SelectField<U> mapping(Class<U> toType, Function7<? super String, ? super String, ? super String, ? super Boolean, ? super String, ? super String, ? super String, ? extends U> from) {
         return convertFrom(toType, Records.mapping(from));
     }
 }

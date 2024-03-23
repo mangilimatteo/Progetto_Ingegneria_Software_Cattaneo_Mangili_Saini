@@ -161,6 +161,11 @@ public class Verbale extends TableImpl<VerbaleRecord> {
      */
     public final TableField<VerbaleRecord, String> CODICE_OPERAZIONE = createField(DSL.name("CODICE_OPERAZIONE"), SQLDataType.CLOB.nullable(false), this, "");
 
+    /**
+     * The column <code>VERBALE.DATA_ORA_CREAZIONE</code>.
+     */
+    public final TableField<VerbaleRecord, String> DATA_ORA_CREAZIONE = createField(DSL.name("DATA_ORA_CREAZIONE"), SQLDataType.CLOB.nullable(false), this, "");
+
     private Verbale(Name alias, Table<VerbaleRecord> aliased) {
         this(alias, aliased, null);
     }
@@ -206,10 +211,21 @@ public class Verbale extends TableImpl<VerbaleRecord> {
 
     @Override
     public List<ForeignKey<VerbaleRecord, ?>> getReferences() {
-        return Arrays.asList(Keys.VERBALE__FK_VERBALE_PK_OPERAZIONE);
+        return Arrays.asList(Keys.VERBALE__FK_VERBALE_PK_DIPENDENTE, Keys.VERBALE__FK_VERBALE_PK_OPERAZIONE);
     }
 
+    private transient Dipendente _dipendente;
     private transient Operazione _operazione;
+
+    /**
+     * Get the implicit join path to the <code>DIPENDENTE</code> table.
+     */
+    public Dipendente dipendente() {
+        if (_dipendente == null)
+            _dipendente = new Dipendente(this, Keys.VERBALE__FK_VERBALE_PK_DIPENDENTE);
+
+        return _dipendente;
+    }
 
     /**
      * Get the implicit join path to the <code>OPERAZIONE</code> table.

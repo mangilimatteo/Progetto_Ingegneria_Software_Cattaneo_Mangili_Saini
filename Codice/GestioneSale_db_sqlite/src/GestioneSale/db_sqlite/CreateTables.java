@@ -50,7 +50,10 @@ public class CreateTables {
 					" ANESTESIA       			BOOLEAN NOT NULL," +
 					" PRIMO_OPERATORE			TEXT NOT NULL," +
 					" CODICE_ANAGRAFICA		 	TEXT NOT NULL, " +
-					" FOREIGN KEY (CODICE_ANAGRAFICA) REFERENCES ANAGRAFICA(CODICE) " +
+					" MEDICO_SCHEDULAZIONE		TEXT NOT NULL, " +
+					" FOREIGN KEY (CODICE_ANAGRAFICA) REFERENCES ANAGRAFICA(CODICE), " +
+					" FOREIGN KEY (PRIMO_OPERATORE) REFERENCES DIPENDENTE(MATRICOLA), " +
+					" FOREIGN KEY (MEDICO_SCHEDULAZIONE) REFERENCES DIPENDENTE(MATRICOLA) " +
 					"); " +
 					
 					"CREATE TABLE IF NOT EXISTS VERBALE (" +
@@ -77,7 +80,16 @@ public class CreateTables {
 					" TECNICO_RADIOLOGIA		TEXT NOT NULL, " +
 					" PROCEDURA					TEXT NOT NULL, " +
 					" CODICE_OPERAZIONE		 	TEXT NOT NULL, " +
-					" FOREIGN KEY (CODICE_OPERAZIONE) REFERENCES OPERAZIONE(CODICE) " +
+					" DATA_ORA_CREAZIONE	 	TEXT NOT NULL, " +
+					" FOREIGN KEY (CODICE_OPERAZIONE) REFERENCES OPERAZIONE(CODICE), " +
+					" FOREIGN KEY (PRIMO_OPERATORE) REFERENCES DIPENDENTE(MATRICOLA), " +
+					" FOREIGN KEY (SECONDO_OPERATORE) REFERENCES DIPENDENTE(MATRICOLA), " +
+					" FOREIGN KEY (TERZO_OPERATORE) REFERENCES DIPENDENTE(MATRICOLA), " +
+					" FOREIGN KEY (ANESTESISTA) REFERENCES DIPENDENTE(MATRICOLA), " +
+					" FOREIGN KEY (STRUMENTISTA) REFERENCES DIPENDENTE(MATRICOLA), " +
+					" FOREIGN KEY (INFERMIERE) REFERENCES DIPENDENTE(MATRICOLA), " +
+					" FOREIGN KEY (AIUTO_ANESTESISTA) REFERENCES DIPENDENTE(MATRICOLA), " +
+					" FOREIGN KEY (TECNICO_RADIOLOGIA) REFERENCES DIPENDENTE(MATRICOLA) " +
 					"); " +
 					
 					"CREATE TABLE IF NOT EXISTS CODICE (" + 
@@ -106,11 +118,11 @@ public class CreateTables {
 	
 					"INSERT INTO VERBALE " +
 					" VALUES " +
-					" 	(\"0\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\");" +
+					" 	(\"0\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"01/01/1900 00:00:00\");" +
 
 					"INSERT INTO OPERAZIONE " +
 					" VALUES " +
-					" 	(\"0\",\"\",\"    \",FALSE,\"\",\"\");";
+					" 	(\"0\",\"\",\"    \",FALSE,\"\",\"\",\"\");";
 
 				
 				stmt.executeUpdate(sql);
