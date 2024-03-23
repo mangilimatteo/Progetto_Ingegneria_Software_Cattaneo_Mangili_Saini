@@ -20,8 +20,6 @@ import java.awt.event.ActionEvent;
 import javax.swing.SwingConstants;
 
 import model.DataService;
-import paginaAnagrafica.ModificaPaginaAnagrafica;
-import paginaAnagrafica.VisualizzazionePaginaAnagrafica;
 
 import javax.swing.JScrollPane;
 import javax.swing.ScrollPaneConstants;
@@ -55,8 +53,8 @@ public class ListaVerbali extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public ListaVerbali(String codiceDipendente) {
-		this.matricolaDipendente = codiceDipendente;
+	public ListaVerbali(String matricolaDipendente) {
+		this.matricolaDipendente = matricolaDipendente;
 		dataService = new DataService();
 		
 		int contatoreVerbale = dataService.getContatoreCodice("Verbale");
@@ -92,33 +90,35 @@ public class ListaVerbali extends JFrame {
 				gbc_btnListaVerbale_1.gridy = posY;
 				contentPane.add(bottoneVerbale, gbc_btnListaVerbale_1);
 				
-				JButton bottoneModifica = new JButton("Modifica");
-				bottoneModifica.addActionListener(new ActionListener() {
-					public void actionPerformed(ActionEvent e) {
-						modificaVerbale(codiceVerbale);
-					}
-				});
-				GridBagConstraints gbc_btnModifica = new GridBagConstraints();
-				gbc_btnModifica.anchor = GridBagConstraints.NORTH;
-				gbc_btnModifica.fill = GridBagConstraints.HORIZONTAL;
-				gbc_btnModifica.insets = new Insets(0, 0, 5, 5);
-				gbc_btnModifica.gridx = 1;
-				gbc_btnModifica.gridy = posY;
-				contentPane.add(bottoneModifica, gbc_btnModifica);
-				
-				JButton bottoneElimina = new JButton("Elimina");
-				bottoneElimina.addActionListener(new ActionListener() {
-					public void actionPerformed(ActionEvent e) {
-						eliminaVerbale(codiceVerbale);
-					}
-				});
-				GridBagConstraints gbc_btnElimina = new GridBagConstraints();
-				gbc_btnElimina.anchor = GridBagConstraints.NORTH;
-				gbc_btnElimina.fill = GridBagConstraints.HORIZONTAL;
-				gbc_btnElimina.insets = new Insets(0, 0, 5, 0);
-				gbc_btnElimina.gridx = 2;
-				gbc_btnElimina.gridy = posY;
-				contentPane.add(bottoneElimina, gbc_btnElimina);
+				if(dataService.verbaleModificabile(codiceVerbale, matricolaDipendente)) {
+					JButton bottoneModifica = new JButton("Modifica");
+					bottoneModifica.addActionListener(new ActionListener() {
+						public void actionPerformed(ActionEvent e) {
+							modificaVerbale(codiceVerbale);
+						}
+					});
+					GridBagConstraints gbc_btnModifica = new GridBagConstraints();
+					gbc_btnModifica.anchor = GridBagConstraints.NORTH;
+					gbc_btnModifica.fill = GridBagConstraints.HORIZONTAL;
+					gbc_btnModifica.insets = new Insets(0, 0, 5, 5);
+					gbc_btnModifica.gridx = 1;
+					gbc_btnModifica.gridy = posY;
+					contentPane.add(bottoneModifica, gbc_btnModifica);
+					
+					JButton bottoneElimina = new JButton("Elimina");
+					bottoneElimina.addActionListener(new ActionListener() {
+						public void actionPerformed(ActionEvent e) {
+							eliminaVerbale(codiceVerbale);
+						}
+					});
+					GridBagConstraints gbc_btnElimina = new GridBagConstraints();
+					gbc_btnElimina.anchor = GridBagConstraints.NORTH;
+					gbc_btnElimina.fill = GridBagConstraints.HORIZONTAL;
+					gbc_btnElimina.insets = new Insets(0, 0, 5, 0);
+					gbc_btnElimina.gridx = 2;
+					gbc_btnElimina.gridy = posY;
+					contentPane.add(bottoneElimina, gbc_btnElimina);
+				}			
 				
 				posY++;
 			}

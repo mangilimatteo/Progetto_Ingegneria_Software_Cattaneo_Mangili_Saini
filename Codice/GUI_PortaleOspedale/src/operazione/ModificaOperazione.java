@@ -48,7 +48,7 @@ public class ModificaOperazione extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					ModificaOperazione frame = new ModificaOperazione("", "m001a", "0");
+					ModificaOperazione frame = new ModificaOperazione("", "m001b", "1");
 					frame.setUndecorated(true);
 					frame.setVisible(true);
 					frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
@@ -346,7 +346,7 @@ public class ModificaOperazione extends JFrame {
 				textPrimoOperatore.getText()
 		};
 		
-		switch(dataService.salvaOperazione(codiceOperazione, valori, nuova)) {
+		switch(dataService.salvaOperazione(codiceOperazione, matricolaDipendente, valori, nuova)) {
 		
 		case "-1": 
 			JOptionPane.showMessageDialog(null,"Errore, tutti i campi devono essere compilati");

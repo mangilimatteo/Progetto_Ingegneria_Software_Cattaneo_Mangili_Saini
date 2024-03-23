@@ -75,7 +75,7 @@ public class ModificaVerbale extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					ModificaVerbale frame = new ModificaVerbale("", "m001a", "1");
+					ModificaVerbale frame = new ModificaVerbale("", "m001a", "3");
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -128,7 +128,7 @@ public class ModificaVerbale extends JFrame {
 		gbl_contentPane.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 1.0, 1.0, 0.0, 0.0, Double.MIN_VALUE};
 		contentPane.setLayout(gbl_contentPane);
 		
-		JLabel textVerbalePaziente = new JLabel("Verbale Operazione:");
+		JLabel textVerbalePaziente = new JLabel("Verbale Operazione N. " + this.codiceVerbale + ":");
 		textVerbalePaziente.setFont(new Font("Arial", Font.BOLD, 14));
 		GridBagConstraints gbc_textVerbalePaziente = new GridBagConstraints();
 		gbc_textVerbalePaziente.anchor = GridBagConstraints.WEST;

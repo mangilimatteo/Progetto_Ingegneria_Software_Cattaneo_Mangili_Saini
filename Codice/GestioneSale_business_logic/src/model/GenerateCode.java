@@ -1,6 +1,6 @@
 package model; 
 
-import org.jooq.codegen.GenerationTool;
+import org.jooq.codegen.GenerationTool; 
 import org.jooq.meta.jaxb.Configuration;
 import org.jooq.meta.jaxb.Database;
 import org.jooq.meta.jaxb.Generator;

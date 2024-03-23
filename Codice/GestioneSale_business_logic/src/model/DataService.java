@@ -3,6 +3,9 @@ package model;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.time.Duration;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Arrays; 
 
 import org.jooq.DSLContext;
@@ -260,11 +263,12 @@ public class DataService {
 		String valore19 = verbale.getTecnicoRadiologia();
 		String valore20 = verbale.getProcedura();
 		String valore21 = verbale.getCodiceOperazione();
+		String valori22 = verbale.getDataOraCreazione();
 				
 		String[] valori = {
 				valore0, valore1, valore2, valore3, valore4, valore5, valore6, valore7, valore8, valore9, 
 				valore10, valore11, valore12, valore13, valore14, valore15, valore16, valore17, valore18,
-				valore19, valore20, valore21
+				valore19, valore20, valore21, valori22
 		};
 		return valori;
 	}
@@ -353,9 +357,14 @@ public class DataService {
 
 
 	private void creaNuovoVerbale(String nuovoCodice) {
+       
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
+
+        String questoIstante = LocalDateTime.now().format(formatter);
+		
 		VerbaleRecord nuovoVerbale = new VerbaleRecord(
 				nuovoCodice, "", "", "", "", "", "", "", "", "", "", 
-				"", "", "", "", "", "", "", "", "", "", "", "");
+				"", "", "", "", "", "", "", "", "", "", "", "", questoIstante);
 		int result = create.insertInto(Verbale.VERBALE).set(nuovoVerbale).execute();
 		System.out.println(result); // stampa 1 se tutto andato bene
 		
@@ -397,8 +406,8 @@ public class DataService {
 
 
 
-	private void creaNuovaOperazione(String nuovoCodice) {
-		OperazioneRecord nuovaOperazione = new OperazioneRecord(nuovoCodice, "", "    ", false, "", "");
+	private void creaNuovaOperazione(String nuovoCodice, String matricolaMedico) {
+		OperazioneRecord nuovaOperazione = new OperazioneRecord(nuovoCodice, "", "    ", false, "", "", matricolaMedico);
 		int result = create.insertInto(Operazione.OPERAZIONE).set(nuovaOperazione).execute();
 		System.out.println(result); // stampa 1 se tutto andato bene
 		
@@ -435,7 +444,7 @@ public class DataService {
 	}
 
 
-	public String salvaOperazione(String codiceOperazione, String[] valori, boolean nuova) {
+	public String salvaOperazione(String codiceOperazione, String matricolaMedico, String[] valori, boolean nuova) {
 		if(valori[1].equals("") || valori[2].equals("") || valori[4].equals("")){
 			return "-1";
 		}
@@ -445,7 +454,7 @@ public class DataService {
 		}
 		
 		if(nuova) {
-			creaNuovaOperazione(codiceOperazione);
+			creaNuovaOperazione(codiceOperazione, matricolaMedico);
 		}
 		 
 		create
@@ -538,6 +547,55 @@ public class DataService {
 	public String getMatrMedicoAnagrafica(String codiceAnagrafica) {
 		return getAnagrafica(codiceAnagrafica).getMatrMedico();
 	}
+	
+	private String getMedicoSchedulazioneOperazione(String codiceOperazione) {
+		return getOperazione(codiceOperazione).getMedicoSchedulazione();
+	}
+	
+	private String getPrimoOperatoreVerbale(String codiceVerbale) {
+		return getVerbale(codiceVerbale).getPrimoOperatore();
+	}
+	
+	private Duration getTempoPassatoVerbale(String codiceOperazione) {
+		
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
+		LocalDateTime dataOraCreazione = LocalDateTime.parse(getVerbale(codiceOperazione).getDataOraCreazione(), formatter);
+		return Duration.between(dataOraCreazione, LocalDateTime.now());
+	}
+
+
+
+	//una pagina anagrafica e' modificabile ed eliminabile solo da chi l'ha creata e solo se 
+	//non è' ha ancora un'operazione associata 
+	public boolean anagraficaModificabile(String codiceAnagrafica, String matricolaMedico) {
+		if(matricolaMedico.equals(getMatrMedicoAnagrafica(codiceAnagrafica)) &&
+				getOperazioneAssociata(codiceAnagrafica).equals("")){
+			return true;
+		}
+		return false;
+	}
+
+	//un'operazione e' modificabile ed eliminabile solo da chi l'ha creata e solo se 
+	//non è' ha ancora un verbale associato
+	public boolean operazioneModificabile(String codiceOperazione, String matricolaMedico) {
+		if(matricolaMedico.equals(getMedicoSchedulazioneOperazione(codiceOperazione)) &&
+				getVerbaleAssociato(codiceOperazione).equals("")){
+			return true;
+		}
+		return false;
+	}
+
+	//un verbale e' modificabile ed eliminabile solo dal primo operatore e solo se 
+	//non è' ha ancora passato un giorno dalla sua creazione
+	public boolean verbaleModificabile(String codiceVerbale, String matricolaMedico) {
+		
+		if(matricolaMedico.equals(getPrimoOperatoreVerbale(codiceVerbale)) &&
+				getTempoPassatoVerbale(codiceVerbale).toDays() < 1){
+			return true;
+		}
+		return false;
+	}
+
 
 }
 	

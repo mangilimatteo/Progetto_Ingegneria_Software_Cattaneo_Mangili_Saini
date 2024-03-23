@@ -47,6 +47,8 @@ public class VisualizzazionePaginaAnagrafica extends JFrame {
 		
 		String[] valori = dataService.getValoriAnagrafica(codiceAnagrafica, matricolaMedico);
 		
+		boolean modificabile = dataService.anagraficaModificabile(codiceAnagrafica, matricolaMedico);
+		
 		
 		setIconImage(Toolkit.getDefaultToolkit().getImage(VisualizzazionePaginaAnagrafica.class.getResource("/resources/LogoOspedale.png")));
 		setTitle("Portale digitale Personale Sanitario dell'ospedale Papa Giovanni XIII");
@@ -424,7 +426,7 @@ public class VisualizzazionePaginaAnagrafica extends JFrame {
 		gbc_textCognomeMedico.gridy = 24;
 		contentPane.add(textCognomeMedico, gbc_textCognomeMedico);
 		
-		JLabel textMatricola = new JLabel("Matrciola:");
+		JLabel textMatricola = new JLabel("Matricola:");
 		textMatricola.setFont(new Font("Arial", Font.BOLD, 16));
 		GridBagConstraints gbc_textMatricola = new GridBagConstraints();
 		gbc_textMatricola.anchor = GridBagConstraints.WEST;
@@ -445,12 +447,7 @@ public class VisualizzazionePaginaAnagrafica extends JFrame {
 		contentPane.add(textMatricolaMedico, gbc_textMatricolaMedico);
 		
 		
-		JButton bottoneModifica = new JButton("Modifica");
-		bottoneModifica.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				enableModifica();
-			}
-		});
+		
 		
 		JLabel textNote = new JLabel("Note:");
 		textNote.setHorizontalAlignment(SwingConstants.LEFT);
@@ -472,13 +469,22 @@ public class VisualizzazionePaginaAnagrafica extends JFrame {
 		gbc_textNotePaziente.gridx = 2;
 		gbc_textNotePaziente.gridy = 27;
 		contentPane.add(textNotePaziente, gbc_textNotePaziente);
-		bottoneModifica.setFont(new Font("Arial", Font.PLAIN, 14));
-		GridBagConstraints gbc_bottoneModifica = new GridBagConstraints();
-		gbc_bottoneModifica.anchor = GridBagConstraints.WEST;
-		gbc_bottoneModifica.insets = new Insets(0, 0, 0, 5);
-		gbc_bottoneModifica.gridx = 0;
-		gbc_bottoneModifica.gridy = 28;
-		contentPane.add(bottoneModifica, gbc_bottoneModifica);		
+		
+		if(modificabile) {
+			JButton bottoneModifica = new JButton("Modifica");
+			bottoneModifica.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					enableModifica();
+				}
+			});
+			bottoneModifica.setFont(new Font("Arial", Font.PLAIN, 14));
+			GridBagConstraints gbc_bottoneModifica = new GridBagConstraints();
+			gbc_bottoneModifica.anchor = GridBagConstraints.WEST;
+			gbc_bottoneModifica.insets = new Insets(0, 0, 0, 5);
+			gbc_bottoneModifica.gridx = 0;
+			gbc_bottoneModifica.gridy = 28;
+			contentPane.add(bottoneModifica, gbc_bottoneModifica);		
+		}
 		
 		JButton bottoneChiudi = new JButton("Chiudi");
 		bottoneChiudi.setVisible(true);

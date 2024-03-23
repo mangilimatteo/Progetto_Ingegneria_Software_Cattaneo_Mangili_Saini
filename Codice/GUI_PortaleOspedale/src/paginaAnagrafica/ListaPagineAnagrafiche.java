@@ -29,7 +29,7 @@ public class ListaPagineAnagrafiche extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
-	private String matricolaDipendente;
+	private String matricolaMedico;
 	private DataService dataService;
 
 	/**
@@ -54,12 +54,13 @@ public class ListaPagineAnagrafiche extends JFrame {
 	/**
 	 * Create the frame. 
 	 */
-	public ListaPagineAnagrafiche(String codiceDipendente) {
-		this.matricolaDipendente = codiceDipendente;
+	public ListaPagineAnagrafiche(String matricolaMedico) {
+		this.matricolaMedico = matricolaMedico;
 		dataService = new DataService();
 		
 		int contatoreAnagrafica = dataService.getContatoreCodice("Anagrafica");
 		int posY = 2;
+		boolean modificabile;
 		
 		setTitle("Portale digitale Personale Sanitario dell'ospedale Giovanni XIII");
 		setIconImage(Toolkit.getDefaultToolkit().getImage(ListaPagineAnagrafiche.class.getResource("/resources/LogoOspedale.png")));
@@ -76,6 +77,8 @@ public class ListaPagineAnagrafiche extends JFrame {
 			
 			if(dataService.esisteAnagrafica(codiceAnagrafica)) {
 				
+				modificabile = dataService.anagraficaModificabile(codiceAnagrafica, matricolaMedico);
+				
 				JButton bottoneAnagrafica = new JButton("Pagina Anagrafica N. " + i);
 				bottoneAnagrafica.addActionListener(
 					new ActionListener() {
@@ -91,33 +94,35 @@ public class ListaPagineAnagrafiche extends JFrame {
 				gbc_btnListaAnagrafica_1.gridy = posY;
 				contentPane.add(bottoneAnagrafica, gbc_btnListaAnagrafica_1);
 				
-				JButton bottoneModifica = new JButton("Modifica");
-				bottoneModifica.addActionListener(new ActionListener() {
-					public void actionPerformed(ActionEvent e) {
-						modificaAnagrafica(codiceAnagrafica);
-					}
-				});
-				GridBagConstraints gbc_btnModifica = new GridBagConstraints();
-				gbc_btnModifica.anchor = GridBagConstraints.NORTH;
-				gbc_btnModifica.fill = GridBagConstraints.HORIZONTAL;
-				gbc_btnModifica.insets = new Insets(0, 0, 5, 5);
-				gbc_btnModifica.gridx = 1;
-				gbc_btnModifica.gridy = posY;
-				contentPane.add(bottoneModifica, gbc_btnModifica);
-				
-				JButton bottoneElimina = new JButton("Elimina");
-				bottoneElimina.addActionListener(new ActionListener() {
-					public void actionPerformed(ActionEvent e) {
-						eliminaAnagrafica(codiceAnagrafica);
-					}
-				});
-				GridBagConstraints gbc_btnElimina = new GridBagConstraints();
-				gbc_btnElimina.anchor = GridBagConstraints.NORTH;
-				gbc_btnElimina.fill = GridBagConstraints.HORIZONTAL;
-				gbc_btnElimina.insets = new Insets(0, 0, 5, 0);
-				gbc_btnElimina.gridx = 2;
-				gbc_btnElimina.gridy = posY;
-				contentPane.add(bottoneElimina, gbc_btnElimina);
+				if(modificabile) {
+					JButton bottoneModifica = new JButton("Modifica");
+					bottoneModifica.addActionListener(new ActionListener() {
+						public void actionPerformed(ActionEvent e) {
+							modificaAnagrafica(codiceAnagrafica);
+						}
+					});
+					GridBagConstraints gbc_btnModifica = new GridBagConstraints();
+					gbc_btnModifica.anchor = GridBagConstraints.NORTH;
+					gbc_btnModifica.fill = GridBagConstraints.HORIZONTAL;
+					gbc_btnModifica.insets = new Insets(0, 0, 5, 5);
+					gbc_btnModifica.gridx = 1;
+					gbc_btnModifica.gridy = posY;
+					contentPane.add(bottoneModifica, gbc_btnModifica);
+					
+					JButton bottoneElimina = new JButton("Elimina");
+					bottoneElimina.addActionListener(new ActionListener() {
+						public void actionPerformed(ActionEvent e) {
+							eliminaAnagrafica(codiceAnagrafica);
+						}
+					});
+					GridBagConstraints gbc_btnElimina = new GridBagConstraints();
+					gbc_btnElimina.anchor = GridBagConstraints.NORTH;
+					gbc_btnElimina.fill = GridBagConstraints.HORIZONTAL;
+					gbc_btnElimina.insets = new Insets(0, 0, 5, 0);
+					gbc_btnElimina.gridx = 2;
+					gbc_btnElimina.gridy = posY;
+					contentPane.add(bottoneElimina, gbc_btnElimina);
+				}
 				
 				posY++;
 			}
@@ -163,7 +168,7 @@ public class ListaPagineAnagrafiche extends JFrame {
 	}
 	
 	public void refresh() {
-		ListaPagineAnagrafiche listaAnagrafiche= new ListaPagineAnagrafiche(matricolaDipendente);
+		ListaPagineAnagrafiche listaAnagrafiche= new ListaPagineAnagrafiche(matricolaMedico);
 		listaAnagrafiche.setVisible(true);
 		dispose();
 	}
@@ -193,13 +198,13 @@ public class ListaPagineAnagrafiche extends JFrame {
 	}
 
 	protected void visualizzaAnagrafica(String codiceAnagrafica) {
-		VisualizzazionePaginaAnagrafica visualizzaAnagrafica= new VisualizzazionePaginaAnagrafica(codiceAnagrafica, matricolaDipendente);
+		VisualizzazionePaginaAnagrafica visualizzaAnagrafica= new VisualizzazionePaginaAnagrafica(codiceAnagrafica, matricolaMedico);
 		visualizzaAnagrafica.setVisible(true);
 		
 	}
 
 	protected void aggiungiAnagrafica() {
-		ModificaPaginaAnagrafica modificaAnagrafica= new ModificaPaginaAnagrafica("", matricolaDipendente ,true);
+		ModificaPaginaAnagrafica modificaAnagrafica= new ModificaPaginaAnagrafica("", matricolaMedico ,true);
 		modificaAnagrafica.setVisible(true);		
 	}
 }

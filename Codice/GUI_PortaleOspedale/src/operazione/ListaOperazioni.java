@@ -1,6 +1,6 @@
 package operazione;
  
-import java.awt.EventQueue; 
+import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -8,7 +8,6 @@ import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
 import model.DataService;
-import paginaAnagrafica.*;
 
 import java.awt.Toolkit;
 import javax.swing.JLabel;
@@ -23,8 +22,6 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JScrollPane;
 import javax.swing.ScrollPaneConstants;
-import javax.swing.GroupLayout;
-import javax.swing.GroupLayout.Alignment;
 import javax.swing.BoxLayout;
 
 public class ListaOperazioni extends JFrame {
@@ -60,9 +57,9 @@ public class ListaOperazioni extends JFrame {
 		this.matricolaDipendente = matricolaDipendente;
 		dataService = new DataService();
 		
-		
 		int contatoreOperazione = dataService.getContatoreCodice("Operazione");
 		int posY = 2;
+		
 		setTitle("Portale digitale Personale Sanitario dell'ospedale Giovanni XIII");
 		setIconImage(Toolkit.getDefaultToolkit().getImage(ListaOperazioni.class.getResource("/resources/LogoOspedale.png")));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -78,7 +75,7 @@ public class ListaOperazioni extends JFrame {
 			final String codiceOperazione = String.valueOf(i);
 			
 			if(dataService.esisteOperazione(codiceOperazione)) {
-				
+								
 				JButton bottoneOperazione = new JButton("Operazione N. " + i);
 				bottoneOperazione.addActionListener(
 					new ActionListener() {
@@ -94,33 +91,36 @@ public class ListaOperazioni extends JFrame {
 				gbc_btnListaOperazioni_1.gridy = posY;
 				contentPane.add(bottoneOperazione, gbc_btnListaOperazioni_1);
 				
-				JButton bottoneModifica = new JButton("Modifica");
-				bottoneModifica.addActionListener(new ActionListener() {
-					public void actionPerformed(ActionEvent e) {
-						modificaOperazione(codiceOperazione);
-					}
-				});
-				GridBagConstraints gbc_btnModifica = new GridBagConstraints();
-				gbc_btnModifica.anchor = GridBagConstraints.NORTH;
-				gbc_btnModifica.fill = GridBagConstraints.HORIZONTAL;
-				gbc_btnModifica.insets = new Insets(0, 0, 5, 5);
-				gbc_btnModifica.gridx = 1;
-				gbc_btnModifica.gridy = posY;
-				contentPane.add(bottoneModifica, gbc_btnModifica);
-				
-				JButton bottoneElimina = new JButton("Elimina");
-				bottoneElimina.addActionListener(new ActionListener() {
-					public void actionPerformed(ActionEvent e) {
-						eliminaOperazione(codiceOperazione);
-					}
-				});
-				GridBagConstraints gbc_btnElimina = new GridBagConstraints();
-				gbc_btnElimina.anchor = GridBagConstraints.NORTH;
-				gbc_btnElimina.fill = GridBagConstraints.HORIZONTAL;
-				gbc_btnElimina.insets = new Insets(0, 0, 5, 0);
-				gbc_btnElimina.gridx = 2;
-				gbc_btnElimina.gridy = posY;
-				contentPane.add(bottoneElimina, gbc_btnElimina);
+				if(dataService.operazioneModificabile(codiceOperazione, matricolaDipendente)) {
+					
+					JButton bottoneModifica = new JButton("Modifica");
+					bottoneModifica.addActionListener(new ActionListener() {
+						public void actionPerformed(ActionEvent e) {
+							modificaOperazione(codiceOperazione);
+						}
+					});
+					GridBagConstraints gbc_btnModifica = new GridBagConstraints();
+					gbc_btnModifica.anchor = GridBagConstraints.NORTH;
+					gbc_btnModifica.fill = GridBagConstraints.HORIZONTAL;
+					gbc_btnModifica.insets = new Insets(0, 0, 5, 5);
+					gbc_btnModifica.gridx = 1;
+					gbc_btnModifica.gridy = posY;
+					contentPane.add(bottoneModifica, gbc_btnModifica);
+					
+					JButton bottoneElimina = new JButton("Elimina");
+					bottoneElimina.addActionListener(new ActionListener() {
+						public void actionPerformed(ActionEvent e) {
+							eliminaOperazione(codiceOperazione);
+						}
+					});
+					GridBagConstraints gbc_btnElimina = new GridBagConstraints();
+					gbc_btnElimina.anchor = GridBagConstraints.NORTH;
+					gbc_btnElimina.fill = GridBagConstraints.HORIZONTAL;
+					gbc_btnElimina.insets = new Insets(0, 0, 5, 0);
+					gbc_btnElimina.gridx = 2;
+					gbc_btnElimina.gridy = posY;
+					contentPane.add(bottoneElimina, gbc_btnElimina);
+				}
 				
 				posY++;
 			}

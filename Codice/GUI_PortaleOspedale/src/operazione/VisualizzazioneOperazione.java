@@ -8,7 +8,6 @@ import javax.swing.border.EmptyBorder;
 
 import java.awt.Toolkit;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 
 import java.awt.Font;
 
@@ -39,7 +38,7 @@ public class VisualizzazioneOperazione extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					VisualizzazioneOperazione frame = new VisualizzazioneOperazione("1", "m001a");
+					VisualizzazioneOperazione frame = new VisualizzazioneOperazione("3", "m001b");
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -48,14 +47,13 @@ public class VisualizzazioneOperazione extends JFrame {
 		});
 	}
 
-	public VisualizzazioneOperazione(String codiceOperazione, String matricolaDipendente) {
+	public VisualizzazioneOperazione(String codiceOperazione, String matricolaMedico) {
 		dataService = new DataService();
-		this.matricolaDipendente = matricolaDipendente;
+		this.matricolaDipendente = matricolaMedico;
 		this.codiceOperazione = codiceOperazione;
 		setTitle("Portale digitale Personale Sanitario dell'ospedale Giovanni XIII");
 		
 		String[] valori = dataService.getValoriOperazione(this.codiceOperazione);
-		
 		codiceAnagraficaAssociata = valori[0];
 		
 		setIconImage(Toolkit.getDefaultToolkit().getImage(VisualizzazioneOperazione.class.getResource("/resources/LogoOspedale.png")));
@@ -253,7 +251,7 @@ public class VisualizzazioneOperazione extends JFrame {
 		
 		JLabel Anestesia = new JLabel();
 		if(Boolean.valueOf(valori[3])) {
-			Anestesia.setText("S�");
+			Anestesia.setText("Si");
 		}
 		else {
 			Anestesia.setText("No");
@@ -336,30 +334,32 @@ public class VisualizzazioneOperazione extends JFrame {
 		gbc_textMatricolaMedico.gridy = 17;
 		contentPane.add(textMatricolaMedico, gbc_textMatricolaMedico);
 		
-		JButton bottoneModifica = new JButton("Modifica");
-		bottoneModifica.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				modifica();
-			}
-		});		
-		bottoneModifica.setFont(new Font("Arial", Font.PLAIN, 14));
-		GridBagConstraints gbc_bottoneModifica = new GridBagConstraints();
-		gbc_bottoneModifica.insets = new Insets(0, 0, 0, 5);
-		gbc_bottoneModifica.gridx = 0;
-		gbc_bottoneModifica.gridy = 19;
-		contentPane.add(bottoneModifica, gbc_bottoneModifica);
+		if(dataService.operazioneModificabile(codiceOperazione, matricolaMedico)) {
+			JButton bottoneModifica = new JButton("Modifica");
+			bottoneModifica.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					modifica();
+				}
+			});		
+			bottoneModifica.setFont(new Font("Arial", Font.PLAIN, 14));
+			GridBagConstraints gbc_bottoneModifica = new GridBagConstraints();
+			gbc_bottoneModifica.insets = new Insets(0, 0, 0, 5);
+			gbc_bottoneModifica.gridx = 0;
+			gbc_bottoneModifica.gridy = 19;
+			contentPane.add(bottoneModifica, gbc_bottoneModifica);
+		}
 		
-		JButton bottoneConferma = new JButton("Chiudi");
-		bottoneConferma.addActionListener(new ActionListener() {
+		JButton bottoneChiudi = new JButton("Chiudi");
+		bottoneChiudi.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
 			}
 		});
-		bottoneConferma.setFont(new Font("Arial", Font.PLAIN, 14));
-		GridBagConstraints gbc_bottoneConferma = new GridBagConstraints();
-		gbc_bottoneConferma.gridx = 2;
-		gbc_bottoneConferma.gridy = 19;
-		contentPane.add(bottoneConferma, gbc_bottoneConferma);
+		bottoneChiudi.setFont(new Font("Arial", Font.PLAIN, 14));
+		GridBagConstraints gbc_bottoneChiudi = new GridBagConstraints();
+		gbc_bottoneChiudi.gridx = 2;
+		gbc_bottoneChiudi.gridy = 19;
+		contentPane.add(bottoneChiudi, gbc_bottoneChiudi);
 		
 	}
 	
@@ -370,16 +370,9 @@ public class VisualizzazioneOperazione extends JFrame {
 	}
 	
 	protected void modifica() {
-		if(dataService.getRuoloDipendente(matricolaDipendente).equals("Medico")) {
-			ModificaOperazione modificaOperazione= new ModificaOperazione(codiceOperazione, matricolaDipendente, "");
-			modificaOperazione.setVisible(true);
-			dispose();
-		}
-		
-		else {
-			JOptionPane.showMessageDialog(null,"Errore, solo i medici possono modificare le operazioni");
-		}
-				
+		ModificaOperazione modificaOperazione= new ModificaOperazione(codiceOperazione, matricolaDipendente, "");
+		modificaOperazione.setVisible(true);
+		dispose();				
 	}
 
 	

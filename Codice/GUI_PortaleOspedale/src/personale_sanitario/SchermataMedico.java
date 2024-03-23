@@ -160,7 +160,7 @@ public class SchermataMedico extends JFrame {
                 JOptionPane.YES_NO_OPTION 
         );
 		 if (scelta == JOptionPane.YES_OPTION) {
-			 dispose();
+			 System.exit(0);
 		 }
 		
 	}

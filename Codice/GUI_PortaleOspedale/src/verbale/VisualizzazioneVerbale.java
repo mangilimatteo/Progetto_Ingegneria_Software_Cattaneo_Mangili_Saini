@@ -32,7 +32,7 @@ public class VisualizzazioneVerbale extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					VisualizzazioneVerbale frame = new VisualizzazioneVerbale("28", "m001a");
+					VisualizzazioneVerbale frame = new VisualizzazioneVerbale("4", "m001b");
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -69,7 +69,7 @@ public class VisualizzazioneVerbale extends JFrame {
 		gbl_contentPane.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 1.0, 1.0, 1.0, Double.MIN_VALUE};
 		contentPane.setLayout(gbl_contentPane);
 		
-		JLabel textVerbalePaziente = new JLabel("Verbale Operazione N. " + codiceVerbale);
+		JLabel textVerbalePaziente = new JLabel("Verbale Operazione N. " + codiceVerbale + " (" + valori[22] + ")");
 		textVerbalePaziente.setFont(new Font("Arial", Font.BOLD, 16));
 		GridBagConstraints gbc_textVerbalePaziente = new GridBagConstraints();
 		gbc_textVerbalePaziente.anchor = GridBagConstraints.WEST;
@@ -313,7 +313,7 @@ public class VisualizzazioneVerbale extends JFrame {
 			contentPane.add(textRischioAnestesiologicoPaziente, gbc_textRischioAnestesiologicoPaziente);
 		}
 		
-		JLabel textNomeEquipe = new JLabel("Nomi dell'equipe");
+		JLabel textNomeEquipe = new JLabel("Membri dell'equipe");
 		textNomeEquipe.setFont(new Font("Arial", Font.BOLD, 18));
 		GridBagConstraints gbc_textNomeEquipe = new GridBagConstraints();
 		gbc_textNomeEquipe.anchor = GridBagConstraints.WEST;
@@ -527,30 +527,32 @@ public class VisualizzazioneVerbale extends JFrame {
 		gbc_textArea_2.gridy = posY++;
 		contentPane.add(textProceduraVerbale, gbc_textArea_2);
 		
-		JButton bottoneModifica = new JButton("Modifica");
-		bottoneModifica.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				modifica();
-			}
-		});
-		bottoneModifica.setFont(new Font("Arial", Font.PLAIN, 14));
-		GridBagConstraints gbc_bottoneModifica = new GridBagConstraints();
-		gbc_bottoneModifica.insets = new Insets(0, 0, 0, 5);
-		gbc_bottoneModifica.gridx = 0;
-		gbc_bottoneModifica.gridy = posY;
-		contentPane.add(bottoneModifica, gbc_bottoneModifica);
+		if(dataService.verbaleModificabile(codiceVerbale, matricolaDipendente)) {
+			JButton bottoneModifica = new JButton("Modifica");
+			bottoneModifica.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					modifica();
+				}
+			});
+			bottoneModifica.setFont(new Font("Arial", Font.PLAIN, 14));
+			GridBagConstraints gbc_bottoneModifica = new GridBagConstraints();
+			gbc_bottoneModifica.insets = new Insets(0, 0, 0, 5);
+			gbc_bottoneModifica.gridx = 0;
+			gbc_bottoneModifica.gridy = posY;
+			contentPane.add(bottoneModifica, gbc_bottoneModifica);
+		}
 		
-		JButton bottoneConferma = new JButton("Chiudi");
-		bottoneConferma.addActionListener(new ActionListener() {
+		JButton bottoneChiudi = new JButton("Chiudi");
+		bottoneChiudi.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
 			}
 		});
-		bottoneConferma.setFont(new Font("Arial", Font.PLAIN, 14));
-		GridBagConstraints gbc_bottoneConferma = new GridBagConstraints();
-		gbc_bottoneConferma.gridx = 2;
-		gbc_bottoneConferma.gridy = posY;
-		contentPane.add(bottoneConferma, gbc_bottoneConferma);
+		bottoneChiudi.setFont(new Font("Arial", Font.PLAIN, 14));
+		GridBagConstraints gbc_bottoneChiudi = new GridBagConstraints();
+		gbc_bottoneChiudi.gridx = 2;
+		gbc_bottoneChiudi.gridy = posY;
+		contentPane.add(bottoneChiudi, gbc_bottoneChiudi);
 
 	}
 
