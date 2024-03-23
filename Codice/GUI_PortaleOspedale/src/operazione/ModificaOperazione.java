@@ -48,7 +48,7 @@ public class ModificaOperazione extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					ModificaOperazione frame = new ModificaOperazione("", "m001b", "1");
+					ModificaOperazione frame = new ModificaOperazione("3", "m001b", "");
 					frame.setUndecorated(true);
 					frame.setVisible(true);
 					frame.setExtendedState(JFrame.MAXIMIZED_BOTH);

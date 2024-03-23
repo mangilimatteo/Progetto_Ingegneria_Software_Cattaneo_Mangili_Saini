@@ -17,6 +17,7 @@ import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
 import java.awt.Color;
+import java.awt.Dimension;
 
 import javax.swing.JTextArea;
 import javax.swing.JSpinner;
@@ -68,7 +69,7 @@ public class ModificaPaginaAnagrafica extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					ModificaPaginaAnagrafica frame = new ModificaPaginaAnagrafica("1", "m001a", false);
+					ModificaPaginaAnagrafica frame = new ModificaPaginaAnagrafica("2", "m001a", true);
 					frame.setUndecorated(true);
 					frame.setVisible(true);
 					frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
@@ -466,6 +467,7 @@ public class ModificaPaginaAnagrafica extends JFrame {
 								spinnerTempodiAttesaPaziente.setModel(new SpinnerListModel(new String[] {"","Classe A", "Classe B", "Classe C", "Classe D"}));
 								spinnerTempodiAttesaPaziente.setValue(valori[15]);
 								spinnerTempodiAttesaPaziente.setEnabled(true);
+								spinnerTempodiAttesaPaziente.setPreferredSize(new Dimension(100,22));
 								spinnerTempodiAttesaPaziente.setFont(new Font("Arial", Font.BOLD, 14));
 								
 								JLabel textDatiMedico = new JLabel("Dati medico che ha richiesto intervento:");
