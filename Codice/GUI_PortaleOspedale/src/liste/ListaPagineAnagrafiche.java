@@ -1,5 +1,5 @@
 package liste;
- 
+
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -45,7 +45,7 @@ public class ListaPagineAnagrafiche extends JFrame {
 					frame.setUndecorated(true);
 					frame.setVisible(true);
 					frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
-					
+
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -59,28 +59,28 @@ public class ListaPagineAnagrafiche extends JFrame {
 	public ListaPagineAnagrafiche(String codiceDipendente) {
 		this.matricolaDipendente = codiceDipendente;
 		dataService = new DataService();
-		
+
 		int contatoreAnagrafica = dataService.getContatoreCodice("Anagrafica");
 		int posY = 2;
-		
+
 		setTitle("Portale digitale Personale Sanitario dell'ospedale Giovanni XIII");
-		setIconImage(Toolkit.getDefaultToolkit().getImage(ListaPagineAnagrafiche.class.getResource("/resources/LogoOspedale.png")));
+		setIconImage(Toolkit.getDefaultToolkit()
+				.getImage(ListaPagineAnagrafiche.class.getResource("/resources/LogoOspedale.png")));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 545, 388);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
 		setContentPane(contentPane);
-		
-		for(int i = 1; i <= contatoreAnagrafica; i++) {
-			
+
+		for (int i = 1; i <= contatoreAnagrafica; i++) {
+
 			final String codiceAnagrafica = String.valueOf(i);
-			
-			if(dataService.esisteAnagrafica(codiceAnagrafica)) {
-				
+
+			if (dataService.esisteAnagrafica(codiceAnagrafica)) {
+
 				JButton bottoneAnagrafica = new JButton("Pagina Anagrafica N. " + i);
-				bottoneAnagrafica.addActionListener(
-					new ActionListener() {
+				bottoneAnagrafica.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
 						visualizzaAnagrafica(codiceAnagrafica);
 					}
@@ -92,7 +92,7 @@ public class ListaPagineAnagrafiche extends JFrame {
 				gbc_btnListaAnagrafica_1.gridx = 0;
 				gbc_btnListaAnagrafica_1.gridy = posY;
 				contentPane.add(bottoneAnagrafica, gbc_btnListaAnagrafica_1);
-				
+
 				JButton bottoneModifica = new JButton("Modifica");
 				bottoneModifica.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
@@ -106,7 +106,7 @@ public class ListaPagineAnagrafiche extends JFrame {
 				gbc_btnModifica.gridx = 1;
 				gbc_btnModifica.gridy = posY;
 				contentPane.add(bottoneModifica, gbc_btnModifica);
-				
+
 				JButton bottoneElimina = new JButton("Elimina");
 				bottoneElimina.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
@@ -120,33 +120,31 @@ public class ListaPagineAnagrafiche extends JFrame {
 				gbc_btnElimina.gridx = 2;
 				gbc_btnElimina.gridy = posY;
 				contentPane.add(bottoneElimina, gbc_btnElimina);
-				
+
 				posY++;
 			}
 		}
 		contentPane.setLayout(new BorderLayout(0, 0));
-		
+
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 		scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
 		contentPane.add(scrollPane);
-		
+
 		JPanel panel = new JPanel();
 		scrollPane.setViewportView(panel);
 		panel.setLayout(null);
-		
+
 		JLabel textListeAnagrafiche = new JLabel("Pagine Anagrafiche registrate:");
 		textListeAnagrafiche.setBounds(10, 11, 266, 22);
 		panel.add(textListeAnagrafiche);
 		textListeAnagrafiche.setHorizontalAlignment(SwingConstants.CENTER);
 		textListeAnagrafiche.setFont(new Font("Arial", Font.BOLD, 18));
-		
-		
-		
+
 		JButton btnChiudi = new JButton("Chiudi");
 		btnChiudi.setBounds(40, 73, 83, 23);
 		panel.add(btnChiudi);
-		
+
 		JButton btnAggiungiLista = new JButton("Crea nuova pagina anagrafica");
 		btnAggiungiLista.setBounds(160, 72, 177, 23);
 		panel.add(btnAggiungiLista);
@@ -161,47 +159,47 @@ public class ListaPagineAnagrafiche extends JFrame {
 				dispose();
 			}
 		});
-		
+
 	}
-	
+
 	public void refresh() {
-		ListaPagineAnagrafiche listaAnagrafiche= new ListaPagineAnagrafiche(matricolaDipendente);
+		ListaPagineAnagrafiche listaAnagrafiche = new ListaPagineAnagrafiche(matricolaDipendente);
 		listaAnagrafiche.setVisible(true);
 		dispose();
 	}
 
 	protected void eliminaAnagrafica(String codiceAnagrafica) {
-		int scelta = JOptionPane.showConfirmDialog(
-                null, 
-                "Confermi di voler eliminare la pagina anagrafica N. " + codiceAnagrafica + 
-                "?\nEliminando la pagina anagrafica eliminerai possibili operazioni e verbali associati ad essa", 
-                "Conferma eliminazione", 
-                JOptionPane.YES_NO_OPTION 
-        );
+		int scelta = JOptionPane.showConfirmDialog(null, "Confermi di voler eliminare la pagina anagrafica N. "
+				+ codiceAnagrafica
+				+ "?\nEliminando la pagina anagrafica eliminerai possibili operazioni e verbali associati ad essa",
+				"Conferma eliminazione", JOptionPane.YES_NO_OPTION);
 
-        if (scelta == JOptionPane.YES_OPTION) {
-            dataService.eliminaAnagrafica(codiceAnagrafica);
-            JOptionPane.showMessageDialog(null,"Anagrafica N. " + codiceAnagrafica + " eliminata");
-            refresh();
-        } else {
-        	JOptionPane.showMessageDialog(null,"Eliminazione annullata");
-        }
+		if (scelta == JOptionPane.YES_OPTION) {
+			dataService.eliminaAnagrafica(codiceAnagrafica);
+			JOptionPane.showMessageDialog(null, "Anagrafica N. " + codiceAnagrafica + " eliminata");
+			refresh();
+		} else {
+			JOptionPane.showMessageDialog(null, "Eliminazione annullata");
+		}
 	}
 
 	protected void modificaAnagrafica(String codiceAnagrafica) {
-		ModificaPaginaAnagrafica modificaAnagrafica= new ModificaPaginaAnagrafica(codiceAnagrafica, "",false);
+		ModificaPaginaAnagrafica modificaAnagrafica = new ModificaPaginaAnagrafica(codiceAnagrafica, "", false);
 		modificaAnagrafica.setVisible(true);
-		
+
 	}
 
 	protected void visualizzaAnagrafica(String codiceAnagrafica) {
-		VisualizzazionePaginaAnagrafica visualizzaAnagrafica= new VisualizzazionePaginaAnagrafica(codiceAnagrafica, matricolaDipendente);
+		VisualizzazionePaginaAnagrafica visualizzaAnagrafica = new VisualizzazionePaginaAnagrafica(codiceAnagrafica,
+				matricolaDipendente);
 		visualizzaAnagrafica.setVisible(true);
-		
+
 	}
 
 	protected void aggiungiAnagrafica() {
-		ModificaPaginaAnagrafica modificaAnagrafica= new ModificaPaginaAnagrafica("", matricolaDipendente ,true);
-		modificaAnagrafica.setVisible(true);		
+		ModificaPaginaAnagrafica modificaAnagrafica = new ModificaPaginaAnagrafica("", matricolaDipendente, true);
+		modificaAnagrafica.setUndecorated(true);
+		modificaAnagrafica.setVisible(true);
+		modificaAnagrafica.setExtendedState(JFrame.MAXIMIZED_BOTH);
 	}
 }

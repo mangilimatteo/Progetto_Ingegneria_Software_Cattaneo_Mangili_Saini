@@ -27,7 +27,9 @@ public class SchermataInfermiere extends JFrame {
 			public void run() {
 				try {
 					SchermataInfermiere frame = new SchermataInfermiere("i001a");
+					frame.setUndecorated(true);
 					frame.setVisible(true);
+					frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
