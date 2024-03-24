@@ -33,6 +33,7 @@ public class SelezionePaginaAnagrafica extends JFrame {
 	private JPanel contentPane;
 	private String matricolaDipendente;
 	private DataService dataService;
+	private JPanel panel;
 
 	/**
 	 * Launch the application.
@@ -60,7 +61,7 @@ public class SelezionePaginaAnagrafica extends JFrame {
 		dataService = new DataService();
 
 		int contatoreAnagrafica = dataService.getContatoreCodice("Anagrafica");
-		int posY = 2;
+		int posY =2;
 
 		setTitle("Portale digitale Personale Sanitario dell'ospedale Giovanni XIII");
 		setIconImage(Toolkit.getDefaultToolkit()
@@ -71,7 +72,20 @@ public class SelezionePaginaAnagrafica extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
 		setContentPane(contentPane);
+		contentPane.setLayout(new BorderLayout(0, 0));
 
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+		contentPane.add(scrollPane);
+
+		panel = new JPanel();
+		scrollPane.setViewportView(panel);
+		GridBagLayout gbl_panel = new GridBagLayout();
+		gbl_panel.columnWidths = new int[]{0, 0, 490, 0};
+		gbl_panel.rowHeights = new int[]{22, 0, 23, 0};
+		gbl_panel.columnWeights = new double[]{0.0, 0.0, 0.0, Double.MIN_VALUE};
+		gbl_panel.rowWeights = new double[]{0.0, 0.0, 0.0, Double.MIN_VALUE};
+		panel.setLayout(gbl_panel);
 		for (int i = 1; i <= contatoreAnagrafica; i++) {
 
 			final String codiceAnagrafica = String.valueOf(i);
@@ -91,7 +105,7 @@ public class SelezionePaginaAnagrafica extends JFrame {
 				gbc_btnListaAnagrafica_1.insets = new Insets(0, 0, 5, 5);
 				gbc_btnListaAnagrafica_1.gridx = 0;
 				gbc_btnListaAnagrafica_1.gridy = posY;
-				contentPane.add(bottoneAnagrafica, gbc_btnListaAnagrafica_1);
+				panel.add(bottoneAnagrafica, gbc_btnListaAnagrafica_1);
 
 				JButton bottoneSelezione = new JButton("Seleziona");
 				bottoneSelezione.addActionListener(new ActionListener() {
@@ -105,59 +119,52 @@ public class SelezionePaginaAnagrafica extends JFrame {
 				gbc_btnSelezione.insets = new Insets(0, 0, 5, 5);
 				gbc_btnSelezione.gridx = 1;
 				gbc_btnSelezione.gridy = posY;
-				contentPane.add(bottoneSelezione, gbc_btnSelezione);
+				panel.add(bottoneSelezione, gbc_btnSelezione);
 
 				posY++;
 			}
 		}
-		contentPane.setLayout(new BorderLayout(0, 0));
-
-		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
-		contentPane.add(scrollPane);
-
-		JPanel panel = new JPanel();
-		scrollPane.setViewportView(panel);
-		GridBagLayout gbl_panel = new GridBagLayout();
-		gbl_panel.columnWidths = new int[] { 566, 0 };
-		gbl_panel.rowHeights = new int[] { 35, 23, 0, 0, 0 };
-		gbl_panel.columnWeights = new double[] { 0.0, Double.MIN_VALUE };
-		gbl_panel.rowWeights = new double[] { 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE };
-		panel.setLayout(gbl_panel);
-
-		JLabel textListeAnagrafiche = new JLabel("Seleziona la pagina anagrafica di cui vuoi registrare l'operazione:");
-		textListeAnagrafiche.setHorizontalAlignment(SwingConstants.CENTER);
-		textListeAnagrafiche.setFont(new Font("Arial", Font.BOLD, 18));
-		GridBagConstraints gbc_textListeAnagrafiche = new GridBagConstraints();
-		gbc_textListeAnagrafiche.anchor = GridBagConstraints.NORTHWEST;
-		gbc_textListeAnagrafiche.insets = new Insets(0, 0, 5, 0);
-		gbc_textListeAnagrafiche.gridx = 0;
-		gbc_textListeAnagrafiche.gridy = 0;
-		panel.add(textListeAnagrafiche, gbc_textListeAnagrafiche);
-		
-				JButton btnChiudi = new JButton("Chiudi");
-				GridBagConstraints gbc_btnChiudi = new GridBagConstraints();
-				gbc_btnChiudi.anchor = GridBagConstraints.NORTH;
-				gbc_btnChiudi.gridx = 0;
-				gbc_btnChiudi.gridy = 3;
-				panel.add(btnChiudi, gbc_btnChiudi);
-		btnChiudi.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				dispose();
-			}
-		});
+							
+								
+										JLabel textListeAnagrafiche = new JLabel("Seleziona la pagina anagrafica di cui vuoi registrare l'operazione:");
+										textListeAnagrafiche.setHorizontalAlignment(SwingConstants.CENTER);
+										textListeAnagrafiche.setFont(new Font("Arial", Font.BOLD, 18));
+										GridBagConstraints gbc_textListeAnagrafiche = new GridBagConstraints();
+										gbc_textListeAnagrafiche.gridwidth = 3;
+										gbc_textListeAnagrafiche.anchor = GridBagConstraints.NORTHWEST;
+										gbc_textListeAnagrafiche.insets = new Insets(0, 0, 5, 0);
+										gbc_textListeAnagrafiche.gridx = 0;
+										gbc_textListeAnagrafiche.gridy = 0;
+										panel.add(textListeAnagrafiche, gbc_textListeAnagrafiche);
+												
+														JButton btnChiudi = new JButton("Chiudi");
+														GridBagConstraints gbc_btnChiudi = new GridBagConstraints();
+														gbc_btnChiudi.insets = new Insets(0, 0, 5, 5);
+														gbc_btnChiudi.anchor = GridBagConstraints.NORTHWEST;
+														gbc_btnChiudi.gridx = 1;
+														gbc_btnChiudi.gridy = 1;
+														panel.add(btnChiudi, gbc_btnChiudi);
+												btnChiudi.addActionListener(new ActionListener() {
+													public void actionPerformed(ActionEvent e) {
+														dispose();
+													}
+												});
 	}
 
 	protected void SelezionaAnagrafica(String codiceAnagrafica) {
 		ModificaOperazione modifica = new ModificaOperazione("", matricolaDipendente, codiceAnagrafica);
+		modifica.setUndecorated(true);
 		modifica.setVisible(true);
+		modifica.setExtendedState(JFrame.MAXIMIZED_BOTH);
 		dispose();
 	}
 
 	protected void visualizzaAnagrafica(String codiceAnagrafica) {
 		VisualizzazionePaginaAnagrafica visualizzaAnagrafica = new VisualizzazionePaginaAnagrafica(codiceAnagrafica,
 				matricolaDipendente);
+		visualizzaAnagrafica.setUndecorated(true);
 		visualizzaAnagrafica.setVisible(true);
+		visualizzaAnagrafica.setExtendedState(JFrame.MAXIMIZED_BOTH);
 
 	}
 
