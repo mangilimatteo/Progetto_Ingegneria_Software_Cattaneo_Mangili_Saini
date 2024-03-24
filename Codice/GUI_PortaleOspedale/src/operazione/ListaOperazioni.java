@@ -216,6 +216,8 @@ public class ListaOperazioni extends JFrame {
 
 	protected void aggiungiOperazione() {
 		SelezionePaginaAnagrafica selezione = new SelezionePaginaAnagrafica(matricolaDipendente);
-		selezione.setVisible(true);		
+		selezione.setUndecorated(true);
+		selezione.setVisible(true);
+		selezione.setExtendedState(JFrame.MAXIMIZED_BOTH);
 	}
 }

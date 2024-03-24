@@ -216,8 +216,11 @@ public class ListaVerbali extends JFrame {
 	}
 
 	protected void aggiungiVerbale() {
-		SelezioneOperazione selezione = new SelezioneOperazione(matricolaDipendente);
-		selezione.setVisible(true);		
+		SelezioneOperazione selezione = new SelezioneOperazione(matricolaDipendente);	
+		selezione.setUndecorated(true);
+		selezione.setVisible(true);
+		selezione.setExtendedState(JFrame.MAXIMIZED_BOTH);
+		
 	}
 
 }

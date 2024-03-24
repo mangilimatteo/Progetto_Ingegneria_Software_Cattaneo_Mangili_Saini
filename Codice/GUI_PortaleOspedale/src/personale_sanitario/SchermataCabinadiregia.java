@@ -26,7 +26,9 @@ public class SchermataCabinadiregia extends JFrame {
 			public void run() {
 				try {
 					SchermataCabinadiregia frame = new SchermataCabinadiregia("c001a");
+					frame.setUndecorated(true);
 					frame.setVisible(true);
+					frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}

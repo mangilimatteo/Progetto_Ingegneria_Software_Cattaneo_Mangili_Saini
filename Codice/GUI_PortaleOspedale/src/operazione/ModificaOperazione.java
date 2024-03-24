@@ -48,7 +48,7 @@ public class ModificaOperazione extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					ModificaOperazione frame = new ModificaOperazione("", "m001b", "1");
+					ModificaOperazione frame = new ModificaOperazione("3", "m001b", "");
 					frame.setUndecorated(true);
 					frame.setVisible(true);
 					frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
@@ -109,8 +109,10 @@ public class ModificaOperazione extends JFrame {
 			}
 		});
 		GridBagConstraints gbc_mostraAnagrafica = new GridBagConstraints();
+		gbc_mostraAnagrafica.anchor = GridBagConstraints.WEST;
+		gbc_mostraAnagrafica.gridwidth = 2;
 		gbc_mostraAnagrafica.insets = new Insets(0, 0, 5, 0);
-		gbc_mostraAnagrafica.gridx = 2;
+		gbc_mostraAnagrafica.gridx = 1;
 		gbc_mostraAnagrafica.gridy = 0;
 		contentPane.add(bottoneMostraAnagrafica, gbc_mostraAnagrafica);
 		
@@ -325,7 +327,9 @@ public class ModificaOperazione extends JFrame {
 		});
 		bottoneConferma.setFont(new Font("Arial", Font.PLAIN, 14));
 		GridBagConstraints gbc_bottoneConferma = new GridBagConstraints();
-		gbc_bottoneConferma.gridx = 2;
+		gbc_bottoneConferma.gridwidth = 2;
+		gbc_bottoneConferma.anchor = GridBagConstraints.WEST;
+		gbc_bottoneConferma.gridx = 1;
 		gbc_bottoneConferma.gridy = 16;
 		contentPane.add(bottoneConferma, gbc_bottoneConferma);
 		
@@ -333,7 +337,9 @@ public class ModificaOperazione extends JFrame {
 	
 	protected void MostraAnagrafica() {
 		VisualizzazionePaginaAnagrafica visualizzaAnagrafica= new VisualizzazionePaginaAnagrafica(codiceAnagraficaAssociata, matricolaDipendente);
+		visualizzaAnagrafica.setUndecorated(true);
 		visualizzaAnagrafica.setVisible(true);
+		visualizzaAnagrafica.setExtendedState(JFrame.MAXIMIZED_BOTH);
 				
 	}
 

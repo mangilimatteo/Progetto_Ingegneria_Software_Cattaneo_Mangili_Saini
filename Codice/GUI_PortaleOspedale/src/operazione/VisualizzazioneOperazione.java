@@ -38,7 +38,7 @@ public class VisualizzazioneOperazione extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					VisualizzazioneOperazione frame = new VisualizzazioneOperazione("3", "m001b");
+					VisualizzazioneOperazione frame = new VisualizzazioneOperazione("2", "m001b");
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
