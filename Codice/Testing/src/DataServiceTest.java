@@ -4,7 +4,7 @@ import org.junit.jupiter.api.Test;
 
 import model.DataService;
 
-class CasiDiTest {
+public class DataServiceTest {
 	
 	private DataService dataService = new DataService();
 	
